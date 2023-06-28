@@ -1,0 +1,15 @@
+.glass-blue{
+	background: rgba($dark-blue, 0.8);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(12.3px);
+	-webkit-backdrop-filter: blur(12.3px);
+	border: 1px solid rgba($dark-blue, 0.3);
+}
+
+.glass-white{
+	background: rgba(#fff, 0.8);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(12.3px);
+	-webkit-backdrop-filter: blur(12.3px);
+	border: 1px solid rgba(#fff, 0.3);
+}

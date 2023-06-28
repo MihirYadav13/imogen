@@ -1,0 +1,13 @@
+body{
+    & > #sizer{
+        display: none;
+        &::before{
+            content: '';
+            @each $bpname, $bpvalue in $grid-breakpoints{
+                @include breakpoint($bpname up){
+                    content: '#{$bpname}';
+                }
+            }
+        }
+    }
+}

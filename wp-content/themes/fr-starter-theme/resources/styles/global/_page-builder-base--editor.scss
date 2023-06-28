@@ -1,0 +1,13 @@
+.fr-page-builder-container{
+    .fr-content-row{
+        &.vert-stack{
+            &-top, &-middle, &-bottom{
+                >.container{
+                    >.block-editor-inner-blocks{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

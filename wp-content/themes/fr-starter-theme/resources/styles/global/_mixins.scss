@@ -1,0 +1,55 @@
+@mixin breakpoint($val) {
+	// Size or keyword
+	$bp: nth($val, 1);
+	
+	// Direction of media query (up, down, or only)
+	$dir: if(length($val) > 1, nth($val, 2), up);
+	
+	$media-query: "";
+	
+	$small: map-get($grid-breakpoints, sm);
+	$medium: map-get($grid-breakpoints, md);
+	$large: map-get($grid-breakpoints, lg);
+	$xlarge: map-get($grid-breakpoints, xlg);
+	$xxlage: map-get($grid-breakpoints, xxlg);
+	
+	@if $dir == "only"{
+		@if $breakpoint == 'xs' {
+			$media-query: '(max-width: #{$small})';
+		}
+		@else if $breakpoint == 'sm' {
+			$media-query: '(min-width: #{$small}) and (max-width: #{$medium})';
+		}
+		@else if $breakpoint == 'md' {
+			$media-query: '(min-width: #{$medium}) and (max-width: #{$large})';
+		}
+		@else if $breakpoint == 'lg' {
+			$media-query: '(min-width: #{$large}) and (max-width: #{$xlarge})';
+		}
+		@else if $breakpoint == 'xlg' {
+			$media-query: '(min-width: #{$xlarge}) and (max-width: #{$xxlarge})';
+		}
+		@else if $breakpoint == 'xxlg' {
+			$media-query: '(min-width: #{$xxlarge})';
+		}
+	}
+	@else if $dir == "down"{
+		$media-query: '(max-width: #{map-get($grid-breakpoints, $bp)})';
+	}
+	@else if $dir == "up"{
+		$media-query: '(min-width: #{map-get($grid-breakpoints, $bp)})';
+	}
+	
+	@if not (map-has-key($grid-breakpoints, $bp)){
+		@if $dir == "down"{
+			$media-query: '(max-width: #{$bp})';
+		}
+		@else if $dir == "up"{
+			$media-query: '(min-width: #{$bp})';
+		}
+	}
+	
+	@media #{$media-query} {
+		@content;
+	}
+}

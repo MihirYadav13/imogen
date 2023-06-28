@@ -1,0 +1,14 @@
+.fr-page-builder-container{
+    @include work-sans;
+
+    .fr-hero{
+        +.fr-content-row{
+            padding-top: #{$page-builder-row-vertical-padding * 2};
+        }
+    }
+
+    .fr-content-row{
+        background-color: #f6f6f6;
+        padding: $page-builder-row-vertical-padding 0;
+    }
+}
