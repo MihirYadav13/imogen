@@ -1,9 +1,9 @@
-=== 404page - your smart custom 404 error page ===
+=== Smart Custom 404 error page [404page] ===
 Contributors: petersplugins
 Tags: page, 404, error, error page, 404 page, page not found, page not found error, 404 error page, missing, broken link, template, 404 link, seo, custom 404, custom 404 page, custom 404 error, custom 404 error page, customize 404, customize 404 page, customize 404 error page, classicpress
 Requires at least: 4.0
-Tested up to: 6.0
-Stable tag: 11.4.1
+Tested up to: 6.1
+Stable tag: 11.4.3
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -169,7 +169,7 @@ If you are a theme developer you can add native support for the 404page plugin t
 
 == Screenshots ==
 
-1. The default 404 error page of the Twenty Twenty theme
+1. The themes default 404 error page
 2. Creating a custom 404 error page
 3. Select the created page as 404 error page
 4. The custom 404 error page in action
@@ -195,6 +195,13 @@ The 404page plugin adds a CSS class `error404` to the `<body>` tag which can be 
 Please use the [Support Forum](https://wordpress.org/support/plugin/404page).
 
 == Changelog ==
+
+= 11.4.3 (2022-11-05) =
+* bugfix for WP 6.1
+
+= 11.4.2 (2022-11-01) =
+* also add class error404 to body tag if page is called directly
+* plugin renamed
 
 = 11.4.1 (2022-10-16) =
 * bugfix: load Javascript for Block only when needed
@@ -400,6 +407,12 @@ Please use the [Support Forum](https://wordpress.org/support/plugin/404page).
 * Initial Release
 
 == Upgrade Notice ==
+
+= 11.4.3 =
+bugfix for WP 6.1
+
+= 11.4.2 =
+also add class error404 to body tag if page is called directly
 
 = 11.4.1 =
 bugfix: load Javascript for Block only when needed

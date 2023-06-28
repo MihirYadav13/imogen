@@ -54,9 +54,9 @@ function pp_404page() {
   return PP_404Page::getInstance( array(
     'file'      => dirname( __FILE__ ) . '/404page.php',
     'slug'      => pathinfo( dirname( __FILE__ ) . '/404page.php', PATHINFO_FILENAME ),
-    'name'      => '404page - your smart custom 404 error page',
+    'name'      => 'Smart Custom 404 error page [404page]',
     'shortname' => '404page',
-    'version'   => '11.4.1'
+    'version'   => '11.4.3'
   ) );
     
 }

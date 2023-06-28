@@ -7,20 +7,12 @@
             public static $class_name;
             public static $button_class_name;
             public static $styles;
-            public static $aag_roles;
 
             public function __construct() {
-
                 self::$shortcode_tag = 'cta-button';
                 self::$class_name = 'fr_cta_button';
                 self::$button_class_name = 'fff-custom-cta-button-class';
-                self::$styles = [
-                    'primary-arrow-right',
-                    'primary-arrow-down',
-                    'secondary-arrow-right',
-                    'secondary-arrow-down',
-                    'regular-link'
-                ];
+                self::$styles = \App\View\Components\CtaButton::getStyles();
 
                 add_action('init', [$this, 'ShortcodeInit']);
                 
@@ -44,8 +36,8 @@
                     'post_id' => null,
                     'style' => '',
                     'role' => false,
+                    'anchor' => false,
                     'new_tab' => false,
-                    'open_video_modal' => false
                 ), $atts));
 
                 $external_url = trim($external_url);
@@ -53,44 +45,37 @@
                 $post_id = trim($post_id);
                 $style = trim($style);
                 $new_tab = trim($new_tab);
-                $open_video_modal = trim($open_video_modal);
+                $anchor = trim(str_replace('#', '', $anchor));
+
+                //type
+                if($post_id){
+                    $type = 'post_id';
+                }else if($external_url){
+                    $type = 'external_url';
+                }else if($anchor){
+                    $type = 'anchor';
+                }
+
+                error_log('$type = ' . $type);
 
                 //Data parsing
                 if(in_array($style, self::$styles) == FALSE){
                     $style = self::$styles[0];
                 }
 
-                $target = $new_tab && $new_tab == 'true' ? '_blank' : '';
+                $cta = new \App\View\Components\CtaButton(
+                    $label ?? false,
+                    $type ?? false,
+                    $post_id ?? false,
+                    $style ?? false,
+                    $external_url ?? false,
+                    $anchor ?? false,
+                    $new_tab ?? false,
+                    false
+                );
+                $cta = $cta->render()->with($cta->data());
 
-                $url = $external_url && strlen($external_url) > 0 ? $external_url : ($post_id !== null ? get_permalink($post_id) : ''); 
-
-                //Create output
-                if($style !== 'regular-link'){
-                    $style = 'cta-button ' . $style;
-                }
-
-                //check if video and modal
-                if($open_video_modal && $open_video_modal == 'true'){
-                    $url = 'javascript:void(0)';
-                    $target = '';
-                    $is_valid_video_url = $this->CheckIfUrlIsVideo($external_url);
-                    
-                    if($is_valid_video_url){
-                        $extra_attr = 'fr-open-video-modal';
-                        $extra_attr .= '=\'' .wp_json_encode([
-                            'html' => base64_encode($this->GenerateVideoEmbedHtml($external_url))
-                        ]). '\'';
-                    }
-                }
-
-                return view('components.cta-button', [
-                    'preview' => false,
-                    'label' => $label,
-                    'url' => $url,
-                    'target' => $target,
-                    'extra_atts' => isset($extra_attr) ? $extra_attr : '',
-                    'style' => $style
-                ]);
+                return $cta;
             }
 
             public function SetUpMCEButton(){
@@ -152,51 +137,13 @@
             }
 
             public function AddPlugin($plugin_array){
-                $plugin_array[self::$class_name] = get_theme_file_uri() . '/app/Shortcodes/CtaButton/cta-button-class.js?ver=777';
+                $plugin_array[self::$class_name] = get_theme_file_uri() . '/app/Shortcodes/CtaButton/cta-button-class.js?ver=88e8';
                 return $plugin_array;
             }
 
             public function AddToolbarButton($buttons){
                 array_push( $buttons, self::$class_name );
                 return $buttons;
-            }
-
-            public function CheckIfUrlIsVideo($source){
-                //youtube
-                $pattern = "/^(?:(?:https?:\/\/)?(?:www\.)?vimeo\.com.*\/([\w\-]+))/is";
-                $matches = array();
-                preg_match($pattern, $source, $matches);
-                if (isset($matches[1])) return $matches[1];
-                
-                //youtube
-                $pattern = '/^(?:(?:(?:https?:)?\/\/)?(?:www\.)?(?:youtu(?:be\.com|\.be))\/(?:watch\?v\=|v\/|embed\/)?([\w\-]+))/is';
-                $matches = array();
-                preg_match($pattern, $source, $matches);
-                if (isset($matches[1])) return $matches[1];
-            
-                return false;
-            }
-
-            public function GenerateVideoEmbedHtml($d){
-                $d = str_replace(' ', '', $d);
-                $cleanedurl = implode('/', array_slice(explode('/', preg_replace('/https?:\/\/|www./', '', $d)), 0, 1));
-                switch($cleanedurl){
-                    case 'vimeo.com':
-                        $url = $d.'/';
-                        $pattern = "/vimeo.com\/(.*?)\//";
-                        preg_match_all($pattern, $url, $matches);
-                        $embedurl = $matches[1][0];
-                        return "<iframe  fr-video-type=\"vimeo\" src=\"//player.vimeo.com/video/".$embedurl."\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen allow=\"autoplay; fullscreen\"></iframe>";
-                        break;
-                    case 'youtube.com':
-                        $url = $d.'/';
-                        $pattern = "/youtube.com\/watch\?v=(.*?)\//";
-                        preg_match_all($pattern, $url, $matches);
-                        $embedurl = $matches[1][0];
-                        return "<iframe fr-video-type=\"youtube\" src=\"//www.youtube.com/embed/".$embedurl."?autoplay=1&mute=1&enablejsapi=1\" frameborder=\"0\" allow=\"autoplay\" allowfullscreen></iframe>";
-                        break;
-                }
-                return 'Video url not supported.';
             }
         }
         /**

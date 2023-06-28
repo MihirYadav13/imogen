@@ -5,28 +5,28 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class FrLayoutColumn extends Block
+class FrColumn extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Fr Layout Column';
+    public $name = 'Free Range Column';
 
 	/**
 	 * The block slug.
 	 *
 	 * @var string
 	 */
-	public $slug = 'fr-layout-column';
+	public $slug = 'fr-column';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple Fr Layout Column block.';
+    public $description = 'A simple Free Range Column block.';
 
     /**
      * The block category.
@@ -40,7 +40,7 @@ class FrLayoutColumn extends Block
      *
      * @var string|array
      */
-    public $icon = 'editor-ul fricon';
+    public $icon = '';
 
     /**
      * The block keywords.
@@ -61,7 +61,7 @@ class FrLayoutColumn extends Block
      *
      * @var array
      */
-    public $parent = ['acf/fr-page-builder-module-layout'];
+    public $parent = ['acf/fr-page-builder-module-free-range-columns'];
 
     /**
      * The default block mode.
@@ -121,7 +121,11 @@ class FrLayoutColumn extends Block
                 'acf/fr-page-builder-module-tags-tooltips',
                 'acf/fr-page-builder-module-cta',
                 'acf/fr-page-builder-module-accordion',
-                'acf/fr-page-builder-module-responsive-image'
+                'acf/fr-page-builder-module-responsive-image',
+                'acf/fr-page-builder-module-data-points',
+                'acf/fr-page-builder-module-network-map',
+                'acf/fr-page-builder-module-video-embed-caption',
+                'acf/fr-page-builder-module-people-list'
             ])
         ];
     }

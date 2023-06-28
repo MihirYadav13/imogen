@@ -16,6 +16,7 @@
                 >.fr-content-row{
                     >.container{
                         >.fr-empty-slot{
+                            height: max-content;
                             display: flex;
                         }
                     }

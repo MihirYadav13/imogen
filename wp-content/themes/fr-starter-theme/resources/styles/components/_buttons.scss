@@ -1,3 +1,44 @@
 button, .cta-button {
     border-radius: $button-border-radius;
 }
+
+.cta-button{
+    font-size: 14px;
+    text-decoration: none;
+    color: $deep-blue;
+    display: inline-block;
+    @include font-secondary-bold;
+
+    &:hover{
+        color: lighten($deep-blue, 20%);
+    }
+
+    &.primary, &.secondary{
+        padding: 14px 18px;
+        border: 1px solid;
+    }
+
+    &.primary{
+        background-color: $orange;
+        border-color: $orange;
+    }
+
+    &.secondary{
+        background-color: transparent;
+        border-color: $deep-blue;
+    }
+    
+    &.terciary{
+        display: inline-flex;
+        align-items: center;
+        @include font-secondary;
+
+        >b{
+            width: 50px;
+            height: 7px;
+            display: inline-block;
+            margin-left: 10px;
+            @include svg-arrow--orange;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 	return [
-		'rene-sola/homepage' => [
+		'fr/homepage' => [
 			'title' => 'Homepage',
 			'description' => 'Homepage Template',
 			'categories' => ['all'],

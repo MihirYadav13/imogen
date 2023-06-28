@@ -15,14 +15,11 @@
 		@if ($background_color_overlay)
 			<div class="row-bg-overlay" {!! $background_color_overlay !!}></div>
 		@endif
-		@if ($glass_effect)
-			<div class="row-bg-glass-effect"></div>
-		@endif
 	@endif
 	<div class="container {{ $content_max_width }} {{ $custom_max_width_class }}" {!! $container_atts !!}>
 		@if ($block->preview)
 			<div class="fr-empty-slot empty-slot-content-section">
-				<i>Edit “Block Container” settings on <a href="javascript:void(0)" fr-open-sidebar-btn>Sidebar Settings <span></span></a> panel. <br>Click the Appender <span class="appender-icon"></span> below to add Content Blocks, or add “Free Range Columns” to create new row structures.</i>
+				<i>Edit “Block Container” settings on <a href="javascript:void(0)" fr-open-sidebar-btn>Sidebar Settings <svg style="background: black; margin-left: 5px;" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" fill="white" d="M18 4H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-4 14.5H6c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5h8v13zm4.5-.5c0 .3-.2.5-.5.5h-2.5v-13H18c.3 0 .5.2.5.5v12z"></path></svg></a> panel. <br>Click the Appender <span class="appender-icon"></span> below to add Content Blocks, or add “Free Range Columns” to create new row structures.</i>
 			</div>
 		@endif
 		<InnerBlocks allowedBlocks='{{ $allowed_blocks }}' />

@@ -16,11 +16,11 @@ class ThemeServiceProvider extends SageServiceProvider
         add_action('admin_head', '\\App\Providers\ThemeServiceProvider::CustomAdminStyles');
         add_action('acf/input/admin_footer', '\\App\Providers\ThemeServiceProvider::CustomAcfJs');
 
+        add_action('wp_head', '\\App\Providers\ThemeServiceProvider::AddGoogleCodeSnippedHeader', 100);
+        add_action('wp_body_open', '\\App\Providers\ThemeServiceProvider::AddGoogleCodeAdditionalSnippedBody', 10);
+
         //This adds Jquery to frontend
         add_filter( 'wp_enqueue_scripts', '\\App\Providers\ThemeServiceProvider::addJquery' );
-
-        //TEMPORARY UNTIL I FIGURE OUT WPENGINE CACHE STUFF
-        add_action('init', '\\App\Providers\PostSearchProvider::SetAjaxActions', 20);
 
         parent::register();
     }
@@ -132,6 +132,43 @@ class ThemeServiceProvider extends SageServiceProvider
             .acf-field-fr-bordered > .acf-label > label{
                 font-weight: bold !important;
             }
+            .fr-custom-decoration .acf-dimensions .acf-dimensions__inputs{
+                align-items: flex-start;
+                display: flex;
+                margin-right: 0;
+                flex-direction: column;
+            }
+            .fr-custom-decoration .acf-dimensions .acf-dimensions__texts {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .fr-custom-decoration .acf-dimensions .acf-dimensions__input{
+                display: flex;
+                flex-direction: column;
+                width: calc(50% - 2px);
+            }
+            .fr-custom-decoration .acf-dimensions .acf-dimensions__texts input[type=text]{
+                border-right-width: 1px;
+                max-width: 100%;
+            }
+            /* HIDE BROKEN PATTERN PREVIEWS */
+            .block-pattern-explorer .block-pattern-explorer__preview-pattern-list__item-preview{
+                display: none;
+            }
+            .block-editor-block-patterns-list__item .block-editor-block-preview__container{
+                height: 1px;
+            }
+            .block-editor-block-patterns-list__item .block-editor-block-patterns-list__item-title{
+                text-align: left;
+            }
+
+            body.wp-admin:not(.post-new-php) .fr-no-edit-input > .acf-input > .acf-input-wrap > input{
+                background: lightgray;
+                pointer-events: none;
+            }
         </style>
     <?php
     }
@@ -174,7 +211,7 @@ class ThemeServiceProvider extends SageServiceProvider
 
     public static function addJquery(){
         wp_deregister_script('jquery');
-        wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', [], '3.6.0', true);
+        wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js', [], '3.7.0', true);
     }
 
     public static function AddMegaMenuClassToNavItems($items, $args){
@@ -187,5 +224,17 @@ class ThemeServiceProvider extends SageServiceProvider
         }
 
         return $items;
+    }
+
+    public static function AddGoogleCodeSnippedHeader(){
+        if(get_field('google_tag_manager_code_snippet', 'option')){
+            echo get_field('google_tag_manager_code_snippet', 'option');
+        }
+    }
+
+    public static function AddGoogleCodeAdditionalSnippedBody(){
+        if(get_field('additional_google_tag_manager_code_snippet', 'option')){
+            echo get_field('additional_google_tag_manager_code_snippet', 'option');
+        }
     }
 }

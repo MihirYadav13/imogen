@@ -1,13 +1,42 @@
-body{
-    & > #sizer{
-        display: none;
-        &::before{
-            content: '';
-            @each $bpname, $bpvalue in $grid-breakpoints{
-                @include breakpoint($bpname up){
-                    content: '#{$bpname}';
-                }
+#app-sizer{
+    display: none;
+    &::before{
+        content: '';
+        @each $bpname, $bpvalue in $grid-breakpoints{
+            @include breakpoint($bpname up){
+                content: '#{$bpname}';
             }
         }
+    }
+}
+
+.fr-container-{
+    @for $i from 1 through 100 {
+        &-max-#{$i}{
+            max-width: calc(map-get($container-max-widths, "xxl") * (#{$i} / 100));
+        }
+    }
+}
+
+.responsive-image-module{
+    picture{
+        display: block;
+    }
+    
+    .fr-responsive-image{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.hide-on-mobile{
+    @include breakpoint(lg down){
+        display: none !important;
+    }
+}
+
+.hide-on-desktop{
+    @include breakpoint(lg up){
+        display: none !important;
     }
 }

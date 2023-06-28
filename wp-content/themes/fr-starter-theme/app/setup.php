@@ -13,20 +13,18 @@ use function Roots\bundle;
  *
  * @return void
  */
-add_action('wp_enqueue_scripts', function () {
-	bundle('app')
-		->enqueue()
-		->enqueueJs(true, ['jquery']);
-}, 100);
+add_action('init', function () {
+	// Instantiate
+	$enqueue = new \WPackio\Enqueue( 'frStarterTheme', 'public', '1.0.0', 'theme', false);
 
-/**
- * Register the theme assets with the block editor.
- *
- * @return void
- */
-add_action('enqueue_block_editor_assets', function () {
-	bundle('editor')->enqueue();
-}, 100);
+	add_action('wp_enqueue_scripts', function () use ($enqueue) {
+		$enqueue->enqueue( 'app', 'main', [] );
+	}, 100);
+
+	add_action('enqueue_block_editor_assets', function () use ($enqueue) {
+		$enqueue->enqueue( 'app', 'editor', [] );
+	}, 100);
+});
 
 /**
  * Register the initial theme setup.
@@ -140,13 +138,3 @@ add_action('widgets_init', function () {
 		'id' => 'sidebar-footer',
 	] + $config);
 });
-
-function fr_load_all_files_from_dir($dir) {
-	$arr = [];
-	foreach (glob(get_template_directory() . '/' . $dir . '*.php') as $file) {
-		$content = require_once($file);
-		$arr = array_merge($arr, $content);
-	}
-
-	return $arr;
-}

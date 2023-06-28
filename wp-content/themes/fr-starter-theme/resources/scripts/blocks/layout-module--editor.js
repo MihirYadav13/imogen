@@ -86,7 +86,7 @@
 				break;
 		}
 
-		howManyToRemove = columnCount >= howManyHas ? 0 : Math.abs(howManyHas - columnCount);
+		let howManyToRemove = columnCount >= howManyHas ? 0 : Math.abs(howManyHas - columnCount);
 		howManyToInsert = columnCount > howManyHas ? (columnCount - howManyHas) : 0;
 
 		//remove blocks as needed
@@ -99,7 +99,7 @@
 
 		//then add the columns
 		for (let index = 0; index < howManyToInsert; index++) {
-			const columnBlock = wp.blocks.createBlock('acf/fr-layout-column', {}, []);
+			const columnBlock = wp.blocks.createBlock('acf/fr-column', {}, []);
 			wp.data.dispatch('core/editor').insertBlocks(columnBlock, foundObj.innerBlocks.length, clientId);
 		}
 
@@ -107,7 +107,7 @@
 
 	//ACF initialization
 	if(acf){
-		acf.addAction('render_block_preview/type=fr-page-builder-module-layout', onModuleViewRefresh);
+		acf.addAction('render_block_preview/type=fr-page-builder-module-free-range-columns', onModuleViewRefresh);
 
 		acf.addAction('append', function(){
 			const fields = acf.getFields({
@@ -123,7 +123,7 @@
 	//add a message for showing an empty state on the page builder module
 	let initialLayoutModulesState = {};
 	wp.data.subscribe(() => {
-		const frLayoutBlocks = $.fn.frGuten.getBlocksByName([], $.fn.frGuten.getBlocks(), 'acf/fr-page-builder-module-layout');
+		const frLayoutBlocks = $.fn.frGuten.getBlocksByName([], $.fn.frGuten.getBlocks(), 'acf/fr-page-builder-module-free-range-columns');
 
 		frLayoutBlocks.forEach(el => {
 			const oldLayoutBlockState = $.fn.frGuten.getBlockByClientId(initialLayoutModulesState, el.clientId);

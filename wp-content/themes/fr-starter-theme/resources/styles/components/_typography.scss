@@ -3,37 +3,47 @@ html :where(.editor-styles-wrapper) .is-root-container for backend styles in gut
 */
 
 body:not(.wp-admin) h1, html :where(.editor-styles-wrapper) .is-root-container h1 {
-    font-size: 48px;
-    line-height: 1.16;
-    color:$dark-blue;
+    font-size: 52px;
+    line-height: 1.2;
+    color:$deep-blue;
+    @include font-primary-bold;
 }
 
 body:not(.wp-admin) h2, html :where(.editor-styles-wrapper) .is-root-container h2 {
-    font-size: 46px;
-    line-height: 1.16;
-    color:$dark-blue;
+    font-size: 42px;
+    line-height: 1.2;
+    color:$deep-blue;
+    @include font-primary;
 }
 
 body:not(.wp-admin) h3, html :where(.editor-styles-wrapper) .is-root-container h3 {
-    font-size: 40px;
-    line-height: 1.16;
-    color:$dark-blue;
+    font-size: 30px;
+    line-height: 1.2;
+    color:$deep-blue;
+    @include font-primary;
 }
 
 body:not(.wp-admin) h4, html :where(.editor-styles-wrapper) .is-root-container h4 {
-    font-size: 32px;
-    line-height: 1.16;
-    color:$dark-blue;
+    font-size: 20px;
+    line-height: 1.2;
+    color:$deep-blue;
+    @include font-secondary-bold;
 }
 
 body:not(.wp-admin) h5, html :where(.editor-styles-wrapper) .is-root-container h5 {
-    font-size:22px;
-    line-height: 1.27;
+    font-size:16px;
+    line-height: 1.2;
     color:$dark-gray;
+    @include font-secondary-bold;
 }
 
 body:not(.wp-admin) p, html :where(.editor-styles-wrapper) .is-root-container p {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 18px;
+    line-height: 1.2;
     color:$dark-gray;
+    @include font-secondary;
+}
+
+body:not(.wp-admin){
+    @include font-secondary;
 }

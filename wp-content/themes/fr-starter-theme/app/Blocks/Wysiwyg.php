@@ -40,7 +40,7 @@ class Wysiwyg extends Block
      *
      * @var string|array
      */
-    public $icon = 'editor-ul fricon--wysiwyg';
+    public $icon = '';
 
     /**
      * The block keywords.
@@ -116,7 +116,10 @@ class Wysiwyg extends Block
 	 * @var array
 	 */
 	public $example = [
-        'content' => '<p>Start editing content <strong>here.</strong></p>'
+        'content' => '<p>Start editing content <strong>here.</strong></p>',
+        'attributes' => [
+            'preview_image' => 'wysiwyg.png'
+        ],
 	];
 
 	/**

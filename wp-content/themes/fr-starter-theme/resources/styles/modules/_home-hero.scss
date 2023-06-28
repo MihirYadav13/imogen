@@ -8,28 +8,4 @@
 	>.container{
 		position: relative;
 	}
-
-	.home-hero-bg-image{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-	}
-
-	.row-top{
-		padding-top: 144px;
-		padding-bottom: 110px;
-	}
-	
-	.row-bottom{
-		margin-bottom: -50px;
-	}
-
-	.text-box{
-		padding: 40px;
-		max-width: 466px;
-	}
 }

@@ -1,12 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
-
 //USE MIXINS FOR BETTER CODE READABILITY AND PORTABILITY 
-@mixin work-sans{
-    font-family: 'Work Sans', sans-serif;
+@mixin font-primary{
+    font-family: 'Nobile', sans-serif;
+    font-weight:500;
+}
+
+@mixin font-primary-bold{
+    font-family: 'Nobile', sans-serif;
+    font-weight:700;
+}
+
+@mixin font-secondary{
+    font-family: 'Inter', sans-serif;
     font-weight:400;
 }
 
-@mixin work-sans-bold{
-    font-family: 'Work Sans', sans-serif;
+@mixin font-secondary-medium{
+    font-family: 'Inter', sans-serif;
+    font-weight:500;
+}
+
+@mixin font-secondary-bold{
+    font-family: 'Inter', sans-serif;
     font-weight:700;
 }

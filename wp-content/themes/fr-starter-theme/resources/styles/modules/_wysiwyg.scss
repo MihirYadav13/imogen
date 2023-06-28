@@ -1,4 +1,23 @@
 .wysiwyg-module{
+    overflow-wrap: break-word;
+
+	h1, h2, h3, h4, h5, h6, p{
+		margin-top: 0;
+	}
+
+    h4, h5{
+        text-transform: uppercase;
+    }
+
+	p::empty{
+		display: none;
+	}
+
+	a:not(.cta-button):not(.button):not(.alt-btn):not(.badge){
+		color: $deep-blue;
+        font-weight: bold;
+	}
+
     >.container{
         >.row{
             >.col{
@@ -16,6 +35,50 @@
             .col-width-4_4{
                 flex: 0 0 100%;
             }
+        }
+    }
+
+	//Important for images inside wysiwygs https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages
+	img.alignright {float:right; margin:0 0 1em 1em}
+	img.alignleft {float:left; margin:0 1em 1em 0}
+	img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+	a img.alignright {float:right; margin:0 0 1em 1em}
+	a img.alignleft {float:left; margin:0 1em 1em 0}
+	a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
+    img{
+        &.alignright,
+        &.alignleft,
+        &.aligncenter,
+        &.alignnone{
+            @include wysiwyg-image-border;
+        }
+    }
+
+	figure.wp-caption{
+		>img{
+			@include wysiwyg-image-border;
+		}
+
+		figcaption{
+			@include caption-style;
+		}
+	}
+
+	.wp-caption{
+		max-width: 100%;
+
+		.wp-caption-text{
+			@include caption-style;
+		}
+	}
+
+    blockquote{
+        padding: 15px;
+        padding-left: 27px;
+
+        p{
+            @include blockquote-style;
         }
     }
 }

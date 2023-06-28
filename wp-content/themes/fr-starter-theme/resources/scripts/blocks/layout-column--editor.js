@@ -24,7 +24,7 @@
 
 	const onEditorRefresh = () => {
 		const editorContent = $.fn.frGuten.getBlocks();
-		const frLayoutColumnBlocks = $.fn.frGuten.getBlocksByName([], editorContent, 'acf/fr-layout-column');
+		const frLayoutColumnBlocks = $.fn.frGuten.getBlocksByName([], editorContent, 'acf/fr-column');
 
 		if(frLayoutColumnBlocks.length){
 			frLayoutColumnBlocks.forEach(el => {
@@ -36,7 +36,7 @@
 
 	wp.domReady(() => {
 		if(window.acf){
-			acf.addAction('render_block_preview/type=fr-layout-column', onLayoutColumnRefreshed);
+			acf.addAction('render_block_preview/type=fr-column', onLayoutColumnRefreshed);
 		}
 	
 		wp.data.subscribe(() => {

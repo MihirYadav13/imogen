@@ -145,7 +145,6 @@ class BlockContainer extends Block
 				'choices' => [
 					'#fff' => 'White',
 					'#F5F7FB' => 'Light Gray',
-					'#07132D' => 'Dark Blue'
 				],
 				'wpml_cf_preferences' => 0,
 				'return_format' => 'array',
@@ -179,7 +178,7 @@ class BlockContainer extends Block
 				->addRadio('background_image_size', [
 					'label' => 'Background Image: Desktop Size',
 					'choices' => [
-						'contain' => 'Contained (Expands vertically and horizontally to cover the available space)',
+						'contain' => 'Cover (Covers available space)',
 						'auto' => 'Auto (Image\'s real size)'
 					],
 					'default_value' => 'contain',
@@ -195,7 +194,7 @@ class BlockContainer extends Block
 				->addRadio('background_image_size_mobile', [
 					'label' => 'Background Image: Mobile Size',
 					'choices' => [
-						'contain' => 'Contain (Expands vertically and horizontally to cover space)',
+						'contain' => 'Cover (Covers available space)',
 						'auto' => 'Auto (image\'s real size)'
 					],
 					'default_value' => 'contain',
@@ -231,10 +230,7 @@ class BlockContainer extends Block
 					'append' => '%',
 					'default_value' => '50'
 				])
-					->conditional('background_color_overlay', '==', '1')
-				->addTrueFalse('glass_effect', [
-					'label' => 'Enable Glass Effect?'
-				])					
+					->conditional('background_color_overlay', '==', '1')				
 			->addAccordion('background_image_end')->endpoint()
 			->addAccordion('height')
 				->addRadio('min_height', [
@@ -360,9 +356,8 @@ class BlockContainer extends Block
 			'background_color_overlay' => $this->getColorOverlayAttr(),
 			'custom_max_width_class' => $this->getCustomContentMaxWidthClass(),
 			'background_image_mobile' =>  get_field('background_image_mobile') ?: get_field('background_image'),
-			'background_image_mobile_size' => get_field('background_image_mobile_size'),
+			'background_image_mobile_size' => get_field('background_image_size_mobile'),
 			'background_image_dimensions_mobile' => $this->createCssRules('mobile', get_field('background_image_dimensions')),
-			'glass_effect' => get_field('glass_effect'),
 			'vertical_padding' => get_field('vertical_padding'),
 			'vertically_stack_content' => get_field('vertically_stack_content'),
 		];

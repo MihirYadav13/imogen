@@ -243,7 +243,8 @@ if ( !class_exists( 'PP_404Page' ) ) {
           
         // Compatibility Mode
         // as of v 2.4 we use the the_posts filter instead of posts_results, because the posts array is internally processed after posts_results fires
-        add_filter( 'the_posts', array( $this, 'show404_compatiblity_mode' ), 999 );
+		// as of v 11.4.3 we also pass the query
+        add_filter( 'the_posts', array( $this, 'show404_compatiblity_mode' ), 999, 2 );
         
         // as of v 2.5 we remove the filter if the DW Question & Answer plugin by DesignWall (https://www.designwall.com/wordpress/plugins/dw-question-answer/) is active and we're in the answers list
         add_filter( 'dwqa_prepare_answers', array( $this, 'remove_show404_compatiblity_mode' ), 999 );
@@ -328,12 +329,13 @@ if ( !class_exists( 'PP_404Page' ) ) {
      * show 404 page
      * Compatibility Mode
      */
-    function show404_compatiblity_mode( $posts ) {
+    function show404_compatiblity_mode( $posts, $query ) {
       
       global $wp_query;
           
       // remove the filter so we handle only the first query - no custom queries
-      remove_filter( 'the_posts', array( $this, 'show404_compatiblity_mode' ), 999 ); 
+	  // moved in 11.4.3 due to problems with WP 6.1
+      // remove_filter( 'the_posts', array( $this, 'show404_compatiblity_mode' ), 999 ); 
       
       // @since 4
       // fix for an ugly bbPress problem
@@ -359,7 +361,11 @@ if ( !class_exists( 'PP_404Page' ) ) {
         
         // as of v 11.0.3 we also check for REST_REQUEST to not create a 404 page in case of REST API call
         // as of v 11.2.4 we also check for DOING_CRON
-        if ( ( empty( $posts ) || ( isset( $wp_query->query['error'] ) && $wp_query->query['error'] == 404 ) ) && is_main_query() && !is_robots() && !is_home() && !is_feed() && !is_search() && !is_archive() && ( !defined('DOING_AJAX') || !DOING_AJAX ) && ( !defined('DOING_CRON') || !DOING_CRON ) && ( !defined('REST_REQUEST') || !REST_REQUEST ) ) {
+		
+		// is_main_query() is true in multiple cases
+		// as of v 11.4.3 we check the query against the main query
+		
+        if ( ( empty( $posts ) || ( isset( $wp_query->query['error'] ) && $wp_query->query['error'] == 404 ) ) && $wp_query == $query && is_main_query() && !is_robots() && !is_home() && !is_feed() && !is_search() && !is_archive() && ( !defined('DOING_AJAX') || !DOING_AJAX ) && ( !defined('DOING_CRON') || !DOING_CRON ) && ( !defined('REST_REQUEST') || !REST_REQUEST ) ) {  
 			
 		  // save URL that caused the 404 - since 11.4.0
 		  $this->set_404_url();	
@@ -373,6 +379,9 @@ if ( !class_exists( 'PP_404Page' ) ) {
           
           remove_action( 'pre_get_posts', array ( $this, 'exclude_404page' ) );
           remove_filter( 'get_pages', array ( $this, 'remove_404page_from_array' ), 10, 2 );
+		  
+		  // moved here in 11.4.3
+		  remove_filter( 'the_posts', array( $this, 'show404_compatiblity_mode' ), 999 ); 
           
           $this->disable_caching();
          
@@ -382,8 +391,7 @@ if ( !class_exists( 'PP_404Page' ) ) {
           // @since 8
           // added suppress_filters for compatibilty with current WPML version
           $wp_query->query( array( 'page_id' => $pageid, 'suppress_filters' => true ) );
-          
-
+		 
           $wp_query->the_post();
           $this->template = get_page_template();
           $posts = $wp_query->posts;
@@ -392,8 +400,7 @@ if ( !class_exists( 'PP_404Page' ) ) {
           add_action( 'wp', array( $this, 'do_404_header' ) );
           add_filter( 'body_class', array( $this, 'add_404_body_class' ) );
           add_filter( 'template_include', array( $this, 'change_404_template' ), 999 );
-          
-          
+                 
           
           $this->maybe_force_404();
           $this->do_404page_action();
@@ -518,6 +525,8 @@ if ( !class_exists( 'PP_404Page' ) ) {
         status_header( 404 );
         nocache_headers();
         $this->maybe_force_404();
+		// Add 404 body class - since 11.4.2
+		add_filter( 'body_class', array( $this, 'add_404_body_class' ) );
         $this->do_404page_action();
       }
     }

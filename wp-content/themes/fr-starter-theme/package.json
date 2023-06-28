@@ -1,29 +1,24 @@
 {
   "name": "sage",
   "private": true,
-  "browserslist": [
-    "extends @roots/browserslist-config/current"
-  ],
   "engines": {
     "node": ">=16.0.0"
   },
   "scripts": {
-    "dev": "bud dev",
-    "build": "bud build",
-    "translate": "yarn translate:pot && yarn translate:update",
-    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
-    "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
-    "translate:compile": "yarn translate:mo && yarn translate:js",
-    "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
-    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+    "build": "wpackio-scripts build",
+    "bootstrap": "wpackio-scripts bootstrap",
+    "start": "wpackio-scripts start",
+    "archive": "wpackio-scripts pack"
   },
   "devDependencies": {
-    "@roots/bud": "6.3.3",
-    "@roots/sage": "6.3.3"
+    "@wpackio/scripts": "^6.4.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "postcss": "^8.4.23",
+    "sass": "^1.62.1"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
-    "@roots/bud-sass": "^6.3.5",
+    "@wpackio/entrypoint": "^6.4.0",
     "bootstrap": "^5.2.3",
     "fetch-inject": "^3.2.0"
   }

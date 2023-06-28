@@ -114,12 +114,17 @@ class Accordion extends Block
      */
     public $example = [
         'items' => [
-            ['item' => 'Item one'],
-            ['item' => 'Item two'],
-            ['item' => 'Item three'],
+             [
+                'title' => 'Accordion Title',
+                'sub_title' => 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.',
+                'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            ]
+        ],
+        'attributes' => [
+            'preview_image' => 'Accordion.png',
+            'block_icon' => 'accordion.png'
         ],
     ];
-
     /**
      * Data to be passed to the block before rendering.
      *
@@ -128,7 +133,7 @@ class Accordion extends Block
     public function with()
     {
         return [
-            'items' => $this->items(),
+            'items' => ($this->preview && empty(get_field('items')) ? $this->example['items'] : get_field('items'))
         ];
     }
 
@@ -140,37 +145,35 @@ class Accordion extends Block
     public function fields()
     {
         $accordion = new FieldsBuilder('accordion');
-
         $accordion
-            ->addRepeater('items', [
-                'layout' => 'block',
-                'collapsed' => 'title',
+        ->addRepeater('items', [
+            'layout' => 'block',
+            'collapsed' => 'title',
+            'button_label' => 'Add Accordion Item',
+        ])
+            ->addText('title', [
+                'wrapper' => [
+                    'width' => 40
+                ]
             ])
-                ->addText('title')
-                ->addWysiwyg('content')
-                ->addAccordion('Extra Settings', [
-                    'wrapper' => [
-                        'class' => 'acfhc-accordion'
-                    ]
+            ->addText('sub_title', [
+                'wrapper' => [
+                    'width' => 60
+                ]
+            ])
+            ->addWysiwyg('content')
+            ->addAccordion('Extra Settings', [
+                'wrapper' => [
+                    'class' => 'acfhc-accordion'
+                ]
+            ])
+                ->addText('item_id', [
+                    'label' => 'Item ID',
+                    'instructions' => 'Add the Accordion Item ID to anchor to opened page with item opened'
                 ])
-                    ->addText('item_id', [
-                        'label' => 'Item ID',
-                        'instructions' => 'Add the Accordion Item ID to anchor to opened page with item opened'
-                    ])
-                ->addAccordion('accordion_end')->endpoint()
-            ->endRepeater();
-
+            ->addAccordion('accordion_end')->endpoint()
+        ->endRepeater();
         return $accordion->build();
-    }
-
-    /**
-     * Return the items field.
-     *
-     * @return array
-     */
-    public function items()
-    {
-        return get_field('items') ?: $this->example['items'];
     }
 
     /**

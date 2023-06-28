@@ -5,7 +5,7 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class FrLayout extends Block
+class FrColumns extends Block
 {
     /**
      * The block name.
@@ -26,7 +26,7 @@ class FrLayout extends Block
 	 *
 	 * @var string
 	 */
-	public $slug = 'fr-page-builder-module-layout';
+	public $slug = 'fr-page-builder-module-free-range-columns';
 
     /**
      * The block category.
@@ -40,7 +40,7 @@ class FrLayout extends Block
      *
      * @var string|array
      */
-    public $icon = ' fricon fricon--fr-columns';
+    public $icon = '';
 
     /**
      * The block keywords.
@@ -101,7 +101,7 @@ class FrLayout extends Block
         'align_text' => false,
         'align_content' => false,
         'full_height' => false,
-        'anchor' => false,
+        'anchor' => true,
         'mode' => false,
         'multiple' => true,
         'jsx' => true,
@@ -115,7 +115,7 @@ class FrLayout extends Block
     public function with()
     {
         $allowed_blocks = [
-            'acf/fr-layout-column'
+            'acf/fr-column'
         ];
 
         return [
@@ -174,9 +174,9 @@ class FrLayout extends Block
         $choices['1_1'] = '1/1';
         $choices['12_12'] = '1/2 1/2';
         $choices['13_13_13'] = '1/3 1/3 1/3';
-        $choices['16_46_16'] = '1/6 4/6 1/6';
+/*        $choices['16_46_16'] = '1/6 4/6 1/6'; */
         $choices['23_13'] = '2/3 1/3';
-        $choices['13_23'] = '1/3 2/3';
+/*         $choices['13_23'] = '1/3 2/3'; */
         
         if(isset($args['remove_first']) && $args['remove_first']){
             unset($choices['-1']);
