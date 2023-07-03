@@ -7,8 +7,7 @@ WebFontConfig = {
 	},
 	google: {
 		families: [
-			'Nobile:500,700',
-			'Inter:400,500,700'
+			'Nunito:400,500,700'
 		]
 	}
 };

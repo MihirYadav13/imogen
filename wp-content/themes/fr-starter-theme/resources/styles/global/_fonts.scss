@@ -1,25 +1,15 @@
 //USE MIXINS FOR BETTER CODE READABILITY AND PORTABILITY 
 @mixin font-primary{
-    font-family: 'Nobile', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-weight:400;
+}
+
+@mixin font-primary-medium{
+    font-family: 'Nunito', sans-serif;
     font-weight:500;
 }
 
 @mixin font-primary-bold{
-    font-family: 'Nobile', sans-serif;
-    font-weight:700;
-}
-
-@mixin font-secondary{
-    font-family: 'Inter', sans-serif;
-    font-weight:400;
-}
-
-@mixin font-secondary-medium{
-    font-family: 'Inter', sans-serif;
-    font-weight:500;
-}
-
-@mixin font-secondary-bold{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight:700;
 }
