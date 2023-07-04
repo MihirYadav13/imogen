@@ -3,42 +3,32 @@ button, .cta-button {
 }
 
 .cta-button{
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 24px;
     text-decoration: none;
-    color: $deep-blue;
+    color: $white;
+    background: $blue;
     display: inline-block;
-    @include font-primary-bold;
+    @include font-primary-semi-bold;
+    border-radius: 20px;
+    height: 40px;
 
     &:hover{
-        color: lighten($deep-blue, 20%);
+        color: lighten($white, 20%);
     }
 
     &.primary, &.secondary{
-        padding: 14px 18px;
+        padding: 8px 12px;
         border: 1px solid;
     }
 
     &.primary{
-        background-color: $orange;
-        border-color: $orange;
+        background: $blue;
+        border-color: $blue;
     }
 
     &.secondary{
         background-color: transparent;
-        border-color: $deep-blue;
-    }
-    
-    &.terciary{
-        display: inline-flex;
-        align-items: center;
-        @include font-primary;
-
-        >b{
-            width: 50px;
-            height: 7px;
-            display: inline-block;
-            margin-left: 10px;
-            @include svg-arrow--orange;
-        }
+        border-color: $blue;
     }
 }

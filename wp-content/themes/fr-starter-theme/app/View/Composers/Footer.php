@@ -26,6 +26,10 @@ class Footer extends Composer
 			'logo' => get_field('footer_logo', 'option'),
 			'tagline' => get_field('footer_content', 'option'),
 			'footerNavigation' => $this->footerNavigation(),
+			'subscribe_label' =>  get_field('subscribe_label', 'option'),
+			'subscribe_form_shortcode' =>  get_field('subscribe_form_shortcode', 'option'),
+			'follow_us_label' =>  get_field('follow_us_label', 'option'),
+			'social_links' =>  get_field('social_links', 'option'),
 			'copyright_text' => get_field('footer_copyright_text', 'option'),
 			'page_links' =>  get_field('footer_page_links', 'option'),
 		];

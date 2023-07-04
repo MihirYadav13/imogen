@@ -20,8 +20,30 @@ class FooterThemeSettings extends Partial
             ->addMessage('Footer Note', 'Go to Appereance > Menus to customize the footer menu')
             ->addImage('footer_logo', [
                 'label' => 'Logo',
+                'wrapper' => [
+                    'width' => '50'
+                ]
             ])
-            ->addWysiwyg('footer_content')
+            ->addWysiwyg('footer_content',[
+                'wrapper' => [
+                    'width' => '50'
+                ]
+            ])
+            ->addText('subscribe_label', [
+                'wrapper' => [
+                    'width' => '50'
+                ]
+            ])
+            ->addText('subscribe_form_shortcode', [
+                'wrapper' => [
+                    'width' => '50'
+                ]
+            ])
+            ->addText('follow_us_label', [
+                'wrapper' => [
+                    'width' => '50'
+                ]
+            ])
             ->addFields($this->get(SocialLinks::class))
             ->addText('footer_copyright_text', [
                 'wrapper' => [
@@ -29,12 +51,15 @@ class FooterThemeSettings extends Partial
                 ],
                 'prepend' => '© ',
             ])
-            ->addRepeater('footer_page_links', [
-                'max' => 3,
-                'layout' => 'block',
-            ])
-                ->addLink('link')
-            ->endRepeater();
+            ->addPostObject('footer_page_links', [
+                'label' => 'Page links',
+                'post_type' => 'page',
+                'return_format' => 'id',
+                'multiple' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ]
+            ]);
 
         return $footerThemeSettings;
     }
