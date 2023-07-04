@@ -7,7 +7,7 @@ button, .cta-button {
     text-decoration: none;
     color: $deep-blue;
     display: inline-block;
-    @include font-secondary-bold;
+    @include font-primary-bold;
 
     &:hover{
         color: lighten($deep-blue, 20%);
@@ -31,7 +31,7 @@ button, .cta-button {
     &.terciary{
         display: inline-flex;
         align-items: center;
-        @include font-secondary;
+        @include font-primary;
 
         >b{
             width: 50px;

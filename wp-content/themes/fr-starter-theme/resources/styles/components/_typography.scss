@@ -10,7 +10,7 @@ body:not(.wp-admin) h1, html :where(.editor-styles-wrapper) .is-root-container h
 
 body:not(.wp-admin) h2, html :where(.editor-styles-wrapper) .is-root-container h2 {
     font-size: 40px;
-    line-height: 48x;
+    line-height: 48px;
     @include font-primary-bold;
 }
 
