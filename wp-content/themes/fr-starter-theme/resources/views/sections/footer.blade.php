@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="footer-content">
-            <div class="footer-left footer-column">
+            <div class="footer-left footer-column navbar">
               @if (has_nav_menu('footer_navigation'))
                 {!! wp_nav_menu($footerNavigation) !!}
               @endif
