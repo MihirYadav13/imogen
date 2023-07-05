@@ -11,7 +11,10 @@ import './util/current-breakpoint';
 import './util/load-splide-async';
 import './util/load-truncate-ellipsis-async';
 import './util/element-is-in-viewport';
+import './util/dropdown-animation';
 import './components/embedded-video-thumbnail';
+
+import './global/header';
 
 //Make variables globals
 window.currentBreakpoint = require('./util/current-breakpoint').currentBreakpoint;

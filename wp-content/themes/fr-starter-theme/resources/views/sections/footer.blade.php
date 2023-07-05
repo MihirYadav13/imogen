@@ -19,7 +19,9 @@
             <div class="footer-right footer-column">
                 <h6>{{ $subscribe_label?: 'Subscribe for updates' }}</h6>
                 <div class="subscribe-conatiner">
-                  @php echo do_shortcode('[contact-form-7 id="92" title="Email subscription"]') @endphp
+                  @if ($subscribe_form_shortcode)
+                  @php echo do_shortcode($subscribe_form_shortcode) @endphp
+                  @endif
                 </div>
                 <h6>{{ $follow_us_label?: 'Follow Us' }}</h6>
                 @if ($social_links)

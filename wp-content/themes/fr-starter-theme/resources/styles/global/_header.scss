@@ -1,0 +1,273 @@
+.fr-header{
+	transition: background-color 0.25s ease-in-out;
+	position: relative;
+	
+	.header-top{
+		.container{
+
+			@include breakpoint(lg down){
+				padding: 0px;
+			}
+
+		}
+	}
+
+	.navbar{
+		padding-top: 20px;
+		padding-bottom:19.5px;
+
+		@include breakpoint(lg down){
+			background-color: transparent;
+		}
+		
+		@include breakpoint(md down){
+			padding-top: 26px;
+			padding-bottom: 26px;
+		}
+
+		>.container{
+			width: 100%;
+
+			@include breakpoint(lg down){
+				align-items: flex-start;
+			}
+		}
+
+		.navbar-nav{
+			margin-left: auto;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+            column-gap: 24px;
+
+			@include breakpoint(lg down){
+				flex-direction: column;
+				flex-wrap: wrap;
+				gap: 13px;
+				align-items: flex-start;
+			}
+
+			.nav-item{
+				@include breakpoint(lg down){
+					width: 100%;
+				}
+
+				.nav-link{
+
+                    @include font-primary-semi-bold;
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: $dark-gray;
+                    padding-right: 0;
+                    padding-left: 0;
+
+					@include breakpoint(xl down){
+						padding: 4.5px 9px;
+					}
+
+					@include breakpoint(lg down){
+						padding: 7px 0px;
+						text-align: left;
+					}
+
+					&:hover{
+						
+					}
+				}
+			}
+
+			.dropdown-menu{
+				border: 1px solid $blue;
+				width: 200px;
+				min-width: unset;
+				background: $white;
+				border-radius: 3px;
+				padding-top: 10px;
+				margin: 0;
+
+				@include breakpoint(lg down){
+					background-color: transparent;
+					width: 100%;
+					padding-left: 15px;
+				}
+
+				.nav-item{
+					@include breakpoint(lg down){
+						max-width: 100%;
+					}
+				}
+
+				.menu-item{
+					a{
+					
+                        @include font-primary-semi-bold;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: $dark-gray;
+                        text-wrap: wrap;
+
+						@include breakpoint(lg down){
+						}
+	
+						&:hover, &:focus{
+                            background: $blue;
+                            color: $white;
+						}
+						
+					}
+
+					&.current-menu-item{
+						a{
+                            background: $blue;
+                            color: $white;
+						}
+					}
+				}
+
+				&.show{
+					@include breakpoint(lg down){
+						display: flex;
+						flex-direction: column;
+					}
+				}
+			}
+		}
+
+		.brand{
+			img{
+				max-height: 40px;
+				
+				@include breakpoint(lg down){
+					max-height: 32px;
+				}
+			}
+		}
+		
+	}
+
+	.navbar-collapse{
+		justify-content: flex-end;
+
+		@include breakpoint(lg down){
+			max-width: 100%;
+			padding: 0px;
+		}
+
+		ul.navbar-nav{
+			margin: 0 !important;
+
+			@include breakpoint(lg down){
+				margin-top: 35px !important;
+				padding: 0px 22px;
+			}
+		}
+
+		.secondary-nav-container{
+			padding-left: 18px;
+			padding-right: 35px;
+			line-height: 1;
+
+			@include breakpoint(lg down){
+				padding: 0;
+				margin-top: 23px;
+				margin-bottom: 34px;
+				padding: 0px 22px;
+			}
+
+			a.cta-button{
+				padding: 8px 15px;
+				line-height: 1;
+				text-align: center;
+				border: 2px solid $orange;
+				border-radius: 4px;
+
+				@include breakpoint(lg down){
+					width: 100%;
+				}
+			}
+		}
+
+		.search-bar-container{
+			@include breakpoint(lg down){
+				padding: 0px 22px;
+			}
+		}
+
+		>div, >ul{
+			@include breakpoint(lg down){
+				transition: opacity 0.25s ease-in-out;
+				opacity: 0;
+			}
+		}
+	}
+
+	.navbar-toggler{
+		border: none;
+		width: 25px;
+		height: 25px;
+		padding: 0;
+
+		&:focus{
+			box-shadow: none;
+		}
+	}
+	.navbar-toggler-icon{
+		background-image: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		position: relative;
+
+		>img{
+			transition: opacity 0.15s ease-in-out;
+			opacity: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			height: 100%;
+			transform: translate(-50%, -50%);
+
+			&.menu-icon{
+				opacity: 1;
+			}
+
+			&.close-icon{
+				width: 17px;
+				height: 17px;
+			}
+		}
+	}
+
+	&.is--opened, &.is--opening{
+		background-color: $light-blue;
+
+		.navbar-toggler{
+			.navbar-toggler-icon{
+				>img{
+					opacity: 0;
+
+					&.close-icon{
+						opacity: 1;
+					}
+				}
+			}
+		}
+		
+		.navbar-collapse{
+			>div, >ul{
+				@include breakpoint(lg down){
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	a[href="#"]{
+		cursor: default;
+	}
+}
+

@@ -76,6 +76,7 @@
                     > li {
                         @include breakpoint(lg down){
                             border-bottom: 1px solid $white;
+                            padding: 0px 10px;
                         }
                         
                         > a{
@@ -103,7 +104,6 @@
 
                                     @include breakpoint(lg down){
                                         display: inline-block;
-                                        margin-right: 10px;
                                     }
                                 }
                             }
@@ -120,6 +120,7 @@
 
                         @include breakpoint(lg down){
                             padding-top: 0px;
+                            margin-top: 0;
                         }
 
                         > li {
@@ -198,6 +199,33 @@
                         &.submitting{
                             input[type="submit"]{
                                 opacity: 0.6;
+                            }
+                        }
+
+                        .wpcf7-not-valid-tip{
+                            display: none;
+                        }
+
+                        .wpcf7-response-output{
+                            margin: 0;
+                            border: none;
+                            padding: 0;
+                        }
+
+                        &.invalid{
+                            input[type="email"]{
+                                border-color: $red-error;
+                                background-color: lighten($red-error, 40%);
+                            }
+
+                            .wpcf7-response-output{
+                                color: $red-error;
+                            }
+                        }
+
+                        &.sent{
+                            .wpcf7-response-output{
+                                color: $green-success;
                             }
                         }
 
