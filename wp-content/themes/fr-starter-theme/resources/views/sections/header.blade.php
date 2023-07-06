@@ -18,7 +18,7 @@
 				@if (has_nav_menu('primary_navigation'))
 					{!! wp_nav_menu($primaryNavigation) !!}
 				@endif
-				<div class="right-nav-container">
+				<div class="right-cta-container">
 					@forelse($right_cta as $cta)
 						<x-cta-button :label="$cta['label']" :type="$cta['cta_type']" :post-id="$cta['post_id']" :style="$cta['style']" :external-url="$cta['externa_url']" :new-tab="$cta['new_tab']" />
 					@empty

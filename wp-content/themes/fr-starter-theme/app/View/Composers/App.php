@@ -43,7 +43,7 @@ class App extends Composer
             'theme_location' => 'primary_navigation',
             'container'  => '',
             'container_class' => '',
-            'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0',
+            'menu_class' => 'navbar-nav',
             'depth' => 4,
             'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
             'walker' => new \App\wp_bootstrap5_navwalker()

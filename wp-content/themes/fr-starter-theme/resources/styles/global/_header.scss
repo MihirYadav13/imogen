@@ -33,23 +33,38 @@
 			}
 		}
 
+		.brand{
+			img{
+				max-height: 40px;
+				
+				@include breakpoint(lg down){
+					max-height: 32px;
+				}
+			}
+		}
+
 		.navbar-nav{
 			margin-left: auto;
 			display: flex;
 			align-items: center;
 			justify-content: flex-start;
             column-gap: 24px;
+			margin: 0;
 
 			@include breakpoint(lg down){
 				flex-direction: column;
 				flex-wrap: wrap;
-				gap: 13px;
 				align-items: flex-start;
+				margin-top: 35px;
+				margin-bottom: 20px;
+
 			}
 
-			.nav-item{
+			> .nav-item{
 				@include breakpoint(lg down){
 					width: 100%;
+					padding: 0px 10px;
+					border-bottom: 1px solid $dark-gray;
 				}
 
 				.nav-link{
@@ -61,13 +76,12 @@
                     padding-right: 0;
                     padding-left: 0;
 
-					@include breakpoint(xl down){
-						padding: 4.5px 9px;
-					}
-
 					@include breakpoint(lg down){
-						padding: 7px 0px;
+						padding: 12px 0px;
 						text-align: left;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
 					}
 
 					&:hover{
@@ -88,7 +102,9 @@
 				@include breakpoint(lg down){
 					background-color: transparent;
 					width: 100%;
-					padding-left: 15px;
+					padding: 0;
+					border: none;
+					padding-bottom: 12px;
 				}
 
 				.nav-item{
@@ -133,64 +149,30 @@
 			}
 		}
 
-		.brand{
-			img{
-				max-height: 40px;
-				
+		.right-cta-container{
+			display: flex;
+			justify-content: space-between;
+			column-gap: 8px;
+			align-items: center;
+
+			.cta-button{
 				@include breakpoint(lg down){
-					max-height: 32px;
+					width: calc(50% - 4px);
 				}
 			}
 		}
-		
 	}
 
 	.navbar-collapse{
-		justify-content: flex-end;
+		justify-content: space-between;
+		margin-left: 65px;
+		flex-wrap: wrap;
 
 		@include breakpoint(lg down){
 			max-width: 100%;
 			padding: 0px;
-		}
-
-		ul.navbar-nav{
-			margin: 0 !important;
-
-			@include breakpoint(lg down){
-				margin-top: 35px !important;
-				padding: 0px 22px;
-			}
-		}
-
-		.secondary-nav-container{
-			padding-left: 18px;
-			padding-right: 35px;
-			line-height: 1;
-
-			@include breakpoint(lg down){
-				padding: 0;
-				margin-top: 23px;
-				margin-bottom: 34px;
-				padding: 0px 22px;
-			}
-
-			a.cta-button{
-				padding: 8px 15px;
-				line-height: 1;
-				text-align: center;
-				border: 2px solid $orange;
-				border-radius: 4px;
-
-				@include breakpoint(lg down){
-					width: 100%;
-				}
-			}
-		}
-
-		.search-bar-container{
-			@include breakpoint(lg down){
-				padding: 0px 22px;
-			}
+			flex-direction: column;
+			margin-left: 0;
 		}
 
 		>div, >ul{
@@ -243,7 +225,6 @@
 	}
 
 	&.is--opened, &.is--opening{
-		background-color: $light-blue;
 
 		.navbar-toggler{
 			.navbar-toggler-icon{
