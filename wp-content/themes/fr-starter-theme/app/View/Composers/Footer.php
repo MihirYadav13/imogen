@@ -24,12 +24,14 @@ class Footer extends Composer
 	{
 		return [
 			'logo' => get_field('footer_logo', 'option'),
-			'tagline' => get_field('footer_caption', 'option'),
-			'cta' =>  get_field('footer_cta', 'option'),
-			'stock_widget' => get_field('footer_stock_widget', 'option'),
-			'footer_navigation' => $this->footerNavigation(),
-			'copyright_text' => date('Y') .' '. get_field('footer_copyright_text', 'option'),
-			'secondary_nav' =>  get_field('footer_secondary_nav', 'option'),
+			'tagline' => get_field('footer_content', 'option'),
+			'footerNavigation' => $this->footerNavigation(),
+			'subscribe_label' =>  get_field('subscribe_label', 'option'),
+			'subscribe_form_shortcode' =>  get_field('subscribe_form_shortcode', 'option'),
+			'follow_us_label' =>  get_field('follow_us_label', 'option'),
+			'social_links' =>  get_field('social_links', 'option'),
+			'copyright_text' => get_field('footer_copyright_text', 'option'),
+			'page_links' =>  get_field('footer_page_links', 'option'),
 		];
 	}
 
@@ -38,10 +40,11 @@ class Footer extends Composer
 		$args = [
 			'theme_location' => 'footer_navigation',
 			'container'  => '',
-			'container_class' => '',
-			'menu_class' => 'vertical-nav',
-			'depth' => 0,
-			'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+            'container_class' => '',
+            'menu_class' => 'navbar-nav me-auto',
+            'depth' => 4,
+            'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+            'walker' => new \App\wp_bootstrap5_navwalker()
 		];
 
 		return $args;

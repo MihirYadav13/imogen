@@ -56,7 +56,7 @@
 
 @mixin caption-style{
 	margin-top: 10px;
-	@include font-secondary-bold;
+	@include font-primary-bold;
 	font-size: 14px;
 	line-height: 1.1;
 	font-style: italic;
@@ -64,7 +64,7 @@
 }
 
 @mixin blockquote-style{
-	@include font-secondary-bold;
+	@include font-primary-bold;
 	font-style: italic;
 	color: $gray;
 }

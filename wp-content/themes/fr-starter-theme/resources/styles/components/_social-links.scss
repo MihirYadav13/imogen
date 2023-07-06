@@ -1,0 +1,22 @@
+.social-wrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 16px;
+
+    a{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: $blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            width: 24px;
+            height: 24px;
+            filter: invert(100%) sepia(100%) saturate(1%) hue-rotate(302deg) brightness(107%) contrast(101%);
+        }
+    }
+}
