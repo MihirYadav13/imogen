@@ -1,6 +1,26 @@
 .fr-header{
 	transition: background-color 0.25s ease-in-out;
-	position: relative;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	width: 100%;
+	transition: all 0.2s ease-in-out;
+
+	&.scroll-down{
+		top: -80px;
+	}
+
+	&.scrolled{
+		background: $white;
+		border-bottom: 1px solid $light-blue-3;
+	}
+
+	@include breakpoint(lg down){
+		background: $white;
+		border-bottom: 1px solid $light-blue-3;
+		overflow: scroll;
+		max-height: 100vh;
+	}
 	
 	.header-top{
 		.container{
@@ -13,27 +33,23 @@
 	}
 
 	.navbar{
-		padding-top: 20px;
-		padding-bottom:19.5px;
+		padding: 20px 0;
 
 		@include breakpoint(lg down){
 			background-color: transparent;
 		}
 		
 		@include breakpoint(md down){
-			padding-top: 26px;
-			padding-bottom: 26px;
+			padding: 16px 0;
 		}
 
 		>.container{
 			width: 100%;
-
-			@include breakpoint(lg down){
-				align-items: flex-start;
-			}
 		}
 
 		.brand{
+			line-height: 0;
+
 			img{
 				max-height: 40px;
 				
@@ -73,8 +89,7 @@
                     font-size: 14px;
                     line-height: 24px;
                     color: $dark-gray;
-                    padding-right: 0;
-                    padding-left: 0;
+                    padding: 8px 0;
 
 					@include breakpoint(lg down){
 						padding: 12px 0px;
@@ -252,3 +267,12 @@
 	}
 }
 
+body.admin-bar{
+	.fr-header{
+		top: 32px;
+
+		&.scroll-down{
+			top: -80px;
+		}
+	}
+}

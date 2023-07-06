@@ -66,4 +66,9 @@ body:not(.wp-admin){
     font-size: 18px;
     line-height: 32px;
     @include font-primary;
+    padding-top: 80px;
+
+    &.admin-bar{
+        padding-top: 112px;
+    }
 }

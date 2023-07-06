@@ -54,6 +54,10 @@ import { Collapse } from 'bootstrap';
                 collapse.hide();
             });
 
+            $self.on('fr:scroll-down', (ev) => {
+                collapse.hide();
+            });
+
             $menuContent.on('hidden.bs.collapse', (ev) => {
                 $(window).trigger('fr:reset-menu-items');
                 $self.removeClass('is--opened is--opening is--closing');
@@ -106,6 +110,33 @@ import { Collapse } from 'bootstrap';
 
             $(window).on('fr:reset-menu-items', () => {
                 resetMenuItems($menuContent.find(".menu-item.dropdown"));
+            });
+
+            var scrolled = 0;
+            const minScroll = 5;
+            $(window).on('scroll', () => { 
+                // Minimum scroll check
+                if(Math.abs(scrolled - window.scrollY) < minScroll) {
+                    return;
+                }
+
+                // Check if scroll down 10px below element
+                if (window.scrollY > $self.height() + 10) { 
+                    $self.addClass('scrolled');
+
+                    // Check scroll sirection
+                    if(scrolled < window.scrollY) {
+                        $self.addClass('scroll-down');
+                        $self.trigger('fr:scroll-down');
+                    } else {
+                        $self.removeClass('scroll-down');
+                    }
+                } else { 
+                    $self.removeClass('scrolled');
+                    $self.removeClass('scroll-down');
+                }
+
+                scrolled = window.scrollY;
             });
 
             //on page load
