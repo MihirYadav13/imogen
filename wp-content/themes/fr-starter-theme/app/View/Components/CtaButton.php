@@ -50,7 +50,6 @@ class CtaButton extends Component
 		return [
 			'primary',
 			'secondary',
-			'terciary',
 			'regular-link'
 		];
 	}

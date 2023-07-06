@@ -25,6 +25,7 @@ class Header extends Composer
 		return [
 			'logo' => get_field('header_logo', 'option'),
 			'announcement_banner' => get_field('enable_announcement_banner', 'option') && strlen(get_field('enable_announcement_banner_content', 'option')) ? get_field('enable_announcement_banner_content', 'option') : false,
+			'right_cta' => get_field('right_cta', 'option'),
 		];
 	}
 }

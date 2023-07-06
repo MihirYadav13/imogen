@@ -2,7 +2,7 @@ button, .cta-button {
     border-radius: $button-border-radius;
 }
 
-.cta-button{
+body .cta-button, body a.cta-button{
     font-size: 16px;
     line-height: 24px;
     text-decoration: none;
@@ -18,18 +18,17 @@ button, .cta-button {
     }
 
     &.primary, &.secondary{
-        padding: 8px 12px;
-        border: 1px solid;
+        padding: 8px 20px;
+        border: none;
     }
 
     &.primary{
         background: $blue;
-        border-color: $blue;
     }
 
     &.secondary{
-        background-color: transparent;
-        border-color: $blue;
+        background-color: $light-blue-2;
+        color: $dark-gray;
     }
 
     @include breakpoint(lg down){

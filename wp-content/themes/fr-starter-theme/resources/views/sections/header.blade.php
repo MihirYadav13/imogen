@@ -19,6 +19,10 @@
 					{!! wp_nav_menu($primaryNavigation) !!}
 				@endif
 				<div class="right-nav-container">
+					@forelse($right_cta as $cta)
+						<x-cta-button :label="$cta['label']" :type="$cta['cta_type']" :post-id="$cta['post_id']" :style="$cta['style']" :external-url="$cta['externa_url']" :new-tab="$cta['new_tab']" />
+					@empty
+					@endforelse
 				</div>
 			</div>
 		</div>

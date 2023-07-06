@@ -4,6 +4,7 @@ namespace App\Fields\Partials;
 
 use Log1x\AcfComposer\Partial;
 use StoutLogic\AcfBuilder\FieldsBuilder;
+use App\Fields\Partials\CtaButtonFields;
 
 class HeaderThemeSettings extends Partial
 {
@@ -23,12 +24,13 @@ class HeaderThemeSettings extends Partial
                     'width' => 30
                 ]
             ])
-            ->addLink('secondary_nav_cta', [
-                'label' => 'Secondary Nav: CTA',
-                'wrapper' => [
-                    'width' => 70
-                ]
+            ->addRepeater('right_cta', [
+                'button_label' => 'Add CTA',
+                'layout' => 'block',
+                'max' => 2
             ])
+                ->addFields($this->get(CtaButtonFields::class))
+            ->endRepeater()
             ->addTextarea('google_tag_manager_code_snippet', [
                 'rows' => 3
             ])

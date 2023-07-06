@@ -18,6 +18,6 @@
 	}
 
 	$(() => {
-		$('.dropdown').dropdownAnimate();
+		$('#headerMenuContent .dropdown, #menu-footer-menu .dropdown').dropdownAnimate();
 	});
 })($);

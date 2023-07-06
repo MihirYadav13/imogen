@@ -48,8 +48,6 @@ import { Collapse } from 'bootstrap';
             const collapse = new Collapse($menuContent[0], {
                 toggle: false
             });
-            $self.stickyHeaderLastScrollTop = 0;
-            $self.openedMegaMenuPanelParent = false;
             $self.currentBreakpoint = window.currentBreakpoint();
 
             $self.on('fr:trigger-close-menu', (ev) => {
@@ -82,6 +80,7 @@ import { Collapse } from 'bootstrap';
                     updateDropdownTrigger($menuContent.find(".nav-link.dropdown-toggle"), $self.currentBreakpoint);
 
                     if( !['xs', 'sm', 'md'].includes($self.currentBreakpoint) ){
+                        $('.dropdown-menu').css('display','');
                         $self.trigger('fr:trigger-close-menu');
                         $self.removeClass('is--opened is--opening is--closing');
                     }
@@ -93,17 +92,13 @@ import { Collapse } from 'bootstrap';
                     const $el = $(this);
                     if(!['xs', 'sm', 'md'].includes($self.currentBreakpoint)){
                         showDropdown($el, true);
-                        $self.openedMegaMenuPanelParent = $el.hasClass('fr-has-mm') ? $el : false;
                     }
                 },
                 mouseleave: function(){
                     const $el = $(this);
                     if(!['xs', 'sm', 'md'].includes($self.currentBreakpoint)){
                         setTimeout(() => {
-                            if(!$self.openedMegaMenuPanelParent){
-                                hideDropdown($el);
-                                $self.openedMegaMenuPanelParent = false;
-                            }
+                            hideDropdown($el);
                         }, 300);
                     }
                 }
