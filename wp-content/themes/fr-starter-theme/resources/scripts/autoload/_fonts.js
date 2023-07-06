@@ -7,7 +7,7 @@ WebFontConfig = {
 	},
 	google: {
 		families: [
-			'Nunito:400,500,600,700'
+			'Nunito:400,500,600,700,900'
 		]
 	}
 };

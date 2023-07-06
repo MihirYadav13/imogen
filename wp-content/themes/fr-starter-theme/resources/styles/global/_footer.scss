@@ -84,6 +84,7 @@
                             color:$white;
                             padding: 0;
                             pointer-events: none;
+                            @include font-primary-black;
 
                             @include breakpoint(lg down){
                                 pointer-events: initial;
@@ -113,6 +114,8 @@
                     .dropdown-menu{
                         background: none;
                         min-width: unset;
+                        padding-top: 4px;
+                        border: none;
 
                         @media screen and (min-width: 993px){
                             display: inline-block;
@@ -124,6 +127,8 @@
                         }
 
                         > li {
+                            margin-bottom: 4px;
+
                             a{
                                 padding: 0;
                                 color: $white;
@@ -132,6 +137,10 @@
                                     color:lighten($white, 20%);
                                     background: transparent;
                                 }
+                            }
+
+                            &:last-child{
+                                margin-bottom: 0;
                             }
                         }
                     }
