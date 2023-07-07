@@ -1,0 +1,61 @@
+.fr-hero{
+    &.hero{
+        position: relative;
+
+        .hero-bg-image{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+
+            &.desktop{
+                display: block;
+                @include breakpoint(lg down){
+                    display: none;
+                }
+            }
+
+            &.mobile{
+                display: none;
+                @include breakpoint(lg down){
+                    display: block;
+                }
+            }
+        }
+
+        .content-container{
+            position: relative;
+            z-index: 10;
+            padding: 150px 0px 150px;
+            overflow: hidden;
+
+            .content-background{
+                position: absolute;
+                top: 0;
+                left: -48%;
+                width: 100%;
+                height: 100%;
+                background-color: $white;
+                z-index: -1;
+                transform: skew(-32deg);
+
+                .waveWrapper{
+                    left: auto;
+                    right: calc(-50% - 61.5px);
+                    top: 0;
+                    margin: auto;
+                    height: 125px;
+                    width: 100%;
+                    transform: rotate(-90deg);
+
+                    .waveWrapperInner {
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
