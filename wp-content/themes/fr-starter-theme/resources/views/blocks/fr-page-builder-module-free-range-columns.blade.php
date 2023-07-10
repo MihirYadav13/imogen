@@ -1,4 +1,4 @@
-<div class="module layout-module {{ $block->classes }} layout-{{ $layouts }}">
+<div class="module layout-module {{ $block->classes }} layout-{{ $layouts }} {{ $is_flipped ? 'flipped': '' }}">
     @if ($block->preview)
         <div fr-column-inserter style="display: {{in_array($layouts, array_keys($choices)) ? 'none' : ''}}">
             <p>Select a layout to start, layout:</p>

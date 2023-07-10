@@ -79,7 +79,8 @@
 				break;
 			case '13_23':
 			case '12_12':
-			case '23_13':   
+			case '23_13': 
+			case '14_34':   
 				columnCount = 2;
 				break;
 			default:
