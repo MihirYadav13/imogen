@@ -118,9 +118,12 @@ class FrColumns extends Block
             'acf/fr-column'
         ];
 
+        $items = $this->items();
+
         return [
-            'layouts' => $this->items()['layouts'],
-            'choices' => $this->items()['choices'],
+            'layouts' => $items['layouts'],
+            'is_flipped' => $items['is_flipped'],
+            'choices' => $items['choices'],
             'max_width' => $this->getMaxWidthAttr(),
             'allowed_blocks' => json_encode($allowed_blocks)
         ];
@@ -167,7 +170,7 @@ class FrColumns extends Block
     {
         return [
             'layouts' => get_field('layouts'),
-            'is_flipped' => get_field('is_flipped'),
+            'is_flipped' => get_field('is_flipped')?:false,
             'choices' => $this->choices(['remove_first' => true]),
         ];
     }
