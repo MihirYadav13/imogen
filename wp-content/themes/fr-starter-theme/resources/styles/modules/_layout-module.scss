@@ -118,6 +118,27 @@
 				}
 			}
 		}
+		&14_34{
+			>.container-fluid{
+				>.row{
+					>.fr-col{
+						@include make-col(3);
+
+						@include breakpoint(lg down){
+							@include make-col(12);
+						}
+						
+						+.fr-col{
+							@include make-col(9);
+
+							@include breakpoint(lg down){
+								@include make-col(12);
+							}
+						}
+					}
+				}
+			}
+		}
 		&12_12{
 			>.container-fluid{
 				>.row{
