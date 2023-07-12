@@ -19,15 +19,35 @@ class CardsDataProvider extends ServiceProvider
             'excerpt' => get_the_excerpt($post),
         ];
 
-        if($post_type == 'project'){
+        if($post_type === 'after-school-program'){
             $data = array_merge($data, [
-                'image' => [
-                    'url' => wp_get_attachment_url(get_post_thumbnail_id($post), 'thumbnail') ? wp_get_attachment_url(get_post_thumbnail_id($post), 'thumbnail') : wp_get_attachment_image_url(self::getHeroImage($post), 'large'),
-                    'alt' => $data['title']
-                ],
-                'tag' => get_field('country', $post)
+                'name' => get_field('name', $post) ?:'',
+                'location' => get_field('location', $post) ?:'',
+                'school_email' => get_field('school_email', $post) ?:'',
+                'school_website' => get_field('school_website', $post) ?:[],
+                'school_phone_number' => get_field('school_phone_number', $post) ?:'',
+                'registration_link' => get_field('registration_link', $post) ?:[],
             ]);
         }
+
+        if($post_type === 'camp'){
+            $data = array_merge($data, [
+                'name' => get_field('name', $post) ?:'',
+                'role' => get_field('role', $post) ?:'',
+                'profile_photo' => get_field('profile_photo', $post) ?:[],
+                'short_bio' => get_field('short_bio', $post) ?:'',
+            ]);
+        }
+
+        if($post_type === 'team-member'){
+            $data = array_merge($data, [
+                'name' => get_field('name', $post) ?:'',
+                'role' => get_field('role', $post) ?:'',
+                'profile_photo' => get_field('profile_photo', $post) ?:[],
+                'short_bio' => get_field('short_bio', $post) ?:'',
+            ]);
+        }
+
 
         return $data;
     }
