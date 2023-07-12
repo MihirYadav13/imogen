@@ -1,10 +1,7 @@
 <div class="fr-card card-type-{{ $post_type }}">
-	<div class="card-inner {{ $post_type === 'strategy' ? 'light-blue-container' : '' }}">
+	<div class="card-inner">
 		<div class="wysiwyg-content">
-			@if ($post_type === 'resource')
-				<x-resource-type-tag :post="$post" />
-			@endif
-			@if ($post_type === 'case-study')
+			@if($post_type === 'case-study')
 				<div class="resource-type-tag">
 					<img src="{{ asset('images/case-study-logo.svg') }}" loading="lazy" alt="Magnifying Glass">
 					Case Study
@@ -18,10 +15,9 @@
                         {!! $card_data['title'] !!}
                     </h3>
                 </a>
-			<p class="date">{!! $card_data['date'] !!}</p>
+			<p class="excerpt">{!! $card_data['excerpt'] !!}</p>
 		</div>
-    </div>
-    <div class="card-footer">
+
         @if($post_type === 'strategy')
             @include('partials.cards-keyword-tags', ['keyword_tags' => $card_data['keyword_tags']])
         @endif
@@ -33,6 +29,5 @@
         @if($post_type === 'case-study')
             <x-cta-button label="Read More" type="post_id" :post-id="$post" style="terciary"/>
         @endif
-		<x-like-button :post="$post" />
-	</div>
+    </div>
 </div>

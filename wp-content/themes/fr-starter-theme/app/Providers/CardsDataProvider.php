@@ -11,11 +11,9 @@ class CardsDataProvider extends ServiceProvider
 
         $data = [
             'post_type' => $post_type,
-            'permalink' => [
-                'url' => get_the_permalink($post),
-                'target' => ''
-            ],
+            'permalink' => get_the_permalink($post),
             'title' => get_the_title($post),
+            'featured_image' => get_field('featured_image', $post) ?:[],
             'excerpt' => get_the_excerpt($post),
         ];
 
@@ -32,18 +30,19 @@ class CardsDataProvider extends ServiceProvider
 
         if($post_type === 'camp'){
             $data = array_merge($data, [
-                'name' => get_field('name', $post) ?:'',
-                'role' => get_field('role', $post) ?:'',
-                'profile_photo' => get_field('profile_photo', $post) ?:[],
-                'short_bio' => get_field('short_bio', $post) ?:'',
-            ]);
+                'start_date' => get_field('start_date', $post) ?:false,
+                'end_date' => get_field('end_date', $post) ?:false,
+                'location' => get_field('location', $post) ?:'',
+                'fee' => get_field('fee', $post) ?:'',
+                'after_care' => get_field('after_care', $post) ?:[],
+                'quick_notes' => get_field('quick_notes', $post) ?:[],
+                'registration_link' => get_field('registration_link', $post) ?:[]            ]);
         }
 
         if($post_type === 'team-member'){
             $data = array_merge($data, [
-                'name' => get_field('name', $post) ?:'',
                 'role' => get_field('role', $post) ?:'',
-                'profile_photo' => get_field('profile_photo', $post) ?:[],
+                'featured_image' => get_field('profile_photo', $post) ?:[],
                 'short_bio' => get_field('short_bio', $post) ?:'',
             ]);
         }

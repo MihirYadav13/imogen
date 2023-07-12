@@ -23,8 +23,7 @@
 				->setLocation('post_type', '==', 'team-member');
 
 			$fields
-				->addText('name', [
-					'maxlength' => 50,
+				->addImage('profile_photo', [
 					'wrapper' => [
 						'width' => 50
 					]
@@ -35,18 +34,10 @@
 						'width' => 50
 					]
 				])
-				->addImage('profile_photo', [
-					'wrapper' => [
-						'width' => 50
-					]
-				])
 				->addTextArea('short_bio', [
 					'rows' => 5,
 					'new_line' => 'br',
-					'maxlength' => 700,
-					'wrapper' => [
-						'width' => 50
-					]
+					'maxlength' => 700
 				]);
 
 			return $fields->build();

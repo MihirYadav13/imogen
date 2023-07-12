@@ -23,8 +23,7 @@
 				->setLocation('post_type', '==', 'after-school-program');
 
 			$fields
-				->addText('name', [
-					'maxlength' => 50,
+				->addImage('featured_image', [
 					'wrapper' => [
 						'width' => 50
 					]

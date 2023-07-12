@@ -1,0 +1,124 @@
+.card-grid-container{
+    .result-content{
+        .cards-inner{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 38px;            
+
+            @include breakpoint(lg down){
+                justify-content: center;
+            }
+
+            &.columns-{
+                &2{
+                    .fr-card{
+                        width: calc(100%/2 - 38px/2);
+                    }
+                }
+
+                &3{
+                    .fr-card{
+                        width: calc(100%/3 - 76px/3);
+                    }
+                }
+
+                &4{
+                    .fr-card{
+                        width: calc(100%/4 - 114px/4);
+                    }
+                }
+            }
+
+            .fr-card{
+                @include breakpoint(lg down){
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+
+    .spinner-container{
+        position: absolute;
+    }
+
+    .ajax-running-container,
+    .no-results-found-container {
+        display: none;
+        height: max-content;
+        width: 100%;
+    }
+
+    .load-btn-container, .ajax-running-container {
+        margin-top: 75px;
+    }
+
+    .load-btn-container {
+        height: max-content;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .cta-button{
+            min-width: 178px;
+            text-align: center;
+        }
+    }
+
+    .ajax-running-container {
+        text-align: center;
+
+        span{
+            @include font-primary;
+            font-size: 20px;
+            font-style: italic;
+            line-height: 50.3px;
+        }
+    }
+
+    &[fr-status='ajax-running']{
+        .ajax-running-container {
+            display: block;
+        }
+
+        .load-btn-container {
+            display: none;
+        }
+    }
+
+    &[fr-status='loading-result'] {
+        .ajax-running-container, .load-btn-container {
+            display: none;
+        }
+
+        .cards-container {
+            opacity: 0.4;
+        }
+
+        .spinner-container {
+            display: block;
+        }
+    }
+
+    &[fr-status='no-more-results'] {
+        .load-btn-container {
+            display: none;
+        }
+    }
+
+    &[fr-status='no-results-found'] {
+        .load-btn-container, .cards-container {
+            display: none;
+        }
+
+        .no-results-found-container {
+            display: block;
+        }
+
+        .card-type-publish-button{
+            display: none;
+        }
+    }    
+}
