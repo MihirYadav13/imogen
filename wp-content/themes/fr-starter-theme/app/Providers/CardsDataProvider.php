@@ -19,7 +19,6 @@ class CardsDataProvider extends ServiceProvider
 
         if($post_type === 'after-school-program'){
             $data = array_merge($data, [
-                'name' => get_field('name', $post) ?:'',
                 'location' => get_field('location', $post) ?:'',
                 'school_email' => get_field('school_email', $post) ?:'',
                 'school_website' => get_field('school_website', $post) ?:[],
