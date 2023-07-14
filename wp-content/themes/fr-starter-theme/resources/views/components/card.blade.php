@@ -1,7 +1,7 @@
 <div class="fr-card card-type-{{ $post_type }}">
 	<div class="card-inner">
         @if(!empty($card_data['featured_image']))
-			<div class="featured-image">
+			<div class="featured-image {{ $card_data['is_empty_featured_image'] ? 'default':'' }}">
 				<img src="{{ $card_data['featured_image']['url'] }}" loading="lazy" alt="Featured">
 			</div>
 		@endif

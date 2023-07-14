@@ -78,6 +78,14 @@ class CardsDataProvider extends ServiceProvider
             ]);
         }
 
+        // Add featured image
+        $data = array_merge($data, [
+            'is_empty_featured_image' => empty($data['featured_image'])?true:false,
+            'featured_image' => (!empty($data['featured_image']) ? $data['featured_image'] : [
+                'url' => asset('images/default-card.png')
+            ]),
+        ]);
+
 
         return $data;
     }
