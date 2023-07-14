@@ -72,3 +72,10 @@ body:not(.wp-admin){
         padding-top: 112px;
     }
 }
+
+label{
+    &.sm{
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
