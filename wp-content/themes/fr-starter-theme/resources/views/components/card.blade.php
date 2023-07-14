@@ -23,13 +23,32 @@
                             @endif
                         </p>
                     @endif
+                    @if($post_type === 'camp')
+                        <div class="info-container">
+                            @forelse($card_data['camp_info'] as $info)
+                                <label class="sm">{{ $info['label'] }}:</label>
+                                <p class="value sm">{{ $info['value'] }}</p>
+                            @empty
+                            @endforelse
+                        </div>
+                    @endif
                     @if($post_type === 'student-success')
                         <p class="excerpt sm">{!! $card_data['excerpt'] !!}</p>
                     @endif
+                    @if($post_type === 'team-member')
+                        <p class="role sm">
+                            {{ $card_data['role'] }}
+                        </p>
+                    @endif
                 </div>
-                @if(!empty($card_data['registration_link']))
+                @if(!empty($card_data['registration_link']) || !empty($card_data['action_cta']))
                     <div class="card-footer">
-                        <x-cta-button label="{!! $post_type === 'after-school-program' ? 'Schedule & Registration' : 'Register' !!}" type="external" style="primary"/>
+                        @if(!empty($card_data['registration_link']))
+                        <x-cta-button label="{!! $post_type === 'after-school-program' ? 'Schedule & Registration' : 'Register' !!}" type="external_url" style="primary"/>
+                        @endif
+                        @if(!empty($card_data['action_cta']))
+                        <x-cta-button :label="$card_data['action_cta']['title']?:'Learn More'" :external-url="$card_data['action_cta']['url']" type="external_url" :style="$card_data['action_cta']['style']?:'primary'"/>
+                        @endif
                     </div>
                 @endif
             </div>
