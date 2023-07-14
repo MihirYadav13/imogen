@@ -52,8 +52,6 @@
                                 }
                             }
                         }
-
-                        
                     }
                 }
 
@@ -64,6 +62,14 @@
                         .featured-image{
                             height: 191px;
                         }
+
+                        &.card-type-{
+                            &camp{
+                                .featured-image{
+                                    height: 266px;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -73,6 +79,14 @@
 
                         .featured-image{
                             height: 167px;
+                        }
+
+                        &.card-type-{
+                            &team-member{
+                                .featured-image{
+                                    height: 247px;
+                                }
+                            }
                         }
                     }
                 }
