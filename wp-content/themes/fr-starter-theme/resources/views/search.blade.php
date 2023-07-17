@@ -8,7 +8,7 @@
                     <div class="module-heading">
                         <h2>Cards</h2>
                     </div>
-                    <x-card-grid posts-per-page="5" />
+                    <x-card-grid posts-per-page="1" />
                 </div>
             </div>
         </div>

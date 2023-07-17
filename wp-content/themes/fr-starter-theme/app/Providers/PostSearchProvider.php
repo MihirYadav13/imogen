@@ -92,17 +92,18 @@ class PostSearchProvider extends ServiceProvider
 
 	public static function GetPostsAjax(){
 		$args = [
-			'post_type' => filter_input(INPUT_GET, 'post_type', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'post_type', FILTER_UNSAFE_RAW)): [],
+			'post_type' => filter_input(INPUT_GET, 'post_type', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)?: [],
 			'posts_per_page' => filter_input(INPUT_GET, 'posts_per_page')?: false,
 			'page' => filter_input(INPUT_GET, 'page')?: false,
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: false,
 			's' => filter_input(INPUT_GET, 's')?: false,
 			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
-			'include_publish_card' => filter_input(INPUT_GET, 'include_publish_card')?filter_var(filter_input(INPUT_GET, 'include_publish_card'), FILTER_VALIDATE_BOOLEAN): false,
 			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'post__in', FILTER_UNSAFE_RAW)): [],
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): [],
 			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): []
 		];
+
+		error_log(json_encode($args));
 
 		$result = self::GetPosts($args);
 
@@ -270,14 +271,6 @@ class PostSearchProvider extends ServiceProvider
 		$post_type = get_post_type($post_id);
 		$post_creation_date_unix = strtotime(get_the_date('', $post_id));
 		$field_value = $post_creation_date_unix;
-
-		switch ($post_type) {
-			case 'event':
-				$field_value = strtotime(get_field('start_date', $post_id));
-				break;
-			default:
-				break;
-		}
 
 		update_post_meta($post_id, self::DATE_SORT_FIELD, $field_value);
 	}
