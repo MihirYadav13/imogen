@@ -116,7 +116,23 @@ class CardGrid extends Block
 	 */
 	public function with()
 	{
-		return $this->items();
+		$postsPerPage = get_field('posts_per_page')?:3;
+		$filterConfiguration = get_field('filters_configuration');
+
+		$result =  array_merge([
+			'loadMoreText' => get_field('load_more_button_label'),
+			'filterId' => uniqid('card-grid-filter_'),
+			'frontendFilters' => $this->getFrontendFilters($filterConfiguration),
+			'postsPerPage' => $postsPerPage,
+			'blockData' => [
+				'block_name' => 'card_grid',
+				'source' => 'from_filters',
+				'posts_per_page' => $postsPerPage,
+				'filters_configuration' => $filterConfiguration
+			]
+		]);
+
+		return $result;
 	}
 
 	public $example = [
@@ -135,15 +151,18 @@ class CardGrid extends Block
 		$cardGrid = new FieldsBuilder('card_grid');
 
 		$cardGrid
-			->addRadio('source', [
+			->addRadio('post_type', [
 				'choices' => [
-					'posts' => 'Select from Posts',
-					'from_filters' => 'Dynamically Pulled from Filters',
+					'after-school-program' => 'After School Program',
+					'camp' => 'Camp',
+					'student-success' => 'Student Success',
+					'childhood-education' => 'Childhood Education',
+					'team-member' => 'Team Member'
 				],
+				'required' => 1,
 				'layout' => 'horizontal',
-				'default_value' => 'posts',
 				'wrapper' => [
-					'width' => 50
+					'width' => 100
 				]
 			])
 			->addNumber('posts_per_page', [
@@ -161,74 +180,64 @@ class CardGrid extends Block
 					'width' => 50
 				]
 			])
+			->addRadio('source', [
+				'choices' => [
+					'posts' => 'Select from Posts',
+					'from_filters' => 'Dynamically Pulled from Filters',
+				],
+				'layout' => 'horizontal',
+				'default_value' => 'posts',
+				'wrapper' => [
+					'width' => 50
+				]
+			])
 			->addPostObject('posts', [
 				'label' => 'Selected Posts',
 				'return_format' => 'id',
 				'post_type' => [
-					'strategy',
-					'case-study',
-					'resource'
+					'after-school-program',
+					'camp',
+					'student-success',
+					'childhood-education',
+					'team-member'
 				],
 				'required' => 1,
 				'multiple' => 1
 			])
 				->conditional('source', '==', 'posts')
-			->addGroup('filters_configuration')
+			->addGroup('taxonomies', [
+				'layout' => 'block'
+			])
 				->conditional('source', '==', 'from_filters')
-				->addFields($this->get(CardGridFilters::class))
+				->addTaxonomy('age', [
+					'label' => 'Age',
+					'taxonomy' => 'age',
+					'field_type' => 'checkbox',
+					'return_format' => 'object',
+					'multiple' => 1,
+					'add_term' => 0,
+					'wrapper' => [
+						'width' => 50
+					]
+				])
+					->conditional('post_type', '==', 'after-school-program')
+					->or('post_type', '==', 'student-success')
+				->addTaxonomy('program', [
+					'label' => 'Programs',
+					'taxonomy' => 'program',
+					'field_type' => 'checkbox',
+					'return_format' => 'object',
+					'multiple' => 1,
+					'add_term' => 0,
+					'wrapper' => [
+						'width' => 50
+					]
+				])
+					->conditional('post_type', '==', 'after-school-program')
+					->or('post_type', '==', 'student-success')
 			->endGroup();
 
 		return $cardGrid->build();
-	}
-
-	/**
-	 * Return the items field.
-	 *
-	 * @return array
-	 */
-	public function items()
-	{
-
-		$cardsResult = [
-			'posts' => [],
-			'hasMore' => false
-		];
-		$source = get_field('source');
-		$isSlider = get_field('layout')?get_field('layout') === 'slider': false;
-		$postsPerPage = $isSlider ? (get_field('card_count') ?: 6) : (get_field('posts_per_page')? : 3);
-		$filterConfiguration = get_field('filters_configuration');
-		$posts = get_field('posts');
-		$blockData = [
-			'block_name' => 'card_grid',
-			'source' => $source,
-			'posts_per_page' => $postsPerPage,
-			'posts' => $posts,
-            'filters_configuration' => $filterConfiguration
-		];
-
-		switch ($source) {
-			case 'posts':
-				$cardsResult = $this->getCardsFromPosts($posts, $postsPerPage);
-				break;
-			case 'from_filters':
-				$cardsResult = $this->getCardsFromFilters($filterConfiguration, $postsPerPage);
-				break;
-			default:
-				break;
-		}
-
-		$result =  array_merge([
-			'ajax_config' => \App\Providers\PostSearchProvider::GetAjaxConfig($blockData),
-			'is_slider' => $isSlider,
-			'source' => $source,
-			'load_more_text' => get_field('load_more_button_label')
-		], $cardsResult);
-
-		if($this->preview && empty($result['posts'])){
-            return $this->exampleData();
-        }
-
-		return $result;
 	}
 
 	/**
@@ -307,36 +316,14 @@ class CardGrid extends Block
 		return $result;
 	}
 
-	public function getCardsFromPosts($posts, $postsPerPage = 3){
-		$result = [];
+	public function getFrontendFilters($filterConfiguration){
+		$postType = $filterConfiguration['post_type'];
 
-		$args = [
-			'post_type' => \App\Providers\PostSearchProvider::GENERAL_SEARCH_POST_TYPES,
-			'posts_per_page' => $postsPerPage?: 3,
-			'post__in' => $posts,
-			'order_by' => 'post__in'
-		];
-
-		$result = \App\Providers\PostSearchProvider::GetPosts($args);
-
-		return ['posts' => \App\Providers\PostSearchProvider::ConvertDataToHtmlArray($result['posts']), 'hasMore' => $result['hasMore']];
-	}
-
-	public function getCardsFromFilters($filters, $postsPerPage = 3){
-		$result = [];
-
-		$args = [
-			'post_type' => $filters['post_types'],
-			'posts_per_page' => $postsPerPage?: 3,
-			'resource-type' => \App\Providers\PostSearchProvider::GetTermsSlugs($filters['taxonomies']['resource-type']),
-			'keyword-tag' => \App\Providers\PostSearchProvider::GetTermsSlugs($filters['taxonomies']['keyword-tag']),
-			'selected_topics' => $filters['taxonomies']['topic'],
-			'related_strategies' => $filters['taxonomies']['strategy'],
-		];
-
-		$result = \App\Providers\PostSearchProvider::GetPosts($args);
-
-		return ['posts' => \App\Providers\PostSearchProvider::ConvertDataToHtmlArray($result['posts']), 'hasMore' => $result['hasMore']];
+		return array_unique(array_filter([
+			in_array($postType, ['after-school-program']) ? 'age' : null,
+			in_array($postType, ['camp']) ? 'program' : null,
+			in_array($postType, ['student-success']) ? 'activity' : null
+		]));
 	}
 
 

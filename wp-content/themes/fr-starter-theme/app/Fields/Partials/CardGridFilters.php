@@ -21,7 +21,7 @@ class CardGridFilters extends Partial
 			'choices' => [
 				'after-school-program' => 'After School Program',
 				'camp' => 'Camp',
-				'sudent-success' => 'Student Success',
+				'student-success' => 'Student Success',
 				'childhood-education' => 'Childhood Education',
 				'team-member' => 'Team Member'
 			],
@@ -34,6 +34,8 @@ class CardGridFilters extends Partial
 		->addGroup('taxonomies', [
 			'layout' => 'block'
 		])
+			->conditional('post_type', '==', 'after-school-program')
+			->or('post_type', '==', 'student-success')
 			->addTaxonomy('age', [
 				'label' => 'Age',
 				'taxonomy' => 'age',
@@ -45,8 +47,6 @@ class CardGridFilters extends Partial
 					'width' => 50
 				]
 			])
-				->conditional('post_types', '==', 'after-school-program')
-				->or('post_types', '==', 'student-success')
 			->addTaxonomy('program', [
 				'label' => 'Programs',
 				'taxonomy' => 'program',
@@ -58,8 +58,6 @@ class CardGridFilters extends Partial
 					'width' => 50
 				]
 			])
-				->conditional('post_types', '==', 'after-school-program')
-				->or('post_types', '==', 'student-success')
 		->endGroup();
 
 		return $cardGridFilters;
