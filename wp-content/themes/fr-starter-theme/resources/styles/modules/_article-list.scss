@@ -1,0 +1,33 @@
+.full-content{
+      box-shadow: 0 2px 10px 0 rgba(82,87,103,0.2);
+      width: 90%;
+      margin: 20px auto;
+      padding: 10px 30px;   
+      .more-less{
+          border:none;
+          background:white;
+          color:#4981C2;
+          text-decoration:underline;
+          cursor:pointer;
+          padding-left:0px;
+      }
+      h3{
+          width: auto;
+          color: #525767;
+          font-family: Nunito;
+          font-size: 24px;
+          font-weight: bold;
+          letter-spacing: 0;
+          line-height: 32px;
+      }
+      .more-less:focus{
+          outline:unset;
+      }
+      .hide-content{
+          display:none;
+      } 
+      p ,li{
+        color: #525767;
+        letter-spacing: 0;
+    }
+  }
