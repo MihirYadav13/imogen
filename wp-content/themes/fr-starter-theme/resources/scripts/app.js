@@ -10,9 +10,13 @@ window.fetchInject = fetchInject;
 import './util/current-breakpoint';
 import './util/load-splide-async';
 import './util/load-truncate-ellipsis-async';
+import './util/truncate-text';
 import './util/element-is-in-viewport';
 import './util/dropdown-animation';
 import './components/embedded-video-thumbnail';
+
+// 3. Import block JS
+import './blocks/article-list';
 
 import './global/header';
 
