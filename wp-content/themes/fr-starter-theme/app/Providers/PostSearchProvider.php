@@ -61,9 +61,9 @@ class PostSearchProvider extends ServiceProvider
 			switch($blockData['block_name']){
 				case 'card_grid':
 					if($blockData['source'] === 'from_filters'){
-						$filterTaxonomies = $blockData['filters_configuration']['taxonomies'];
+						$filterTaxonomies = $blockData['taxonomies'];
 						$ajax_config = array_merge($ajax_config, [
-							'post_type' => $blockData['filters_configuration']['post_types'],
+							'post_type' => $blockData['post_type'],
 							'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['age']??[]),
 							'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['program']??[]),
 						]);

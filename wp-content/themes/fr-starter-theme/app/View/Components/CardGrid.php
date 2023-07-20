@@ -68,13 +68,20 @@ class CardGrid extends Component
             return [];
         }
 
-        $filtersConfiguration = $this->blockData['filters_configuration'];
+        $taxonomies = $this->blockData['taxonomies'];
 
-		return [
-			'post_type' => $filtersConfiguration['post_types'],
-			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($filtersConfiguration['taxonomies']['age']),
-			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($filtersConfiguration['taxonomies']['program']),
+        $args = [
+			'post_type' => $this->blockData['post_type'],
 		];
+
+        if(!$taxonomies){
+            return $args;
+        }
+
+		return array_merge($args, [
+			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
+			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['program']?:[]),
+		]);
 	}
 
     public function getArgsFromUrl(){

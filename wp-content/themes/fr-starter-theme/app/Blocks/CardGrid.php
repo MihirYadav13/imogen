@@ -117,18 +117,20 @@ class CardGrid extends Block
 	public function with()
 	{
 		$postsPerPage = get_field('posts_per_page')?:3;
-		$filterConfiguration = get_field('filters_configuration');
+		$postType = get_field('post_type');
 
 		$result =  array_merge([
 			'loadMoreText' => get_field('load_more_button_label'),
 			'filterId' => uniqid('card-grid-filter_'),
-			'frontendFilters' => $this->getFrontendFilters($filterConfiguration),
+			'frontendFilters' => $this->getFrontendFilters($postType),
 			'postsPerPage' => $postsPerPage,
 			'blockData' => [
 				'block_name' => 'card_grid',
-				'source' => 'from_filters',
+				'source' => get_field('source'),
 				'posts_per_page' => $postsPerPage,
-				'filters_configuration' => $filterConfiguration
+				'post_type' => get_field('post_type')?[get_field('post_type')]:[],
+				'posts' => get_field('posts'),
+				'taxonomies' => get_field('taxonomies'),
 			]
 		]);
 
@@ -191,20 +193,61 @@ class CardGrid extends Block
 					'width' => 50
 				]
 			])
-			->addPostObject('posts', [
-				'label' => 'Selected Posts',
-				'return_format' => 'id',
-				'post_type' => [
-					'after-school-program',
-					'camp',
-					'student-success',
-					'childhood-education',
-					'team-member'
-				],
-				'required' => 1,
-				'multiple' => 1
+			->addGroup('posts', [
+				'layout' => 'block'
 			])
 				->conditional('source', '==', 'posts')
+				->addPostObject('after-school-program', [
+					'label' => 'Selected Posts',
+					'return_format' => 'id',
+					'post_type' => [
+						'after-school-program'
+					],
+					'required' => 1,
+					'multiple' => 1
+				])
+				->conditional('post_type', '==', 'after-school-program')
+				->addPostObject('camp', [
+					'label' => 'Selected Posts',
+					'return_format' => 'id',
+					'post_type' => [
+						'camp'
+					],
+					'required' => 1,
+					'multiple' => 1
+				])
+				->conditional('post_type', '==', 'camp')
+				->addPostObject('student-success', [
+					'label' => 'Selected Posts',
+					'return_format' => 'id',
+					'post_type' => [
+						'student-success'
+					],
+					'required' => 1,
+					'multiple' => 1
+				])
+				->conditional('post_type', '==', 'student-success')
+				->addPostObject('childhood-education', [
+					'label' => 'Selected Posts',
+					'return_format' => 'id',
+					'post_type' => [
+						'childhood-education'
+					],
+					'required' => 1,
+					'multiple' => 1
+				])
+				->conditional('post_type', '==', 'childhood-education')
+				->addPostObject('team-member', [
+					'label' => 'Selected Posts',
+					'return_format' => 'id',
+					'post_type' => [
+						'team-member'
+					],
+					'required' => 1,
+					'multiple' => 1
+				])
+				->conditional('post_type', '==', 'team-member')
+			->endGroup()
 			->addGroup('taxonomies', [
 				'layout' => 'block'
 			])
@@ -249,66 +292,29 @@ class CardGrid extends Block
 		$result = [
 			'posts' => [
 				view('components.card', [
-					'post_type' => 'strategy',
+					'post_type' => 'after-school-program',
 					'card_data' => [
 						'title' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'date' => 'January 1, 2023',
-						'is_featured' => false,
-						'likes' => 10,
-						'topics' => [
-							(object)[
-								'post_title' => 'Adult Learners'
-							]
+						'post_type' => 'after-school-program',
+						'permalink' => '',
+						'featured_image' => [
+							'url' => ''
 						],
-						'keyword_tags' => [
-							(object)[
-								'name' => 'Research'
-							]
-						]
-					]
-				])->render(),
-				view('components.card', [
-					'post_type' => 'strategy',
-					'card_data' => [
-						'title' => 'Strategy 2 Name Lorem Ipsum Dolor ',
-						'date' => 'January 1, 2023',
-						'is_featured' => false,
-						'likes' => 10,
-						'topics' => [
-							(object)[
-								'post_title' => 'Adult Learners'
-							]
-							],
-						'keyword_tags' => [
-							(object)[
-								'name' => 'Research'
-							]
-						]
-					]
-				])->render(),
-				view('components.card', [
-					'post_type' => 'strategy',
-					'card_data' => [
-						'title' => 'Strategy 3 Name Lorem Ipsum Dolor ',
-						'date' => 'January 1, 2023',
-						'is_featured' => false,
-						'likes' => 10,
-						'topics' => [
-							(object)[
-								'post_title' => 'Adult Learners'
-							]
+						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'location' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'school_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'school_website' => [
+							'url' => ''
 						],
-						'keyword_tags' => [
-							(object)[
-								'name' => 'Research'
-							]
-						]
+						'school_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'registration_link' => [
+							'url' => ''
+						],
 					]
 				])->render()
 			],
 			'hasMore' => true,
 			'ajax_config' => '',
-			'is_slider' => false,
 			'source' => 'posts',
 			'load_more_text' => 'Load More'
 		];
@@ -316,12 +322,11 @@ class CardGrid extends Block
 		return $result;
 	}
 
-	public function getFrontendFilters($filterConfiguration){
-		$postType = $filterConfiguration['post_type'];
+	public function getFrontendFilters($postType){
 
 		return array_unique(array_filter([
 			in_array($postType, ['after-school-program']) ? 'age' : null,
-			in_array($postType, ['camp']) ? 'program' : null,
+			in_array($postType, ['after-school-program','camp']) ? 'program' : null,
 			in_array($postType, ['student-success']) ? 'activity' : null
 		]));
 	}
