@@ -4,14 +4,15 @@
         @if ($items)
             <div class="accordion accordion-flush" id="acc-{{ $block->block->id }}">
                 @forelse ($items as $i => $item)
-                <div class="full-content">
-                    <h3>{!! $item['title'] !!}</h3>
-                    <div class="if_exerpt fr-truncate-text" fr-truncate-lines="2">
-                    <p>{!! $item['content'] !!}</p>
+                <div class="full-content wysiwyg-content">
+                    <h4>{!! $item['title'] !!}</h4>
+                    <div class="exerpt fr-truncate-text" fr-truncate-lines="2">
+                    {!! $item['content'] !!}
                     </div>
-                    <div class="hide-content"><p>{!! $item['content'] !!}</p></div>
+                    <div class="hide-content">{!! $item['content'] !!}</div>
                     <button class="more-less">Read More</button>
                 </div>
+                
                 @empty
                 @endforelse
             </div>

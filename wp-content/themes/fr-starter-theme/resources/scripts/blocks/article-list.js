@@ -56,7 +56,7 @@
 				$(window).on('resize', () => {
 					clearTimeout(resizeDebounce);
 					resizeDebounce = setTimeout(() => {
-						truncateText($el, lines);
+						truncateText($el, lines);						
 					}, 400);
 				});
 			});
@@ -75,6 +75,14 @@
 
 			setUpTruncateElements(truncatableElements);
 		}
+		const initMoreLess =($self) =>{			
+			$self.on('click', '.more-less', function(){
+				var moreLessButton = $(this).parents('.full-content').find(".hide-content").is(':visible') ? 'Read More' : 'Read Less';
+				$(this).text(moreLessButton);
+				$(this).parent('.full-content').find(".hide-content").toggle();
+				$(this).parent('.full-content').find(".exerpt").toggle();
+				});
+		}
 		return this.each((i, el) => {
 			const $self = $(el);
 
@@ -85,14 +93,10 @@
 			}else{
 				initializeTruncation($self);
 			}
+			initMoreLess($self);
         });
 	}
-	$(document).on('click', '.more-less', function(){
-		var moreLessButton = $(this).parents('.full-content').find(".hide-content").is(':visible') ? 'Read More' : 'Read Less';
-		$(this).text(moreLessButton);
-		$(this).parent('.full-content').find(".hide-content").toggle();
-		$(this).parent('.full-content').find(".if_exerpt").toggle();
-		});
+	
 	$(() => {
 		$('.article-list-module').article();
 	});
