@@ -151,6 +151,7 @@ class ArticleList extends Block
             'max' => 15,
 			])
             ->addText('title', [
+                'required' => 1,
                 'wrapper' => [
                     'width' => 50
                 ]
