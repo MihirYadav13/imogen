@@ -70,14 +70,15 @@ class PostSearchProvider extends ServiceProvider
 					}
 					else {
 						$ajax_config = array_merge($ajax_config, [
-							'post__in' => $blockData['posts'],
+							'post_type' => $blockData['post_type'],
+							'post__in' => $blockData['post__in'],
 							'orderby' => self::ORDER_BY[2]
 						]);
 					}
 					break;
 				case 'card_grid_component':
 					$ajax_config = array_merge($ajax_config, [
-						'post_type' => $blockData['post_types'],
+						'post_type' => $blockData['post_type'],
 					]);
 					break;
 				default:
@@ -98,12 +99,10 @@ class PostSearchProvider extends ServiceProvider
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: false,
 			's' => filter_input(INPUT_GET, 's')?: false,
 			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
-			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'post__in', FILTER_UNSAFE_RAW)): [],
-			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): [],
-			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): []
+			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
+			'age' => filter_input(INPUT_GET, 'age', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
+			'program' => filter_input(INPUT_GET, 'program', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
 		];
-
-		error_log(json_encode($args));
 
 		$result = self::GetPosts($args);
 
