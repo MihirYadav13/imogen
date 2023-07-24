@@ -61,23 +61,24 @@ class PostSearchProvider extends ServiceProvider
 			switch($blockData['block_name']){
 				case 'card_grid':
 					if($blockData['source'] === 'from_filters'){
-						$filterTaxonomies = $blockData['filters_configuration']['taxonomies'];
+						$filterTaxonomies = $blockData['taxonomies'];
 						$ajax_config = array_merge($ajax_config, [
-							'post_type' => $blockData['filters_configuration']['post_types'],
+							'post_type' => $blockData['post_type'],
 							'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['age']??[]),
 							'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['program']??[]),
 						]);
 					}
 					else {
 						$ajax_config = array_merge($ajax_config, [
-							'post__in' => $blockData['posts'],
+							'post_type' => $blockData['post_type'],
+							'post__in' => $blockData['post__in'],
 							'orderby' => self::ORDER_BY[2]
 						]);
 					}
 					break;
 				case 'card_grid_component':
 					$ajax_config = array_merge($ajax_config, [
-						'post_type' => $blockData['post_types'],
+						'post_type' => $blockData['post_type'],
 					]);
 					break;
 				default:
@@ -92,16 +93,15 @@ class PostSearchProvider extends ServiceProvider
 
 	public static function GetPostsAjax(){
 		$args = [
-			'post_type' => filter_input(INPUT_GET, 'post_type', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'post_type', FILTER_UNSAFE_RAW)): [],
+			'post_type' => filter_input(INPUT_GET, 'post_type', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)?: [],
 			'posts_per_page' => filter_input(INPUT_GET, 'posts_per_page')?: false,
 			'page' => filter_input(INPUT_GET, 'page')?: false,
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: false,
 			's' => filter_input(INPUT_GET, 's')?: false,
 			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
-			'include_publish_card' => filter_input(INPUT_GET, 'include_publish_card')?filter_var(filter_input(INPUT_GET, 'include_publish_card'), FILTER_VALIDATE_BOOLEAN): false,
-			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'post__in', FILTER_UNSAFE_RAW)): [],
-			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): [],
-			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): []
+			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
+			'age' => filter_input(INPUT_GET, 'age', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
+			'program' => filter_input(INPUT_GET, 'program', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
 		];
 
 		$result = self::GetPosts($args);
@@ -270,14 +270,6 @@ class PostSearchProvider extends ServiceProvider
 		$post_type = get_post_type($post_id);
 		$post_creation_date_unix = strtotime(get_the_date('', $post_id));
 		$field_value = $post_creation_date_unix;
-
-		switch ($post_type) {
-			case 'event':
-				$field_value = strtotime(get_field('start_date', $post_id));
-				break;
-			default:
-				break;
-		}
 
 		update_post_meta($post_id, self::DATE_SORT_FIELD, $field_value);
 	}

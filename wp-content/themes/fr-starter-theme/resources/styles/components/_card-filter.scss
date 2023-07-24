@@ -1,4 +1,6 @@
 .card-filter-component{
+    margin-bottom: 38px;
+
     .filter-form{
         display: flex;
         flex-direction: row;
@@ -14,42 +16,34 @@
             flex-direction: column;
             gap: 20px 20px;
 
-            .col-label{
-                @include font-primary;
-                font-size: 16px;
-                text-transform: uppercase;
-                line-height: 1.2;
-                letter-spacing: 1.92px;
-            }
-
             .filter-container{
 
             }
 
             &.taxonomy-filters{
+                width: 100%;
                 
                 .filter-container{
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
-                    gap: 40px 20px;
+                    gap: 38px;
 
                     .filter-input{
-                        width: 280px;
+                        width: calc(100%/4 - (38px * 3)/4);
                         display: flex;
                         flex-direction: column;
-                        gap: 11px;
+                        gap: 8px;
 
-                        label{
-                            @include font-primary;
-                            font-size: 18px;
+                        h6{
+                            margin-bottom: 0;
                         }
                     }
 
                     .taxonomy-filter{
                         .multiselect-native-select{
                             .multiselect-selected-text{
-                                font-size: 18px;
+                                font-size: 14px;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
                             }
@@ -62,43 +56,39 @@
                         flex-direction: column;
 
 
-                        input{
-                            @include font-primary;
-                            font-size: 18px;
-                            color: $deep-blue;
-                            border-color: $deep-blue;
+                        .input-container{
+                            position: relative;
 
+                            label{
+                                width: 100%;
+
+                                input{
+                                    @include font-primary;
+                                    font-size: 14px;
+                                    line-height: 24px;
+                                    border: 1px solid $light-gray-3;
+                                    border-radius: 20px;
+                                    padding: 9px 27px 9px 17px;
+                                    width: 100%;
+
+                                    &:focus-visible{
+                                        outline: none;
+                                    }
+                                }
+                            }
+
+                            .search-btn{
+                                position: absolute;
+                                right: 17px;
+                                top:50%;
+                                transform: translateY(-50%);
+                                width: 10px;
+                                height: 10px;
+                            }
                         }
                     }
                 }
                 
-            }
-
-            &.sort-by-filters{
-                min-width: 160px;
-
-                .sort-filters-container{
-                    .sort-filters{
-                        list-style-type: none;
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        flex-direction: row;
-                        column-gap: 20px;
-                        padding: 0;
-                        margin: 0;
-                    }
-                }
-
-                .reset-filters-container{
-                    display: flex;
-
-                    a{
-                        font-size: 14px;
-                        line-height: 1.2;
-                        color: $deep-blue;
-                    }
-                }
             }
         }
     }
