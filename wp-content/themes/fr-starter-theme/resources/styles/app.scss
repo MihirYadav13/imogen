@@ -1,5 +1,6 @@
 // 0. Get all 3rd party libraries first
 @import "autoload/bootstrap";
+@import "autoload/bs-multiselect";
 
 // 1. Globals
 @import "global/variables";
@@ -20,6 +21,7 @@
 @import "components/card-grid";
 @import "components/card-filter";
 @import "components/spinner";
+@import "components/multiselect";
 
 
 
@@ -29,7 +31,9 @@
 @import "modules/layout-module";
 @import "modules/wysiwyg";
 @import "modules/cta";
+@import "modules/article-list";
 @import "modules/logo-grid";
+
 
 // 4. Templates
 @import "templates/page";
