@@ -51,12 +51,13 @@ class CardGrid extends Component
 
 
     public function setAjaxConfigArgs(){
-		$this->ajaxConfigArgs = [
+		$this->ajaxConfigArgs = array_filter([
 			'block_name' => 'card_grid_component',
 			'source' => 'filters',
-			'post_types' => $this->postType,
+			'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
-		];
+            'post__in' => $this->setPostIn()
+		]);
 
         if($this->blockData){
             $this->ajaxConfigArgs = array_merge($this->ajaxConfigArgs, $this->blockData);
@@ -68,13 +69,21 @@ class CardGrid extends Component
             return [];
         }
 
-        $filtersConfiguration = $this->blockData['filters_configuration'];
+        $taxonomies = $this->blockData['taxonomies'];
 
-		return [
-			'post_type' => $filtersConfiguration['post_types'],
-			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($filtersConfiguration['taxonomies']['age']),
-			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($filtersConfiguration['taxonomies']['program']),
-		];
+        $args = array_filter([
+			'post_type' => $this->blockData['post_type'],
+            'post__in' => $this->setPostIn()
+		]);
+
+        if(!$taxonomies){
+            return $args;
+        }
+
+		return array_merge($args, [
+			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
+			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['program']?:[]),
+		]);
 	}
 
     public function getArgsFromUrl(){
@@ -84,6 +93,38 @@ class CardGrid extends Component
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
 			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): null,
 		]);
+	}
+
+    public function setPostIn(){
+        $postIn = null;
+
+        $posts = $this->blockData['posts'];
+        
+        if($this->blockData['source'] !== 'posts'){
+            return $postIn;
+        }
+
+        switch($this->blockData['post_type'][0]){
+            case 'after-school-program':
+                $postIn = $posts['after-school-program'];
+                break;
+            case 'camp':
+                $postIn = $posts['camp'];
+                break;
+            case 'childhood-education':
+                $postIn = $posts['childhood-education'];
+                break;
+            case 'student-success':
+                $postIn = $posts['student-success'];
+                break;
+            case 'team-member':
+                $postIn = $posts['team-member'];
+                break;
+            default:
+                break;
+        }
+
+        return $postIn;
 	}
 
 	/**

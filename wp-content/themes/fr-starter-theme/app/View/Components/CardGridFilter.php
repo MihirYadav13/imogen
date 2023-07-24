@@ -19,15 +19,11 @@ class CardGridFilter extends Component
 	public $blockData;
 
     public $taxonomyFilterLabels = [
-		'resource-type' => 'Resource Type',
-		'keyword-tag' => 'Keyword Tag',
-		'selected_topics' => 'Topic',
-		'related_strategies' => 'Strategy'
+		'age' => 'Age',
+		'program' => 'Program'
 	];
 
 	public $filtersPostType = [
-		'selected_topics' => 'topic',
-		'related_strategies' => 'strategy'
 	];
 
     /**
@@ -59,42 +55,21 @@ class CardGridFilter extends Component
 		foreach($this->filters as $filter){
             $this->taxonomyFilters[$filter] = $this->getFilterData($filter);
         }
-
-        $this->sortFilters = $this->GetSortFilters();
 	}
 	
 
     public function getFilterData($filter){
 		$result = [];
 
-		if(in_array($filter, ['resource-type', 'keyword-tag'])){
-			$terms = \App\Providers\TaxonomyDataProvider::GetTerms($filter);
+		$terms = \App\Providers\TaxonomyDataProvider::GetTerms($filter);
 
-			$result = array_reduce($terms,function($res, $term) {
-				$res[] = [
-					'key' => $term['slug'],
-					'value' => $term['name']
-				];
-				return $res;
-			}, []);
-		}
-		else {
-			$args = [
-				'post_type' => [$this->filtersPostType[$filter]],
-				'posts_per_page' => 0,
-				'post_status' => ['publish']
+		$result = array_reduce($terms,function($res, $term) {
+			$res[] = [
+				'key' => $term['slug'],
+				'value' => $term['name']
 			];
-
-			$posts = \App\Providers\PostSearchProvider::GetPosts($args);
-
-			$result = array_reduce($posts['posts'],function($res, $post) {
-				$res[] = [
-					'key' => $post->ID,
-					'value' => $post->post_title
-				];
-				return $res;
-			}, []);
-		}
+			return $res;
+		}, []);
 
 		return $result;
 	}
@@ -109,13 +84,15 @@ class CardGridFilter extends Component
             return [];
         }
 
-        $filtersConfiguration = $this->blockData['filters_configuration'];
+        $taxonomies = $this->blockData['taxonomies'];
+
+		if(!$taxonomies){
+            return [];
+        }
 
 		return array_filter([
-			'resource-type' => \App\Providers\PostSearchProvider::GetTermsSlugs($filtersConfiguration['taxonomies']['resource-type']),
-			'keyword-tag' => \App\Providers\PostSearchProvider::GetTermsSlugs($filtersConfiguration['taxonomies']['keyword-tag']),
-			'selected_topics' => $filtersConfiguration['taxonomies']['topic']?:null,
-			'related_strategies' => $filtersConfiguration['taxonomies']['strategy']?:null
+			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
+			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['program']?:[]),
 		]);
 	}
 
@@ -123,34 +100,11 @@ class CardGridFilter extends Component
 		return array_filter([
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: null,
 			's' => filter_input(INPUT_GET, 's')?: null,
-			'resource-type' => filter_input(INPUT_GET, 'resource-type', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'resource-type', FILTER_UNSAFE_RAW)): null,
-			'keyword-tag' => filter_input(INPUT_GET, 'keyword-tag', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'keyword-tag', FILTER_UNSAFE_RAW)): null,
-			'selected_topics' => filter_input(INPUT_GET, 'selected_topics', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'selected_topics', FILTER_UNSAFE_RAW)): null,
-			'related_strategies' => filter_input(INPUT_GET, 'related_strategies', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'related_strategies', FILTER_UNSAFE_RAW)): null,
+			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
+			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): null,
 		]);
 	}
 
-
-    /**
-     * Get sort filters.
-     *
-     * @return array
-     */
-	public static function GetSortFilters()
-    {		
-        return [
-			[
-				'input_name' => 'order_by',
-				'label' => 'Latest',
-				'value' => 'latest'
-			],
-			[
-				'input_name' => 'order_by',
-				'label' => 'Most Popular',
-				'value' => 'popular'
-			]
-		];
-    }
 
     /**
      * Get the view / contents that represent the component.
