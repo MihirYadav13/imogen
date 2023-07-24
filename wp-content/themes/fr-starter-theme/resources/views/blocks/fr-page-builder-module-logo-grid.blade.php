@@ -19,8 +19,3 @@
      @endif
     </div>
 </div>
-<script>
-		$('.three-col').parents('.')
-		});
-	</script>
-

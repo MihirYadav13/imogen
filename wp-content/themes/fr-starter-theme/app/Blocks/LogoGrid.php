@@ -144,8 +144,8 @@ class LogoGrid extends Block
             ]
         ],
         'attributes' => [
-            'preview_image' => 'Accordion.png',
-            'block_icon' => 'accordion.png'
+            'preview_image' => 'LogoGrid.png',
+            'block_icon' => 'LogoGrid.png'
         ],
     ];
     /**

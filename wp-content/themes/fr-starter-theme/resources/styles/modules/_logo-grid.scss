@@ -5,28 +5,28 @@
         flex-wrap: wrap;
         &.center-flex{
             justify-content: center;
-        }
-    }
-    .img-container{
-        margin-top:38px;
-        &.three-col {
-            width: calc((100% - 76px ) / 3);
-            @include breakpoint(md down){
-                width: 100%;
+        }    
+        .img-container{
+            margin-top:38px;
+            &.three-col {
+                width: calc((100% - 76px ) / 3);
+                @include breakpoint(md down){
+                    width: 100%;
+                }
             }
+            &.four-col {
+                width: calc((100% - 114px ) / 4);
+                @include breakpoint(md down){
+                    width: 100%;
+                }
+            }               
         }
-        &.four-col {
-            width: calc((100% - 114px ) / 4);
-            @include breakpoint(md down){
-                width: 100%;
-            }
-        }               
-    }
-    .grid img{   
-        max-height:100%; /* set full height */
-        max-width:100%; /* set full width */
-        display:block;
-        object-fit: contain; /* constrains the image maintaining aspect ratio */
-        object-position: center;
+        img{   
+            max-height:100%; /* set full height */
+            max-width:100%; /* set full width */
+            display:block;
+            object-fit: contain; /* constrains the image maintaining aspect ratio */
+            object-position: center;
+        }
     }
 }
