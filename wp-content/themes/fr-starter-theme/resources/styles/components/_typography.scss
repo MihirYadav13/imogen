@@ -30,6 +30,12 @@ body:not(.wp-admin) h5, html :where(.editor-styles-wrapper) .is-root-container h
     font-size:22px;
     line-height: 28px;
     @include font-primary-bold;
+
+    &.sub{
+        @include font-primary;
+        font-size: 22px;
+        line-height: 36px;
+    }
 }
 
 body:not(.wp-admin) h6, html :where(.editor-styles-wrapper) .is-root-container h6 {

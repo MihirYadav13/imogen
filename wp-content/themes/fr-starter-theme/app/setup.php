@@ -114,6 +114,7 @@ add_action('after_setup_theme', function () {
 
 //Custom Libs
 require_once('Shortcodes/CtaButton/Cta.php');
+require_once 'lib/WysiwygCustomFormats.php';
 
 /**
  * Register the theme sidebars.
