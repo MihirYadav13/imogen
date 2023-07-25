@@ -115,7 +115,7 @@ add_action('after_setup_theme', function () {
 //Custom Libs
 require_once('Shortcodes/CtaButton/Cta.php');
 require_once 'lib/WysiwygCustomFormats.php';
-require_once 'lib/AcfDateValidation.php';
+require_once 'lib/AcfValidation.php';
 
 /**
  * Register the theme sidebars.
