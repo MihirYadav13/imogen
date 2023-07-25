@@ -28,8 +28,7 @@ if (!class_exists('WysiwygCustomFormats')) :
                 array(
                     'title' => 'Subheading',
                     'block' => 'h5',
-                    'classes' => 'sub',
-                    'wrapper' => true,
+                    'classes' => 'sub'
                 )
             );
             // Insert the array, JSON ENCODED, into 'style_formats'
