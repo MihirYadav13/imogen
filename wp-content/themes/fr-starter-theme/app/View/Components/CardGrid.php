@@ -98,6 +98,10 @@ class CardGrid extends Component
     public function setPostIn(){
         $postIn = null;
 
+        if(!$this->blockData){
+            return $postIn;
+        }
+
         $posts = $this->blockData['posts'];
         
         if($this->blockData['source'] !== 'posts'){
