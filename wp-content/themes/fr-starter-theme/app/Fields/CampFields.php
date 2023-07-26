@@ -48,6 +48,7 @@
 				])
 				->addNumber('fee', [
 					'prepend' => '$',
+					'min' => 0,
 					'wrapper' => [
 						'width' => 20
 					]
@@ -67,6 +68,7 @@
 					])
 					->addNumber('fee', [
 						'prepend' => '$',
+						'min' => 0,
 						'wrapper' => [
 							'width' => 20
 						]
