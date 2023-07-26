@@ -1,0 +1,33 @@
+.fr-modal{
+    .spinner-container{
+        position: relative;
+    }
+
+    .modal-content{
+        .modal-header{
+            border: none;
+            
+            button.btn-close{
+                width: 32px;
+                height: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                border-radius: 50%;
+                background-color: #A991DE;
+
+                img{
+                    width: 12px;
+                    height: 12px;
+                }
+            }
+        }
+    }
+    
+    &[fr-status='loading'] {
+        .spinner-container {
+            display: block;
+        }
+    }
+}

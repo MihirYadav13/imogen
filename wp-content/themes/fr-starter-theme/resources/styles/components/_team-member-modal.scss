@@ -1,0 +1,29 @@
+.team-member-modal{
+    min-height: 380px;
+
+    .modal-content{
+        .modal-header{
+            position: absolute;
+            right: 0;
+        }
+
+        .modal-body{
+            padding: 0;
+
+            .member-info{
+                transition: all 1s ease-in-out;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .featured-image{
+
+                }
+
+                .right-content{
+
+                }
+            }
+        }
+    }
+}
