@@ -1,0 +1,15 @@
+.stay-connected-container{
+    padding: 40px 0;
+    .contact-us{
+        color: $dark-orange;
+        text-align: center;
+    }
+    .stay-connected-content{
+        text-align: center;
+        color : $dark-gray;        
+        a.cta-button{
+            width: 190px;
+            background-color: $dark-orange !important;
+        }
+    } 
+}

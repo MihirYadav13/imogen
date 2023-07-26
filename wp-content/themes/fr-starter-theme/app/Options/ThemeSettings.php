@@ -39,6 +39,13 @@ class ThemeSettings extends Field
                 ->addFields($this->get(HeaderThemeSettings::class))
             ->addTab('Footer')
                 ->addFields($this->get(FooterThemeSettings::class))
+            ->addTab('Stay Connected')
+                ->addText('stay_connected_title', [
+                    'wrapper' => [
+                        'width' => 50
+                    ]
+                ])
+                ->addWysiwyg('stay_connected_content')
             ->addTab('API Settings')
                 ->addFields($this->get(ApiThemeSettings::class));
 
