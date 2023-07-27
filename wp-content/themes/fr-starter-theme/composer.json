@@ -54,7 +54,8 @@
         "App\\Providers\\HeaderCleanUpProvider",
         "App\\Providers\\PostTemplatesProvider",
         "App\\Providers\\PostSearchProvider",
-        "App\\Providers\\FrPageBuilderSettingsProvider"
+        "App\\Providers\\FrPageBuilderSettingsProvider",
+        "App\\Providers\\TeamMemberDataProvider"
       ]
     }
   }
