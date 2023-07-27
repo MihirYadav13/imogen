@@ -8,7 +8,6 @@ class TeamMemberModal extends Component
 {
 
     public $modalId;
-    public $modalBody;
 
     /**
      * Create a new component instance.
@@ -18,8 +17,6 @@ class TeamMemberModal extends Component
     public function __construct($modalId = null)
     {
         $this->modalId = $modalId ? : uniqid('fr-modal-');
-        $modalData = \App\Providers\CardsDataProvider::get(162);
-		$this->modalBody = view('components.team-member.modal-body', $modalData )->render();
     }
 
     /**

@@ -9,7 +9,6 @@
 			<div class="modal-body">
 				<x-spinner />
 				<div class="member-info">
-					{!! $modalBody !!}
 				</div>
 			</div>
 		</div>
