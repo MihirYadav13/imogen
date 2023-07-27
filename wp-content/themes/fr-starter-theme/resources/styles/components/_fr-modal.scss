@@ -3,23 +3,36 @@
         position: relative;
     }
 
-    .modal-content{
-        .modal-header{
-            border: none;
-            
-            button.btn-close{
-                width: 32px;
-                height: 32px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: none;
-                border-radius: 50%;
-                background-color: #A991DE;
+    .modal-dialog{
+        max-width: calc(100% - 100px);
+        width: 1023px;
+        margin: auto;
 
-                img{
-                    width: 12px;
-                    height: 12px;
+        .modal-content{
+            border-radius: 8px !important;
+            overflow: hidden;
+
+            .modal-header{
+                border: none;
+                padding: 24px;
+                
+                button.btn-close{
+                    width: 32px;
+                    height: 32px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    border-radius: 50%;
+                    background-color: #A991DE;
+                    margin: 0;
+                    padding: 0;
+                    z-index: 999;
+
+                    img{
+                        width: 12px;
+                        height: 12px;
+                    }
                 }
             }
         }

@@ -54,6 +54,11 @@
 	}
 }
 
+@mixin sm-style{
+	font-size: 14px;
+    line-height: 24px;
+}
+
 @mixin caption-style{
 	margin-top: 10px;
 	@include font-primary-bold;

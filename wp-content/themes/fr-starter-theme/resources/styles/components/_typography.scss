@@ -66,8 +66,7 @@ body:not(.wp-admin) a, html :where(.editor-styles-wrapper) .is-root-container a 
     @include font-primary;
 
     &.sm{
-        font-size: 14px;
-        line-height: 24px;
+        @include sm-style;
     }
 }
 
@@ -85,7 +84,6 @@ body:not(.wp-admin){
 
 label{
     &.sm{
-        font-size: 14px;
-        line-height: 24px;
+        @include sm-style;
     }
 }

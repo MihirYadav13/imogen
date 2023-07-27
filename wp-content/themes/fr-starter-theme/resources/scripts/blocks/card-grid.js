@@ -59,7 +59,6 @@
 		if(!_.teamMemberModal) return;
 
 		let $modal = $(`#${_.teamMemberModal}`);
-		$modal.modal('show');
 
 		$self.find('.card-type-team-member').on('click', (e) => {
 			e.preventDefault();
