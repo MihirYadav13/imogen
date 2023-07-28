@@ -245,8 +245,15 @@ class ThemeServiceProvider extends SageServiceProvider
 
 
     public static function GetThemeColors(){ 
-        $defaultTheme = get_field('default_theme', 'option') ? : 'blue_theme';
-        $themeColors = get_field($defaultTheme, 'option');
+        $theme = get_field('default_theme', 'option') ? : 'blue_theme';
+
+        // For page get selected theme
+        if(is_page()){
+            $theme = get_field('selected_theme');
+        }
+
+        $themeColors = get_field($theme, 'option');
+
         return $themeColors;
     }
 
