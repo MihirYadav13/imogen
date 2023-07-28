@@ -1,5 +1,6 @@
 // 0. Get all 3rd party libraries first
 @import "autoload/bootstrap";
+@import "autoload/splide";
 @import "autoload/bs-multiselect";
 
 // 1. Globals
@@ -34,6 +35,8 @@
 @import "modules/cta";
 @import "modules/article-list";
 @import "modules/logo-grid";
+@import "modules/image-carousel";
+
 
 
 // 4. Templates

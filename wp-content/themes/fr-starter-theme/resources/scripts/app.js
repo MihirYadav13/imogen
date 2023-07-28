@@ -20,6 +20,7 @@ import './components/bs-multiselect';
 
 // 3. Import block JS
 import './blocks/article-list';
+import './blocks/image-carousel';
 
 import './global/header';
 
