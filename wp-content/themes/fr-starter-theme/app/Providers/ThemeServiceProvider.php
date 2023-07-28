@@ -14,6 +14,7 @@ class ThemeServiceProvider extends SageServiceProvider
     public function register()
     {
         add_action('admin_head', '\\App\Providers\ThemeServiceProvider::CustomAdminStyles');
+        add_action('wp_head', '\\App\Providers\ThemeServiceProvider::ThemeColorStyle');
         add_action('acf/input/admin_footer', '\\App\Providers\ThemeServiceProvider::CustomAcfJs');
 
         add_action('wp_head', '\\App\Providers\ThemeServiceProvider::AddGoogleCodeSnippedHeader', 100);
@@ -224,6 +225,29 @@ class ThemeServiceProvider extends SageServiceProvider
         }
 
         return $items;
+    }
+
+    public static function ThemeColorStyle(){ 
+        $themeColors = self::GetThemeColors();
+
+        ?>
+        <style>
+            :root{
+                --fr-theme-main-color: <?=$themeColors['main_color'] ?>;
+                --fr-theme-bg-ftw-top-color:  <?=$themeColors['fade_to_white']['top_color'] ?>;
+                --fr-theme-bg-ftw-mid-color:  <?=$themeColors['fade_to_white']['mid_color'] ?>;
+                --fr-theme-bg-ftc-top-color:  <?=$themeColors['fade_to_color']['top_color'] ?>;
+                --fr-theme-bg-ftc-bottom-color:  <?=$themeColors['fade_to_color']['bottom_color'] ?>;
+            }
+        </style>
+        <?php
+    }
+
+
+    public static function GetThemeColors(){ 
+        $defaultTheme = get_field('default_theme', 'option') ? : 'blue_theme';
+        $themeColors = get_field($defaultTheme, 'option');
+        return $themeColors;
     }
 
     public static function AddGoogleCodeSnippedHeader(){
