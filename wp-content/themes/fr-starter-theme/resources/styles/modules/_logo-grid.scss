@@ -8,6 +8,7 @@
         }    
         .img-container{
             margin-top:38px;
+            text-align: center;
             &.three-col {
                 width: calc((100% - 76px ) / 3);
                 @include breakpoint(md down){
@@ -19,6 +20,9 @@
                 @include breakpoint(md down){
                     width: 100%;
                 }
+            }
+            img{
+                display:unset;  
             }               
         }
         img{   
