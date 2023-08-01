@@ -1,4 +1,4 @@
-<div class="fr-card card-type-{{ $post_type }}">
+<div class="fr-card card-type-{{ $post_type }}" post-id="{{ $card_data['post_id'] }}">
 	<div class="card-inner">
         @if(!empty($card_data['featured_image']))
 			<div class="featured-image {{ $card_data['is_empty_featured_image'] ? 'default':'' }}">

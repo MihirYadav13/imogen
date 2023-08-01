@@ -11,6 +11,7 @@ class CardsDataProvider extends ServiceProvider
 
         $data = [
             'post_type' => $post_type,
+            'post_id' => gettype($post) === 'integer'? $post : $post->ID,
             'permalink' => get_the_permalink($post),
             'title' => get_the_title($post),
             'featured_image' => get_field('featured_image', $post) ?:[],
