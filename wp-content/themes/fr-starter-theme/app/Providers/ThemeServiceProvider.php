@@ -249,7 +249,7 @@ class ThemeServiceProvider extends SageServiceProvider
 
         // For page get selected theme
         if(is_page()){
-            $theme = get_field('selected_theme');
+            $theme = get_field('selected_theme')?: $theme;
         }
 
         $themeColors = get_field($theme, 'option');
