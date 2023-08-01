@@ -143,12 +143,13 @@ class BlockContainer extends Block
 		$contentSection
 			->addRadio('background_color', [
 				'choices' => [
-					'#fff' => 'White',
-					'#F5F7FB' => 'Light Gray',
+					'white' => 'White',
+					'fade-to-white' => 'Fade to white',
+					'fade-to-color' => 'Fade to color',
 				],
 				'wpml_cf_preferences' => 0,
-				'return_format' => 'array',
-				'default' => '#fff'
+				'return_format' => 'value',
+				'default' => 'white'
 			])
 			->addRadio('content_max_width', [
 				'label' => 'Content\'s Max Width',
@@ -300,12 +301,11 @@ class BlockContainer extends Block
 
 	public function getColorOverlayAttr(){
 		$result = [];
-		$background_color = get_field('background_color') ? get_field('background_color')['value'] : false;
 		$enabled = get_field('background_color_overlay');
 		$opacity = get_field('background_color_overlay_opacity');
 		
 		if($enabled){
-			$custom_color = get_field('enable_custom_color_overlay') ? get_field('custom_overlay_color') : $background_color;
+			$custom_color = get_field('enable_custom_color_overlay') ? get_field('custom_overlay_color') : '#FFF';
 
 			$result = array_filter([
 				$custom_color ? 'background-color:'.$custom_color : false,
@@ -345,9 +345,9 @@ class BlockContainer extends Block
 	 */
 	public function items()
 	{
-		$bg_color = get_field('background_color') ? get_field('background_color')['label'] : '';
+		
 		return [
-			'background_color' => get_field('background_color') ? 'section-bg-' . strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $bg_color))) : 'section-bg-white',
+			'background_color' => get_field('background_color') ? 'section-bg-' . get_field('background_color') : 'section-bg-white',
 			'background_image' => get_field('background_image'),
 			'background_image_size' => get_field('background_image_size'),
 			'background_image_dimensions' => $this->createCssRules('desktop', get_field('background_image_dimensions')),
