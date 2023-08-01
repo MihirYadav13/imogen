@@ -1,0 +1,50 @@
+.image-carousel-module{
+    .image-carousel-container{
+        width: 100%;
+        
+        .image-carousel{
+            width: 100%;
+            height: 100%;
+            padding : 8px 0;
+            .splide__arrow{
+                svg{
+                    fill: #fff;
+                }
+            }
+            .splide__arrow {
+                height: 32px;
+                width: 32px;
+                background: $blue;
+            }
+            .splide__slide{
+                img{
+                    width: 100%;
+                    height:100%;
+                    object-fit: cover;
+                    border-radius: 7.08px;
+                }
+            }            
+        }
+        .thumbnail-carousel 
+        {
+            width: 100%;
+            .splide__slide{
+                width: calc((100% - 32px ) / 5) !important;
+                img{
+                    width: 100%;
+                    height:calc(100% / 1.1913636);
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 7.08px;
+                }
+                &.is-active{
+                    border: none !important;
+                    img{
+                        border: 3px solid $blue !important;
+                    border-radius: 7.08px !important;
+                    }
+                }
+            }            
+        } 
+    }
+}

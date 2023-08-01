@@ -117,28 +117,28 @@ class LogoGrid extends Block
             [
                 'name' => 'Partner name',
                 'logo_image'=> [
-                    'url' => 'https://via.placeholder.com/500',
+                    'url' => 'https://picsum.photos/seed/picsum/500/500',
                     'alt' => 'Placeholder image'
                 ],
             ],
             [
                 'name' => 'Partner name',
                 'logo_image'=> [
-                    'url' => 'https://via.placeholder.com/500',
+                    'url' => 'https://picsum.photos/seed/picsum/500/500',
                     'alt' => 'Placeholder image'
                 ],
             ],
             [
                 'name' => 'Partner name',
                 'logo_image'=> [
-                    'url' => 'https://via.placeholder.com/500',
+                    'url' => 'https://picsum.photos/seed/picsum/500/500',
                     'alt' => 'Placeholder image'
                 ],
             ],
             [
                 'name' => 'Partner name',
                 'logo_image'=> [
-                    'url' => 'https://via.placeholder.com/500',
+                    'url' => 'https://picsum.photos/seed/picsum/500/500 ',
                     'alt' => 'Placeholder image'
                 ],
             ]
