@@ -1,3 +1,4 @@
+<x-stay-connected />
 <footer class="content-info">
     <div class="container">
         <div class="footer-header">
