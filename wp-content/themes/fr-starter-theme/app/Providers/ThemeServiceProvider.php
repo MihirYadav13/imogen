@@ -236,8 +236,10 @@ class ThemeServiceProvider extends SageServiceProvider
                 --fr-theme-main-color: <?=$themeColors['main_color'] ?>;
                 --fr-theme-bg-ftw-top-color:  <?=$themeColors['fade_to_white']['top_color'] ?>;
                 --fr-theme-bg-ftw-mid-color:  <?=$themeColors['fade_to_white']['mid_color'] ?>;
+                --fr-theme-bg-ftw-wt-filter: <?=$themeColors['fade_to_white']['wave_top_filter'] ?>;
                 --fr-theme-bg-ftc-top-color:  <?=$themeColors['fade_to_color']['top_color'] ?>;
                 --fr-theme-bg-ftc-bottom-color:  <?=$themeColors['fade_to_color']['bottom_color'] ?>;
+                --fr-theme-bg-ftc-wt-filter: <?=$themeColors['fade_to_color']['wave_top_filter'] ?>;
             }
         </style>
         <?php

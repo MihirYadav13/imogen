@@ -1,4 +1,4 @@
-<div class="fr-content-row {{ $block->classes }} {{ $background_color }} vert-pad-{{ $vertical_padding }} vert-stack-{{ $vertically_stack_content }}" @if(isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
+<div class="fr-content-row {{ $block->classes }} {{ $background_color }} {{ $show_top_wave }} vert-pad-{{ $vertical_padding }} vert-stack-{{ $vertically_stack_content }}" @if(isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
 	@if ($background_image || $background_image_mobile)
 		@if ($background_image_size == 'contain')
 			@include('components.responsive-acf-image', ['image' => $background_image, 'class' => 'row-bg-image desktop'])
