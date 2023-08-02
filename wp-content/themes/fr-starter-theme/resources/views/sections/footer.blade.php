@@ -1,3 +1,4 @@
+<x-stay-connected />
 <footer class="content-info">
   <div class="waveWrapper waveAnimation">
     <div class="waveWrapperInner bgTop">

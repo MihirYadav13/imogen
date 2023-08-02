@@ -6,11 +6,11 @@ use Illuminate\Support\ServiceProvider;
 
 class PostSearchProvider extends ServiceProvider
 {
-
-	const POST_TYPE = 'post';
-	const GENERAL_SEARCH_ACTION = 'get_general_search';
-	const GENERAL_SEARCH_POST_TYPES = ['post', 'page', 'event', 'resource', 'news', 'people'];
-	const POSTS_PER_PAGE = 9;
+	public static $tablePrefix;
+	const ACTION = 'get_posts';
+	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'student-success', 'childhood-education', 'team-member'];
+	const POSTS_PER_PAGE = 8;
+	const ORDER_BY = ['latest', 'popular', 'post__in'];
 
 	//CUSTOM FIELD FOR SORTING ELEMENTS BETWEEN DIFFERENT POST TYPES
 	const DATE_SORT_FIELD = 'custom_date_sort';
@@ -21,207 +21,255 @@ class PostSearchProvider extends ServiceProvider
      * @return void
      */
 	public function register(){
+		global $wpdb;
+		self::$tablePrefix = $wpdb->prefix;
 
 		add_action('init', '\\App\Providers\PostSearchProvider::SetAjaxActions', 20);
 
 		add_action('save_post', function ($post_id, $post){
-			if(in_array($post->post_type, ['event', 'news', 'resource', 'page', 'people']) && !wp_is_post_autosave($post) && $post->post_status !== 'auto-draft' && !wp_is_post_revision($post_id)){
+			if(in_array($post->post_type, array_merge(['page'], self::GENERAL_SEARCH_POST_TYPES)) && !wp_is_post_autosave($post) && $post->post_status !== 'auto-draft' && !wp_is_post_revision($post_id)){
 				self::SetDateSortField($post_id);
 			}
 		}, 10, 2);
 	}
 
-	public static function GetAjaxAction($post_type = ''){
-		$result = 'get_posts';
+	public static function SetAjaxActions(){
+		add_action('wp_ajax_' . self::ACTION, function(){
+			return self::GetPostsAjax();
+		});
 
-		switch ($post_type) {
-			case 'project':
-				$result = 'get_projects';
-				break;
-			default:
-				$result = self::GENERAL_SEARCH_ACTION;
-				break;
+		add_action('wp_ajax_nopriv_' . self::ACTION, function(){
+			return self::GetPostsAjax();
+		});
+	}
+
+    public static function getAjaxConfig($blockData = []){
+        $ajax_config = [
+            'url' => home_url('/', is_ssl() ? 'https' : 'http') . 'wp-admin/admin-ajax.php',
+            'action' => self::ACTION,
+			'post_type' => self::GENERAL_SEARCH_POST_TYPES,
+            'posts_per_page' => self::POSTS_PER_PAGE,
+            'page' => 1,
+            's' => isset($_GET['s']) && strlen($_GET['s']) > 0 ? $_GET['s'] : 0
+        ];
+
+		if(!empty($blockData)){
+			$ajax_config = array_merge($ajax_config, [
+				'posts_per_page' => $blockData['posts_per_page'] ? :self::POSTS_PER_PAGE
+			]);
+
+			switch($blockData['block_name']){
+				case 'card_grid':
+					if($blockData['source'] === 'from_filters'){
+						$filterTaxonomies = $blockData['taxonomies'];
+						$ajax_config = array_merge($ajax_config, [
+							'post_type' => $blockData['post_type'],
+							'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['age']??[]),
+							'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['program']??[]),
+						]);
+					}
+					else {
+						$ajax_config = array_merge($ajax_config, [
+							'post_type' => $blockData['post_type'],
+							'post__in' => $blockData['post__in'],
+							'orderby' => self::ORDER_BY[2]
+						]);
+					}
+					break;
+				case 'card_grid_component':
+					$ajax_config = array_merge($ajax_config, [
+						'post_type' => $blockData['post_type'],
+					]);
+					break;
+				default:
+					break;
+			}
+
 		}
 
-		return $result;
-	}
+		return json_encode($ajax_config, JSON_HEX_APOS);
+    }
 
-	public static function SetAjaxActions(){
-		//PROJECTS
-		//wp_die(var_dump(self::GetAjaxAction('general')));
-		add_action('wp_ajax_' . self::GetAjaxAction('general'), function(){
-			return self::GetPostsAjax('general');
-		});
 
-		add_action('wp_ajax_nopriv_' . self::GetAjaxAction('general'), function(){
-			return self::GetPostsAjax('general');
-		});
-		//THE REST
-		//TO DO
-	}
-
-	public static function GetPostsAjax($post_type = self::POST_TYPE){
+	public static function GetPostsAjax(){
 		$args = [
-			'post_type' => $post_type,
+			'post_type' => filter_input(INPUT_GET, 'post_type', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)?: [],
 			'posts_per_page' => filter_input(INPUT_GET, 'posts_per_page')?: false,
-			'page_number' => filter_input(INPUT_GET, 'page_number')?: false,
-			'search' => filter_input(INPUT_GET, 'search')?: false,
-			'region' => filter_input(INPUT_GET, 'region')?: false,
-			'service' => filter_input(INPUT_GET, 'service')?: false,
-			'year' => filter_input(INPUT_GET, 'year')?: false,
-			'status' => filter_input(INPUT_GET, 'status')?: false,
+			'page' => filter_input(INPUT_GET, 'page')?: false,
+			'order_by' => filter_input(INPUT_GET, 'order_by')?: false,
+			's' => filter_input(INPUT_GET, 's')?: false,
+			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
+			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
+			'age' => filter_input(INPUT_GET, 'age', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
+			'program' => filter_input(INPUT_GET, 'program', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
 		];
 
 		$result = self::GetPosts($args);
 
-		if(is_wp_error($result)){
-			wp_send_json_error($result);
+		if(is_wp_error($result['posts'])){
+			wp_send_json_error($result['posts']);
 		}else{
-			wp_send_json_success(self::ConvertDataToHtmlArray($result, $post_type == 'general' ? 'search-result-card' : $post_type));
+			wp_send_json_success(array_merge($result, ['posts' => self::ConvertDataToHtmlArray($result['posts'])]));
 		}
 	}
 
 	public static function GetPosts($args = []){
-		$result = [];
-
 		//default values
 		$posts_per_page = isset($args['posts_per_page']) && $args['posts_per_page'] ? intval($args['posts_per_page']) : self::POSTS_PER_PAGE;
-		$page = isset($args['page_number']) ? intval($args['page_number']) : 0;
-		$post_type = isset($args['post_type']) ? $args['post_type'] : self::POST_TYPE;
-		$is_general_search = false; //this flgas makes it so we can search on the terms associated as well, for now it only works on general search
+		$page = isset($args['page_number']) ? intval($args['page_number']) : 1;
+		$post_type = isset($args['post_type']) ? $args['post_type'] : ['page'];
+		$order_by = isset($args['order_by']) && in_array($args['order_by'], self::ORDER_BY) ? $args['order_by'] : self::ORDER_BY[0];
+		$search = isset($args['s']) && strlen($args['s']) ? $args['s'] : false;
+		$post__in = isset($args['post__in']) && is_array($args['post__in']) && count($args['post__in']) ? $args['post__in'] : [];
+		$offset = $posts_per_page * ($page - 1);
 
-		//FOR GENERAL SEARCH
-		if($post_type == 'general'){
-			$is_general_search = true;
+		$combined_args = [
+			'combined_query' => [
+				'args' => [],
+				'union' => 'UNION',
+				'posts_per_page' => $posts_per_page,
+				'offset' => $posts_per_page * ($page - 1),
+			]
+		];
+
+		foreach ($post_type as $pt) {
+			$query_args = [
+				'post_type' => $pt,
+				'posts_per_page' => -1,
+				'post_status' => ['publish'],
+				'has_password' => false,
+				'tax_query' => [],
+				'meta_query' => [],
+				'post__in' => isset($post__in) && count($post__in) ? $post__in : false,
+				's' => $args['s'] ?? false
+			];
+
+			$query_args = array_merge($query_args, self::GenerateTaxAndMetaQueriesArray($args, $pt));
+
+			$combined_args['combined_query']['args'][] = $query_args;
 		}
 
-		$query_args = [
-			'post_type' => $post_type == 'general' ? self::GENERAL_SEARCH_POST_TYPES : $post_type,
-			'posts_per_page' => $posts_per_page,
-			'offset' => $posts_per_page * $page,
-			'post_status' => ['publish'],
-			'has_password' => false,
+		// Modify sub fields:
+		add_filter('cq_sub_fields', $subfields_cb = function( $fields ) use ($order_by){
+			if($order_by === 'popular'){
+				return $fields . ', (SELECT meta_value from '.self::$tablePrefix.'postmeta WHERE '.self::$tablePrefix.'postmeta.post_id = '.self::$tablePrefix.'posts.ID AND '.self::$tablePrefix.'postmeta.meta_key = \'likes_counter\' LIMIT 1) AS likes';
+			}else if($order_by === 'latest'){
+				return $fields . ', (SELECT meta_value from '.self::$tablePrefix.'postmeta WHERE '.self::$tablePrefix.'postmeta.post_id = '.self::$tablePrefix.'posts.ID AND '.self::$tablePrefix.'postmeta.meta_key = \''.self::DATE_SORT_FIELD.'\' LIMIT 1) AS date_sort_field';
+			}else{
+				return $fields;
+			}
+		});
+
+		//Modify order by:
+		add_filter('cq_orderby', $orderby_cb = function( $orderby ) use ($order_by, $search, $post_type, $post__in) {
+			return self::getOrderBySQL($order_by, $search, $post_type, $post__in) ?? $orderby;
+		});
+
+		$query = new \WP_Query($combined_args);
+		wp_reset_postdata();
+
+		remove_filter('cq_sub_fields', $subfields_cb);
+		remove_filter('cq_orderby', $orderby_cb);
+
+		return ['posts' => $query->posts, 'hasMore' => ( $page < ceil($query->found_posts)/$posts_per_page) ];
+	}
+
+
+	public static function GetTermsSlugs($terms){
+		if(!isset($terms) || empty($terms)){
+			return [];
+		}
+
+		return array_reduce($terms,function($result, $term) {
+            $result[] = $term->slug;
+            return $result;
+        }, []);
+	}
+
+	public static function GenerateTaxAndMetaQueriesArray($args, $post_type){
+		$result = [
 			'tax_query' => [],
 			'meta_query' => []
 		];
 
 		$taxonomies = array_filter([
-			$post_type == 'general' ? 'program' : null,
+			in_array($post_type, ['after-school-program', 'student-success']) ? 'age' : null,
+			in_array($post_type, ['after-school-program', 'student-success']) ? 'program' : null,
 		]);
 
+		$relationships = [];
+
 		foreach($taxonomies as $t){
-			$query_args['tax_query'] = isset($args[$t]) && $args[$t] ? array_merge($query_args['tax_query'], [
+			$result['tax_query'] = isset($args[$t]) && $args[$t] ? array_merge($result['tax_query'], [
 				[
 					'taxonomy' => $t,
 					'field' => 'slug',
 					'terms' => $args[$t],
 					'operator' => 'IN'
 				]
-			]) : $query_args['tax_query'];
+			]) : $result['tax_query'];
 		}
 
-		$properties = array_filter([]);
-
-		foreach ($properties as $p) {
-			$query_args['meta_query'] = isset($args[$p]) && $args[$p] ? array_merge($query_args['meta_query'], [
-				[
-					'key' => $p,
-					'value' => $args[$p],
-					'compare' => '='
-				]
-			]) : $query_args['meta_query'];
-		}
-
-
-		if(isset($args['search']) && $args['search']){
-			$query_args['s'] = $args['search'];
-
-			if($is_general_search){
-				//Reset offset parameters
-				$query_args['posts_per_page'] = -1;
-				$query_args['offset'] = 0;
-				$search_term = $query_args['s'];
-	
-				//what we do here is use combined queries to do a combined query with [s] parameter AND 
-				//a query with taxonomy search LIKE
-				$second_query = $query_args;
-	
-				//remove search term so that the taxonomy query is respected
-				$second_query['s'] = false; 
-	
-				//get the terms that match LIKE search term
-				$matched_term_ids = get_terms([
-					'taxonomy'   => 'post_tag',
-					'name__like' => $args['search'],
-					'fields' => 'ids'
-				]);
-	
-				//Build second taxonomy
-				$second_query['tax_query'] = array_merge($second_query['tax_query'], [
-					[
-						'taxonomy' => 'post_tag',
-						'field' => 'id',
-						'terms' => $matched_term_ids,
-						'operator' => 'IN'
-					]
-				]);
-	
-				//Build new combined query
-				$query_args = [
-					'combined_query' => [
-						'args' => [ $query_args, $second_query ],
-						'union' => 'UNION',
-						'posts_per_page' => $posts_per_page,
-						'offset' => $posts_per_page * $page,
-					]
+		//for relationships
+		foreach ($relationships as $rel) {
+			$relationship_meta = [];
+			if(isset($args[$rel]) && $args[$rel]){
+				$relationship_meta = [
+					'relation' => 'OR',
 				];
+
+				foreach ($args[$rel] as $relId) {
+					$relationship_meta[] = [
+						'key' => $rel,
+						'value' => '"'.$relId.'"',
+						'compare' => 'LIKE'
+					];
+				}
 			}
-		}
 
-
-		add_filter( 'cq_orderby', $callback = function( $orderby ) use ($search_term) {
-			return self::RelevanceSearchFilter($search_term) . ', combined.post_date DESC';
-		});
-
-		$query = new \WP_Query($query_args);
-		wp_reset_postdata();
-
-		remove_filter( 'cq_sub_fields', $callback );
-
-		return $query->posts ?: $result;
-	}
-
-	public static function ConvertDataToHtmlArray($data_arr, $template_name = 'search-result-card'){
-		$result = [];
-
-		foreach ($data_arr?: [] as $i) {
-			$card_data = \App\Providers\CardsDataProvider::get($i);
-
-			$result[] = view('components.' . $template_name, [
-				'post_type' => $card_data['post_type'],
-				'permalink' => $card_data['permalink'],
-				'title' => $card_data['title'],
-				'excerpt' => $card_data['excerpt'],
-				'program_tags' => $card_data['program_tags'],
-				'image' => $card_data['image']
-			])->render();
+			$result['meta_query'] = array_merge($result['meta_query'], [
+				$relationship_meta
+			]);
 		}
 
 		return $result;
 	}
 
+	public static function getOrderBySQL($order_by, $search, $post_types, $post__in = []){
+		$result = null;
+
+		//if post__in then it takes precedence
+		if($order_by === self::ORDER_BY[2] && count($post__in)){
+			return 'field(combined.ID, '.implode(', ', $post__in).')';
+		}
+
+		if($order_by === self::ORDER_BY[0]){
+			$result[] = 'combined.date_sort_field DESC';
+		}
+
+		if(isset($search) && $search){
+			$result[] = self::RelevanceSearchFilter($search);
+		}
+
+		return $result ? implode(', ', $result) : $result;
+	}
+
+	public static function ConvertDataToHtmlArray($data_arr){
+		$result = [];
+
+		foreach ($data_arr?: [] as $post) {
+			$card = new \App\View\Components\Card($post);
+			$result[] = view('components.card', $card->data() )->render();
+		}
+
+		return $result;
+	}
+
+
 	public static function SetDateSortField($post_id){
 		$post_type = get_post_type($post_id);
 		$post_creation_date_unix = strtotime(get_the_date('', $post_id));
 		$field_value = $post_creation_date_unix;
-
-		switch ($post_type) {
-			case 'event':
-				$field_value = strtotime(get_field('start_date', $post_id));
-				break;
-			default:
-				break;
-		}
 
 		update_post_meta($post_id, self::DATE_SORT_FIELD, $field_value);
 	}
@@ -256,7 +304,7 @@ class PostSearchProvider extends ServiceProvider
 		$result .= "WHEN combined.post_excerpt LIKE '$term' THEN 4 ";
 
 		$result .= "WHEN combined.post_content LIKE '$term' THEN 5 ELSE 6 END) ASC";
-		
+
 		return $wpdb->add_placeholder_escape($result);
 	}
 }

@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-  @if (! have_posts())
-    <x-alert type="warning">
-      {!! __('Sorry, no results were found.', 'sage') !!}
-    </x-alert>
-
-    {!! get_search_form(false) !!}
-  @endif
-
-  @while(have_posts()) @php(the_post())
-    @include('partials.content-search')
-  @endwhile
-
-  {!! get_the_posts_navigation() !!}
+    <div class="search-main-container fr-page-builder-container">
+        <div class="section-bg-light-gray fr-content-row vert-stack-middle">
+            <div class="container">
+                <div class="module strategy-cards">
+                    <div class="module-heading">
+                        <h2>Cards</h2>
+                    </div>
+                    <x-card-grid posts-per-page="3" />
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

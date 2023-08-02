@@ -7,6 +7,7 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Fields\Partials\HeaderThemeSettings;
 use App\Fields\Partials\FooterThemeSettings;
 use App\Fields\Partials\ApiThemeSettings;
+use App\Fields\Partials\ThemeColorFields;
 
 class ThemeSettings extends Field
 {
@@ -39,8 +40,42 @@ class ThemeSettings extends Field
                 ->addFields($this->get(HeaderThemeSettings::class))
             ->addTab('Footer')
                 ->addFields($this->get(FooterThemeSettings::class))
+            ->addTab('Stay Connected')
+                ->addText('stay_connected_title', [
+                    'wrapper' => [
+                        'width' => 50
+                    ]
+                ])
+                ->addWysiwyg('stay_connected_content')
             ->addTab('API Settings')
-                ->addFields($this->get(ApiThemeSettings::class));
+                ->addFields($this->get(ApiThemeSettings::class))
+            ->addTab('Color Themes')
+                ->addSelect('default_theme', [
+                    'allow_null' => 0,
+                    'choices' => [
+                        'blue_theme' => 'Blue',
+                        'purple_theme' => 'Purple',
+                        'pink_theme' => 'Pink',
+                        'orange_theme' => 'Orange',
+                        'green_theme' => 'Green'
+                    ],
+                    'return_format' => 'value',
+                ])
+                ->addGroup('blue_theme')
+                    ->addFields($this->get(ThemeColorFields::class))
+                ->endGroup()
+                ->addGroup('purple_theme')
+                    ->addFields($this->get(ThemeColorFields::class))
+                ->endGroup()
+                ->addGroup('pink_theme')
+                    ->addFields($this->get(ThemeColorFields::class))
+                ->endGroup()
+                ->addGroup('orange_theme')
+                    ->addFields($this->get(ThemeColorFields::class))
+                ->endGroup()
+                ->addGroup('green_theme')
+                    ->addFields($this->get(ThemeColorFields::class))
+                ->endGroup();
 
         return $themeSettings->build();
     }

@@ -1,12 +1,6 @@
-<div class="module card-grid-module {{ $block->classes }}" @if(isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
-  <div class="container-fluid card-grid-container">
-    @forelse ($cards as $card)
-      @if ($source == 'manual')
-        <x-project-card :preview="$block->preview" :title="$card['title']" :description="$card['description']" :image="$card['image']" :link="$card['link']" :tag="$card['tag']"/>
-      @else
-        <x-project-card :preview="$block->preview"  :title="$card['title']" :description="$card['excerpt']" :image="$card['image']" :link="$card['permalink']" :tag="$card['tag']"/>
-      @endif
-    @empty
-    @endforelse
-  </div>
+<div class="module card-grid-with-filter-module {{ $block->classes }}" @if(isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
+	@if($blockData['post_type'] === 'student-success')
+	<x-card-grid-filter :filter-id="$filterId" :filters="$frontendFilters" :includeSearch="true" :block-data="$blockData"/>
+	@endif
+	<x-card-grid :posts-per-page="$postsPerPage" :connected-filters="[$filterId]" :load-more-text="$loadMoreText" :block-data="$blockData"/>
 </div>

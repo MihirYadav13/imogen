@@ -118,9 +118,12 @@ class FrColumns extends Block
             'acf/fr-column'
         ];
 
+        $items = $this->items();
+
         return [
-            'layouts' => $this->items()['layouts'],
-            'choices' => $this->items()['choices'],
+            'layouts' => $items['layouts'],
+            'is_flipped' => $items['is_flipped'],
+            'choices' => $items['choices'],
             'max_width' => $this->getMaxWidthAttr(),
             'allowed_blocks' => json_encode($allowed_blocks)
         ];
@@ -144,6 +147,9 @@ class FrColumns extends Block
                     'class' => 'fr-hide-first-opt'
                 ]
             ])
+            ->addTrueFalse('is_flipped')
+                ->conditional('layouts', '==', '13_23')
+                ->or('layouts', '==', '14_34')
             ->addRange('max_width', [
                 'label' => 'Layout\'s Max Width',
                 'min' => 10,
@@ -164,6 +170,7 @@ class FrColumns extends Block
     {
         return [
             'layouts' => get_field('layouts'),
+            'is_flipped' => get_field('is_flipped')?:false,
             'choices' => $this->choices(['remove_first' => true]),
         ];
     }
@@ -174,9 +181,8 @@ class FrColumns extends Block
         $choices['1_1'] = '1/1';
         $choices['12_12'] = '1/2 1/2';
         $choices['13_13_13'] = '1/3 1/3 1/3';
-/*        $choices['16_46_16'] = '1/6 4/6 1/6'; */
-        $choices['23_13'] = '2/3 1/3';
-/*         $choices['13_23'] = '1/3 2/3'; */
+        $choices['13_23'] = '1/3 2/3';
+        $choices['14_34'] = '1/4 3/4';
         
         if(isset($args['remove_first']) && $args['remove_first']){
             unset($choices['-1']);

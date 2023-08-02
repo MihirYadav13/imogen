@@ -1,0 +1,109 @@
+.multiselect.dropdown-toggle{
+    background-color: transparent;
+    border: 1px solid $light-gray-3;
+    border-radius: 20px;
+    padding: 9px 17px;
+    @include font-primary;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &::after{
+        content: '';
+        @include svg-plus;
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        border: none;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-left: 15px;
+    }
+
+    &.show{
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0px;
+
+        &::after{
+            @include svg-minus;
+        }
+
+        +.multiselect-container{
+            overflow: hidden;
+
+            &[data-popper-placement="bottom-start"]{
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-top: 0px;
+            }
+
+            &[data-popper-placement="top-start"]{
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                border-bottom: 0px;
+            }
+        }
+    }
+
+    .multiselect-selected-text{
+        flex: 1;
+        text-align: left;
+    }
+}
+
+.multiselect-container{
+    width: 100%;
+    margin-top: -3px !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: $white;
+    border: 1px solid $light-gray-3;
+    border-radius: 6px;
+
+    .multiselect-option{
+        padding: 9px 17px;
+
+        .form-check{
+            background-color: transparent !important;
+        }
+
+        input[type="checkbox"], input[type="radio"]{
+            display: none;
+        }
+
+        &.active:not(.multiselect-active-item-fallback), &.active:not(.multiselect-active-item-fallback):active{
+            background-color: $blue !important;
+            color: $white;
+            font-weight: bold;
+            border-radius: 0;
+        }
+
+        &:not(.active):hover, &:hover, &:not(.multiselect-active-item-fallback):active{
+            background-color: $light-gray !important;
+            border-radius: 0;
+        }
+        
+        .form-check{
+            padding-left: 0;
+
+            label{
+                @include font-primary;
+                font-size: 14px;
+                line-height: 24px;
+            }
+        }
+    }
+}
+
+.multiselect-native-select{
+    display: block;
+    width: 100%;
+
+    >.btn-group{
+        width: 100%;
+    }
+}
