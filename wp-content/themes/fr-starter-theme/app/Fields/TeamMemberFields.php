@@ -34,7 +34,7 @@
 						'width' => 50
 					]
 				])
-				->addTextArea('short_bio', [
+				->addWysiwyg('short_bio', [
 					'rows' => 5,
 					'new_line' => 'br',
 					'maxlength' => 700

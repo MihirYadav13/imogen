@@ -2,11 +2,13 @@
 	const initializeGrid = ($self) => {
 		let _ = {
 			ajaxConfig: JSON.parse(($self.attr('ajax-config') ? $self.attr('ajax-config') : '{}')),
+			teamMemberModalConfig: JSON.parse(($self.attr('team-member-modal-config') ? $self.attr('team-member-modal-config') : '{}')),
 			connectedFilters: JSON.parse(($self.attr('connected-filters') ? $self.attr('connected-filters') : '[]')),
             ajaxContainer: $self.find('.ajax-container'),
             resultContainer: $self.find('.filters-result-container'),
             cardsContainer: $self.find('.atd-cards-container'),
             loadMoreBtn: $self.find('.load-btn-container a'),
+			teamMemberModal: $self.find('.team-member-modal').length ? $self.find('.team-member-modal').attr('id') :false,
             ajaxRunning: false,
             hasMore: true
 		}
@@ -17,6 +19,7 @@
 		});
 
 		connectFrontendFilters($self, _);
+		initializeTeamMemberModal($self, _);
 	}
 
 	const connectFrontendFilters = ($self, _) => {
@@ -49,6 +52,33 @@
 				loadFirstPage($self, _);
 			});
 		});
+	}
+
+
+	const initializeTeamMemberModal = ($self, _) => {
+		if(!_.teamMemberModal) return;
+
+		let $modal = $(`#${_.teamMemberModal}`);
+
+		$self.find('.card-type-team-member').on('click', (e) => {
+			e.preventDefault();
+			$modal.find('.modal-body .member-info').html('');
+			$modal.modal('show');
+			$modal.attr('fr-status', 'loading');
+			let memberId = $(e.target).closest('.card-type-team-member').attr('post-id');
+			
+			// // Get member info
+			$.ajax({
+				url: _.teamMemberModalConfig.url,
+				data: {action: _.teamMemberModalConfig.action, memberId}
+			}).done(function(resData) {
+				$modal.find('.modal-body .member-info').html(resData.data.modalBody);
+				$modal.attr('fr-status', 'success');
+			}).fail(err => {
+				$modal.attr('fr-status', 'fail');
+				console.log('Failed: ' + JSON.stringify(err));
+			});	
+		});	
 	}
 
 

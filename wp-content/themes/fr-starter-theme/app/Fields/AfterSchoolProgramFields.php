@@ -29,12 +29,14 @@
 					]
 				])
 				->addText('location', [
+					'required' => 1,
 					'maxlength' => 50,
 					'wrapper' => [
 						'width' => 50
 					]
 				])
 				->addText('school_email', [
+					'required' => 1,
 					'maxlength' => 50,
 					'wrapper' => [
 						'width' => 50
@@ -46,6 +48,7 @@
 					]
 				])
 				->addText('school_phone_number', [
+					'required' => 1,
 					'maxlength' => 50,
 					'wrapper' => [
 						'width' => 50
