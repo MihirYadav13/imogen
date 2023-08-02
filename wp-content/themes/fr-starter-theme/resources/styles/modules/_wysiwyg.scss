@@ -39,25 +39,37 @@
     }
 
 	//Important for images inside wysiwygs https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages
-	img.alignright {float:right; margin:0 0 1em 1em}
-	img.alignleft {float:left; margin:0 1em 1em 0}
-	img.aligncenter {display: block; margin-left: auto; margin-right: auto}
-	a img.alignright {float:right; margin:0 0 1em 1em}
-	a img.alignleft {float:left; margin:0 1em 1em 0}
-	a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
-
     img{
+
+        border-radius: 8px;
+        margin-bottom: 1rem;
+
+        &.alignright {
+            float:right; 
+            margin:0 0 1em 1em;
+        }
+
+        &.alignleft {
+            float:left; 
+            margin:0 1em 1em 0;
+        }
+
+        &.aligncenter {
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
         &.alignright,
         &.alignleft,
         &.aligncenter,
         &.alignnone{
-            @include wysiwyg-image-border;
         }
     }
 
 	figure.wp-caption{
 		>img{
-			@include wysiwyg-image-border;
+			
 		}
 
 		figcaption{

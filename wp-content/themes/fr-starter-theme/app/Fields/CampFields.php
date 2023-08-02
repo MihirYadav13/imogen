@@ -31,12 +31,14 @@
 				->addDatePicker('start_date', [
 					'wrapper' => [
 						'width' => 30
-					]
+					],
+					'return_format' => 'Y-m-d'
 				])
 				->addDatePicker('end_date', [
 					'wrapper' => [
 						'width' => 30
-					]
+					],
+					'return_format' => 'Y-m-d'
 				])
 				->addTextArea('location', [
 					'maxlength' => 500,

@@ -54,13 +54,18 @@
                 }
             }
 
-            &-light-gray{
-                background-color: $light-gray;
-                
-                >.row-bg-overlay{
-                    background-color: $light-gray;
-                }
+            &-fade-to-white{
+                background: linear-gradient(180deg, var(--fr-theme-bg-ftw-top-color) 0%, var(--fr-theme-bg-ftw-mid-color) 50%, $white 100%);
             }
+
+            &-fade-to-color{
+                background: linear-gradient(180deg, var(--fr-theme-bg-ftc-top-color) 0%, var(--fr-theme-bg-ftc-bottom-color) 100%);
+            }
+        }
+
+        &.has-top-wave{
+            @include wave-top;
+            overflow: visible;
         }
 
         &.vert-pad{

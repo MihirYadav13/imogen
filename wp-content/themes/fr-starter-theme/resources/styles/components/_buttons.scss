@@ -24,7 +24,7 @@ body .cta-button, body a.cta-button{
     }
 
     &.primary{
-        background: $blue;
+        background: var(--fr-theme-main-color);
     }
 
     &.secondary{

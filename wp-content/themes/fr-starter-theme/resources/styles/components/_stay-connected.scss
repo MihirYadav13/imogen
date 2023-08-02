@@ -1,15 +1,21 @@
 .stay-connected-container{
+    position: relative;
     padding: 40px 0;
+    background: linear-gradient(180deg, var(--fr-theme-bg-ftc-top-color) 0%, var(--fr-theme-bg-ftc-bottom-color) 100%);
+    
     .contact-us{
-        color: $dark-orange;
+        color: var(--fr-theme-main-color);
         text-align: center;
     }
+
     .stay-connected-content{
         text-align: center;
-        color : $dark-gray;        
+
         a.cta-button{
             width: 190px;
-            background-color: $dark-orange !important;
+            background-color: var(--fr-theme-main-color);
         }
     } 
+
+    @include wave-top;
 }
