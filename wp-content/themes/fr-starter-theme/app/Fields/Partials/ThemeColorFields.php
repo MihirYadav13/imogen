@@ -34,6 +34,9 @@ class ThemeColorFields extends Partial
                         'width' => 50
                     ]
                 ])
+                ->addTextarea('wave_top_filter', [
+                    'rows' => 3
+                ])
             ->endGroup()
             ->addGroup('fade_to_color', [
                 'wrapper' => [
@@ -49,6 +52,9 @@ class ThemeColorFields extends Partial
                     'wrapper' => [
                         'width' => 50
                     ]
+                ])
+                ->addTextarea('wave_top_filter', [
+                    'rows' => 3
                 ])
             ->endGroup();
 

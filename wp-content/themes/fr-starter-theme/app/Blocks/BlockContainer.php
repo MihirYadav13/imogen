@@ -151,6 +151,11 @@ class BlockContainer extends Block
 				'return_format' => 'value',
 				'default' => 'white'
 			])
+			->addTrueFalse('show_top_wave', [
+				'label' => 'Show top wave',
+				'default' => 0
+			])
+				->conditional('background_color', '!=', 'white')
 			->addRadio('content_max_width', [
 				'label' => 'Content\'s Max Width',
 				'layout' => 'horizontal',
@@ -348,6 +353,7 @@ class BlockContainer extends Block
 		
 		return [
 			'background_color' => get_field('background_color') ? 'section-bg-' . get_field('background_color') : 'section-bg-white',
+			'show_top_wave' => get_field('show_top_wave')?'has-top-wave':'',
 			'background_image' => get_field('background_image'),
 			'background_image_size' => get_field('background_image_size'),
 			'background_image_dimensions' => $this->createCssRules('desktop', get_field('background_image_dimensions')),

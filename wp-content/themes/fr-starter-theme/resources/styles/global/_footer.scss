@@ -191,6 +191,7 @@
 
                         input[type="submit"]{
                             width: calc(100% - 174px);
+                            background-color: $blue;
 
                             @include breakpoint(lg down){
                                 width: 100%;

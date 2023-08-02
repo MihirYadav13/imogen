@@ -105,3 +105,26 @@
         padding: $page-builder-row-vertical-padding-mobile 0;
     }
 }
+
+
+@mixin wave-top{
+	&::before{
+        content: "";
+        display: block;
+        width: 100%;
+        height: 32px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-100%);
+        background-size: 100%;
+        background-image: url("../images/block-wave.svg");
+		filter: var(--fr-theme-bg-ftc-wt-filter);
+    }
+
+	&.section-bg-fade-to-white{
+		&::before{
+			filter: var(--fr-theme-bg-ftw-wt-filter);
+		}
+	}
+}

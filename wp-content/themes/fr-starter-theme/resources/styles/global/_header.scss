@@ -171,6 +171,12 @@
 			align-items: center;
 
 			.cta-button{
+				
+
+				&.primary{
+					background-color: $blue;
+				}
+
 				@include breakpoint(lg down){
 					width: calc(50% - 4px);
 				}
