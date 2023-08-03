@@ -157,7 +157,7 @@ class CardGrid extends Block
 				'choices' => [
 					'after-school-program' => 'After School Program',
 					'camp' => 'Camp',
-					'student-success' => 'Student Success',
+					'post' => 'Blog Post',
 					'childhood-education' => 'Childhood Education',
 					'team-member' => 'Team Member'
 				],
@@ -217,16 +217,16 @@ class CardGrid extends Block
 					'multiple' => 1
 				])
 				->conditional('post_type', '==', 'camp')
-				->addPostObject('student-success', [
+				->addPostObject('post', [
 					'label' => 'Selected Posts',
 					'return_format' => 'id',
 					'post_type' => [
-						'student-success'
+						'post'
 					],
 					'required' => 1,
 					'multiple' => 1
 				])
-				->conditional('post_type', '==', 'student-success')
+				->conditional('post_type', '==', 'post')
 				->addPostObject('childhood-education', [
 					'label' => 'Selected Posts',
 					'return_format' => 'id',
@@ -264,10 +264,10 @@ class CardGrid extends Block
 					]
 				])
 					->conditional('post_type', '==', 'after-school-program')
-					->or('post_type', '==', 'student-success')
-				->addTaxonomy('program', [
-					'label' => 'Programs',
-					'taxonomy' => 'program',
+					->or('post_type', '==', 'camp')
+				->addTaxonomy('activity', [
+					'label' => 'Activity',
+					'taxonomy' => 'activity',
 					'field_type' => 'checkbox',
 					'return_format' => 'object',
 					'multiple' => 1,
@@ -277,7 +277,7 @@ class CardGrid extends Block
 					]
 				])
 					->conditional('post_type', '==', 'after-school-program')
-					->or('post_type', '==', 'student-success')
+					->or('post_type', '==', 'camp')
 			->endGroup();
 
 		return $cardGrid->build();
@@ -325,9 +325,9 @@ class CardGrid extends Block
 	public function getFrontendFilters($postType){
 
 		return array_unique(array_filter([
-			in_array($postType, ['after-school-program']) ? 'age' : null,
+			in_array($postType, ['after-school-program','camp','post']) ? 'age' : null,
 			in_array($postType, ['after-school-program','camp']) ? 'program' : null,
-			in_array($postType, ['student-success']) ? 'activity' : null
+			in_array($postType, ['post']) ? 'activity' : null
 		]));
 	}
 

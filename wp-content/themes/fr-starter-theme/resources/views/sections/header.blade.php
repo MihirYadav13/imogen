@@ -11,8 +11,8 @@
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#headerMenuContent" aria-controls="headerMenuContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon">
-					<img class="menu-icon" src="@asset('images/bars.svg')"/>
-					<img class="close-icon" src="@asset('images/close.svg')"/>
+					<img class="menu-icon" src="@asset('images/bars.svg')" loading="lazy"/>
+					<img class="close-icon" src="@asset('images/close.svg')" loading="lazy"/>
 				</span>
 			</button>
 			</div>

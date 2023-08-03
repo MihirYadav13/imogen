@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-					<img src="@asset('images/close.svg')" alt="Close">
+					<img src="@asset('images/close.svg')" alt="Close" loading="lazy">
 				</button>
 			</div>
 			<div class="modal-body">

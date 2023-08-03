@@ -7,7 +7,7 @@
 			<source media="(max-width: 768px)" srcset="{{ isset($image_mobile['id']) ? wp_get_attachment_image_srcset($image_mobile['id'], 'full') : $image_mobile['url'] }}">
 		@endif
 		@if (($image_desktop && is_array($image_desktop)) || ($image_mobile && is_array($image_mobile)))
-			<img class="fr-responsive-image" src="{{ is_array($image_desktop) && $image_desktop['url']? $image_desktop['url'] : $image_mobile['url'] }}" alt="{{ @$image_desktop['alt'] ||  @$image_mobile['alt'] }}">
+			<img class="fr-responsive-image" src="{{ is_array($image_desktop) && $image_desktop['url']? $image_desktop['url'] : $image_mobile['url'] }}" alt="{{ @$image_desktop['alt'] ||  @$image_mobile['alt'] }}" loading="lazy">
 		@endif
 	</picture>
 </div>
