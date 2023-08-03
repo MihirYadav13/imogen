@@ -13,11 +13,13 @@
 	&.scrolled{
 		background: $white;
 		border-bottom: 1px solid $light-blue-3;
+
+		@include breakpoint(lg down){
+			border-bottom: none;
+		}
 	}
 
 	@include breakpoint(lg down){
-		background: $white;
-		border-bottom: 1px solid $light-blue-3;
 		overflow: scroll;
 		max-height: 100vh;
 	}
@@ -37,24 +39,45 @@
 
 		@include breakpoint(lg down){
 			background-color: transparent;
-		}
-		
-		@include breakpoint(md down){
-			padding: 16px 0;
-		}
+			padding: 0;
+  		}
 
 		>.container{
 			width: 100%;
+
+			@include breakpoint(lg down){
+				padding: 0;
+				max-width: 100%;
+			}
 		}
 
-		.brand{
-			line-height: 0;
+		.brand-container{
+			width: auto;
+			padding: 0;
 
-			img{
-				max-height: 40px;
-				
-				@include breakpoint(lg down){
-					max-height: 32px;
+			@include breakpoint(lg down){
+				border-bottom: 1px solid $light-blue-3;
+				padding-right: calc(var(--bs-gutter-x) * 0.5);
+    			padding-left: calc(var(--bs-gutter-x) * 0.5);
+				padding-bottom: 12px;
+				padding-top: 12px;
+				width: 100%;
+				max-width: 100%;
+				display: flex;
+				flex-wrap: inherit;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.brand{
+				line-height: 0;
+
+				img{
+					max-height: 40px;
+					
+					@include breakpoint(lg down){
+						max-height: 32px;
+					}
 				}
 			}
 		}
@@ -71,16 +94,15 @@
 				flex-direction: column;
 				flex-wrap: wrap;
 				align-items: flex-start;
-				margin-top: 35px;
 				margin-bottom: 20px;
-
+				padding-top: 24px;
 			}
 
 			> .nav-item{
 				@include breakpoint(lg down){
 					width: 100%;
-					padding: 0px 10px;
-					border-bottom: 1px solid $dark-gray;
+					padding: 0px 8px;
+					border-bottom: 1px solid $light-gray-2;
 				}
 
 				.nav-link{
@@ -92,7 +114,7 @@
                     padding: 8px 0;
 
 					@include breakpoint(lg down){
-						padding: 12px 0px;
+						padding: 16px 0px;
 						text-align: left;
 						display: flex;
 						justify-content: space-between;
@@ -105,20 +127,42 @@
 				}
 			}
 
+			.dropdown-toggle{
+				&::after{
+					transition: opacity 0.15s ease-in-out;
+
+					@include breakpoint(lg down){
+						transform: rotate(90deg);
+					}
+				}
+
+				&.show{
+					&::after{
+						transform: rotate(0deg);
+
+						@include breakpoint(lg down){
+							transform: rotate(180deg);
+						}
+					}
+				}
+			}
+
 			.dropdown-menu{
-				border: 1px solid $blue;
-				width: 200px;
-				min-width: unset;
+				box-shadow: 0 2px 20px 0 rgba(82,87,103,0.2);
+				border: none;
+				min-width: 172px;
+				max-width: 200px;
 				background: $white;
-				border-radius: 3px;
-				padding-top: 10px;
+				border-radius: 8px;
+				padding: 0;
 				margin: 0;
+				overflow: hidden;
 
 				@include breakpoint(lg down){
 					background-color: transparent;
 					width: 100%;
 					padding: 0;
-					border: none;
+					box-shadow: unset;
 					padding-bottom: 12px;
 				}
 
@@ -136,21 +180,20 @@
                         line-height: 24px;
                         color: $dark-gray;
                         text-wrap: wrap;
+						padding: 8px 16px;
 
 						@include breakpoint(lg down){
 						}
 	
 						&:hover, &:focus{
-                            background: $blue;
-                            color: $white;
+                            background: $light-blue-4;
 						}
 						
 					}
 
 					&.current-menu-item{
 						a{
-                            background: $blue;
-                            color: $white;
+                            background: $light-blue-4;
 						}
 					}
 				}
@@ -168,17 +211,23 @@
 			display: flex;
 			justify-content: space-between;
 			column-gap: 8px;
+			row-gap: 16px;
 			align-items: center;
 
+			@include breakpoint(lg down){
+				flex-direction: column;
+				flex-flow: column-reverse;
+				padding-bottom: 40px;
+			}
+
 			.cta-button{
-				
 
 				&.primary{
 					background-color: $blue;
 				}
 
 				@include breakpoint(lg down){
-					width: calc(50% - 4px);
+					width: 100%;
 				}
 			}
 		}
@@ -188,12 +237,18 @@
 		justify-content: space-between;
 		margin-left: 65px;
 		flex-wrap: wrap;
+		padding: 0;
 
 		@include breakpoint(lg down){
+			margin-bottom: 20px;
+			box-shadow: 0 2px 32px 0 rgba(82,87,103,0.2);
 			max-width: 100%;
-			padding: 0px;
+			padding-right: calc(var(--bs-gutter-x) * 0.5);
+    		padding-left: calc(var(--bs-gutter-x) * 0.5);
 			flex-direction: column;
 			margin-left: 0;
+			border-radius: 0 0 8px 8px;
+			background: linear-gradient(180deg, #DAE5F2 0%, #ECF2F9 25.22%, #FFFFFF 100%);
 		}
 
 		>div, >ul{
@@ -206,8 +261,8 @@
 
 	.navbar-toggler{
 		border: none;
-		width: 25px;
-		height: 25px;
+		width: 24px;
+		height: 21px;
 		padding: 0;
 
 		&:focus{
@@ -239,8 +294,8 @@
 			}
 
 			&.close-icon{
-				width: 17px;
-				height: 17px;
+				width: 20px;
+				height: 20px;
 			}
 		}
 	}

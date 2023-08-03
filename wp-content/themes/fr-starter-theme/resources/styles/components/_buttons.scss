@@ -31,8 +31,4 @@ body .cta-button, body a.cta-button{
         background-color: $light-blue-2;
         color: $dark-gray;
     }
-
-    @include breakpoint(lg down){
-        border-radius: 8px;
-    }
 }
