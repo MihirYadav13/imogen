@@ -1,6 +1,6 @@
 <?php
 	return [
-		'age' => [
+		'activity' => [
 			'hierarchical' => false,
 			'links' => ['after-school-program', 'camp', 'post'],
 			'meta_box' => 'radio',
@@ -8,8 +8,8 @@
 			'show_in_rest' => true,
 			'required' => true,
 			'labels' => [
-				'singular' => 'Age',
-				'plural' => 'Age',
+				'singular' => 'Activity',
+				'plural' => 'Activities',
 			],
 		],
 	];
