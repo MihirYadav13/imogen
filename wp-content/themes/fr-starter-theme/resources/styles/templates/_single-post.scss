@@ -1,3 +1,32 @@
 body.single-post{
-    //TO DO
+    .post-meta-data{
+        margin: 24px 0 48px;
+        .publish-time{
+            float:left;
+            width: 50%;
+        }
+    }
+    .author{
+        display: flex;
+        align-items: center;
+        margin-top: 48px;
+        img {
+            float: left;
+            margin-right: 16px;
+            border-radius: 8px
+        }
+        .auth-detail{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            h5{
+                margin:0
+            }
+            p{
+                font-size: 14px;
+                line-height: 24px;
+                margin:0
+            }
+        }
+    }
 }
