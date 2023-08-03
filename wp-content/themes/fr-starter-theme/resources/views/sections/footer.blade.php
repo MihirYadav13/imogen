@@ -18,13 +18,13 @@
               @endif
             </div>
             <div class="footer-right footer-column">
-                <h6>{{ $subscribe_label?: 'Subscribe for updates' }}</h6>
+                <label>{{ $subscribe_label?: 'Subscribe for updates' }}</label>
                 <div class="subscribe-conatiner">
                   @if ($subscribe_form_shortcode)
                   @php echo do_shortcode($subscribe_form_shortcode) @endphp
                   @endif
                 </div>
-                <h6>{{ $follow_us_label?: 'Follow Us' }}</h6>
+                <label>{{ $follow_us_label?: 'Follow Us' }}</label>
                 @if ($social_links)
 									<x-social-links :data="$social_links" />
 								@endif
