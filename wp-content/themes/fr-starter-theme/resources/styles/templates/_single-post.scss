@@ -1,4 +1,13 @@
 body.single-post{
+    .taxo_list{
+        font-size: 22px;
+        line-height: 36px;
+        margin-bottom:24px;     
+      .program {          
+        color: $purple;  
+        text-align: center;
+      }
+    }
     .post-meta-data{
         margin: 24px 0 48px;
         .publish-time{
@@ -6,10 +15,23 @@ body.single-post{
             width: 50%;
         }
     }
+    .entry-content{
+        .wp-post-image{
+            width: 100% !important;
+            max-height: 463px;
+        }
+        .fr-content-row{
+            padding: 48px 0;
+        }
+    }
+    .hr{
+        border-top: 1px solid $light-gray-2;
+        width: 100%;
+    }
     .author{
         display: flex;
         align-items: center;
-        margin-top: 48px;
+        margin: 48px 0 80px;
         img {
             float: left;
             margin-right: 16px;
