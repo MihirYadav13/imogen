@@ -17,6 +17,7 @@ import './util/dropdown-animation';
 import './components/embedded-video-thumbnail';
 import './components/card-filter';
 import './components/bs-multiselect';
+import './components/share-button';
 
 // 3. Import block JS
 import './blocks/article-list';
