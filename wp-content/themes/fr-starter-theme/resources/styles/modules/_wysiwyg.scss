@@ -1,96 +1,109 @@
-.wysiwyg-module{
+.wysiwyg-module {
     overflow-wrap: break-word;
 
-	h1, h2, h3, h4, h5, h6, p{
-		margin-top: 0;
-	}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin-top: 0;
+    }
 
-    h4, h5{
+    h4,
+    h5 {
         text-transform: uppercase;
     }
 
-	p::empty{
-		display: none;
-	}
+    p::empty {
+        display: none;
+    }
 
-	a:not(.cta-button):not(.button):not(.alt-btn):not(.badge){
-		color: $deep-blue;
+    a:not(.cta-button):not(.button):not(.alt-btn):not(.badge) {
+        color: $deep-blue;
         font-weight: bold;
-	}
+    }
 
-    >.container{
-        >.row{
-            >.col{
+    > .container {
+        > .row {
+            > .col {
                 flex-basis: 25%;
             }
-            .col-width-1_4{
+            .col-width-1_4 {
                 flex: 0 0 25%;
             }
-            .col-width-2_4{
+            .col-width-2_4 {
                 flex: 0 0 50%;
             }
-            .col-width-3_4{
+            .col-width-3_4 {
                 flex: 0 0 75%;
             }
-            .col-width-4_4{
+            .col-width-4_4 {
                 flex: 0 0 100%;
             }
         }
     }
 
-	//Important for images inside wysiwygs https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages
-    img{
-
+    //Important for images inside wysiwygs https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages
+    img {
         border-radius: 8px;
         margin-bottom: 1rem;
 
         &.alignright {
-            float:right; 
-            margin:0 0 1em 1em;
+            float: right;
+            margin: 0 0 1em 1em;
         }
 
         &.alignleft {
-            float:left; 
-            margin:0 1em 1em 0;
+            float: left;
+            margin: 0 1em 1em 0;
         }
 
         &.aligncenter {
-            display: block; 
-            margin-left: auto; 
+            display: block;
+            margin-left: auto;
             margin-right: auto;
         }
 
         &.alignright,
         &.alignleft,
         &.aligncenter,
-        &.alignnone{
+        &.alignnone {
         }
     }
 
-	figure.wp-caption{
-		>img{
-			
-		}
+    figure.wp-caption {
+        > img {
+        }
 
-		figcaption{
-			@include caption-style;
-		}
-	}
+        figcaption {
+            @include caption-style;
+        }
+    }
 
-	.wp-caption{
-		max-width: 100%;
+    .wp-caption {
+        max-width: 100%;
 
-		.wp-caption-text{
-			@include caption-style;
-		}
-	}
+        .wp-caption-text {
+            @include caption-style;
+        }
+    }
 
-    blockquote{
+    blockquote {
         padding: 15px;
         padding-left: 27px;
 
-        p{
+        p {
             @include blockquote-style;
+        }
+    }
+    .news-paper-column {
+        column-count: 2;
+        column-gap: 38px;
+
+        @include breakpoint(sm down) {
+            column-count: unset;
         }
     }
 }
