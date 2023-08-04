@@ -1,4 +1,4 @@
-<div class="modal fade fr-modal team-member-modal" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal fade fr-modal card-modal" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,8 +8,7 @@
 			</div>
 			<div class="modal-body">
 				<x-spinner />
-				<div class="member-info">
-				</div>
+				<div class="card-content"></div>
 			</div>
 		</div>
 	</div>
