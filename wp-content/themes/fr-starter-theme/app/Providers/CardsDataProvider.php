@@ -52,16 +52,11 @@ class CardsDataProvider extends ServiceProvider
                         'value' => (get_field('location', $post) ?:'')
                     ],
                 ],
-                'registration_link' => get_field('registration_link', $post) ?:[],
-                'action_cta' => [
-                    'url' => $data['permalink'],
-                    'title' => 'Learn More',
-                    'style' => 'secondary'
-                ]            
+                'registration_link' => get_field('registration_link', $post) ?:[]         
             ]);
         }
 
-        if($post_type === 'student-success'){
+        if($post_type === 'post'){
             $data = array_merge($data, [
                 'action_cta' => [
                     'url' => $data['permalink'],

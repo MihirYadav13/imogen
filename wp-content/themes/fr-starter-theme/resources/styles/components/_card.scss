@@ -24,6 +24,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+
+            &::after{
+                content: '';
+                background-image: url("../images/card-wave.svg");
+                height: 32px;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+            }
 
             img{
                 width: 100%;
@@ -32,7 +45,7 @@
             }
 
             &.default{
-                background-color: $blue;
+                background-color: var(--fr-theme-main-color);
 
                 img{
                     width: 52px;
@@ -126,18 +139,11 @@
         &camp{
             .card-inner{
                 .wysiwyg-content{
-                    .card-header{
-                        justify-content: center;
-                        padding-top: 8px;
-                        padding-bottom: 8px !important;
-                        border-bottom: 1px solid $light-gray-2;
-                    }
 
                     .card-footer{
-                        column-gap: 8px;
-
                         .cta-button{
-                            width: calc(50% - 4px);
+                            width: 100%;
+                            font-size: 14px;
                         }
                     }
                 }
@@ -150,11 +156,6 @@
                     .card-header{
                         justify-content: center;
                         padding-top: 16px;
-
-                        .card-title{
-                            font-size: 22px;
-                            line-height: 28px;
-                        }
                     }
 
                     .role{

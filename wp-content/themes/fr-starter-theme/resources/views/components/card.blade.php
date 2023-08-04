@@ -9,9 +9,9 @@
             <div class="wysiwyg-content">
                 <div class="card-header">
                     <a href="{{ $card_data['permalink'] }}" class="card-link">
-                        <h6 class="card-title" fr-truncate-lines="3" title="{{ $card_data['title'] }}">
+                        <h5 class="card-title" fr-truncate-lines="3" title="{{ $card_data['title'] }}">
                             {!! $card_data['title'] !!}
-                        </h6>
+                        </h5>
                     </a>
                 </div>
                 <div class="card-body">
@@ -23,7 +23,7 @@
                             @endif
                         </p>
                     @endif
-                    @if($post_type === 'camp')
+                    @if(false)
                         <div class="info-container">
                             @forelse($card_data['camp_info'] as $info)
                                 <label class="sm">{{ $info['label'] }}:</label>
@@ -32,8 +32,8 @@
                             @endforelse
                         </div>
                     @endif
-                    @if($post_type === 'student-success')
-                        <p class="excerpt sm">{!! $card_data['excerpt'] !!}</p>
+                    @if(in_array($post_type, ['camp','post']))
+                        <p class="excerpt sm" fr-truncate-lines="4" title="{!! $card_data['excerpt'] !!}">{!! $card_data['excerpt'] !!}</p>
                     @endif
                     @if($post_type === 'team-member')
                         <p class="role sm">
@@ -44,7 +44,7 @@
                 @if(!empty($card_data['registration_link']) || !empty($card_data['action_cta']))
                     <div class="card-footer">
                         @if(!empty($card_data['registration_link']))
-                        <x-cta-button label="{!! $post_type === 'after-school-program' ? 'Schedule & Registration' : 'Register' !!}" type="external_url" style="primary"/>
+                        <x-cta-button label="{!! $post_type === 'after-school-program' ? 'Schedule & Registration' : 'Information & Registration' !!}" type="external_url" style="primary"/>
                         @endif
                         @if(!empty($card_data['action_cta']))
                         <x-cta-button :label="$card_data['action_cta']['title']?:'Learn More'" :external-url="$card_data['action_cta']['url']" type="external_url" :style="$card_data['action_cta']['style']?:'primary'"/>
