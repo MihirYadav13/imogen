@@ -8,6 +8,10 @@
         align-items: center;
         padding: 40px 0px;
 
+        @include breakpoint(lg down){
+            padding: 24px 0px;
+        }
+
         .footer-logo{
             img{
                 width: auto;
@@ -34,7 +38,7 @@
         padding-bottom: 40px;
         display: flex;
         flex-direction: row;
-        row-gap: 56px;
+        row-gap: 40px;
         justify-content: space-between;
 
         @include breakpoint(lg down){
@@ -78,7 +82,7 @@
                     > li {
                         @include breakpoint(lg down){
                             border-bottom: 1px solid $white;
-                            padding: 0px 10px;
+                            padding: 0px 16px;
                         }
                         
                         > a{
@@ -93,8 +97,7 @@
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: center;
-                                @include font-primary-semi-bold;
-                                padding: 12px 0px;
+                                padding: 16px 0px;
                             }
 
                             &:hover{
@@ -104,10 +107,18 @@
                             &.dropdown-toggle{
                                 &::after{
                                     display: none;
-                                    filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(30deg) brightness(113%) contrast(101%);
 
                                     @include breakpoint(lg down){
                                         display: inline-block;
+                                        transform: rotate(90deg);
+                                    }
+                                }
+
+                                &.show{
+                                    &::after{
+                                        @include breakpoint(lg down){
+                                            transform: rotate(180deg);
+                                        }
                                     }
                                 }
                             }
@@ -153,8 +164,10 @@
             }
             &.footer-right{
                 width: 280px;
-                h6{
+
+                label{
                     margin-bottom: 4px;
+                    @include font-primary-black;
                 }
 
                 .subscribe-conatiner{
@@ -162,7 +175,7 @@
                     position: relative;
 
                     @include breakpoint(lg down){
-                        margin-bottom: 16px;
+                        margin-bottom: 40px;
                     }
 
                     .wpcf7-form{
@@ -180,21 +193,27 @@
                             background: rgba(255,255,255,0.1);
                             border: 1px solid $white;
                             color: $white;
-                            margin-right: 8px;
+                            border-top-right-radius: 0;
+                            border-bottom-right-radius: 0;
+                            border-right: none;
+                            overflow: hidden;
 
                             @include breakpoint(lg down){
                                 width: 100%;
-                                border-radius: 8px;
                                 margin-bottom: 8px;
+                                border-radius: 20px;
                             }
                         }
 
                         input[type="submit"]{
                             width: calc(100% - 174px);
                             background-color: $blue;
+                            border-top-left-radius: 0;
+                            border-bottom-left-radius: 0;
 
                             @include breakpoint(lg down){
                                 width: 100%;
+                                border-radius: 20px;
                             }
                         }
 
@@ -267,6 +286,13 @@
         justify-content: space-between;
         border-top: 1px solid $white;
         padding: 24px 0px;
+
+        @include breakpoint(lg down){
+            padding-top: 0;
+            border-top: none;
+            flex-direction: column;
+            row-gap: 16px;
+        }
         
 
         .copy-right-text{
@@ -282,10 +308,6 @@
             a{
                 color: $light-blue;
             }
-        }
-
-        @include breakpoint(lg down){
-            flex-direction: column;
         }
     }
 }

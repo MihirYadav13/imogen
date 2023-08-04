@@ -15,7 +15,7 @@
 		</div>
 				
 		<div class="ajax-running-container wysiwyg-content">
-			<span>loading...<span>
+			<x-spinner type="circle"/>
 		</div>
     </div>
 	@if(in_array('team-member', $postType))
