@@ -8,7 +8,7 @@ class PostSearchProvider extends ServiceProvider
 {
 	public static $tablePrefix;
 	const ACTION = 'get_posts';
-	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'student-success', 'childhood-education', 'team-member'];
+	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'post', 'childhood-education', 'team-member'];
 	const POSTS_PER_PAGE = 8;
 	const ORDER_BY = ['latest', 'popular', 'post__in'];
 
@@ -193,8 +193,8 @@ class PostSearchProvider extends ServiceProvider
 		];
 
 		$taxonomies = array_filter([
-			in_array($post_type, ['after-school-program', 'student-success']) ? 'age' : null,
-			in_array($post_type, ['after-school-program', 'student-success']) ? 'program' : null,
+			in_array($post_type, ['after-school-program', 'camp']) ? 'age' : null,
+			in_array($post_type, ['after-school-program', 'camp']) ? 'activity' : null,
 		]);
 
 		$relationships = [];

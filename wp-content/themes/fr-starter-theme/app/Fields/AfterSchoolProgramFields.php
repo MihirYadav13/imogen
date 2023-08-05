@@ -23,14 +23,20 @@
 				->setLocation('post_type', '==', 'after-school-program');
 
 			$fields
-				->addImage('featured_image', [
+				->addImage('featured_image')
+				->addTextArea('description', [
+					'maxlength' => 1000,
+					'rows' => 3,
+					'new_line' => 'br',
 					'wrapper' => [
 						'width' => 50
 					]
 				])
-				->addText('location', [
+				->addTextArea('location', [
 					'required' => 1,
-					'maxlength' => 50,
+					'rows' => 3,
+					'new_line' => 'br',
+					'maxlength' => 500,
 					'wrapper' => [
 						'width' => 50
 					]
@@ -42,14 +48,14 @@
 						'width' => 50
 					]
 				])
-				->addLink('school_website', [
+				->addText('school_phone_number', [
+					'required' => 1,
+					'maxlength' => 50,
 					'wrapper' => [
 						'width' => 50
 					]
 				])
-				->addText('school_phone_number', [
-					'required' => 1,
-					'maxlength' => 50,
+				->addLink('school_website', [
 					'wrapper' => [
 						'width' => 50
 					]

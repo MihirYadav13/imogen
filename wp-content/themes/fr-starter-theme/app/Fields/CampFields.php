@@ -23,36 +23,44 @@
 				->setLocation('post_type', '==', 'camp');
 
 			$fields
-				->addImage('featured_image', [
-					'wrapper' => [
-						'width' => 40
-					]
-				])
 				->addDatePicker('start_date', [
 					'wrapper' => [
-						'width' => 30
+						'width' => 20
 					],
 					'return_format' => 'Y-m-d'
 				])
 				->addDatePicker('end_date', [
 					'wrapper' => [
-						'width' => 30
+						'width' => 20
 					],
 					'return_format' => 'Y-m-d'
-				])
-				->addTextArea('location', [
-					'maxlength' => 500,
-					'rows' => 3,
-					'new_line' => 'br',
-					'wrapper' => [
-						'width' => 80
-					]
 				])
 				->addNumber('fee', [
 					'prepend' => '$',
 					'min' => 0,
 					'wrapper' => [
 						'width' => 20
+					]
+				])
+				->addImage('featured_image', [
+					'wrapper' => [
+						'width' => 40
+					]
+				])
+				->addTextArea('description', [
+					'maxlength' => 1000,
+					'rows' => 3,
+					'new_line' => 'br',
+					'wrapper' => [
+						'width' => 50
+					]
+				])
+				->addTextArea('location', [
+					'maxlength' => 500,
+					'rows' => 3,
+					'new_line' => 'br',
+					'wrapper' => [
+						'width' => 50
 					]
 				])
 				->addGroup('after_care', [

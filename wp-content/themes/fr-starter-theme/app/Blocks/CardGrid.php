@@ -4,7 +4,6 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
-use App\Fields\Partials\CardGridFilters;
 
 class CardGrid extends Block
 {
