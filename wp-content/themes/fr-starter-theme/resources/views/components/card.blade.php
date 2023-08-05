@@ -23,15 +23,6 @@
                             @endif
                         </p>
                     @endif
-                    @if(false)
-                        <div class="info-container">
-                            @forelse($card_data['camp_info'] as $info)
-                                <label class="sm">{{ $info['label'] }}:</label>
-                                <p class="value sm">{{ $info['value'] }}</p>
-                            @empty
-                            @endforelse
-                        </div>
-                    @endif
                     @if(in_array($post_type, ['camp','post']))
                         <p class="excerpt sm" fr-truncate-lines="4" title="{!! $card_data['excerpt'] !!}">{!! $card_data['excerpt'] !!}</p>
                     @endif

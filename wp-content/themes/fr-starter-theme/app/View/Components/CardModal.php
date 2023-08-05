@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class TeamMemberModal extends Component
+class CardModal extends Component
 {
 
     public $modalId;
@@ -26,6 +26,6 @@ class TeamMemberModal extends Component
      */
     public function render()
     {
-        return view('components.team-member.modal');
+        return view('components.card-modal.modal');
     }
 }
