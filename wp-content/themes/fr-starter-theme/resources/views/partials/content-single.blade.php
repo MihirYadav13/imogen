@@ -1,19 +1,6 @@
 <div class="container">
 <article @php(post_class())>
-  <div class ="taxo_list">
-  @php($taxonomies = get_post_taxonomies())
-  @forelse ($taxonomies as $i => $taxonomy)
-  @php($cat_array = ( get_the_terms( get_the_ID(), $taxonomy) ))
-  @forelse ($cat_array as $j => $cat)  
-  <span class="program">{{ $cat->name }}</span>
-  @if ($i < (count($taxonomies)-1))
-  &nbsp;/&nbsp;
-  @endif
-  @empty
-  @endforelse
-  @empty
-  @endforelse
-  </div>
+@include('partials.entry-taxonomy-meta')
   <header>
     <h3 class="entry-title">
       {!! $title !!}

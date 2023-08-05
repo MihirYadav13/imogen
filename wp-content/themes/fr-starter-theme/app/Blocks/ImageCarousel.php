@@ -116,31 +116,24 @@ class ImageCarousel extends Block
     public $example = [
         'images' => [
             [
-                'carousel_image'=> [
-                    'url' => 'https://via.placeholder.com/814x463',
-                    'alt' => 'Placeholder image'
-                ],
+                'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                'alt' => 'Placeholder image'
             ],
             [
-                
-                'carousel_image'=> [
-                    'url' => 'https://via.placeholder.com/814x463',
-                    'alt' => 'Placeholder image'
-                ],
+                'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                'alt' => 'Placeholder image'
             ],
             [
-                
-                'carousel_image'=> [
-                    'url' => 'https://via.placeholder.com/814x463',
-                    'alt' => 'Placeholder image'
-                ],
+                'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                'alt' => 'Placeholder image'
             ],
             [
-                
-                'carousel_image'=> [
-                    'url' => 'https://via.placeholder.com/814x463',
-                    'alt' => 'Placeholder image'
-                ],
+                'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                'alt' => 'Placeholder image'
+            ],
+            [
+                'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                'alt' => 'Placeholder image'
             ]
         ],
         'attributes' => [
