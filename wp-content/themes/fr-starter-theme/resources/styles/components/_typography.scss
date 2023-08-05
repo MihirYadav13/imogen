@@ -75,14 +75,14 @@ body:not(.wp-admin){
     font-size: 18px;
     line-height: 32px;
     @include font-primary;
-    padding-top: 80px;
+    padding-top: 0px;
 
     @include breakpoint(lg down){
         padding-top: 57px;
     }
 
     &.admin-bar{
-        padding-top: 112px;
+        padding-top: 0px;
     }
 }
 
