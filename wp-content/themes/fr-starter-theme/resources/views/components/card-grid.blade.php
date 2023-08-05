@@ -1,4 +1,4 @@
-<div class="container-fluid card-grid-container ajax-container" ajax-config="{{ $ajaxConfig }}" team-member-modal-config="{{ $teamMemberModalConfig }}" connected-filters="{{ json_encode($connectedFilters) }}" fr-status="{{ empty($posts)?'no-results-found':(!$hasMore?'no-more-results':'') }}">
+<div class="container-fluid card-grid-container ajax-container" ajax-config="{{ $ajaxConfig }}" card-modal-config="{{ $cardModalConfig }}" connected-filters="{{ json_encode($connectedFilters) }}" fr-status="{{ empty($posts)?'no-results-found':(!$hasMore?'no-more-results':'') }}">
     <div class="result-content ajax-content">
 		<x-spinner />
 		<div class="cards-container cards-inner atd-cards-container {{ count($posts) < 4 ? 'columns-'.count($posts) : 'columns-4' }}">
@@ -15,10 +15,10 @@
 		</div>
 				
 		<div class="ajax-running-container wysiwyg-content">
-			<span>loading...<span>
+			<x-spinner type="circle"/>
 		</div>
     </div>
-	@if(in_array('team-member', $postType))
-		<x-team-member-modal />
+	@if(in_array($postType[0], ['camp','team-member','after-school-program']))
+		<x-card-modal />
 	@endif
 </div>

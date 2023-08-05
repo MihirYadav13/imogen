@@ -20,7 +20,8 @@
 
 			$fields
 				->setLocation('post_type', '==', 'page')
-				->or('taxonomy', '==', 'age');
+				->or('post_type', '==', 'after-school-program')
+				->or('post_type', '==', 'camp');
 
 			$fields
 				->addSelect('selected_theme', [

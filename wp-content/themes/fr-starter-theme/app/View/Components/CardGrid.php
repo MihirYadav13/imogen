@@ -13,7 +13,7 @@ class CardGrid extends Component
 	public $hasMore;
 	public $ajaxConfigArgs;
     public $ajaxConfig;
-    public $teamMemberModalConfig;
+    public $cardModalConfig;
     public $connectedFilters;
 	public $postsPerPage = \App\Providers\PostSearchProvider::POSTS_PER_PAGE;
 	public $postType = \App\Providers\PostSearchProvider::GENERAL_SEARCH_POST_TYPES;
@@ -46,7 +46,7 @@ class CardGrid extends Component
 
         $this->setAjaxConfigArgs();
 		$this->prepareAjaxConfig();
-        $this->prepareTeamMemberModalConfig();
+        $this->prepareCardModalConfig();
     }
 
 
@@ -90,7 +90,7 @@ class CardGrid extends Component
 
 		return array_merge($args, [
 			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
-			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['program']?:[]),
+            'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
 		]);
 	}
 
@@ -99,7 +99,7 @@ class CardGrid extends Component
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: null,
 			's' => filter_input(INPUT_GET, 's')?: null,
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
-			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): null,
+            'activity' => filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)): null,
 		]);
 	}
 
@@ -165,8 +165,8 @@ class CardGrid extends Component
      *
      * @return void
      */
-	public function prepareTeamMemberModalConfig(){
-		$this->teamMemberModalConfig = \App\Providers\TeamMemberDataProvider::getAjaxConfig();
+	public function prepareCardModalConfig(){
+		$this->cardModalConfig = \App\Providers\CardsDataProvider::getAjaxConfig();
 	}
 
     /**

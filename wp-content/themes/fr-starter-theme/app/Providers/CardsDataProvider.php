@@ -6,6 +6,17 @@ use Illuminate\Support\ServiceProvider;
 
 class CardsDataProvider extends ServiceProvider
 {
+    const ACTION = 'get_card_modal';
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+	public function register(){
+		add_action('init', '\\App\Providers\CardsDataProvider::SetAjaxActions', 20);
+	}
+
     public static function get($post){
         $post_type = get_post_type($post);
 
@@ -52,16 +63,11 @@ class CardsDataProvider extends ServiceProvider
                         'value' => (get_field('location', $post) ?:'')
                     ],
                 ],
-                'registration_link' => get_field('registration_link', $post) ?:[],
-                'action_cta' => [
-                    'url' => $data['permalink'],
-                    'title' => 'Learn More',
-                    'style' => 'secondary'
-                ]            
+                'registration_link' => get_field('registration_link', $post) ?:[]         
             ]);
         }
 
-        if($post_type === 'student-success'){
+        if($post_type === 'post'){
             $data = array_merge($data, [
                 'action_cta' => [
                     'url' => $data['permalink'],
@@ -127,4 +133,38 @@ class CardsDataProvider extends ServiceProvider
             }
         }
     }
+
+    
+
+	public static function SetAjaxActions(){
+		add_action('wp_ajax_' . self::ACTION, function(){
+			return self::GetModalAjax();
+		});
+
+		add_action('wp_ajax_nopriv_' . self::ACTION, function(){
+			return self::GetModalAjax();
+		});
+	}
+
+    public static function getAjaxConfig(){
+        $ajax_config = [
+            'url' => home_url('/', is_ssl() ? 'https' : 'http') . 'wp-admin/admin-ajax.php',
+            'action' => self::ACTION
+	    ];
+
+		return json_encode($ajax_config, JSON_HEX_APOS);
+    }
+
+
+	public static function GetModalAjax(){
+		$postId = filter_input(INPUT_GET, 'postId')?: false;
+		if(!$postId){
+			wp_send_json_error();
+			die();
+		}
+
+		$modalData = self::get($postId);
+		$modalBody = view('components.card-modal.modal-body', $modalData )->render();
+		wp_send_json_success(['modalBody' => $modalBody]);
+	}
 }

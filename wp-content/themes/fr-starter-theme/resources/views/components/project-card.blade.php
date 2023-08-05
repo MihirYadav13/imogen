@@ -3,7 +3,7 @@
 	@include('components.responsive-acf-image', ['image' => $image_id, 'parameter_is_id' => true, 'size' => 'large', 'class' => 'card-img'])
     @else
         @if ($image_url)
-            <img src="{{ $image_url }}" alt="{{ $image_alt }}" class="card-img">
+            <img src="{{ $image_url }}" alt="{{ $image_alt }}" class="card-img" loading="lazy">
         @endif
     @endif
     <div class="card-inner">
