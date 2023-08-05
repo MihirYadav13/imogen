@@ -10,6 +10,7 @@ window.fetchInject = fetchInject;
 import './util/current-breakpoint';
 import './util/load-splide-async';
 import './util/load-truncate-ellipsis-async';
+import './util/jq-initialize';
 import './util/truncate-text';
 import './util/load-bootstrap-multiselect-async';
 import './util/element-is-in-viewport';
@@ -17,6 +18,8 @@ import './util/dropdown-animation';
 import './components/embedded-video-thumbnail';
 import './components/card-filter';
 import './components/bs-multiselect';
+import './components/share-button';
+import './components/card';
 
 // 3. Import block JS
 import './blocks/article-list';
