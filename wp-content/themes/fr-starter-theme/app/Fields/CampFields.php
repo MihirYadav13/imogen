@@ -47,6 +47,19 @@
 						'width' => 40
 					]
 				])
+				->addText('subheading', [
+					'maxlength' => 500,
+					'wrapper' => [
+						'width' => 50
+					]
+				])
+				->addText('contact_email', [
+					'required' => 1,
+					'maxlength' => 50,
+					'wrapper' => [
+						'width' => 50
+					]
+				])
 				->addTextArea('description', [
 					'maxlength' => 1000,
 					'rows' => 3,

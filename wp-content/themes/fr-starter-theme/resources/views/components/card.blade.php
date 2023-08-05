@@ -24,7 +24,7 @@
                         </p>
                     @endif
                     @if(in_array($post_type, ['camp','post']))
-                        <p class="excerpt sm" fr-truncate-lines="4" title="{!! $card_data['excerpt'] !!}">{!! $card_data['excerpt'] !!}</p>
+                        <p class="excerpt sm" fr-truncate-lines="4" title="{!! $card_data['description'] !!}">{!! $card_data['description'] !!}</p>
                     @endif
                     @if($post_type === 'team-member')
                         <p class="role sm">
@@ -32,12 +32,12 @@
                         </p>
                     @endif
                 </div>
-                @if(!empty($card_data['registration_link']) || !empty($card_data['action_cta']))
+                @if(!empty($card_data['registration_link']) || (!empty($card_data['action_cta']) && $post_type === 'post'))
                     <div class="card-footer">
                         @if(!empty($card_data['registration_link']))
                         <x-cta-button label="{!! $post_type === 'after-school-program' ? 'Schedule & Registration' : 'Information & Registration' !!}" type="external_url" style="primary"/>
                         @endif
-                        @if(!empty($card_data['action_cta']))
+                        @if(!empty($card_data['action_cta']) && $post_type === 'post')
                         <x-cta-button :label="$card_data['action_cta']['title']?:'Learn More'" :external-url="$card_data['action_cta']['url']" type="external_url" :style="$card_data['action_cta']['style']?:'primary'"/>
                         @endif
                     </div>

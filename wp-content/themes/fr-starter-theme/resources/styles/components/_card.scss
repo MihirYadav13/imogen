@@ -86,26 +86,6 @@
                 .card-body{
                     padding: 0 16px;
 
-                    .info-container{
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                        gap: 5px 10px;
-                        color: $dark-gray;
-                        margin-bottom: 15px;
-
-                        label{
-                            width: 75px;
-                            @include font-primary-bold;
-                        }
-
-                        .value{
-                            width: calc(100% - 85px);
-                            margin-bottom: 0;
-                        }
-                    }
-
-
                     .excerpt{
                         
                     }
