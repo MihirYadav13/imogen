@@ -13,7 +13,7 @@ class CardGrid extends Component
 	public $hasMore;
 	public $ajaxConfigArgs;
     public $ajaxConfig;
-    public $teamMemberModalConfig;
+    public $cardModalConfig;
     public $connectedFilters;
 	public $postsPerPage = \App\Providers\PostSearchProvider::POSTS_PER_PAGE;
 	public $postType = \App\Providers\PostSearchProvider::GENERAL_SEARCH_POST_TYPES;
@@ -46,7 +46,7 @@ class CardGrid extends Component
 
         $this->setAjaxConfigArgs();
 		$this->prepareAjaxConfig();
-        $this->prepareTeamMemberModalConfig();
+        $this->prepareCardModalConfig();
     }
 
 
@@ -165,8 +165,8 @@ class CardGrid extends Component
      *
      * @return void
      */
-	public function prepareTeamMemberModalConfig(){
-		$this->teamMemberModalConfig = \App\Providers\TeamMemberDataProvider::getAjaxConfig();
+	public function prepareCardModalConfig(){
+		$this->cardModalConfig = \App\Providers\CardsDataProvider::getAjaxConfig();
 	}
 
     /**

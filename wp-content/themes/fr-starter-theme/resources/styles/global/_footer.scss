@@ -1,6 +1,8 @@
 #app > footer{
     background-color: $deep-blue;
     color: $white;
+    position: relative;
+
     .footer-header{
         display: flex;
         flex-direction: column;

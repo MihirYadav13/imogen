@@ -26,9 +26,10 @@
 @import "components/stay-connected";
 @import "components/dropdown";
 @import "components/fr-modal";
-@import "components/team-member-modal";
+@import "components/card-modal";
 @import "components/share-button";
-
+@import "components/wave-animation";
+@import "components/wpcf7";
 
 // 3. Modules
 @import "modules/modules-base";
@@ -39,8 +40,7 @@
 @import "modules/article-list";
 @import "modules/logo-grid";
 @import "modules/image-carousel";
-
-
+@import "modules/hero";
 
 // 4. Templates
 @import "templates/page";
