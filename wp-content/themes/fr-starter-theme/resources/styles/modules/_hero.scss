@@ -58,7 +58,6 @@
                 flex-direction: column-reverse;
                 padding: 100px 0px 0px;
                 @include mobile-hero-svg;
-                // background-repeat: no-repeat;
                 background-position: top;
                 background-size: contain;
                 margin-top: -64px;
@@ -89,14 +88,12 @@
                     margin-top: -50px;
                     padding: 68px 0px 0px;
                     max-height: 421px;
-                    // height: auto;
                 }
 
                 @include breakpoint(sm down) {
                     margin-top: -30px;
                     padding: 54px 0px 0px;
                     max-height: 421px;
-                    // height: auto;
                 }
             }
             .container .row {
