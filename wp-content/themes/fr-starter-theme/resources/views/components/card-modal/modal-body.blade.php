@@ -20,7 +20,7 @@
 				@endif
 			
 				@if($post_type === 'team-member')
-				<h6 class="role sm">
+				<h6 class="role sm theme-color">
 					{{ $role }}
 				</h6>
 				@endif
