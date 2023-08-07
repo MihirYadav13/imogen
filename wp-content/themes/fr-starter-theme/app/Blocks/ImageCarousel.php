@@ -164,6 +164,7 @@ class ImageCarousel extends Block
 		->addGallery('images', [
 			'label' => 'Carousel Image',
 			'max' => '15',
+			'min' => '2',
 			'insert' => 'append',
 			'library' => 'all',
 			'mime_types' => 'jpg,jpeg,png'
