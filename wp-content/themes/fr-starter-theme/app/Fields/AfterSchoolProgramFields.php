@@ -23,8 +23,11 @@
 				->setLocation('post_type', '==', 'after-school-program');
 
 			$fields
-				->addImage('featured_image')
+				->addImage('featured_image', [
+					'required' => 1
+				])
 				->addTextArea('description', [
+					'required' => 1,
 					'maxlength' => 1000,
 					'rows' => 3,
 					'new_line' => 'br',
@@ -33,7 +36,6 @@
 					]
 				])
 				->addTextArea('location', [
-					'required' => 1,
 					'rows' => 3,
 					'new_line' => 'br',
 					'maxlength' => 500,
@@ -61,6 +63,7 @@
 					]
 				])
 				->addLink('registration_link', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 50
 					]

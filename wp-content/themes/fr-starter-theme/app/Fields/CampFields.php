@@ -24,18 +24,21 @@
 
 			$fields
 				->addDatePicker('start_date', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 20
 					],
 					'return_format' => 'Y-m-d'
 				])
 				->addDatePicker('end_date', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 20
 					],
 					'return_format' => 'Y-m-d'
 				])
 				->addNumber('fee', [
+					'required' => 1,
 					'prepend' => '$',
 					'min' => 0,
 					'wrapper' => [
@@ -43,6 +46,7 @@
 					]
 				])
 				->addImage('featured_image', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 40
 					]
@@ -61,6 +65,7 @@
 					]
 				])
 				->addTextArea('description', [
+					'required' => 1,
 					'maxlength' => 1000,
 					'rows' => 3,
 					'new_line' => 'br',
@@ -105,6 +110,7 @@
 					])
 				->endRepeater()
 				->addLink('registration_link', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 50
 					]

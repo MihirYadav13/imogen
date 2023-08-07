@@ -55,7 +55,7 @@
         }
 
         .card-content{
-            padding-bottom: 24px;
+            padding: 16px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -68,7 +68,6 @@
 
                 .card-header{
                     display: flex;
-                    padding: 24px 16px 0;
                     margin-bottom: 8px;
 
                     .card-link{
@@ -84,7 +83,6 @@
                 }
 
                 .card-body{
-                    padding: 0 16px;
 
                     .excerpt{
                         
@@ -95,7 +93,6 @@
                     display: flex;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    padding: 0 16px;
                     margin-top:auto;
                 }
             }
@@ -135,7 +132,6 @@
                 .wysiwyg-content{
                     .card-header{
                         justify-content: center;
-                        padding-top: 16px;
                     }
 
                     .role{
