@@ -1,6 +1,6 @@
 body.single-post{
         article{
-            min-width:814px;
+            width:814px;
             margin:80px auto 0;
             @include breakpoint(md down){
                 width: 100%;
