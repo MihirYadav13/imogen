@@ -128,12 +128,12 @@ class Hero extends Block
     {
         $result = [
             'background_image' => get_field('background_image'),
-            'background_image_mobile' => get_field('background_image_mobile')?: get_field('background_image'),
+            'background_image_mobile' => get_field('background_image_mobile') ?: get_field('background_image'),
             'content' => get_field('content'),
         ];
 
-        if($this->preview){
-            if(!get_field('background_image') && !get_field('background_image_mobile') && !get_field('content')){
+        if ($this->preview) {
+            if (!get_field('background_image') && !get_field('background_image_mobile') && !get_field('content')) {
                 $result = $this->example['defaultData'];
             }
         }
@@ -151,6 +151,7 @@ class Hero extends Block
         $hero = new FieldsBuilder('hero');
 
         $hero
+            ->addTrueFalse('is_front_page_hero')
             ->addImage('background_image', [
                 'wrapper' => [
                     'width' => '50'
