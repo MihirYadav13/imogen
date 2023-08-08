@@ -22,7 +22,7 @@
 				@endif
 				<div class="right-cta-container">
 					@forelse($right_cta as $cta)
-						<x-cta-button :label="$cta['label']" :type="$cta['cta_type']" :post-id="$cta['post_id']" :style="$cta['style']" :external-url="$cta['externa_url']" :new-tab="$cta['new_tab']" />
+						<x-cta-button :label="$cta['label']" :type="$cta['cta_type']" :post-id="$cta['post_id']" :style="$cta['style']" :external-url="$cta['external_url']" :new-tab="$cta['new_tab']" />
 					@empty
 					@endforelse
 				</div>

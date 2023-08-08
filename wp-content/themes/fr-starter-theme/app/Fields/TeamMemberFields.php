@@ -24,11 +24,13 @@
 
 			$fields
 				->addImage('profile_photo', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 50
 					]
 				])
 				->addText('role', [
+					'required' => 1,
 					'maxlength' => 50,
 					'wrapper' => [
 						'width' => 50

@@ -2,92 +2,110 @@
 html :where(.editor-styles-wrapper) .is-root-container for backend styles in gutenberg
 */
 
-body:not(.wp-admin), html :where(.editor-styles-wrapper) .is-root-container{
+body:not(.wp-admin),
+html :where(.editor-styles-wrapper) .is-root-container {
     color: $dark-gray;
 }
 
-body:not(.wp-admin) h1, html :where(.editor-styles-wrapper) .is-root-container h1 {
+body:not(.wp-admin) h1,
+html :where(.editor-styles-wrapper) .is-root-container h1 {
     font-size: 56px;
     line-height: 64px;
     @include font-primary-bold;
 }
 
-body:not(.wp-admin) h2, html :where(.editor-styles-wrapper) .is-root-container h2 {
+body:not(.wp-admin) h2,
+html :where(.editor-styles-wrapper) .is-root-container h2 {
     font-size: 40px;
     line-height: 48px;
     @include font-primary-bold;
 }
 
-body:not(.wp-admin) h3, html :where(.editor-styles-wrapper) .is-root-container h3 {
+body:not(.wp-admin) h3,
+html :where(.editor-styles-wrapper) .is-root-container h3 {
     font-size: 32px;
     line-height: 40px;
     @include font-primary-bold;
 }
 
-body:not(.wp-admin) h4, html :where(.editor-styles-wrapper) .is-root-container h4 {
+body:not(.wp-admin) h4,
+html :where(.editor-styles-wrapper) .is-root-container h4 {
     font-size: 24px;
     line-height: 32px;
     @include font-primary-bold;
 }
 
-body:not(.wp-admin) h5, html :where(.editor-styles-wrapper) .is-root-container h5 {
-    font-size:22px;
+body:not(.wp-admin) h5,
+html :where(.editor-styles-wrapper) .is-root-container h5 {
+    font-size: 22px;
     line-height: 28px;
     @include font-primary-bold;
 
-    &.sub{
+    &.sub {
         @include font-primary;
         font-size: 22px;
         line-height: 36px;
     }
 }
 
-body:not(.wp-admin) h6, html :where(.editor-styles-wrapper) .is-root-container h6 {
-    font-size:16px;
+body:not(.wp-admin) h6,
+html :where(.editor-styles-wrapper) .is-root-container h6 {
+    font-size: 16px;
     line-height: 24px;
     @include font-primary-bold;
 }
 
-body:not(.wp-admin) p, html :where(.editor-styles-wrapper) .is-root-container p {
+body:not(.wp-admin) p,
+html :where(.editor-styles-wrapper) .is-root-container p {
     font-size: 18px;
     line-height: 32px;
     @include font-primary;
 
-    &.sm{
+    &.sm {
         font-size: 14px;
         line-height: 24px;
     }
 }
 
-body:not(.wp-admin) a, html :where(.editor-styles-wrapper) .is-root-container a {
+body:not(.wp-admin) a,
+html :where(.editor-styles-wrapper) .is-root-container a {
     font-size: 18px;
     line-height: 32px;
     color: $blue;
     @include font-primary;
 
-    &.sm{
+    &.sm {
         @include sm-style;
     }
 }
 
-
-body:not(.wp-admin){
+body:not(.wp-admin) {
     font-size: 18px;
     line-height: 32px;
     @include font-primary;
     padding-top: 0px;
 
-    @include breakpoint(lg down){
-        padding-top: 57px;
+    @include breakpoint(lg down) {
+        padding-top: 46px;
     }
 
-    &.admin-bar{
-        padding-top: 0px;
+    &.admin-bar {
+        padding-top: 81px;
     }
 }
 
-label{
-    &.sm{
+label {
+    &.sm {
         @include sm-style;
+    }
+}
+body.home {
+    .fr-header {
+        background: none;
+        border-bottom: none;
+    }
+    .scrolled {
+        background: $white;
+        border-bottom: 1px solid $light-blue-3;
     }
 }

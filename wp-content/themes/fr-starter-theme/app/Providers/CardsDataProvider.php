@@ -26,16 +26,31 @@ class CardsDataProvider extends ServiceProvider
             'permalink' => get_the_permalink($post),
             'title' => get_the_title($post),
             'featured_image' => get_field('featured_image', $post) ?:[],
-            'excerpt' => get_the_excerpt($post),
+            'description' => get_field('description', $post)?:'',
         ];
 
         if($post_type === 'after-school-program'){
             $data = array_merge($data, [
+                'camp_info' => [
+                    [
+                        'label' => 'Program Email',
+                        'value' => get_field('school_email', $post) ? '<a href="mailto:'.get_field('school_email', $post).'">'.get_field('school_email', $post).'</a>':''
+                    ],
+                    [
+                        'label' => 'Phone Number',
+                        'value' => get_field('school_phone_number', $post) ?:''
+                    ]
+                ],
                 'location' => get_field('location', $post) ?:'',
                 'school_email' => get_field('school_email', $post) ?:'',
                 'school_website' => get_field('school_website', $post) ?:[],
                 'school_phone_number' => get_field('school_phone_number', $post) ?:'',
                 'registration_link' => get_field('registration_link', $post) ?:[],
+                'action_cta' => [
+                    'url' => $data['permalink'],
+                    'title' => 'Contact Us',
+                    'style' => 'secondary'
+                ]
             ]);
         }
 
@@ -43,6 +58,12 @@ class CardsDataProvider extends ServiceProvider
             $startDate = get_field('start_date', $post) ?:false;
             $endDate = get_field('end_date', $post) ?:false;
             $afterCare = get_field('after_care', $post) ?:[];
+            $quickNotes = get_field('quick_notes', $post) ?:[];
+
+            $quickNotesText = ''; 
+            foreach($quickNotes as $note){
+                $quickNotesText .=  $note['note'] !== ''?$note['note'].'<br>':'';
+            }
 
             $data = array_merge($data, [
                 'camp_info' => [
@@ -62,13 +83,29 @@ class CardsDataProvider extends ServiceProvider
                         'label' => 'Location',
                         'value' => (get_field('location', $post) ?:'')
                     ],
+                    [
+                        'label' => 'Quick Notes',
+                        'value' => $quickNotesText
+                    ],
                 ],
-                'registration_link' => get_field('registration_link', $post) ?:[]         
+                'subheading' => get_field('subheading', $post) ?:'',
+                'contact_email' => get_field('contact_email', $post) ?:'',
+                'quick_notes' => get_field('quick_notes', $post) ?:'',
+                'registration_link' => get_field('registration_link', $post) ?:[],        
+                'action_cta' => [
+                    'url' => $data['permalink'],
+                    'title' => 'Contact Us',
+                    'style' => 'secondary'
+                ]
             ]);
+            
+            
+
         }
 
         if($post_type === 'post'){
             $data = array_merge($data, [
+                'description' => get_the_excerpt($post),
                 'action_cta' => [
                     'url' => $data['permalink'],
                     'title' => 'Learn More',

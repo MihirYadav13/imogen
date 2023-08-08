@@ -29,6 +29,26 @@
                         .featured-image{
                             display: flex;
                             flex-direction: column;
+                            position: relative;
+
+                            &::after{
+                                background-image: url("../images/card-v-wave.svg");
+                                width: 32px;
+                                right: 0;
+                                height: 100%;
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                background-position: center center;
+
+                                @include breakpoint(lg down) {
+                                    background-image: url("../images/card-wave.svg");
+                                    height: 32px;
+                                    width: 100%;
+                                }
+                            }
 
                             img{
                                 flex-grow: 1;
@@ -52,34 +72,122 @@
 
                             @include breakpoint(lg down) {
                                 padding: 16px;
+                                text-align: center;
+                            }
+
+                            .section{
+                                margin-bottom: 24px;
+
+                                @include breakpoint(lg down) {
+                                    margin-bottom: 16px;
+                                }
                             }
 
                             .title{
-                                @include breakpoint(lg down) {
-                                    text-align: center;
-                                }
-
                                 margin-bottom: 0;
                             }
                             
-                            p{
-                                @include sm-style;
+                            .description{
+                            }
 
-                                &:last-of-type{
-                                    margin-bottom: 0;
+                            .info-container{
+                                display: flex;
+                                flex-direction: column;
+                                flex-wrap: wrap;
+                                color: $dark-gray;
+                                margin-bottom: 15px;
+
+                                @include breakpoint(lg down) {
+                                    text-align: left;
+                                }
+                                
+                                .info-row{
+                                    display: flex;
+                                    flex-direction: row;
+                                    flex-wrap: wrap;
+                                    column-gap: 10px;
+                                    border-bottom: 1px solid $light-gray-2;
+                                    padding: 8px 0;
+
+                                    &:last-of-type{
+                                        border-bottom: none;
+                                    }
+
+                                    label{
+                                        width: 100px;
+                                        @include font-primary-bold;
+                                    }
+            
+                                    .value{
+                                        max-width: calc(100% - 110px);
+                                        flex-grow: 1;
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+
+                            .content-footer{
+                                display: flex;
+                                flex-direction: row;
+                                column-gap: 16px;
+                                align-items: center;
+                                justify-content: flex-start;
+
+                                @include breakpoint(lg down) {
+                                    flex-direction: column;
+                                    row-gap: 16px;
+                                }
+                                
+                                .cta-button{
+                                    min-width: 138px;
+
+                                    @include breakpoint(lg down) {
+                                        width: 100%;
+                                    }
                                 }
                             }
                         }
         
                         &.card-{
+                            &after-school-program{
+                                .right-content{
+                                    .info-container{                                        
+                                        .info-row{
+                                            label{
+                                                width: 110px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
                             &team-member{
                                 .right-content{
+
+                                    .section{
+                                        margin-bottom: 0;
+                                    }
+
                                     .role{
                                         @include breakpoint(lg down) {
                                             text-align: center;
                                         }
 
                                         margin-bottom: 8px;
+                                    }
+
+                                    .short-bio{
+                                        @include breakpoint(lg down) {
+                                            text-align: left;
+                                        }
+
+                                        p{
+                                            @include sm-style;
+            
+                                            &:last-of-type{
+                                                margin-bottom: 0;
+                                            }
+                                        }
                                     }
                                 }
                             }

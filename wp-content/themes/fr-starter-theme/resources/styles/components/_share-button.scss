@@ -1,6 +1,10 @@
 .fr-share-button{
     display:flex;
     justify-content: flex-end;
+    @include breakpoint(md down){
+       float:left;
+       margin-top:16px;
+    }
     .share-txt{
         margin-right:8px;
     }

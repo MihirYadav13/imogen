@@ -24,7 +24,7 @@
                         max-height: 268px;
                     }
                     object-fit: cover;
-                    border-radius: 7.08px;
+                    border-radius: 8px;
                 }
             }            
         }
@@ -35,7 +35,7 @@
                 width: calc((100% - 32px ) / 5) !important;
                 img{
                     width: 100%;
-                    height:calc(100% / 1.1913636);
+                    height:88px;
                     max-height: 88px;
                     @include breakpoint(md down){
                         max-height: 42px;
@@ -48,7 +48,7 @@
                     border: none !important;
                     img{
                         border: 3px solid $blue !important;
-                    border-radius: 7.08px !important;
+                        border-radius: 7.08px !important;
                     }
                 }
             }            

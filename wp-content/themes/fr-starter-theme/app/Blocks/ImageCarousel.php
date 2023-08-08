@@ -4,7 +4,6 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
-use App\Fields\Partials\CardGridFilters;
 
 class ImageCarousel extends Block
 {
@@ -164,6 +163,7 @@ class ImageCarousel extends Block
 		->addGallery('images', [
 			'label' => 'Carousel Image',
 			'max' => '15',
+			'min' => '2',
 			'insert' => 'append',
 			'library' => 'all',
 			'mime_types' => 'jpg,jpeg,png'

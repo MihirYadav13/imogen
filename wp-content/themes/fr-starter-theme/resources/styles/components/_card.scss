@@ -55,7 +55,7 @@
         }
 
         .card-content{
-            padding-bottom: 24px;
+            padding: 16px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -68,7 +68,6 @@
 
                 .card-header{
                     display: flex;
-                    padding: 24px 16px 0;
                     margin-bottom: 8px;
 
                     .card-link{
@@ -84,27 +83,6 @@
                 }
 
                 .card-body{
-                    padding: 0 16px;
-
-                    .info-container{
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                        gap: 5px 10px;
-                        color: $dark-gray;
-                        margin-bottom: 15px;
-
-                        label{
-                            width: 75px;
-                            @include font-primary-bold;
-                        }
-
-                        .value{
-                            width: calc(100% - 85px);
-                            margin-bottom: 0;
-                        }
-                    }
-
 
                     .excerpt{
                         
@@ -115,7 +93,6 @@
                     display: flex;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    padding: 0 16px;
                     margin-top:auto;
                 }
             }
@@ -155,7 +132,6 @@
                 .wysiwyg-content{
                     .card-header{
                         justify-content: center;
-                        padding-top: 16px;
                     }
 
                     .role{

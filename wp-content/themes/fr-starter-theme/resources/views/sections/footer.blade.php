@@ -1,4 +1,6 @@
-<x-stay-connected />
+@if(is_page())
+  <x-stay-connected />
+@endif
 <footer class="content-info">
   <div class="waveWrapper waveAnimation">
     <div class="waveWrapperInner bgTop">
