@@ -24,7 +24,7 @@
                     align-items: center;
                     border: none;
                     border-radius: 50%;
-                    background-color: #A991DE;
+                    background-color: var(--fr-theme-main-color);
                     margin: 0;
                     padding: 0;
                     z-index: 999;
@@ -32,6 +32,7 @@
                     img{
                         width: 12px;
                         height: 12px;
+                        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7494%) hue-rotate(210deg) brightness(100%) contrast(102%);
                     }
                 }
             }

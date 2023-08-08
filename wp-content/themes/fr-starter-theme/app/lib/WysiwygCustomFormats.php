@@ -32,7 +32,7 @@ if (!class_exists('WysiwygCustomFormats')) :
                 ),
                 array(
                     'title' => 'Theme Colour',
-                    'block' => 'span',
+                    'inline' => 'span',
                     'classes' => 'theme-color'
                 ),
                 array(

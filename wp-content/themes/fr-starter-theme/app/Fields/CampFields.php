@@ -23,36 +23,62 @@
 				->setLocation('post_type', '==', 'camp');
 
 			$fields
-				->addImage('featured_image', [
-					'wrapper' => [
-						'width' => 40
-					]
-				])
 				->addDatePicker('start_date', [
+					'required' => 1,
 					'wrapper' => [
-						'width' => 30
+						'width' => 20
 					],
 					'return_format' => 'Y-m-d'
 				])
 				->addDatePicker('end_date', [
+					'required' => 1,
 					'wrapper' => [
-						'width' => 30
+						'width' => 20
 					],
 					'return_format' => 'Y-m-d'
+				])
+				->addNumber('fee', [
+					'required' => 1,
+					'prepend' => '$',
+					'min' => 0,
+					'wrapper' => [
+						'width' => 20
+					]
+				])
+				->addImage('featured_image', [
+					'required' => 1,
+					'wrapper' => [
+						'width' => 40
+					]
+				])
+				->addText('subheading', [
+					'maxlength' => 500,
+					'wrapper' => [
+						'width' => 50
+					]
+				])
+				->addText('contact_email', [
+					'required' => 1,
+					'maxlength' => 50,
+					'wrapper' => [
+						'width' => 50
+					]
+				])
+				->addTextArea('description', [
+					'required' => 1,
+					'maxlength' => 1000,
+					'rows' => 3,
+					'new_line' => 'br',
+					'wrapper' => [
+						'width' => 50
+					]
 				])
 				->addTextArea('location', [
 					'maxlength' => 500,
 					'rows' => 3,
 					'new_line' => 'br',
 					'wrapper' => [
-						'width' => 80
-					]
-				])
-				->addNumber('fee', [
-					'prepend' => '$',
-					'min' => 0,
-					'wrapper' => [
-						'width' => 20
+						'width' => 50
 					]
 				])
 				->addGroup('after_care', [
@@ -84,6 +110,7 @@
 					])
 				->endRepeater()
 				->addLink('registration_link', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 50
 					]

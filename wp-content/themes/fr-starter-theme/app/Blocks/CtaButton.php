@@ -111,7 +111,7 @@ class CtaButton extends Block
     public $example = [
         'label' => 'Example CTA!',
         'type' => 'external_url',
-        'externa_url' => 'https://freerange.com',
+        'external_url' => 'https://freerange.com',
         'post_id' => '',
         'style' => '',
         'new_tab' => false,
@@ -125,7 +125,7 @@ class CtaButton extends Block
      */
     public function with()
     {
-        if($this->preview && (!$this->items()['label'] && !$this->items()['externa_url'] && !$this->items()['post_id'])){
+        if($this->preview && (!$this->items()['label'] && !$this->items()['external_url'] && !$this->items()['post_id'])){
             return $this->example;
         }else{
             return $this->items();
@@ -176,7 +176,7 @@ class CtaButton extends Block
             'label' => get_field('label'),
             'style' => get_field('style'),
             'type' => get_field('cta_type'),
-            'externa_url' => get_field('externa_url'),
+            'external_url' => get_field('external_url'),
             'post_id' => get_field('post_id'),
             'new_tab' => get_field('new_tab'),
             'open_modal' => get_field('open_modal')

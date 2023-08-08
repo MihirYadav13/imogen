@@ -24,13 +24,21 @@
 
 			$fields
 				->addImage('featured_image', [
+					'required' => 1
+				])
+				->addTextArea('description', [
+					'required' => 1,
+					'maxlength' => 1000,
+					'rows' => 3,
+					'new_line' => 'br',
 					'wrapper' => [
 						'width' => 50
 					]
 				])
-				->addText('location', [
-					'required' => 1,
-					'maxlength' => 50,
+				->addTextArea('location', [
+					'rows' => 3,
+					'new_line' => 'br',
+					'maxlength' => 500,
 					'wrapper' => [
 						'width' => 50
 					]
@@ -42,11 +50,6 @@
 						'width' => 50
 					]
 				])
-				->addLink('school_website', [
-					'wrapper' => [
-						'width' => 50
-					]
-				])
 				->addText('school_phone_number', [
 					'required' => 1,
 					'maxlength' => 50,
@@ -54,7 +57,13 @@
 						'width' => 50
 					]
 				])
+				->addLink('school_website', [
+					'wrapper' => [
+						'width' => 50
+					]
+				])
 				->addLink('registration_link', [
+					'required' => 1,
 					'wrapper' => [
 						'width' => 50
 					]

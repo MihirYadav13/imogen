@@ -126,8 +126,8 @@ class CardGrid extends Component
             case 'childhood-education':
                 $postIn = $posts['childhood-education'];
                 break;
-            case 'student-success':
-                $postIn = $posts['student-success'];
+            case 'post':
+                $postIn = $posts['post'];
                 break;
             case 'team-member':
                 $postIn = $posts['team-member'];
