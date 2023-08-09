@@ -53,14 +53,14 @@
 					</div>
 				@endif
 			</div>
-			@if(!empty($registration_link) || !empty($action_cta))
+			@if(!empty($registration_link) || !empty($contact_us_page))
                 <div class="content-footer">
                     @if(!empty($registration_link))
                     <x-cta-button label="Register" type="external_url" :external-url="$registration_link['url']" style="primary"/>
                     @endif
-                    @if(!empty($action_cta))
-                    <x-cta-button :label="$action_cta['title']?:'Learn More'" :external-url="$action_cta['url']" type="external_url" :style="$action_cta['style']?:'primary'"/>
-                    @endif
+                    @if($contact_us_page)
+						<x-cta-button label="Contact Us" type="external_url" style="secondary" :external-url="$contact_us_page" :new-tab="false" />
+					@endif
                 </div>
             @endif
 		</div>

@@ -293,11 +293,11 @@ class CardGrid extends Block
 						],
 						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'location' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'school_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'school_website' => [
 							'url' => ''
 						],
-						'school_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'registration_link' => [
 							'url' => ''
 						],

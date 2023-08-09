@@ -34,23 +34,19 @@ class CardsDataProvider extends ServiceProvider
                 'camp_info' => [
                     [
                         'label' => 'Program Email',
-                        'value' => get_field('school_email', $post) ? '<a class="sm" href="mailto:'.get_field('school_email', $post).'">'.get_field('school_email', $post).'</a>':''
+                        'value' => get_field('program_email', $post) ? '<a class="sm" href="mailto:'.get_field('program_email', $post).'">'.get_field('program_email', $post).'</a>':''
                     ],
                     [
                         'label' => 'Phone Number',
-                        'value' => get_field('school_phone_number', $post) ?:''
+                        'value' => get_field('program_phone_number', $post) ?:''
                     ]
                 ],
                 'location' => get_field('location', $post) ?:'',
-                'school_email' => get_field('school_email', $post) ?:'',
+                'program_email' => get_field('program_email', $post) ?:'',
                 'school_website' => get_field('school_website', $post) ?:[],
-                'school_phone_number' => get_field('school_phone_number', $post) ?:'',
+                'program_phone_number' => get_field('program_phone_number', $post) ?:'',
                 'registration_link' => get_field('registration_link', $post) ?:[],
-                'action_cta' => [
-                    'url' => $data['permalink'],
-                    'title' => 'Contact Us',
-                    'style' => 'secondary'
-                ]
+                'contact_us_page' => get_field('contact_us_page', 'option')? get_permalink(get_field('contact_us_page', 'option')):false,
             ]);
         }
 
@@ -92,11 +88,7 @@ class CardsDataProvider extends ServiceProvider
                 'contact_email' => get_field('contact_email', $post) ?:'',
                 'quick_notes' => get_field('quick_notes', $post) ?:'',
                 'registration_link' => get_field('registration_link', $post) ?:[],        
-                'action_cta' => [
-                    'url' => $data['permalink'],
-                    'title' => 'Contact Us',
-                    'style' => 'secondary'
-                ]
+                'contact_us_page' => get_field('contact_us_page', 'option')? get_permalink(get_field('contact_us_page', 'option')):false,
             ]);
             
             
