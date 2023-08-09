@@ -34,7 +34,7 @@ class CardsDataProvider extends ServiceProvider
                 'camp_info' => [
                     [
                         'label' => 'Program Email',
-                        'value' => get_field('school_email', $post) ? '<a href="mailto:'.get_field('school_email', $post).'">'.get_field('school_email', $post).'</a>':''
+                        'value' => get_field('school_email', $post) ? '<a class="sm" href="mailto:'.get_field('school_email', $post).'">'.get_field('school_email', $post).'</a>':''
                     ],
                     [
                         'label' => 'Phone Number',

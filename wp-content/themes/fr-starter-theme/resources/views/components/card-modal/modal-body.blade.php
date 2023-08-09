@@ -5,9 +5,15 @@
 	<div class="right-content">
 		<div class="wysiwyg-content">
 			<div class="section">
+				@if(in_array($post_type, ['camp', 'after-school-program']))
+				<h4 class="title">
+					{!! $title !!}
+				</h4>
+				@else
 				<h5 class="title">
 					{!! $title !!}
 				</h5>
+				@endif
 				@if($post_type === 'camp')
 				<h6 class="theme-color">
 					{{ $subheading }}

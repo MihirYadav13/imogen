@@ -222,6 +222,10 @@
 					background-color: $blue;
 				}
 
+				&.secondary {
+					background-color: $light-blue-2;
+				}
+
 				@include breakpoint(lg down) {
 					width: 100%;
 				}
