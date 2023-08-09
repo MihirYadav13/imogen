@@ -116,6 +116,7 @@ add_action('after_setup_theme', function () {
 require_once('Shortcodes/CtaButton/Cta.php');
 require_once 'lib/WysiwygCustomFormats.php';
 require_once 'lib/AcfValidation.php';
+require_once 'lib/PostTitleValidation.php';
 
 /**
  * Register the theme sidebars.
