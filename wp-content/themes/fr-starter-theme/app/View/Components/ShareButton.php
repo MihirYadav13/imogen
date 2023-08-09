@@ -52,7 +52,7 @@ class ShareButton extends Component
             ),
             'link' => array(
                 'class' => 'link-share',
-                'url'  => 'javascript:void(0)',
+                'url'  => $page_url,
                 'text' => 'Copy Link',
             )
         );

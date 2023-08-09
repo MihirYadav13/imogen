@@ -2,12 +2,12 @@
 	$.fn.frShareButton = function () {
         return this.each((i, el) => {
 			const $self = $(el);
-            const $linkIcon = $self.find('.social-sharing-links .share-btn.link-share');
+            const $linkIcon = $self.find('.link-share');
             $linkIcon.on('click', (e) => {
+                console.log('in'+$linkIcon.attr('href'));
                 e.preventDefault();
                 if(window.navigator){
-                    window.navigator.clipboard.writeText($linkIcon.attr('href'));
-
+                   window.navigator.clipboard.writeText($linkIcon.attr('href'));
                     $linkIcon.find('.link-btn-copied').addClass('is--animated');
 
                     setTimeout(() => {
