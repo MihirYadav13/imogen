@@ -65,7 +65,7 @@
 					left: calc(50% - 40px);
 				}
 				border: 1px solid $white;
-				background-color: $purple;
+				background-color: var(--fr-theme-main-color);
 				position: absolute;
 				top: calc(50% - 50px);
 				left: calc(50% - 50px);

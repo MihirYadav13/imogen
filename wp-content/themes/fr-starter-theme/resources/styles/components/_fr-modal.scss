@@ -8,6 +8,10 @@
         width: 1023px;
         margin: auto;
 
+        @include breakpoint(lg down) {
+            margin: 1.75rem auto;
+        }
+
         .modal-content{
             border-radius: 8px !important;
             overflow: hidden;

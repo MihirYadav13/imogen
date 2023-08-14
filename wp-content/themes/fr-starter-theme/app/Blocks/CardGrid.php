@@ -115,7 +115,7 @@ class CardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = get_field('posts_per_page')?:3;
+		$postsPerPage = get_field('posts_per_page')?:8;
 		$postType = get_field('post_type');
 
 		$result =  array_merge([
@@ -168,7 +168,7 @@ class CardGrid extends Block
 			])
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
-				'min' => 3,
+				'min' => 2,
 				'default_value' => 3,
 				'wrapper' => [
 					'width' => 50
@@ -301,11 +301,11 @@ class CardGrid extends Block
 						],
 						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'location' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'school_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'school_website' => [
 							'url' => ''
 						],
-						'school_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'registration_link' => [
 							'url' => ''
 						],
