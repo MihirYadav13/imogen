@@ -9,7 +9,6 @@
 				autoplay: true,
 			});
 			var thumbnails = new Splide( $self.find('.thumbnail-carousel')[0], {
-				gap         : 8,
 				rewind     : true,
 				pagination : false,
 				focus      : 'center',
