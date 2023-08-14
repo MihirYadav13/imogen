@@ -6,18 +6,17 @@
 				@foreach ($links as $l)
 					<li>
 						<a class="share-btn {{ $l['class'] }}" href="{{ $l['url'] }}" title="{{ $l['text'] }}" target="_blank">
-						<span class="icon-span {{ $l['class'] }}">
+						<span class="icon-span {{ $l['class'] }}-span">
 							<img src="@asset('images/' . $l['class'] . '.svg')" loading="lazy" alt="{{ $l['class'] }} icon">
 						</span>
+						@if ($l['class'] === 'link-share')
+								<span class="link-btn-copied">Link copied!</span>
+							@endif
 							
 						</a>
 					</li>
-				@endforeach
-				@if ($l['class'] === 'link')
-				<li>
-					<span class="link-btn-copied">Link copied!</span>
-				</li>
-				@endif
+					
+				@endforeach				
 			</ul>
 		@endif
 	</div>
