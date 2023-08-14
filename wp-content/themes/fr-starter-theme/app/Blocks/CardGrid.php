@@ -115,7 +115,7 @@ class CardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = 4;
+		$postsPerPage = get_field('posts_per_page')?:8;
 		$postType = get_field('post_type');
 
 		$result =  array_merge([
@@ -166,11 +166,19 @@ class CardGrid extends Block
 					'width' => 100
 				]
 			])
+			->addNumber('posts_per_page', [
+				'label' => 'Cards Per Page',
+				'min' => 2,
+				'default_value' => 3,
+				'wrapper' => [
+					'width' => 50
+				]
+			])
 			->addText('load_more_button_label', [
 				'label' => '\'Load More\' Button Label',
 				'default_value' => 'Load More',
 				'wrapper' => [
-					'width' => 100
+					'width' => 50
 				]
 			])
 			->addRadio('source', [
