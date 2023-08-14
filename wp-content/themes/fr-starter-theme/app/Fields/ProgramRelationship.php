@@ -30,7 +30,7 @@ class ProgramRelationship extends Field
 			],
 			'wpml_cf_preferences' => 0,
 			'return_format' => 'value',
-			'default' => 'white'
+			'default' => 'after-school-program'
 		])
 		->addPostObject('related_program', [
 			'label' => 'Select Programs',

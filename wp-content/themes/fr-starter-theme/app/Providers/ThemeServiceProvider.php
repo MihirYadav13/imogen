@@ -251,8 +251,17 @@ class ThemeServiceProvider extends SageServiceProvider
         $theme = get_field('default_theme', 'option') ? : 'blue_theme';
 
         // For page get selected theme
-        if(is_page()){
+        if(get_post_type() === 'page'){
             $theme = get_field('selected_theme')?: $theme;
+        }
+
+        if(get_post_type() === 'post'){
+            $programType = get_field('program_type')?: 'after-school-program';
+            $selectedPrograms = $programType === 'after-school-program' ? (get_field('related_program')?:[]) : (get_field('related_camp')?:[]);
+
+            if(!empty($selectedPrograms)){
+                $theme = get_field('selected_theme', $selectedPrograms[0])?: $theme;
+            }
         }
 
         $themeColors = get_field($theme, 'option');

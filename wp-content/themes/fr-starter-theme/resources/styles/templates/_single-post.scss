@@ -51,20 +51,14 @@ body.single-post{
             }
             .thumbnail-carousel 
             {                    
-                .splide__slide{                        
-                    img{                           
-                        height:88px;
-                        max-height: 88px;
-                        @include breakpoint(md down){
-                            height:42px;
-                            max-height: 42px;
-                        }
-                        border-radius: 7.08px;
-                    }
-                    &.is-active{
-                        img{
-                            border-radius: 7.08px !important;
-                        }
+                .splide__slide{ 
+                    border-radius: 7.08px;
+                    height:88px;
+                    max-height: 88px;
+
+                    @include breakpoint(md down){
+                        height:42px;
+                        max-height: 42px;
                     }
                 }            
             }
