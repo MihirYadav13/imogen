@@ -15,14 +15,14 @@ use function Roots\bundle;
  */
 add_action('init', function () {
 	// Instantiate
-	$enqueue = new \WPackio\Enqueue( 'frStarterTheme', 'public', '1.0.0', 'theme', false);
+	$enqueue = new \WPackio\Enqueue('frStarterTheme', 'public', '1.0.0', 'theme', false);
 
 	add_action('wp_enqueue_scripts', function () use ($enqueue) {
-		$enqueue->enqueue( 'app', 'main', [] );
+		$enqueue->enqueue('app', 'main', []);
 	}, 100);
 
 	add_action('enqueue_block_editor_assets', function () use ($enqueue) {
-		$enqueue->enqueue( 'app', 'editor', [] );
+		$enqueue->enqueue('app', 'editor', []);
 	}, 100);
 });
 
@@ -116,6 +116,7 @@ add_action('after_setup_theme', function () {
 require_once('Shortcodes/CtaButton/Cta.php');
 require_once 'lib/WysiwygCustomFormats.php';
 require_once 'lib/AcfValidation.php';
+require_once 'lib/Cf7Validation.php';
 
 /**
  * Register the theme sidebars.
