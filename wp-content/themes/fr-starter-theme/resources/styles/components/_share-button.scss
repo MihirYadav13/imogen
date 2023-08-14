@@ -29,10 +29,25 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        &.facebook-share{
+                        &.facebook-share-span{
                             background-color:$white !important;
                         }
                     }   
+                }
+            }
+            .link-btn-copied{
+                font-size: 10px;
+                font-weight: bold;
+                color: red;
+                font-style: italic;
+                transform: translateY(10px);
+                opacity: 0;
+                transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+                position: absolute;
+                margin-top: 30px;    
+                &.is--animated{
+                    opacity: 1;
+                    transform: translateY(0);
                 }
             }
             
