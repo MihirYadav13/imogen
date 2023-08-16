@@ -24,6 +24,8 @@ add_action('init', function () {
 	add_action('enqueue_block_editor_assets', function () use ($enqueue) {
 		$enqueue->enqueue('app', 'editor', []);
 	}, 100);
+
+	remove_post_type_support( 'post', 'excerpt' );
 });
 
 /**

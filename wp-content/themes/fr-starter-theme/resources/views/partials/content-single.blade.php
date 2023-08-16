@@ -10,9 +10,6 @@
       <x-share-button />
     </div>
     <div class="entry-content">
-      @if(has_post_thumbnail())
-      {{ the_post_thumbnail('full') }}
-      @endif  
       @php(the_content())
     </div>
     

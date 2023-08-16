@@ -94,6 +94,10 @@
                     justify-content: flex-start;
                     align-items: flex-start;
                     margin-top:auto;
+
+                    .cta-regular{
+                        @include sm-style;
+                    }
                 }
             }
         }
