@@ -160,9 +160,7 @@ class ImageWysiwyg extends Block
      */
     public function items()
     {
-        var_dump(get_field('image'));
         return [
-
             'image' => $this->preview && !get_field('image') ? $this->example['image'] : get_field('image'),
             'content' => $this->preview && !get_field('content') ? $this->example['content'] : get_field('content')
         ];

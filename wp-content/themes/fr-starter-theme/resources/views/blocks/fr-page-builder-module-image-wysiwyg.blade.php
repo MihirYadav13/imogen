@@ -5,11 +5,13 @@
             <div class="col image-wysiwyg-content">
                 {!! $content !!}
             </div>
-            <div class="col image">
-                <div class="image">
-                    <img src="{{ $image['url'] }}" />
+            @if($image)
+                <div class="col image">
+                    <div class="image">
+                        <img src="{{ $image['url'] }}" loading="lazy"/>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </div>
