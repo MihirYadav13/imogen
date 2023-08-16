@@ -21,10 +21,12 @@
 					{!! wp_nav_menu($primaryNavigation) !!}
 				@endif
 				<div class="right-cta-container">
-					@forelse($right_cta as $cta)
-						<x-cta-button :label="$cta['label']" :type="$cta['cta_type']" :post-id="$cta['post_id']" :style="$cta['style']" :external-url="$cta['external_url']" :new-tab="$cta['new_tab']" />
-					@empty
-					@endforelse
+					@if($contact_us_page)
+						<x-cta-button label="Contact Us" type="external_url" style="secondary" :external-url="$contact_us_page" :new-tab="false" />
+					@endif
+					@if($donate_cta)
+						<x-cta-button :label="$donate_cta['label']" :type="$donate_cta['cta_type']" :post-id="$donate_cta['post_id']" :style="$donate_cta['style']" :external-url="$donate_cta['external_url']" :new-tab="$donate_cta['new_tab']" />
+					@endif
 				</div>
 			</div>
 		</div>

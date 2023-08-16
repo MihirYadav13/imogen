@@ -43,14 +43,14 @@
 						'width' => 50
 					]
 				])
-				->addText('school_email', [
+				->addText('program_email', [
 					'required' => 1,
 					'maxlength' => 50,
 					'wrapper' => [
 						'width' => 50
 					]
 				])
-				->addText('school_phone_number', [
+				->addText('program_phone_number', [
 					'required' => 1,
 					'maxlength' => 50,
 					'wrapper' => [

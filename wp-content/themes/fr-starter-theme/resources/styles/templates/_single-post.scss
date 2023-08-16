@@ -2,100 +2,122 @@ body.single-post{
     article{
         width:814px;
         margin:80px auto 0;
+        max-width: 100%;
+
         @include breakpoint(md down){
             width: 100%;
             margin-top:40px;
         }
+
         .taxo_list{
-        font-size: 22px;
-        line-height: 36px;
-        margin-bottom:24px;     
-    .program {          
-        color: $purple;  
-        text-align: center;
-    }
-    }
-    .post-meta-data{
-        margin: 24px 0 48px;
-        float: left;
-        width:100%;
-        .publish-time{
-            float:left;
-            width: 50%;
-            margin: 0;
-            @include breakpoint(md down){
-                width: 100%;
+            font-size: 22px;
+            line-height: 36px;
+            margin-bottom:24px;   
+
+            .program {          
+                color: $purple;  
+                text-align: center;
             }
         }
-    }
-    .entry-content{
-        .wp-post-image{
-            width: 100% !important;
-            max-height: 463px;
-            @include breakpoint(md down){
-                height: 218px;
+
+        .post-meta-data{
+            margin: 24px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .publish-time{
+                margin: 0;
+
+                @include breakpoint(md down){
+                    width: 100%;
+                }
             }
-            border-radius: 8px;
+
+            @include breakpoint(md down){
+                flex-direction: column;
+                justify-content: flex-start;
+                row-gap: 16px;
+            }
         }
-        .fr-content-row{
-            padding: 48px 0;
-            .image-carousel-container{
-                .splide__slide{
-                    img{
-                        max-height: 463px;
-                        @include breakpoint(md down){
-                            max-height: 268px;
+
+        .entry-content{
+            .container{
+                padding: 0;
+            }
+
+            .wp-post-image{
+                width: 100% !important;
+                max-height: 463px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-top: 48px;
+
+                @include breakpoint(md down){
+                    height: 218px;
+                }
+            }
+            .fr-content-row{
+                padding: 48px 0;
+
+                .image-carousel-container{
+                    .splide__slide{
+                        img{
+                            max-height: 463px;
+                            @include breakpoint(md down){
+                                max-height: 268px;
+                            }
                         }
                     }
                 }
-            }
-            .thumbnail-carousel 
-            {                    
-                .splide__slide{                        
-                    img{                           
+
+                .thumbnail-carousel 
+                {                    
+                    .splide__slide{ 
+                        border-radius: 7.08px;
                         height:88px;
                         max-height: 88px;
+
                         @include breakpoint(md down){
                             height:42px;
                             max-height: 42px;
                         }
-                        border-radius: 7.08px;
-                    }
-                    &.is-active{
-                        img{
-                            border-radius: 7.08px !important;
-                        }
-                    }
-                }            
+                    }            
+                }
             }
         }
-    }
-    .hr{
-        border-top: 1px solid $light-gray-2;
-        width: 100%;
-    }
-    .author{
-        display: flex;
-        align-items: center;
-        margin: 48px 0 80px;
-        img {
-            float: left;
-            margin-right: 16px;
-            border-radius: 8px
+
+        .hr{
+            border-top: 1px solid $light-gray-2;
+            width: 100%;
         }
-        .auth-detail{
+
+        .author{
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            h5{
-                margin:0
+            align-items: center;
+            margin: 48px 0 80px;
+
+            img {
+                float: left;
+                margin-right: 16px;
+                border-radius: 8px
             }
-            p{
-                font-size: 14px;
-                line-height: 24px;
-                margin:0
+
+            .auth-detail{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                h5{
+                    margin:0
+                }
+
+                p{
+                    font-size: 14px;
+                    line-height: 24px;
+                    margin:0
+                }
             }
         }
     }
-}
 }
