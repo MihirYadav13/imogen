@@ -31,6 +31,11 @@ if (!class_exists('WysiwygCustomFormats')) :
                     'classes' => 'sub'
                 ),
                 array(
+                    'title' => 'Subheading without margin',
+                    'block' => 'h5',
+                    'classes' => 'sub mb-0'
+                ),
+                array(
                     'title' => 'Theme Colour',
                     'inline' => 'span',
                     'classes' => 'theme-color'
