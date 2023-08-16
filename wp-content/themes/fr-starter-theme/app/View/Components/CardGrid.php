@@ -50,8 +50,9 @@ class CardGrid extends Component
     }
 
 
-    public function setQueryArgs(){
+    public function setQueryArgs(){        
 		$this->queryArgs = array_merge([
+            'block_grid_name' => $this->blockData['block_name'],
             'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
 		], $this->getArgsFromBlockData(), $this->getArgsFromUrl());
@@ -64,7 +65,7 @@ class CardGrid extends Component
 			'source' => 'filters',
 			'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
-            'post__in' => $this->setPostIn()
+            'post__in' => $this->setPostIn(),           
 		]);
 
         if($this->blockData){
@@ -83,15 +84,22 @@ class CardGrid extends Component
 			'post_type' => $this->blockData['post_type'],
             'post__in' => $this->setPostIn()
 		]);
-
-        if(!$taxonomies){
-            return $args;
+        if($this->blockData['block_name'] == "card_grid")//New added
+        {
+            if(!$taxonomies){
+                return $args;
+            }
+           
+            return array_merge($args, [
+                'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
+                'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
+            ]);
         }
-
-		return array_merge($args, [
-			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
-            'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
-		]);
+        else{
+            return array_merge($args, [
+            'relationship' => $this->blockData['relationship']
+            ]);
+        }//New added
 	}
 
     public function getArgsFromUrl(){

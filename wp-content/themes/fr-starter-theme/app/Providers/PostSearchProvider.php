@@ -76,7 +76,13 @@ class PostSearchProvider extends ServiceProvider
 						]);
 					}
 					break;
-				case 'card_grid_component':
+				case 'manual_card_grid':
+					$ajax_config = array_merge($ajax_config, [
+						'post_type' => $blockData['post_type'],
+						'relationship' => $blockData['relationship']
+					]);	
+					break;
+				case 'card_grid_component':					
 					$ajax_config = array_merge($ajax_config, [
 						'post_type' => $blockData['post_type'],
 					]);
@@ -209,29 +215,43 @@ class PostSearchProvider extends ServiceProvider
 				]
 			]) : $result['tax_query'];
 		}
+		if($args['block_grid_name'] == 'manual_card_grid'){
+			//for relationships
+			$relationship_meta = [
+				'relation' => 'OR',
+			];
 
-		//for relationships
-		foreach ($relationships as $rel) {
-			$relationship_meta = [];
-			if(isset($args[$rel]) && $args[$rel]){
-				$relationship_meta = [
-					'relation' => 'OR',
+			foreach ($args['relationship'] as $relId) {
+				
+				$relationship_meta[] = [
+					'key' => 'related_program',
+					'value' => '"'.$relId.'"',
+					'compare' => 'LIKE'
 				];
-
-				foreach ($args[$rel] as $relId) {
-					$relationship_meta[] = [
-						'key' => $rel,
-						'value' => '"'.$relId.'"',
-						'compare' => 'LIKE'
+			}
+		}
+		else{
+			//for relationships
+			foreach ($relationships as $rel) {
+				$relationship_meta = [];
+				if(isset($args[$rel]) && $args[$rel]){
+					$relationship_meta = [
+						'relation' => 'OR',
 					];
+
+					foreach ($args[$rel] as $relId) {
+						$relationship_meta[] = [
+							'key' => $rel,
+							'value' => '"'.$relId.'"',
+							'compare' => 'LIKE'
+						];
+					}
 				}
 			}
-
-			$result['meta_query'] = array_merge($result['meta_query'], [
-				$relationship_meta
-			]);
 		}
-
+		$result['meta_query'] = array_merge($result['meta_query'], [
+		$relationship_meta
+		]);
 		return $result;
 	}
 
