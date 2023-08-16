@@ -2,16 +2,14 @@
     @if (isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
     <div class="container-fluid">
         <div class="row">
-            <div class="col image-wysiwyg-content">
-                {!! $content !!}
-            </div>
-            @if($image)
-                <div class="col image">
-                    <div class="image">
-                        <img src="{{ $image['url'] }}" loading="lazy"/>
-                    </div>
+            @if ($image)
+                <div class="col-4 col-12 image">
+                    <img src="{{ $image['url'] }}" loading="lazy" class="img" />
                 </div>
             @endif
+            <div class="col wysiwyg-module">
+                {!! $content !!}
+            </div>
         </div>
     </div>
 </div>
