@@ -115,7 +115,7 @@ class RelatedContentCardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = get_field('posts_per_page')?:3;
+		$postsPerPage = get_field('posts_per_page')?:8;
 		$postType = 'post';
 
 		$result =  array_merge([
@@ -130,7 +130,7 @@ class RelatedContentCardGrid extends Block
 				'post_type' => ['post'],
 				'posts' => [],
 				'taxonomies' => [],
-				'relationship' => get_field('programs') ? get_field('programs') : [],
+				'programs' => get_field('programs') ? get_field('programs') : [],
 			]
 		]);
 
@@ -155,8 +155,8 @@ class RelatedContentCardGrid extends Block
 		$relatedContentCardGrid
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
-				'min' => 3,
-				'default_value' => 3,
+				'min' => 2,
+				'default_value' => 8,
 				'wrapper' => [
 					'width' => 50
 				]

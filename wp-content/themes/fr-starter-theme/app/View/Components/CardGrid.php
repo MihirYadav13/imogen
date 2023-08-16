@@ -82,24 +82,18 @@ class CardGrid extends Component
 
         $args = array_filter([
 			'post_type' => $this->blockData['post_type'],
-            'post__in' => $this->setPostIn()
+            'post__in' => $this->setPostIn(),
+            'programs' => isset($this->blockData['programs']) ? $this->blockData['programs'] : null
 		]);
-        if($this->blockData['block_name'] == "card_grid")//New added
-        {
-            if(!$taxonomies){
-                return $args;
-            }
-           
-            return array_merge($args, [
-                'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
-                'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
-            ]);
+        
+        if(!$taxonomies){
+            return $args;
         }
-        else{
-            return array_merge($args, [
-            'relationship' => $this->blockData['relationship']
-            ]);
-        }//New added
+       
+        return array_merge($args, [
+            'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
+            'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
+        ]);
 	}
 
     public function getArgsFromUrl(){

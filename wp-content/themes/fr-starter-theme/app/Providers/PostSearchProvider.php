@@ -79,7 +79,7 @@ class PostSearchProvider extends ServiceProvider
 				case 'manual_card_grid':
 					$ajax_config = array_merge($ajax_config, [
 						'post_type' => $blockData['post_type'],
-						'relationship' => $blockData['relationship']
+						'programs' => $blockData['programs']
 					]);	
 					break;
 				case 'card_grid_component':					
@@ -203,7 +203,9 @@ class PostSearchProvider extends ServiceProvider
 			in_array($post_type, ['after-school-program', 'camp']) ? 'activity' : null,
 		]);
 
-		$relationships = [];
+		$relationships = array_filter([
+			in_array($post_type, ['post']) ? 'programs' : null,
+		]);
 
 		foreach($taxonomies as $t){
 			$result['tax_query'] = isset($args[$t]) && $args[$t] ? array_merge($result['tax_query'], [
@@ -215,43 +217,29 @@ class PostSearchProvider extends ServiceProvider
 				]
 			]) : $result['tax_query'];
 		}
-		if($args['block_grid_name'] == 'manual_card_grid'){
-			//for relationships
-			$relationship_meta = [
-				'relation' => 'OR',
-			];
 
-			foreach ($args['relationship'] as $relId) {
-				
-				$relationship_meta[] = [
-					'key' => 'related_program',
-					'value' => '"'.$relId.'"',
-					'compare' => 'LIKE'
+		//for relationships
+		foreach ($relationships as $rel) {
+			$relationship_meta = [];
+			if(isset($args[$rel]) && $args[$rel]){
+				$relationship_meta = [
+					'relation' => 'OR',
 				];
-			}
-		}
-		else{
-			//for relationships
-			foreach ($relationships as $rel) {
-				$relationship_meta = [];
-				if(isset($args[$rel]) && $args[$rel]){
-					$relationship_meta = [
-						'relation' => 'OR',
-					];
 
-					foreach ($args[$rel] as $relId) {
-						$relationship_meta[] = [
-							'key' => $rel,
-							'value' => '"'.$relId.'"',
-							'compare' => 'LIKE'
-						];
-					}
+				foreach ($args[$rel] as $relId) {
+					$relationship_meta[] = [
+						'key' => $rel,
+						'value' => '"'.$relId.'"',
+						'compare' => 'LIKE'
+					];
 				}
 			}
+
+			$result['meta_query'] = array_merge($result['meta_query'], [
+				$relationship_meta
+			]);
 		}
-		$result['meta_query'] = array_merge($result['meta_query'], [
-		$relationship_meta
-		]);
+
 		return $result;
 	}
 
