@@ -101,7 +101,6 @@ class CardsDataProvider extends ServiceProvider
                 'featured_image' => $featuredImage? [
                     'url' => $featuredImage
                 ] : [],
-                'description' => get_the_excerpt($post),
                 'action_cta' => [
                     'url' => $data['permalink'],
                     'title' => 'Learn More',
