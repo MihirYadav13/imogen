@@ -28,7 +28,8 @@ class SocialLinks extends Partial
 					'ln' => 'LinkedIn',
 					'tw' => 'Twitter',
 					'md' => 'Medium',
-					'yt' => 'YouTube'
+					'yt' => 'YouTube',
+					'in' => 'Instagram'
 				],
 				'return_format' => 'array',
 				'wrapper' => [

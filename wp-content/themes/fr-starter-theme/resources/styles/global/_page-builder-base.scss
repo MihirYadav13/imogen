@@ -10,7 +10,6 @@
     .fr-content-row{
         position: relative;
         @include fr-page-builder-padding-top-bottom;
-        overflow: hidden;
 
         >.row-bg-image{
             position: absolute;

@@ -137,7 +137,8 @@
 		top: 0;
 		left: 0;
 		transform: translateY(-100%);
-		background-size: 100%;
+		background-size: cover;
+		background-position: center;
 		background-image: url("../images/block-wave.svg");
 		filter: var(--fr-theme-bg-ftc-wt-filter);
 	}
