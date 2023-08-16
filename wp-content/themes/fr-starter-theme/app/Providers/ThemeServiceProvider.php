@@ -14,6 +14,7 @@ class ThemeServiceProvider extends SageServiceProvider
     public function register()
     {
         add_action('admin_head', '\\App\Providers\ThemeServiceProvider::CustomAdminStyles');
+        add_action('admin_head', '\\App\Providers\ThemeServiceProvider::ThemeColorStyle');
         add_action('wp_head', '\\App\Providers\ThemeServiceProvider::ThemeColorStyle');
         add_action('acf/input/admin_footer', '\\App\Providers\ThemeServiceProvider::CustomAcfJs');
 
@@ -228,7 +229,7 @@ class ThemeServiceProvider extends SageServiceProvider
     }
 
     public static function ThemeColorStyle(){ 
-        $themeColors = self::GetThemeColors();
+        $themeColors = is_admin() ? self::GetThemeColorsAdmin() : self::GetThemeColors();
 
         ?>
         <style>
@@ -258,6 +259,31 @@ class ThemeServiceProvider extends SageServiceProvider
         if(get_post_type() === 'post'){
             $programType = get_field('program_type')?: 'after-school-program';
             $selectedPrograms = $programType === 'after-school-program' ? (get_field('related_program')?:[]) : (get_field('related_camp')?:[]);
+
+            if(!empty($selectedPrograms)){
+                $theme = get_field('selected_theme', $selectedPrograms[0])?: $theme;
+            }
+        }
+
+        $themeColors = get_field($theme, 'option');
+
+        return $themeColors;
+    }
+
+    public static function GetThemeColorsAdmin(){ 
+        $theme = get_field('default_theme', 'option') ? : 'blue_theme';
+
+        $screen = get_current_screen();
+        global $post;
+
+        // For page get selected theme
+        if($screen->id === 'page'){
+            $theme = get_field('selected_theme', $post->ID)?: $theme;
+        }
+
+        if($screen->id === 'post'){
+            $programType = get_field('program_type', $post->ID)?: 'after-school-program';
+            $selectedPrograms = $programType === 'after-school-program' ? (get_field('related_program', $post->ID)?:[]) : (get_field('related_camp', $post->ID)?:[]);
 
             if(!empty($selectedPrograms)){
                 $theme = get_field('selected_theme', $selectedPrograms[0])?: $theme;
