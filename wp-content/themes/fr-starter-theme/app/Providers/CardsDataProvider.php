@@ -96,7 +96,11 @@ class CardsDataProvider extends ServiceProvider
         }
 
         if($post_type === 'post'){
+            $featuredImage = get_the_post_thumbnail_url($post, 'full');
             $data = array_merge($data, [
+                'featured_image' => $featuredImage? [
+                    'url' => $featuredImage
+                ] : [],
                 'description' => get_the_excerpt($post),
                 'action_cta' => [
                     'url' => $data['permalink'],
