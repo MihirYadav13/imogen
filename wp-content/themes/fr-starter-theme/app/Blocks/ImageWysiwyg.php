@@ -40,7 +40,10 @@ class ImageWysiwyg extends Block
      *
      * @var string|array
      */
-    public $icon = '';
+    public $icon = [
+        'foreground' => '#FF4E00',
+        'src' => 'welcome-widgets-menus',
+    ];
 
     /**
      * The block keywords.
@@ -63,7 +66,6 @@ class ImageWysiwyg extends Block
      */
     public $parent = [
         'acf/block-container'
-
     ];
 
     /**
@@ -122,7 +124,7 @@ class ImageWysiwyg extends Block
         ],
         'content' => '<p>Start editing content <strong>here.</strong></p>',
         'attributes' => [
-            'preview_image' => 'wysiwyg.png'
+            'preview_image' => 'ImgaeWysiwyg.png'
         ],
     ];
 
@@ -146,8 +148,34 @@ class ImageWysiwyg extends Block
         $imageWysiwyg = new FieldsBuilder('fr_page_builder_module_image_wysiwyg');
 
         $imageWysiwyg
-            ->addImage('image')
-            ->addWysiwyg('content');
+            ->addImage('image', [
+                'wrapper' => [
+                    'width' => '30'
+                ]
+            ])
+            ->addWysiwyg('content', [
+                'wrapper' => [
+                    'width' => '70'
+                ]
+            ])
+            ->addSelect('image_size', [
+                'choices' => ['1/3', '1/2', '2/3'],
+                'default_value' => [],
+                'ui' => 0,
+                'return_format' => 'value',
+                'placeholder' => '',
+                'wrapper' => [
+                    'width' => '50'
+                ]
+            ])
+            ->addTrueFalse('flip_orientation', [
+                'label' => 'Flip Orientation',
+                'ui' => 1,
+                'instructions' => 'If you add the image on the Content Right, Please turn on.',
+                'wrapper' => [
+                    'width' => '50',
+                ]
+            ]);
 
 
         return $imageWysiwyg->build();
@@ -162,7 +190,9 @@ class ImageWysiwyg extends Block
     {
         return [
             'image' => $this->preview && !get_field('image') ? $this->example['image'] : get_field('image'),
-            'content' => $this->preview && !get_field('content') ? $this->example['content'] : get_field('content')
+            'content' => $this->preview && !get_field('content') ? $this->example['content'] : get_field('content'),
+            'image_size' => $this->preview && !get_field('image_size') ? $this->example['image_size'] : get_field('image_size'),
+            'flip_orientation' => $this->preview && !get_field('flip_orientation') ? $this->example['flip_orientation'] : get_field('flip_orientation')
         ];
     }
 
