@@ -169,7 +169,7 @@ class CardGrid extends Block
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
 				'min' => 2,
-				'default_value' => 3,
+				'default_value' => 8,
 				'wrapper' => [
 					'width' => 50
 				]
