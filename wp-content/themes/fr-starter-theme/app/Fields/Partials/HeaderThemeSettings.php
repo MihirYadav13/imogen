@@ -24,13 +24,11 @@ class HeaderThemeSettings extends Partial
                     'width' => 30
                 ]
             ])
-            ->addRepeater('right_cta', [
-                'button_label' => 'Add CTA',
-                'layout' => 'block',
-                'max' => 2
-            ])
+            ->addTrueFalse('show_donate')
+            ->addGroup('donate_cta')
+                ->conditional('show_donate', '==', 1)
                 ->addFields($this->get(CtaButtonFields::class))
-            ->endRepeater()
+            ->endGroup()
             ->addTextarea('google_tag_manager_code_snippet', [
                 'rows' => 3
             ])

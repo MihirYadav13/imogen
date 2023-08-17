@@ -24,6 +24,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+
+            &::after{
+                content: '';
+                background-image: url("../images/card-wave.svg");
+                height: 18px;
+                position: absolute;
+                bottom: -1px;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+            }
 
             img{
                 width: 100%;
@@ -32,7 +45,7 @@
             }
 
             &.default{
-                background-color: $blue;
+                background-color: var(--fr-theme-main-color);
 
                 img{
                     width: 52px;
@@ -42,7 +55,7 @@
         }
 
         .card-content{
-            padding-bottom: 24px;
+            padding: 16px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -55,7 +68,6 @@
 
                 .card-header{
                     display: flex;
-                    padding: 24px 16px 0;
                     margin-bottom: 8px;
 
                     .card-link{
@@ -71,27 +83,6 @@
                 }
 
                 .card-body{
-                    padding: 0 16px;
-
-                    .info-container{
-                        display: flex;
-                        flex-direction: row;
-                        flex-wrap: wrap;
-                        gap: 5px 10px;
-                        color: $dark-gray;
-                        margin-bottom: 15px;
-
-                        label{
-                            width: 75px;
-                            @include font-primary-bold;
-                        }
-
-                        .value{
-                            width: calc(100% - 85px);
-                            margin-bottom: 0;
-                        }
-                    }
-
 
                     .excerpt{
                         
@@ -102,14 +93,22 @@
                     display: flex;
                     justify-content: flex-start;
                     align-items: flex-start;
-                    padding: 0 16px;
                     margin-top:auto;
+
+                    .cta-regular{
+                        @include sm-style;
+                    }
                 }
             }
         }
     }
 
     &.card-type-{
+        &after-school-program, &camp, &team-member{
+            &:hover{
+                cursor: pointer;
+            }
+        }
         &after-school-program{
             .card-inner{
                 .wysiwyg-content{
@@ -126,18 +125,11 @@
         &camp{
             .card-inner{
                 .wysiwyg-content{
-                    .card-header{
-                        justify-content: center;
-                        padding-top: 8px;
-                        padding-bottom: 8px !important;
-                        border-bottom: 1px solid $light-gray-2;
-                    }
 
                     .card-footer{
-                        column-gap: 8px;
-
                         .cta-button{
-                            width: calc(50% - 4px);
+                            width: 100%;
+                            font-size: 14px;
                         }
                     }
                 }
@@ -149,12 +141,6 @@
                 .wysiwyg-content{
                     .card-header{
                         justify-content: center;
-                        padding-top: 16px;
-
-                        .card-title{
-                            font-size: 22px;
-                            line-height: 28px;
-                        }
                     }
 
                     .role{
