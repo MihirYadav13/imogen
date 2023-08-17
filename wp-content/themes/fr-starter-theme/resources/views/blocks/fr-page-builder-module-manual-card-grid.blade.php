@@ -1,7 +1,7 @@
 <div class="module manual-card-grid-module {{ $block->classes }}" @if(isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
 	<div class="container-fluid card-grid-container ajax-container">
 		<div class="result-content ajax-content">
-			<div class="cards-container cards-inner atd-cards-container {{ count($items) < 4 ? 'columns-'.count($items) : 'columns-4' }}">
+			<div class="cards-container cards-inner {{ count($items) < 4 ? 'columns-'.count($items) : 'columns-4' }}">
 				@foreach ($items as $card_data)
 					<div class="fr-card card-type-manual" >
 						<div class="card-inner">
@@ -18,7 +18,7 @@
 										</a>
 									</div>
 									<div class="card-body">                    
-										<p class="excerpt sm" fr-truncate-lines="4" title=""> {{ $card_data['description'] }} </p>
+										<p class="excerpt sm" fr-truncate-lines="4" title=""> {!! $card_data['description'] !!} </p>
 									</div>                
 									<div class="card-footer"> 
 										<x-cta-button :label="$card_data['cta_link']['title']?:'Learn More'" :external-url="$card_data['cta_link']['url']" type="external_url" :style="'regular-link'" />

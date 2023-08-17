@@ -168,8 +168,14 @@ class ManualCardGrid extends Block
                     'width' => 33
                 ]
             ])           
-            ->addWysiwyg('description',[ 
-                'required' => 1
+            ->addTextarea('description',[ 
+                'required' => 1,
+                'maxlength' => 1000,
+                'rows' => 3,
+                'new_line' => 'br',
+                'wrapper' => [
+                    'width' => 50
+                ]
             ])
                        
         ->endRepeater();
