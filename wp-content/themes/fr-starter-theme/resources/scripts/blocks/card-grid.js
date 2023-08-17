@@ -6,7 +6,7 @@
 			connectedFilters: JSON.parse(($self.attr('connected-filters') ? $self.attr('connected-filters') : '[]')),
             ajaxContainer: $self.find('.ajax-container'),
             resultContainer: $self.find('.filters-result-container'),
-            cardsContainer: $self.find('.atd-cards-container'),
+            cardsContainer: $self.find('.cards-container'),
             loadMoreBtn: $self.find('.load-btn-container a'),
 			cardModal: $self.find('.card-modal').length ? $self.find('.card-modal').attr('id') :false,
             ajaxRunning: false,
