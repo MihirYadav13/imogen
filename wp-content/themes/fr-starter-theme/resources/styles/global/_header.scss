@@ -130,16 +130,16 @@
 					transition: opacity 0.15s ease-in-out;
 
 					@include breakpoint(lg down) {
-						transform: rotate(90deg);
+						transform: rotate(270deg);
 					}
 				}
 
 				&.show {
 					&::after {
-						transform: rotate(0deg);
+						transform: rotate(180deg);
 
 						@include breakpoint(lg down) {
-							transform: rotate(180deg);
+							transform: rotate(0deg);
 						}
 					}
 				}

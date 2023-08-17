@@ -235,6 +235,7 @@ class ThemeServiceProvider extends SageServiceProvider
         <style>
             :root{
                 --fr-theme-main-color: <?=$themeColors['main_color'] ?>;
+                --fr-theme-main-color-filter: <?=$themeColors['main_color_filter'] ?>;
                 --fr-theme-secondary-color: <?=$themeColors['secondary_color'] ?>;
                 --fr-theme-bg-ftw-top-color:  <?=$themeColors['fade_to_white']['top_color'] ?>;
                 --fr-theme-bg-ftw-mid-color:  <?=$themeColors['fade_to_white']['mid_color'] ?>;

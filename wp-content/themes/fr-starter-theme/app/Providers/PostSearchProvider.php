@@ -10,7 +10,7 @@ class PostSearchProvider extends ServiceProvider
 	const ACTION = 'get_posts';
 	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'post', 'childhood-education', 'team-member'];
 	const POSTS_PER_PAGE = 8;
-	const ORDER_BY = ['latest', 'popular', 'post__in'];
+	const ORDER_BY = ['latest', 'oldest', 'post__in'];
 
 	//CUSTOM FIELD FOR SORTING ELEMENTS BETWEEN DIFFERENT POST TYPES
 	const DATE_SORT_FIELD = 'custom_date_sort';
@@ -157,9 +157,7 @@ class PostSearchProvider extends ServiceProvider
 
 		// Modify sub fields:
 		add_filter('cq_sub_fields', $subfields_cb = function( $fields ) use ($order_by){
-			if($order_by === 'popular'){
-				return $fields . ', (SELECT meta_value from '.self::$tablePrefix.'postmeta WHERE '.self::$tablePrefix.'postmeta.post_id = '.self::$tablePrefix.'posts.ID AND '.self::$tablePrefix.'postmeta.meta_key = \'likes_counter\' LIMIT 1) AS likes';
-			}else if($order_by === 'latest'){
+			if($order_by === 'latest' || $order_by === 'oldest'){
 				return $fields . ', (SELECT meta_value from '.self::$tablePrefix.'postmeta WHERE '.self::$tablePrefix.'postmeta.post_id = '.self::$tablePrefix.'posts.ID AND '.self::$tablePrefix.'postmeta.meta_key = \''.self::DATE_SORT_FIELD.'\' LIMIT 1) AS date_sort_field';
 			}else{
 				return $fields;
@@ -259,6 +257,10 @@ class PostSearchProvider extends ServiceProvider
 
 		if($order_by === self::ORDER_BY[0]){
 			$result[] = 'combined.date_sort_field DESC';
+		}
+
+		if($order_by === self::ORDER_BY[1]){
+			$result[] = 'combined.date_sort_field ASC';
 		}
 
 		if(isset($search) && $search){
