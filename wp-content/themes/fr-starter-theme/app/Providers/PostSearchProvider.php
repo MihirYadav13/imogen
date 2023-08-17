@@ -107,7 +107,7 @@ class PostSearchProvider extends ServiceProvider
 			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
 			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
 			'age' => filter_input(INPUT_GET, 'age', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
-			'program' => filter_input(INPUT_GET, 'program', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
+			'programs' => filter_input(INPUT_GET, 'programs', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
 		];
 
 		$result = self::GetPosts($args);
