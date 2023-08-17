@@ -172,10 +172,7 @@ class ManualCardGrid extends Block
                 'required' => 1,
                 'maxlength' => 1000,
                 'rows' => 3,
-                'new_line' => 'br',
-                'wrapper' => [
-                    'width' => 50
-                ]
+                'new_line' => 'br'
             ])
                        
         ->endRepeater();
