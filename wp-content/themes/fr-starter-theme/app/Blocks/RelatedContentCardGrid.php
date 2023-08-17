@@ -115,7 +115,7 @@ class RelatedContentCardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = 1;
+		$postsPerPage = get_field('posts_per_page')?:8;
 		$postType = 'post';
 
 		$result =  array_merge([
