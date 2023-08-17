@@ -228,7 +228,13 @@ class PostSearchProvider extends ServiceProvider
 
 				foreach ($args[$rel] as $relId) {
 					$relationship_meta[] = [
-						'key' => $rel,
+						'key' => 'related_program',
+						'value' => '"'.$relId.'"',
+						'compare' => 'LIKE'
+					];
+
+					$relationship_meta[] = [
+						'key' => 'related_camp',
 						'value' => '"'.$relId.'"',
 						'compare' => 'LIKE'
 					];
