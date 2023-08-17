@@ -12,12 +12,19 @@
             &.three-col {
                 width: calc((100% - 76px ) / 3);
                 @include breakpoint(md down){
+                    width: 46.3%;
+                }
+                @include breakpoint(sm down) {
                     width: 100%;
                 }
+                
             }
             &.four-col {
                 width: calc((100% - 114px ) / 4);
                 @include breakpoint(md down){
+                    width: 46.3%;
+                }
+                @include breakpoint(sm down) {
                     width: 100%;
                 }
             }
