@@ -9,10 +9,12 @@
 		<div class="load-btn-container wysiwyg-content">
 			<x-cta-button label="{{ empty($loadMoreText) ? 'Load More' : $loadMoreText }}" type="external_url" external-url="javascript:void(0)" :arrow="false" style="secondary"/>
 		</div>
+		@if($showNoResult)
 		<div class="no-results-found-container wysiwyg-content">
 			<h4>No results found.</h4>
 			<p>Please update your search filters and try again.</p>
 		</div>
+		@endif
 				
 		<div class="ajax-running-container wysiwyg-content">
 			<x-spinner type="circle"/>
