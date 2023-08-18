@@ -7,7 +7,7 @@
 		@endforeach
 		</div>
 		<div class="load-btn-container wysiwyg-content">
-			<x-cta-button label="{{ empty($loadMoreText) ? 'Load More' : $loadMoreText }}" type="external_url" external-url="javascript:void(0)" :arrow="false" style="secondary"/>
+			<x-cta-button label="{{ empty($loadMoreText) ? 'View More' : $loadMoreText }}" type="external_url" external-url="javascript:void(0)" :arrow="false" style="secondary"/>
 		</div>
 		@if($showNoResult)
 		<div class="no-results-found-container wysiwyg-content">

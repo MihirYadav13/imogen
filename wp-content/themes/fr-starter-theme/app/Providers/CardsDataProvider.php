@@ -45,7 +45,7 @@ class CardsDataProvider extends ServiceProvider
                 'program_email' => get_field('program_email', $post) ?:'',
                 'school_website' => get_field('school_website', $post) ?:[],
                 'program_phone_number' => get_field('program_phone_number', $post) ?:'',
-                'registration_link' => get_field('registration_link', $post) ?:[],
+                'registration_link' => get_field('registration_link', $post) ?:false,
                 'contact_us_page' => get_field('contact_us_page', 'option')? get_permalink(get_field('contact_us_page', 'option')):false,
             ]);
         }
@@ -88,7 +88,7 @@ class CardsDataProvider extends ServiceProvider
                 'subheading' => get_field('subheading', $post) ?:'',
                 'contact_email' => get_field('contact_email', $post) ?:'',
                 'quick_notes' => get_field('quick_notes', $post) ?:'',
-                'registration_link' => get_field('registration_link', $post) ?:[],        
+                'registration_link' => get_field('registration_link', $post) ?:false,        
                 'contact_us_page' => get_field('contact_us_page', 'option')? get_permalink(get_field('contact_us_page', 'option')):false,
             ]);
         }

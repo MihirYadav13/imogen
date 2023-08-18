@@ -117,7 +117,7 @@
 						'maxlength' => 200
 					])
 				->endRepeater()
-				->addLink('registration_link', [
+				->addUrl('registration_link', [
 					'required' => 1,
 					'wrapper' => [
 						'width' => 50

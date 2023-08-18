@@ -162,8 +162,8 @@ class RelatedContentCardGrid extends Block
 				]
 			])
 			->addText('load_more_button_label', [
-				'label' => '\'Load More\' Button Label',
-				'default_value' => 'Load More',
+				'label' => '\'View More\' Button Label',
+				'default_value' => 'View More',
 				'wrapper' => [
 					'width' => 50
 				]
@@ -199,22 +199,13 @@ class RelatedContentCardGrid extends Block
 							'url' => ''
 						],
 						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'location' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'school_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'school_website' => [
-							'url' => ''
-						],
-						'school_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'registration_link' => [
-							'url' => ''
-						],
 					]
 				])->render()
 			],
 			'hasMore' => true,
 			'ajax_config' => '',
 			'source' => 'posts',
-			'load_more_text' => 'Load More'
+			'load_more_text' => 'View More'
 		];
 
 		return $result;

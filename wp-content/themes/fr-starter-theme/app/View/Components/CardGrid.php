@@ -27,7 +27,7 @@ class CardGrid extends Component
      *
      * @return void
      */
-    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'Load More', $includePublishCard = false, $blockData = false, $showNoResult = false)
+    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'View More', $includePublishCard = false, $blockData = false, $showNoResult = false)
     {
         $this->posts = [];
         $this->postsPerPage = $postsPerPage ? : $this->postsPerPage;
