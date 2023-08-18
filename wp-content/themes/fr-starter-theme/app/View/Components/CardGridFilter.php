@@ -19,8 +19,8 @@ class CardGridFilter extends Component
 	public $blockData;
 
     public $taxonomyFilterLabels = [
-		'age' => 'Age',
-		'program' => 'Program',
+		'age' => 'Ages',
+		'programs' => 'Programs',
 		'activity' => 'Activity'
 	];
 
@@ -54,7 +54,15 @@ class CardGridFilter extends Component
 
     public function prepareFilters(){
 		foreach($this->filters as $filter){
-            $this->taxonomyFilters[$filter] = $this->getFilterData($filter);
+			if($filter === 'programs'){
+				$this->taxonomyFilters[$filter] = [
+					'programs' => $this->getRelationalPostData(['after-school-program']),
+					'camps' => $this->getRelationalPostData(['camp'])
+				];
+			}
+			else {
+            	$this->taxonomyFilters[$filter] = $this->getFilterData($filter);
+			}
         }
 	}
 	
@@ -68,6 +76,26 @@ class CardGridFilter extends Component
 			$res[] = [
 				'key' => $term['slug'],
 				'value' => $term['name']
+			];
+			return $res;
+		}, []);
+
+		return $result;
+	}
+
+	public function getRelationalPostData($post_type){
+		$result = [];
+
+		$posts = \App\Providers\PostSearchProvider::GetPosts([
+			'post_type' => $post_type,
+			'posts_per_page' => 1000,
+			'order_by' => 'oldest'
+		]);
+
+		$result = array_reduce($posts['posts'], function($res, $post) {
+			$res[] = [
+				'key' => $post->slug,
+				'value' => $post->post_title
 			];
 			return $res;
 		}, []);

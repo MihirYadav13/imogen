@@ -22,11 +22,13 @@ class ThemeColorFields extends Partial
                     'width' => 50
                 ]
             ])
-            ->addColorPicker('secondary_color', [
+            ->addTextarea('main_color_filter', [
+                'rows' => 3,
                 'wrapper' => [
                     'width' => 50
                 ]
             ])
+            ->addColorPicker('secondary_color')
             ->addMessage('Background colors','Select colors to show in block container background.')
             ->addGroup('fade_to_white', [
                 'wrapper' => [

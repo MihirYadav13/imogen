@@ -3,7 +3,11 @@
 		<div class="filter-input-col taxonomy-filters">
 			<div class="filter-container">
 				@foreach($taxonomyFilters as $filter => $options)
-					@include('forms.filter.select', ['filter' => $filter, 'options' => $options])
+					@if($filter === 'programs')
+						@include('forms.filter.select-with-group', ['filter' => $filter, 'options' => $options])
+					@else
+						@include('forms.filter.select', ['filter' => $filter, 'options' => $options])
+					@endif
 				@endforeach
 				@if($includeSearch)
 					@include('forms.filter.search', [])

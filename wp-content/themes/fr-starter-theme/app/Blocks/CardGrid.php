@@ -157,7 +157,6 @@ class CardGrid extends Block
 					'after-school-program' => 'After School Program',
 					'camp' => 'Camp',
 					'post' => 'Blog Post',
-					'childhood-education' => 'Childhood Education',
 					'team-member' => 'Team Member'
 				],
 				'required' => 1,
@@ -324,8 +323,8 @@ class CardGrid extends Block
 	public function getFrontendFilters($postType){
 
 		return array_unique(array_filter([
-			in_array($postType, ['after-school-program','camp','post']) ? 'age' : null,
-			in_array($postType, ['after-school-program','camp']) ? 'program' : null,
+			in_array($postType, ['post']) ? 'programs' : null,
+			in_array($postType, ['post']) ? 'age' : null,
 			in_array($postType, ['post']) ? 'activity' : null
 		]));
 	}
