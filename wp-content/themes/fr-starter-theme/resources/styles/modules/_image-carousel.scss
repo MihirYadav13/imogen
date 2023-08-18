@@ -39,6 +39,9 @@
             width: 100%;
             .splide__list {
                 gap: 8px;
+                &.justify{
+                    justify-content:center;
+                }
                 .splide__slide{
                     width: calc((100% - 32px ) / 5) !important;
                     border: none;
@@ -57,7 +60,7 @@
                         height: 100%;
                         object-fit: cover;
                         object-position: center;
-                        object-position: center;                        
+                        object-position: center;  
                     }
                     &.is-active{
 
