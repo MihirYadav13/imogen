@@ -1,7 +1,7 @@
 body.single-post{
     article{
         width:814px;
-        margin:80px auto 0;
+        margin:160px auto 0;
         @include breakpoint(md down){
             width: 100%;
             margin-top:40px;
