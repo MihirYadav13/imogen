@@ -15,7 +15,7 @@ class AuthorField extends Field
 	public function fields()
 	{
 		$fields = new FieldsBuilder('author_field', [
-			'title' => 'Authors',
+			'title' => 'Show Author',
 			'position' => 'side'
 		]);
 
@@ -23,20 +23,15 @@ class AuthorField extends Field
 			->setLocation('post_type', '==', 'post');
 
 		$fields
-		->addUser('select_author', [
-			'label' => 'Select author',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => [],
-			'wrapper' => [
-				'width' => '',
-				'class' => '',
-				'id' => '',
+		->addRadio('show_author', [
+			'label' => '',
+			'layout' => 'horizontal',
+			'wpml_cf_preferences' => 0,
+			'choices' => [
+				'default' => 'Yes',
+				'No_value' => 'No',
 			],
-			'role' => 'author',
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'id'
+			'default_value' => 'default'
 		]);
 
 		return $fields->build();
