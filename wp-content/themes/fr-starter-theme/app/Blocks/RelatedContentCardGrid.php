@@ -169,7 +169,7 @@ class RelatedContentCardGrid extends Block
 				]
 			])
 			->addPostObject('programs', [
-				'label' => 'Select Programs from After School & Camps ',
+				'label' => 'Select Programs',
 				'return_format' => 'id',
 				'post_type' => [
 					'after-school-program','camp'
