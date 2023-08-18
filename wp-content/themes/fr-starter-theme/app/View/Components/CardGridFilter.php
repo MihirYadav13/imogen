@@ -19,8 +19,9 @@ class CardGridFilter extends Component
 	public $blockData;
 
     public $taxonomyFilterLabels = [
-		'age' => 'Age',
-		'program' => 'Program'
+		'age' => 'Ages',
+		'programs' => 'Programs',
+		'activity' => 'Activity'
 	];
 
 	public $filtersPostType = [
@@ -53,7 +54,15 @@ class CardGridFilter extends Component
 
     public function prepareFilters(){
 		foreach($this->filters as $filter){
-            $this->taxonomyFilters[$filter] = $this->getFilterData($filter);
+			if($filter === 'programs'){
+				$this->taxonomyFilters[$filter] = [
+					'programs' => $this->getRelationalPostData(['after-school-program']),
+					'camps' => $this->getRelationalPostData(['camp'])
+				];
+			}
+			else {
+            	$this->taxonomyFilters[$filter] = $this->getFilterData($filter);
+			}
         }
 	}
 	
@@ -67,6 +76,26 @@ class CardGridFilter extends Component
 			$res[] = [
 				'key' => $term['slug'],
 				'value' => $term['name']
+			];
+			return $res;
+		}, []);
+
+		return $result;
+	}
+
+	public function getRelationalPostData($post_type){
+		$result = [];
+
+		$posts = \App\Providers\PostSearchProvider::GetPosts([
+			'post_type' => $post_type,
+			'posts_per_page' => 1000,
+			'order_by' => 'oldest'
+		]);
+
+		$result = array_reduce($posts['posts'], function($res, $post) {
+			$res[] = [
+				'key' => $post->slug,
+				'value' => $post->post_title
 			];
 			return $res;
 		}, []);
@@ -92,7 +121,7 @@ class CardGridFilter extends Component
 
 		return array_filter([
 			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
-			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['program']?:[]),
+			'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
 		]);
 	}
 
@@ -101,7 +130,7 @@ class CardGridFilter extends Component
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: null,
 			's' => filter_input(INPUT_GET, 's')?: null,
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
-			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): null,
+			'activity' => filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)): null,
 		]);
 	}
 

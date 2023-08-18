@@ -52,14 +52,14 @@ class CtaButtonFields extends Partial
                 ],
                 'required' => 1
             ])
-            ->addText('externa_url', [
+            ->addText('external_url', [
                 'label' => 'External URL',
                 'wrapper' => [
                     'width' =>'70'
                 ],
                 'required' => 1
             ])
-                ->conditional('cta_type', '==', 'externa_url')
+                ->conditional('cta_type', '==', 'external_url')
             ->addPostObject('post_id', [
                 'label' => 'Internal Post/Page',
                 'post_type' => [

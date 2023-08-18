@@ -8,9 +8,9 @@ class PostSearchProvider extends ServiceProvider
 {
 	public static $tablePrefix;
 	const ACTION = 'get_posts';
-	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'student-success', 'childhood-education', 'team-member'];
+	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'post', 'childhood-education', 'team-member'];
 	const POSTS_PER_PAGE = 8;
-	const ORDER_BY = ['latest', 'popular', 'post__in'];
+	const ORDER_BY = ['latest', 'oldest', 'post__in'];
 
 	//CUSTOM FIELD FOR SORTING ELEMENTS BETWEEN DIFFERENT POST TYPES
 	const DATE_SORT_FIELD = 'custom_date_sort';
@@ -76,7 +76,13 @@ class PostSearchProvider extends ServiceProvider
 						]);
 					}
 					break;
-				case 'card_grid_component':
+				case 'manual_card_grid':
+					$ajax_config = array_merge($ajax_config, [
+						'post_type' => $blockData['post_type'],
+						'programs' => $blockData['programs']
+					]);	
+					break;
+				case 'card_grid_component':					
 					$ajax_config = array_merge($ajax_config, [
 						'post_type' => $blockData['post_type'],
 					]);
@@ -101,7 +107,7 @@ class PostSearchProvider extends ServiceProvider
 			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
 			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
 			'age' => filter_input(INPUT_GET, 'age', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
-			'program' => filter_input(INPUT_GET, 'program', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
+			'programs' => filter_input(INPUT_GET, 'programs', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
 		];
 
 		$result = self::GetPosts($args);
@@ -151,9 +157,7 @@ class PostSearchProvider extends ServiceProvider
 
 		// Modify sub fields:
 		add_filter('cq_sub_fields', $subfields_cb = function( $fields ) use ($order_by){
-			if($order_by === 'popular'){
-				return $fields . ', (SELECT meta_value from '.self::$tablePrefix.'postmeta WHERE '.self::$tablePrefix.'postmeta.post_id = '.self::$tablePrefix.'posts.ID AND '.self::$tablePrefix.'postmeta.meta_key = \'likes_counter\' LIMIT 1) AS likes';
-			}else if($order_by === 'latest'){
+			if($order_by === 'latest' || $order_by === 'oldest'){
 				return $fields . ', (SELECT meta_value from '.self::$tablePrefix.'postmeta WHERE '.self::$tablePrefix.'postmeta.post_id = '.self::$tablePrefix.'posts.ID AND '.self::$tablePrefix.'postmeta.meta_key = \''.self::DATE_SORT_FIELD.'\' LIMIT 1) AS date_sort_field';
 			}else{
 				return $fields;
@@ -193,11 +197,13 @@ class PostSearchProvider extends ServiceProvider
 		];
 
 		$taxonomies = array_filter([
-			in_array($post_type, ['after-school-program', 'student-success']) ? 'age' : null,
-			in_array($post_type, ['after-school-program', 'student-success']) ? 'program' : null,
+			in_array($post_type, ['after-school-program', 'camp']) ? 'age' : null,
+			in_array($post_type, ['after-school-program', 'camp']) ? 'activity' : null,
 		]);
 
-		$relationships = [];
+		$relationships = array_filter([
+			in_array($post_type, ['post']) ? 'programs' : null,
+		]);
 
 		foreach($taxonomies as $t){
 			$result['tax_query'] = isset($args[$t]) && $args[$t] ? array_merge($result['tax_query'], [
@@ -220,7 +226,13 @@ class PostSearchProvider extends ServiceProvider
 
 				foreach ($args[$rel] as $relId) {
 					$relationship_meta[] = [
-						'key' => $rel,
+						'key' => 'related_program',
+						'value' => '"'.$relId.'"',
+						'compare' => 'LIKE'
+					];
+
+					$relationship_meta[] = [
+						'key' => 'related_camp',
 						'value' => '"'.$relId.'"',
 						'compare' => 'LIKE'
 					];
@@ -245,6 +257,10 @@ class PostSearchProvider extends ServiceProvider
 
 		if($order_by === self::ORDER_BY[0]){
 			$result[] = 'combined.date_sort_field DESC';
+		}
+
+		if($order_by === self::ORDER_BY[1]){
+			$result[] = 'combined.date_sort_field ASC';
 		}
 
 		if(isset($search) && $search){

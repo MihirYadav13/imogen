@@ -6,13 +6,11 @@
 				focus: 'center',
 				rewind     : true,
 				pagination : false,
-				autoplay: true,
+				autoplay: false,
 			});
 			var thumbnails = new Splide( $self.find('.thumbnail-carousel')[0], {
-				gap         : 8,
 				rewind     : true,
 				pagination : false,
-				focus      : 'center',
 				isNavigation: true,
 				arrows    : false,
 				dragMinThreshold: 10,

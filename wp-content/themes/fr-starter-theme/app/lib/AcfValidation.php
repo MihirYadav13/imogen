@@ -7,8 +7,9 @@ if (!class_exists('AcfValidation')) :
         public function __construct()
         {
             add_action( 'acf/validate_save_post', [$this, 'ValidateDate'] );
-            add_filter( 'acf/validate_value/name=school_email', [$this, 'ValidateEmail'], 10, 4);
-            add_filter( 'acf/validate_value/name=school_phone_number', [$this, 'ValidatePhoneNumber'], 10, 4);
+            add_filter( 'acf/validate_value/name=program_email', [$this, 'ValidateEmail'], 10, 4);
+            add_filter( 'acf/validate_value/name=contact_email', [$this, 'ValidateEmail'], 10, 4);
+            add_filter( 'acf/validate_value/name=program_phone_number', [$this, 'ValidatePhoneNumber'], 10, 4);
         }
 
 

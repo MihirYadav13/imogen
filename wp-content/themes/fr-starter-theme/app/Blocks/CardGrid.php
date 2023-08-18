@@ -4,7 +4,6 @@ namespace App\Blocks;
 
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
-use App\Fields\Partials\CardGridFilters;
 
 class CardGrid extends Block
 {
@@ -116,7 +115,7 @@ class CardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = get_field('posts_per_page')?:3;
+		$postsPerPage = get_field('posts_per_page')?:8;
 		$postType = get_field('post_type');
 
 		$result =  array_merge([
@@ -157,8 +156,7 @@ class CardGrid extends Block
 				'choices' => [
 					'after-school-program' => 'After School Program',
 					'camp' => 'Camp',
-					'student-success' => 'Student Success',
-					'childhood-education' => 'Childhood Education',
+					'post' => 'Blog Post',
 					'team-member' => 'Team Member'
 				],
 				'required' => 1,
@@ -169,8 +167,8 @@ class CardGrid extends Block
 			])
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
-				'min' => 3,
-				'default_value' => 3,
+				'min' => 2,
+				'default_value' => 8,
 				'wrapper' => [
 					'width' => 50
 				]
@@ -217,16 +215,16 @@ class CardGrid extends Block
 					'multiple' => 1
 				])
 				->conditional('post_type', '==', 'camp')
-				->addPostObject('student-success', [
+				->addPostObject('post', [
 					'label' => 'Selected Posts',
 					'return_format' => 'id',
 					'post_type' => [
-						'student-success'
+						'post'
 					],
 					'required' => 1,
 					'multiple' => 1
 				])
-				->conditional('post_type', '==', 'student-success')
+				->conditional('post_type', '==', 'post')
 				->addPostObject('childhood-education', [
 					'label' => 'Selected Posts',
 					'return_format' => 'id',
@@ -264,10 +262,10 @@ class CardGrid extends Block
 					]
 				])
 					->conditional('post_type', '==', 'after-school-program')
-					->or('post_type', '==', 'student-success')
-				->addTaxonomy('program', [
-					'label' => 'Programs',
-					'taxonomy' => 'program',
+					->or('post_type', '==', 'camp')
+				->addTaxonomy('activity', [
+					'label' => 'Activity',
+					'taxonomy' => 'activity',
 					'field_type' => 'checkbox',
 					'return_format' => 'object',
 					'multiple' => 1,
@@ -277,7 +275,7 @@ class CardGrid extends Block
 					]
 				])
 					->conditional('post_type', '==', 'after-school-program')
-					->or('post_type', '==', 'student-success')
+					->or('post_type', '==', 'camp')
 			->endGroup();
 
 		return $cardGrid->build();
@@ -302,11 +300,11 @@ class CardGrid extends Block
 						],
 						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'location' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'school_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'school_website' => [
 							'url' => ''
 						],
-						'school_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'registration_link' => [
 							'url' => ''
 						],
@@ -325,9 +323,9 @@ class CardGrid extends Block
 	public function getFrontendFilters($postType){
 
 		return array_unique(array_filter([
-			in_array($postType, ['after-school-program']) ? 'age' : null,
-			in_array($postType, ['after-school-program','camp']) ? 'program' : null,
-			in_array($postType, ['student-success']) ? 'activity' : null
+			in_array($postType, ['post']) ? 'programs' : null,
+			in_array($postType, ['post']) ? 'age' : null,
+			in_array($postType, ['post']) ? 'activity' : null
 		]));
 	}
 

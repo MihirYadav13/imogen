@@ -1,0 +1,64 @@
+.image-wysiwyg-module {
+    .container-fluid {
+        .row {
+            display: flex;
+            align-items: stretch;
+            gap: 38px;
+            &.flip {
+                flex-direction: row-reverse;
+
+                @include breakpoint(lg down) {
+                    flex-direction: column;
+                }
+            }
+
+            @include breakpoint(lg down) {
+                flex-direction: column-reverse;
+            }
+
+            .wysiwyg-module {
+                display: flex;
+                flex-direction: column;
+                padding: 40px 0;
+
+                @include breakpoint(lg down) {
+                    padding: 0;
+                }
+            }
+
+            .col-4.image {
+                display: flex;
+                flex-direction: column;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px 0 rgba(82, 87, 103, 0.2);
+                padding: 0;
+
+                &.size_1_3 {
+                    flex: 0 0 33.3333%;
+                }
+                &.size_1_2 {
+                    flex: 0 0 50%;
+                }
+
+                &.size_2_3 {
+                    flex: 0 0 66.6666%;
+                }
+                .img {
+                    flex: 1;
+                    width: 100%;
+                    border-radius: 8px;
+                    max-width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            @include breakpoint(md down) {
+                flex: 0 0 100%;
+            }
+
+            @include breakpoint(sm down) {
+                padding: 0 12px;
+            }
+        }
+    }
+}

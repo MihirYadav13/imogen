@@ -2,6 +2,17 @@
   <x-stay-connected />
 @endif
 <footer class="content-info">
+  <div class="waveWrapper waveAnimation">
+    <div class="waveWrapperInner bgTop">
+      <div class="wave waveTop"></div>
+    </div>
+    <div class="waveWrapperInner bgMiddle">
+      <div class="wave waveMiddle"></div>
+    </div>
+    <div class="waveWrapperInner bgBottom">
+      <div class="wave waveBottom"></div>
+    </div>
+  </div>
     <div class="container">
         <div class="footer-header">
             <div class="footer-logo">
@@ -20,13 +31,13 @@
               @endif
             </div>
             <div class="footer-right footer-column">
-                <h6>{{ $subscribe_label?: 'Subscribe for updates' }}</h6>
+                <label>{{ $subscribe_label?: 'Subscribe for updates' }}</label>
                 <div class="subscribe-conatiner">
                   @if ($subscribe_form_shortcode)
                   @php echo do_shortcode($subscribe_form_shortcode) @endphp
                   @endif
                 </div>
-                <h6>{{ $follow_us_label?: 'Follow Us' }}</h6>
+                <label>{{ $follow_us_label?: 'Follow Us' }}</label>
                 @if ($social_links)
 									<x-social-links :data="$social_links" />
 								@endif

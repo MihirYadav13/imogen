@@ -6,6 +6,17 @@ use Illuminate\Support\ServiceProvider;
 
 class CardsDataProvider extends ServiceProvider
 {
+    const ACTION = 'get_card_modal';
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+	public function register(){
+		add_action('init', '\\App\Providers\CardsDataProvider::SetAjaxActions', 20);
+	}
+
     public static function get($post){
         $post_type = get_post_type($post);
 
@@ -15,16 +26,27 @@ class CardsDataProvider extends ServiceProvider
             'permalink' => get_the_permalink($post),
             'title' => get_the_title($post),
             'featured_image' => get_field('featured_image', $post) ?:[],
-            'excerpt' => get_the_excerpt($post),
+            'description' => get_field('description', $post)?:'',
         ];
 
         if($post_type === 'after-school-program'){
             $data = array_merge($data, [
+                'camp_info' => [
+                    [
+                        'label' => 'Program Email',
+                        'value' => get_field('program_email', $post) ? '<a class="sm" href="mailto:'.get_field('program_email', $post).'">'.get_field('program_email', $post).'</a>':''
+                    ],
+                    [
+                        'label' => 'Phone Number',
+                        'value' => get_field('program_phone_number', $post) ?:''
+                    ]
+                ],
                 'location' => get_field('location', $post) ?:'',
-                'school_email' => get_field('school_email', $post) ?:'',
+                'program_email' => get_field('program_email', $post) ?:'',
                 'school_website' => get_field('school_website', $post) ?:[],
-                'school_phone_number' => get_field('school_phone_number', $post) ?:'',
+                'program_phone_number' => get_field('program_phone_number', $post) ?:'',
                 'registration_link' => get_field('registration_link', $post) ?:[],
+                'contact_us_page' => get_field('contact_us_page', 'option')? get_permalink(get_field('contact_us_page', 'option')):false,
             ]);
         }
 
@@ -32,6 +54,12 @@ class CardsDataProvider extends ServiceProvider
             $startDate = get_field('start_date', $post) ?:false;
             $endDate = get_field('end_date', $post) ?:false;
             $afterCare = get_field('after_care', $post) ?:[];
+            $quickNotes = get_field('quick_notes', $post) ?:[];
+
+            $quickNotesText = ''; 
+            foreach($quickNotes as $note){
+                $quickNotesText .=  $note['note'] !== ''?$note['note'].'<br>':'';
+            }
 
             $data = array_merge($data, [
                 'camp_info' => [
@@ -51,18 +79,28 @@ class CardsDataProvider extends ServiceProvider
                         'label' => 'Location',
                         'value' => (get_field('location', $post) ?:'')
                     ],
+                    [
+                        'label' => 'Quick Notes',
+                        'value' => $quickNotesText
+                    ],
                 ],
-                'registration_link' => get_field('registration_link', $post) ?:[],
-                'action_cta' => [
-                    'url' => $data['permalink'],
-                    'title' => 'Learn More',
-                    'style' => 'secondary'
-                ]            
+                'subheading' => get_field('subheading', $post) ?:'',
+                'contact_email' => get_field('contact_email', $post) ?:'',
+                'quick_notes' => get_field('quick_notes', $post) ?:'',
+                'registration_link' => get_field('registration_link', $post) ?:[],        
+                'contact_us_page' => get_field('contact_us_page', 'option')? get_permalink(get_field('contact_us_page', 'option')):false,
             ]);
+            
+            
+
         }
 
-        if($post_type === 'student-success'){
+        if($post_type === 'post'){
+            $featuredImage = get_the_post_thumbnail_url($post, 'full');
             $data = array_merge($data, [
+                'featured_image' => $featuredImage? [
+                    'url' => $featuredImage
+                ] : [],
                 'action_cta' => [
                     'url' => $data['permalink'],
                     'title' => 'Learn More',
@@ -127,4 +165,38 @@ class CardsDataProvider extends ServiceProvider
             }
         }
     }
+
+    
+
+	public static function SetAjaxActions(){
+		add_action('wp_ajax_' . self::ACTION, function(){
+			return self::GetModalAjax();
+		});
+
+		add_action('wp_ajax_nopriv_' . self::ACTION, function(){
+			return self::GetModalAjax();
+		});
+	}
+
+    public static function getAjaxConfig(){
+        $ajax_config = [
+            'url' => home_url('/', is_ssl() ? 'https' : 'http') . 'wp-admin/admin-ajax.php',
+            'action' => self::ACTION
+	    ];
+
+		return json_encode($ajax_config, JSON_HEX_APOS);
+    }
+
+
+	public static function GetModalAjax(){
+		$postId = filter_input(INPUT_GET, 'postId')?: false;
+		if(!$postId){
+			wp_send_json_error();
+			die();
+		}
+
+		$modalData = self::get($postId);
+		$modalBody = view('components.card-modal.modal-body', $modalData )->render();
+		wp_send_json_success(['modalBody' => $modalBody]);
+	}
 }

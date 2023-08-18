@@ -15,7 +15,7 @@
 		</div>
 		<div class="thumbnail-carousel splide" style="visibility:visible;">
 			<div class="splide__track">
-				<ul class="splide__list">
+				<ul class="splide__list @if (count($images) < 5) justify @endif " >
 					@forelse ($images as $i => $image)
 						<li class="splide__slide"><img src="{{ $image['url'] }}" loading="lazy"></li>
 					@empty

@@ -55,7 +55,7 @@
         "App\\Providers\\PostTemplatesProvider",
         "App\\Providers\\PostSearchProvider",
         "App\\Providers\\FrPageBuilderSettingsProvider",
-        "App\\Providers\\TeamMemberDataProvider"
+        "App\\Providers\\CardsDataProvider"
       ]
     }
   }
