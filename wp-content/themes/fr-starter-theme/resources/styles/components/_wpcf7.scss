@@ -21,7 +21,7 @@
             gap: 38px;
             margin: 0;
             width: 100%;
-            margin-bottom: 16px;
+            
 
             @include breakpoint(md down) {
                 flex-direction: column;
@@ -31,13 +31,15 @@
             .col-12{
                 padding: 0;
                 width: 100%;
+                margin-bottom: 16px;
             }
 
             .col-6{
                 padding: 0;
+                margin-bottom: 16px;
                 width: calc((100% - 38px) / 2);
 
-                @include breakpoint(sm down) {
+                @include breakpoint(md down) {
                     width: 100%;
                 }
             }
@@ -76,7 +78,27 @@
 
             .wpcf7-spinner {
                 position: absolute;
-                right: 20px;
+                margin: 0;
+                right: 95px;
+                top: 50%;
+                transform: translate(50%, -50%);
+
+                @include breakpoint(md down) {
+                    right: 50%;
+                }
+            }
+        }
+
+        &.invalid{
+            .wpcf7-response-output{
+                display: none;
+            }
+        }
+
+        &.submitting{
+            input[type="submit"]{
+                opacity: 0.6;
+                pointer-events: none;
             }
         }
     }

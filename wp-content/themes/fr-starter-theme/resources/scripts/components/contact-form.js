@@ -20,7 +20,7 @@
     }
 
     $(() => {
-		$('.wpcf7').ContactFormPreventMultiSubmit();
+		//$('.wpcf7').ContactFormPreventMultiSubmit();
 	});
     
 })(jQuery);
