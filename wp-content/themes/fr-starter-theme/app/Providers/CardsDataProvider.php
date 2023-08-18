@@ -53,6 +53,7 @@ class CardsDataProvider extends ServiceProvider
         if($post_type === 'camp'){
             $startDate = get_field('start_date', $post) ?:false;
             $endDate = get_field('end_date', $post) ?:false;
+            $hasAfterCare = get_field('has_after_care', $post)?:false;
             $afterCare = get_field('after_care', $post) ?:[];
             $quickNotes = get_field('quick_notes', $post) ?:[];
 
@@ -62,7 +63,7 @@ class CardsDataProvider extends ServiceProvider
             }
 
             $data = array_merge($data, [
-                'camp_info' => [
+                'camp_info' => array_filter([
                     [
                         'label' => 'Dates',
                         'value' => ( $startDate ? date("D, M d, Y", strtotime($startDate)) : '' ).' to '.( $endDate ? date("D, M d, Y", strtotime($endDate)): '')
@@ -71,10 +72,10 @@ class CardsDataProvider extends ServiceProvider
                         'label' => 'Camp Cost',
                         'value' => '$ '.(get_field('fee', $post) ?:'0')
                     ],
-                    [
+                    $hasAfterCare ? [
                         'label' => 'After Care',
                         'value' => ($afterCare['start_time']? date("h:i a", strtotime($afterCare['start_time'])):'').' to '.($afterCare['end_time']?date("h:i a", strtotime($afterCare['end_time'])) : '').'. Fee $ '.($afterCare['fee'] ?:'0')
-                    ],
+                    ]: null,
                     [
                         'label' => 'Location',
                         'value' => (get_field('location', $post) ?:'')
@@ -83,16 +84,13 @@ class CardsDataProvider extends ServiceProvider
                         'label' => 'Quick Notes',
                         'value' => $quickNotesText
                     ],
-                ],
+                ]),
                 'subheading' => get_field('subheading', $post) ?:'',
                 'contact_email' => get_field('contact_email', $post) ?:'',
                 'quick_notes' => get_field('quick_notes', $post) ?:'',
                 'registration_link' => get_field('registration_link', $post) ?:[],        
                 'contact_us_page' => get_field('contact_us_page', 'option')? get_permalink(get_field('contact_us_page', 'option')):false,
             ]);
-            
-            
-
         }
 
         if($post_type === 'post'){
