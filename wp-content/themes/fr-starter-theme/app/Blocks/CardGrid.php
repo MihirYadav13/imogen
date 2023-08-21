@@ -174,8 +174,8 @@ class CardGrid extends Block
 				]
 			])
 			->addText('load_more_button_label', [
-				'label' => '\'Load More\' Button Label',
-				'default_value' => 'Load More',
+				'label' => '\'View More\' Button Label',
+				'default_value' => 'View More',
 				'wrapper' => [
 					'width' => 50
 				]
@@ -305,16 +305,14 @@ class CardGrid extends Block
 							'url' => ''
 						],
 						'program_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'registration_link' => [
-							'url' => ''
-						],
+						'registration_link' => false,
 					]
 				])->render()
 			],
 			'hasMore' => true,
 			'ajax_config' => '',
 			'source' => 'posts',
-			'load_more_text' => 'Load More'
+			'load_more_text' => 'View More'
 		];
 
 		return $result;

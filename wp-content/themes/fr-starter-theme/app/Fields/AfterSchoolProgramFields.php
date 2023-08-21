@@ -62,7 +62,7 @@
 						'width' => 50
 					]
 				])
-				->addLink('registration_link', [
+				->addUrl('registration_link', [
 					'required' => 1,
 					'wrapper' => [
 						'width' => 50

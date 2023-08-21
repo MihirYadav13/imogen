@@ -20,13 +20,14 @@ class CardGrid extends Component
     public $loadMoreText;
     public $includePublishCard;
     public $blockData;
+    public $showNoResult;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'Load More', $includePublishCard = false, $blockData = false)
+    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'View More', $includePublishCard = false, $blockData = false, $showNoResult = false)
     {
         $this->posts = [];
         $this->postsPerPage = $postsPerPage ? : $this->postsPerPage;
@@ -35,6 +36,7 @@ class CardGrid extends Component
         $this->loadMoreText = $loadMoreText;
         $this->includePublishCard = $includePublishCard ? json_decode($includePublishCard) : false;
         $this->blockData = $blockData;
+        $this->showNoResult = $showNoResult;
 
         // Assign blockdata
         if($blockData){
