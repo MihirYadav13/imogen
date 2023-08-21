@@ -43,7 +43,12 @@
                     justify-content:center;
                 }
                 .splide__slide{
-                    width: calc((100% - 32px ) / 5) !important;
+                    &.is__post{
+                        width: calc((100% - 32px ) / 5) !important;
+                    }
+                    &.is__page{
+                        width: calc((100% - 48px ) / 7) !important;
+                    }
                     border: none;
                     position: relative;
                     overflow: hidden;
@@ -60,8 +65,8 @@
                         height: 100%;
                         object-fit: cover;
                         object-position: center;
-                        object-position: center;                        
-                    }                    
+                        object-position: center;  
+                    }
                     &.is-active{
 
                         border: 3px solid var(--fr-theme-main-color);
