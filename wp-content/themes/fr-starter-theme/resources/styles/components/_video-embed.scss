@@ -61,8 +61,8 @@
 					width: 60px;
 					border-radius: 38px;	
 					border: 0.51px solid $white;
-					top: calc(50% - 40px);
-					left: calc(50% - 40px);
+					top: calc(50% - 26px);
+					left: calc(50% - 32px);
 				}
 				border: 1px solid $white;
 				background-color: var(--fr-theme-main-color);
@@ -75,21 +75,46 @@
 				&:hover{
 					transform: scale(1.1);
 				}
-				&::before {
+				.arrow-triangle {
 					position: absolute;
-					content: '';
-					border-top: transparent 12px solid;
-					border-bottom: transparent 12px solid;
-					border-left: $white 24px solid;
+					background-color: $white;
+					top: calc(50% - 8px);
+					left: calc(50% - 8px);
+					width: 12px;
+					height: 12px;
 					@include breakpoint(sm down){
-					border-top: transparent 6px solid;
-					border-bottom: transparent 6px solid;
-					border-left: $white 12px solid;
+						width: 6px;
+						height: 6px;
+						top: calc(50% - 4px);
+						left: calc(50% - 4px);
 					}
-					top: 50%;
-					left: 50%;
-					transform: translate(-40%, -50%);
+					border-top-right-radius: 30%;
+				  
+				  &:before,
+				  &:after {
+					content: '';
+					position: absolute;
+					background-color: inherit;
+					width: 12px;
+					height: 12px;
+					@include breakpoint(sm down){
+						width: 6px;
+						height: 6px;
+					}
+					border-top-right-radius: 30%;
+				  }				  
+				  &.left {
+					transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
+				  }
+				  &:before {
+					transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+				  }
+				  
+				  &:after {
+					transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+				  }
 				}
+				
 			}
 		}
 	}
