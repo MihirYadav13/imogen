@@ -1,0 +1,59 @@
+
+#main {
+    form.wpcf7-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 96px;
+
+        .row-1 {
+            display: flex;
+            flex-direction: row;
+            gap: 38px;
+            @include breakpoint(md down) {
+                flex-direction: column;
+                gap: unset;
+            }
+
+            .column-1,
+            .column-2 {
+                width: 388px;
+
+                @include breakpoint(sm down) {
+                    width: auto;
+                }
+            }
+        }
+
+        label {
+            height: 24px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0;
+            line-height: 24px;
+            width: 100%;
+        }
+
+        .wpcf7-text {
+            @include input-styles;
+        }
+
+        textarea {
+            @include input-styles;
+            height: 114px;
+        }
+
+        [type="submit"] {
+            float: right;
+            width: 190px;
+
+            @include breakpoint(md down) {
+                width: 100%;
+            }
+        }
+
+        .wpcf7-spinner {
+            display: none;
+        }
+    }
+}
