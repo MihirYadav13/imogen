@@ -5,7 +5,9 @@
 				<div class="thumbnail-container">
 					<div class="inner-overlay">
 						<img src="${imgUrl}" alt="Video overlay." loading="lazy">
-						<div class="play-btn" title="Click here to play the video." role="button"></div>
+						<div class="play-btn" title="Click here to play the video." role="button">
+							<div class="arrow-triangle left"></div>
+						</div>
 					</div>
 				</div>
 			`;
