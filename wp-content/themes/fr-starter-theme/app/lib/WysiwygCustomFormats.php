@@ -44,6 +44,11 @@ if (!class_exists('WysiwygCustomFormats')) :
                     'title' => 'News paper column',
                     'block' => 'div',
                     'classes' => 'news-paper-column'
+                ),
+                array(
+                    'title' => 'Desktop right aligned',
+                    'block' => 'div',
+                    'classes' => 'desktop-right-aligned'
                 )
             );
             // Insert the array, JSON ENCODED, into 'style_formats'
