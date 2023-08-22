@@ -101,4 +101,10 @@
             column-count: unset;
         }
     }
+    .desktop-right-aligned {
+        text-align: right;
+        @include breakpoint(lg down) {
+            text-align: unset;
+        }
+    }
 }
