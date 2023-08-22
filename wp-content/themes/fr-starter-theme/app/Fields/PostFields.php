@@ -4,7 +4,7 @@
 	use Log1x\AcfComposer\Field;
 	use StoutLogic\AcfBuilder\FieldsBuilder;
 
-	class StudentSuccessFields extends Field
+	class PostFields extends Field
 	{
 		/**
 		 * The field group.
@@ -13,17 +13,22 @@
 		 */
 		public function fields()
 		{
-			$fields = new FieldsBuilder('student_success_fields', [
+			$fields = new FieldsBuilder('card_description', [
 				'hide_on_screen' => [
 					'the_content'
-				]
+				],
+				'position' => 'side'
 			]);
 
 			$fields
-				->setLocation('post_type', '==', 'student-success');
+				->setLocation('post_type', '==', 'post');
 
 			$fields
-				->addImage('featured_image', [
+				->addTextArea('description', [
+					'required' => 1,
+					'maxlength' => 1000,
+					'rows' => 3,
+					'new_line' => 'br',
 					'wrapper' => [
 						'width' => 50
 					]

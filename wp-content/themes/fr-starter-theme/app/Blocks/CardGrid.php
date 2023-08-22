@@ -115,7 +115,7 @@ class CardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = get_field('posts_per_page') ?: 3;
+		$postsPerPage = get_field('posts_per_page')?:8;
 		$postType = get_field('post_type');
 
 		$result =  array_merge([
@@ -157,7 +157,6 @@ class CardGrid extends Block
 					'after-school-program' => 'After School Program',
 					'camp' => 'Camp',
 					'post' => 'Blog Post',
-					'childhood-education' => 'Childhood Education',
 					'team-member' => 'Team Member'
 				],
 				'required' => 1,
@@ -175,8 +174,8 @@ class CardGrid extends Block
 				]
 			])
 			->addText('load_more_button_label', [
-				'label' => '\'Load More\' Button Label',
-				'default_value' => 'Load More',
+				'label' => '\'View More\' Button Label',
+				'default_value' => 'View More',
 				'wrapper' => [
 					'width' => 50
 				]
@@ -302,21 +301,19 @@ class CardGrid extends Block
 						],
 						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'location' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'school_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
 						'school_website' => [
 							'url' => ''
 						],
-						'school_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'registration_link' => [
-							'url' => ''
-						],
+						'program_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'registration_link' => false,
 					]
 				])->render()
 			],
 			'hasMore' => true,
 			'ajax_config' => '',
 			'source' => 'posts',
-			'load_more_text' => 'Load More'
+			'load_more_text' => 'View More'
 		];
 
 		return $result;
@@ -326,8 +323,8 @@ class CardGrid extends Block
 	{
 
 		return array_unique(array_filter([
-			in_array($postType, ['after-school-program', 'camp', 'post']) ? 'age' : null,
-			in_array($postType, ['after-school-program', 'camp']) ? 'program' : null,
+			in_array($postType, ['post']) ? 'programs' : null,
+			in_array($postType, ['post']) ? 'age' : null,
 			in_array($postType, ['post']) ? 'activity' : null
 		]));
 	}

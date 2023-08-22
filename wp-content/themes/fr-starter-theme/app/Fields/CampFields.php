@@ -81,20 +81,28 @@
 						'width' => 50
 					]
 				])
+				->addTrueFalse('has_after_care', [
+					'label' => 'Has After Care',
+					'default' => 0
+				])
 				->addGroup('after_care', [
 					'layout' => 'block'
 				])
+					->conditional('has_after_care', '==', 1)
 					->addTimePicker('start_time', [
+						'required' => 1,
 						'wrapper' => [
 							'width' => 40
 						]
 					])
 					->addTimePicker('end_time', [
+						'required' => 1,
 						'wrapper' => [
 							'width' => 40
 						]
 					])
 					->addNumber('fee', [
+						'required' => 1,
 						'prepend' => '$',
 						'min' => 0,
 						'wrapper' => [
@@ -109,7 +117,7 @@
 						'maxlength' => 200
 					])
 				->endRepeater()
-				->addLink('registration_link', [
+				->addUrl('registration_link', [
 					'required' => 1,
 					'wrapper' => [
 						'width' => 50

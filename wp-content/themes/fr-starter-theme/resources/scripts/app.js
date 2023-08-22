@@ -20,6 +20,7 @@ import './components/card-filter';
 import './components/bs-multiselect';
 import './components/share-button';
 import './components/card';
+import './components/contact-form';
 
 // 3. Import block JS
 import './blocks/article-list';

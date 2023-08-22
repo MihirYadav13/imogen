@@ -20,13 +20,14 @@ class CardGrid extends Component
     public $loadMoreText;
     public $includePublishCard;
     public $blockData;
+    public $showNoResult;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'Load More', $includePublishCard = false, $blockData = false)
+    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'View More', $includePublishCard = false, $blockData = false, $showNoResult = false)
     {
         $this->posts = [];
         $this->postsPerPage = $postsPerPage ? : $this->postsPerPage;
@@ -35,6 +36,7 @@ class CardGrid extends Component
         $this->loadMoreText = $loadMoreText;
         $this->includePublishCard = $includePublishCard ? json_decode($includePublishCard) : false;
         $this->blockData = $blockData;
+        $this->showNoResult = $showNoResult;
 
         // Assign blockdata
         if($blockData){
@@ -50,8 +52,9 @@ class CardGrid extends Component
     }
 
 
-    public function setQueryArgs(){
+    public function setQueryArgs(){        
 		$this->queryArgs = array_merge([
+            'block_grid_name' => $this->blockData['block_name'],
             'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
 		], $this->getArgsFromBlockData(), $this->getArgsFromUrl());
@@ -64,7 +67,7 @@ class CardGrid extends Component
 			'source' => 'filters',
 			'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
-            'post__in' => $this->setPostIn()
+            'post__in' => $this->setPostIn(),           
 		]);
 
         if($this->blockData){
@@ -81,17 +84,18 @@ class CardGrid extends Component
 
         $args = array_filter([
 			'post_type' => $this->blockData['post_type'],
-            'post__in' => $this->setPostIn()
+            'post__in' => $this->setPostIn(),
+            'programs' => isset($this->blockData['programs']) ? $this->blockData['programs'] : null
 		]);
-
+        
         if(!$taxonomies){
             return $args;
         }
-
-		return array_merge($args, [
-			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
+       
+        return array_merge($args, [
+            'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
             'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
-		]);
+        ]);
 	}
 
     public function getArgsFromUrl(){

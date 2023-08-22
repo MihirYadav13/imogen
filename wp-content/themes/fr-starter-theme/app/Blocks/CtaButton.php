@@ -115,7 +115,11 @@ class CtaButton extends Block
         'post_id' => '',
         'style' => '',
         'new_tab' => false,
-        'alignment' => 'left'
+        'alignment' => 'left',
+        'attributes' => [
+            'preview_image' => 'CtaButton.png',
+            'block_icon' => 'CtaButton.png'
+        ],
     ];
 
     /**

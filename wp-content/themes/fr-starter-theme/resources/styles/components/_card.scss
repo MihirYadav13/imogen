@@ -29,9 +29,9 @@
             &::after{
                 content: '';
                 background-image: url("../images/card-wave.svg");
-                height: 32px;
+                height: 18px;
                 position: absolute;
-                bottom: 0;
+                bottom: -1px;
                 width: 100%;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -83,9 +83,9 @@
                 }
 
                 .card-body{
-
+                    margin-bottom: 8px;
                     .excerpt{
-                        
+                        margin-bottom: 0;
                     }
                 }
 
@@ -94,12 +94,21 @@
                     justify-content: flex-start;
                     align-items: flex-start;
                     margin-top:auto;
+
+                    .cta-regular{
+                        @include sm-style;
+                    }
                 }
             }
         }
     }
 
     &.card-type-{
+        &after-school-program, &camp, &team-member{
+            &:hover{
+                cursor: pointer;
+            }
+        }
         &after-school-program{
             .card-inner{
                 .wysiwyg-content{

@@ -109,17 +109,19 @@
                             &.dropdown-toggle{
                                 &::after{
                                     display: none;
+                                    width: 15.95px;
+					                height: 9.68px;
 
                                     @include breakpoint(lg down){
                                         display: inline-block;
-                                        transform: rotate(90deg);
+                                        transform: rotate(270deg);
                                     }
                                 }
 
                                 &.show{
                                     &::after{
                                         @include breakpoint(lg down){
-                                            transform: rotate(180deg);
+                                            transform: rotate(0deg);
                                         }
                                     }
                                 }
@@ -204,6 +206,7 @@
                                 width: 100%;
                                 margin-bottom: 8px;
                                 border-radius: 20px;
+                                border-right: 1px solid $white;
                             }
                         }
 
@@ -212,6 +215,7 @@
                             background-color: $blue;
                             border-top-left-radius: 0;
                             border-bottom-left-radius: 0;
+                            border: 1px solid $blue;
 
                             @include breakpoint(lg down){
                                 width: 100%;
@@ -235,6 +239,7 @@
                         &.submitting{
                             input[type="submit"]{
                                 opacity: 0.6;
+                                pointer-events: none;
                             }
                         }
 
@@ -286,7 +291,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        border-top: 1px solid $white;
         padding: 24px 0px;
 
         @include breakpoint(lg down){

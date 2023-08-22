@@ -1,5 +1,4 @@
 .card-modal{
-    min-height: 380px;
 
     .modal-dialog{
         @include breakpoint(lg down) {
@@ -30,9 +29,11 @@
                             display: flex;
                             flex-direction: column;
                             position: relative;
+                            justify-content: center;
+                            align-items: center;
 
                             &::after{
-                                background-image: url("../images/card-v-wave.svg");
+                                background-image: url("../images/modal-wave.svg");
                                 width: 32px;
                                 right: 0;
                                 height: 100%;
@@ -45,7 +46,7 @@
 
                                 @include breakpoint(lg down) {
                                     background-image: url("../images/card-wave.svg");
-                                    height: 32px;
+                                    height: 18px;
                                     width: 100%;
                                 }
                             }
@@ -63,11 +64,24 @@
                                     min-height: unset
                                 }
                             }
+
+                            &.default{
+                                width: 412px;
+                                min-height: 500px;
+                                background-color: var(--fr-theme-main-color);
+
+                                img{
+                                    width: 100px;
+                                    height: auto;
+                                    min-height: unset;
+                                    flex-grow: 0;
+                                }
+                            }
                         }
 
                         .right-content{
                             align-self: center;
-                            padding: 75px 24px;
+                            padding: 40px 24px;
                             flex-grow: 1;
 
                             @include breakpoint(lg down) {
