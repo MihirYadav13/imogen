@@ -127,7 +127,7 @@ class CardGrid extends Block
 				'block_name' => 'card_grid',
 				'source' => get_field('source'),
 				'posts_per_page' => $postsPerPage,
-				'post_type' => get_field('post_type')?[get_field('post_type')]:[],
+				'post_type' => get_field('post_type') ? [get_field('post_type')] : [],
 				'posts' => get_field('posts'),
 				'taxonomies' => get_field('taxonomies'),
 			]
@@ -138,8 +138,8 @@ class CardGrid extends Block
 
 	public $example = [
 		'attributes' => [
-            'preview_image' => 'CardGrid.png'
-        ],
+			'preview_image' => 'CardGrid.png'
+		],
 	];
 
 	/**
@@ -168,7 +168,7 @@ class CardGrid extends Block
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
 				'min' => 2,
-				'default_value' => 8,
+				'default_value' => 2,
 				'wrapper' => [
 					'width' => 50
 				]
@@ -194,88 +194,88 @@ class CardGrid extends Block
 			->addGroup('posts', [
 				'layout' => 'block'
 			])
-				->conditional('source', '==', 'posts')
-				->addPostObject('after-school-program', [
-					'label' => 'Selected Posts',
-					'return_format' => 'id',
-					'post_type' => [
-						'after-school-program'
-					],
-					'required' => 1,
-					'multiple' => 1
-				])
-				->conditional('post_type', '==', 'after-school-program')
-				->addPostObject('camp', [
-					'label' => 'Selected Posts',
-					'return_format' => 'id',
-					'post_type' => [
-						'camp'
-					],
-					'required' => 1,
-					'multiple' => 1
-				])
-				->conditional('post_type', '==', 'camp')
-				->addPostObject('post', [
-					'label' => 'Selected Posts',
-					'return_format' => 'id',
-					'post_type' => [
-						'post'
-					],
-					'required' => 1,
-					'multiple' => 1
-				])
-				->conditional('post_type', '==', 'post')
-				->addPostObject('childhood-education', [
-					'label' => 'Selected Posts',
-					'return_format' => 'id',
-					'post_type' => [
-						'childhood-education'
-					],
-					'required' => 1,
-					'multiple' => 1
-				])
-				->conditional('post_type', '==', 'childhood-education')
-				->addPostObject('team-member', [
-					'label' => 'Selected Posts',
-					'return_format' => 'id',
-					'post_type' => [
-						'team-member'
-					],
-					'required' => 1,
-					'multiple' => 1
-				])
-				->conditional('post_type', '==', 'team-member')
+			->conditional('source', '==', 'posts')
+			->addPostObject('after-school-program', [
+				'label' => 'Selected Posts',
+				'return_format' => 'id',
+				'post_type' => [
+					'after-school-program'
+				],
+				'required' => 1,
+				'multiple' => 1
+			])
+			->conditional('post_type', '==', 'after-school-program')
+			->addPostObject('camp', [
+				'label' => 'Selected Posts',
+				'return_format' => 'id',
+				'post_type' => [
+					'camp'
+				],
+				'required' => 1,
+				'multiple' => 1
+			])
+			->conditional('post_type', '==', 'camp')
+			->addPostObject('post', [
+				'label' => 'Selected Posts',
+				'return_format' => 'id',
+				'post_type' => [
+					'post'
+				],
+				'required' => 1,
+				'multiple' => 1
+			])
+			->conditional('post_type', '==', 'post')
+			->addPostObject('childhood-education', [
+				'label' => 'Selected Posts',
+				'return_format' => 'id',
+				'post_type' => [
+					'childhood-education'
+				],
+				'required' => 1,
+				'multiple' => 1
+			])
+			->conditional('post_type', '==', 'childhood-education')
+			->addPostObject('team-member', [
+				'label' => 'Selected Posts',
+				'return_format' => 'id',
+				'post_type' => [
+					'team-member'
+				],
+				'required' => 1,
+				'multiple' => 1
+			])
+			->conditional('post_type', '==', 'team-member')
 			->endGroup()
 			->addGroup('taxonomies', [
 				'layout' => 'block'
 			])
-				->conditional('source', '==', 'from_filters')
-				->addTaxonomy('age', [
-					'label' => 'Age',
-					'taxonomy' => 'age',
-					'field_type' => 'checkbox',
-					'return_format' => 'object',
-					'multiple' => 1,
-					'add_term' => 0,
-					'wrapper' => [
-						'width' => 50
-					]
-				])
-					->conditional('post_type', '==', 'after-school-program')
-					->or('post_type', '==', 'camp')
-				->addTaxonomy('activity', [
-					'label' => 'Activity',
-					'taxonomy' => 'activity',
-					'field_type' => 'checkbox',
-					'return_format' => 'object',
-					'multiple' => 1,
-					'add_term' => 0,
-					'wrapper' => [
-						'width' => 50
-					]
-				])
-					->conditional('post_type', '==', 'after-school-program')
-					->or('post_type', '==', 'camp')
+			->conditional('source', '==', 'from_filters')
+			->addTaxonomy('age', [
+				'label' => 'Age',
+				'taxonomy' => 'age',
+				'field_type' => 'checkbox',
+				'return_format' => 'object',
+				'multiple' => 1,
+				'add_term' => 0,
+				'wrapper' => [
+					'width' => 50
+				]
+			])
+			->conditional('post_type', '==', 'after-school-program')
+			->or('post_type', '==', 'camp')
+			->addTaxonomy('activity', [
+				'label' => 'Activity',
+				'taxonomy' => 'activity',
+				'field_type' => 'checkbox',
+				'return_format' => 'object',
+				'multiple' => 1,
+				'add_term' => 0,
+				'wrapper' => [
+					'width' => 50
+				]
+			])
+			->conditional('post_type', '==', 'after-school-program')
+			->or('post_type', '==', 'camp')
 			->endGroup();
 
 		return $cardGrid->build();
@@ -286,7 +286,8 @@ class CardGrid extends Block
 	 *
 	 * @return void
 	 */
-	public function exampleData() {
+	public function exampleData()
+	{
 		$result = [
 			'posts' => [
 				view('components.card', [
@@ -318,7 +319,8 @@ class CardGrid extends Block
 		return $result;
 	}
 
-	public function getFrontendFilters($postType){
+	public function getFrontendFilters($postType)
+	{
 
 		return array_unique(array_filter([
 			in_array($postType, ['post']) ? 'programs' : null,
