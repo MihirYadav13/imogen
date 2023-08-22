@@ -131,6 +131,9 @@
         .cta-button{
             min-width: 178px;
             text-align: center;
+            @include breakpoint(sm down){
+                width: 100%;
+            }
         }
     }
 

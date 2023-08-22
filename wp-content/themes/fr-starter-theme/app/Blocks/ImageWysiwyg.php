@@ -122,7 +122,9 @@ class ImageWysiwyg extends Block
             'url' => 'https://picsum.photos/seed/picsum/1024/463',
             'alt' => 'Placeholder image'
         ],
-        'content' => '<p>Start editing content <strong>here.</strong></p>',
+        'content' => '<h5 class="sub"><span class="theme-color">ABOUT OUR PROGRAMS</span></h5>
+<h3 class="sub">IF Afterschool programs support the</h3>
+<div class="news-paper-column">Our afterschool programs operate every day after school, from the first Monday that schools are in session in September, through the last Friday that schools are open in June. We provide high quality childcare with a diverse menu of enrichment activities.</div>',
         'attributes' => [
             'preview_image' => 'ImgaeWysiwyg.png'
         ],
