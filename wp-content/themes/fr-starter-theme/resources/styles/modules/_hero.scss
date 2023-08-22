@@ -45,13 +45,16 @@
             flex-direction: row;
             position: relative;
             z-index: 10;
-            padding: 150px 0px 150px;
+            padding: 168px 0px 168px;
             overflow: visible;
             @include desktop-hero-svg;
             background-repeat: no-repeat;
             background-position: left;
             @include breakpoint(lg up) {
                 height: 710px;
+            }
+            @include breakpoint(xxl up) {
+                background-size: 70% auto;
             }
 
             @include breakpoint(lg down) {
