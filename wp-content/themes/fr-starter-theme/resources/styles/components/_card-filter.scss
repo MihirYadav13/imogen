@@ -101,6 +101,7 @@
                                 transform: translateY(-50%);
                                 width: 10px;
                                 height: 10px;
+                                filter: var(--fr-theme-main-color-filter);
                             }
                         }
                     }
