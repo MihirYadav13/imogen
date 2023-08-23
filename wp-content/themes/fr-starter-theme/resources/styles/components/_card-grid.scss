@@ -38,7 +38,8 @@
                             &::after{
                                 background-image: url("../images/card-v-wave.svg");
                                 width: 32px;
-                                right: 0;
+                                right: -1px;
+                                bottom: 0;
                                 height: 100%;
                             }
 

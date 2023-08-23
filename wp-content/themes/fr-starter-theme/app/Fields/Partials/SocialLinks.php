@@ -27,7 +27,6 @@ class SocialLinks extends Partial
 					'fb' => 'Facebook',
 					'ln' => 'LinkedIn',
 					'tw' => 'Twitter',
-					'md' => 'Medium',
 					'yt' => 'YouTube',
 					'in' => 'Instagram'
 				],
