@@ -325,7 +325,7 @@ class CardGrid extends Block
 		return array_unique(array_filter([
 			in_array($postType, ['post']) ? 'programs' : null,
 			in_array($postType, ['post']) ? 'age' : null,
-			in_array($postType, ['post']) ? 'activity' : null
+			in_array($postType, ['post']) ? 'activity' : null,
 		]));
 	}
 

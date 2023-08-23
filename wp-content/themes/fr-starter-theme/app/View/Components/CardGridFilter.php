@@ -24,6 +24,12 @@ class CardGridFilter extends Component
 		'activity' => 'Activity'
 	];
 
+	public $filterDefaultLabels = [
+		'age' => 'All Ages',
+		'programs' => 'All Programs',
+		'activity' => 'All Activities'
+	];
+
 	public $filtersPostType = [
 	];
 
@@ -94,7 +100,7 @@ class CardGridFilter extends Component
 
 		$result = array_reduce($posts['posts'], function($res, $post) {
 			$res[] = [
-				'key' => $post->slug,
+				'key' => $post->post_name,
 				'value' => $post->post_title
 			];
 			return $res;
@@ -120,6 +126,7 @@ class CardGridFilter extends Component
         }
 
 		return array_filter([
+			'programs' => [],
 			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
 			'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
 		]);

@@ -72,7 +72,7 @@
 
 			$filterForms.each((index, form) => {
 				// On multiselect changed
-				$(form).find('select.bs-multiselect').on('fr:multiselect-changed', () => {
+				$(form).find('select').on('change', () => {
 					filtersChanged(form);
 				});
 

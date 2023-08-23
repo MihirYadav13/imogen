@@ -1,10 +1,15 @@
 (function ($) {
+    require('selectric');
+
     $(() => {
         const selector = '.bs-multiselect select, select.bs-multiselect';
         const defaultConfig = {
             templates: {
                 button: '<button type="button" class="multiselect dropdown-toggle btn" data-bs-toggle="dropdown" aria-expanded="false"><span class="multiselect-selected-text"></span></button>',
-            }
+                popupContainer: '<div class="multiselect-container dropdown-menu"></div>',
+            },
+            dropUp: false,
+            maxHeight: 200
         };
 
         //Hack to go around the issue where Gravity Forms resets custom dropdowns on ajax validation
@@ -27,7 +32,18 @@
                     });
                     
                 });
-                $(window).trigger('fr:load-bsmultiselectjs');
+                //$(window).trigger('fr:load-bsmultiselectjs');
+
+                $elems.selectric({
+                    forceRenderBelow: true,
+                    multiple: {
+                        separator: ', ',       // Type: String.             Description: Items separator.
+                        keepMenuOpen: true,    // Type: Boolean.            Description: Close after an item is selected.
+                        maxLabelEntries: false // Type: Boolean or Integer. Description: Max selected items do show.
+                    }
+                }).selectric("refresh");
+
+                console.log('I am here');
             }
         });
 
