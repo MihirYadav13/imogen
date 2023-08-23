@@ -30,6 +30,23 @@
                                 }
                             }
                         }
+                        &.card-type-{
+                            &team-member{
+                                .card-inner{
+                                    .wysiwyg-content{
+                                        .card-header{
+                                            justify-content: left;
+                                        }
+                    
+                                        .role{
+                                            margin-bottom: 0;
+                                        }
+                    
+                                        text-align: left;
+                                    }
+                                }
+                            }
+                        }
 
                         .featured-image{
                             min-width: 45%;
