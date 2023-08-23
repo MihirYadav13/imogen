@@ -3,13 +3,28 @@
 
     .fr-hero{
         +.fr-content-row{
-            padding-top: #{$page-builder-row-vertical-padding * 2};
+            padding-top: calc($spacing-between-modules / 2);
         }
     }
 
     .fr-content-row{
         position: relative;
-        @include fr-page-builder-padding-top-bottom;
+
+        &:first-of-type{
+            padding-top: calc($spacing-between-modules / 2);
+
+            @include breakpoint(lg down){
+                padding-top: calc($spacing-between-modules-mobile / 2);
+            }
+        }
+
+        &:last-of-type{
+            padding-bottom: calc($spacing-between-modules / 2);
+
+            @include breakpoint(lg down){
+                padding-bottom: calc($spacing-between-modules-mobile / 2);
+            }
+        }
 
         >.row-bg-image{
             position: absolute;

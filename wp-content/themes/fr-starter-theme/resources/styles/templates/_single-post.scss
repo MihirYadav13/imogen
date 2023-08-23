@@ -1,7 +1,7 @@
 body.single-post{
     article{
         width:814px;
-        margin:160px auto 0;
+        margin:80px auto 0;
         max-width: 100%;
 
         @include breakpoint(md down){
@@ -63,7 +63,10 @@ body.single-post{
                 }
             }
             .fr-content-row{
-                padding: 48px 0;
+
+                &:first-of-type{
+                    padding-top: 0px;
+                }
 
                 .image-carousel-container{
                     .splide__slide{

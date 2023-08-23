@@ -12,6 +12,15 @@ import { Collapse } from 'bootstrap';
         }
     }
 
+
+    const updateTopSpacing = ($self) => {
+        let headerBottom = $($self).position().top + $($self).outerHeight(true);
+
+        if(!$('body').hasClass('home')){
+            $('body').css('padding-top', `${headerBottom}px`);
+        }
+    }
+
     const resetMenuItems = ($items) => {
         $.each($items, (i, el) => { 
             $(el).removeClass('show');
@@ -89,6 +98,8 @@ import { Collapse } from 'bootstrap';
                         $self.removeClass('is--opened is--opening is--closing');
                     }
                 }
+
+                updateTopSpacing($self);
             });
 
             $menuContent.find(".menu-item.dropdown").on({
@@ -115,6 +126,9 @@ import { Collapse } from 'bootstrap';
             var scrolled = 0;
             const minScroll = 5;
             $(window).on('scroll', () => { 
+
+                let headerHeight = $($self).outerHeight(true);
+
                 // Minimum scroll check
                 if(Math.abs(scrolled - window.scrollY) < minScroll) {
                     return;
@@ -128,12 +142,15 @@ import { Collapse } from 'bootstrap';
                     if(scrolled < window.scrollY) {
                         $self.addClass('scroll-down');
                         $self.trigger('fr:scroll-down');
+                        $self.css('top', `-${headerHeight}px`);
                     } else {
                         $self.removeClass('scroll-down');
+                        $self.css('top', `0px`);
                     }
                 } else { 
                     $self.removeClass('scrolled');
                     $self.removeClass('scroll-down');
+                    $self.css('top', `0px`);
                 }
 
                 scrolled = window.scrollY;
@@ -141,7 +158,7 @@ import { Collapse } from 'bootstrap';
 
             //on page load
             updateDropdownTrigger($menuContent.find(".nav-link.dropdown-toggle"), $self.currentBreakpoint);
-
+            updateTopSpacing($self);
 		});
 	}
 
