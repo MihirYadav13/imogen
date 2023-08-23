@@ -153,11 +153,13 @@ class Hero extends Block
         $hero
             ->addTrueFalse('is_front_page_hero')
             ->addImage('background_image', [
+                'required' => 1,
                 'wrapper' => [
                     'width' => '50'
                 ]
             ])
             ->addImage('background_image_mobile', [
+                'required' => 1,
                 'wrapper' => [
                     'width' => '50'
                 ]
