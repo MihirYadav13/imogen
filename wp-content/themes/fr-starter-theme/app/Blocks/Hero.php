@@ -151,7 +151,6 @@ class Hero extends Block
         $hero = new FieldsBuilder('hero');
 
         $hero
-            ->addTrueFalse('is_front_page_hero')
             ->addImage('background_image', [
                 'required' => 1,
                 'wrapper' => [
