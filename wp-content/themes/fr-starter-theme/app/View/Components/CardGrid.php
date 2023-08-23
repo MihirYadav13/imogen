@@ -13,7 +13,7 @@ class CardGrid extends Component
 	public $hasMore;
 	public $ajaxConfigArgs;
     public $ajaxConfig;
-    public $teamMemberModalConfig;
+    public $cardModalConfig;
     public $connectedFilters;
 	public $postsPerPage = \App\Providers\PostSearchProvider::POSTS_PER_PAGE;
 	public $postType = \App\Providers\PostSearchProvider::GENERAL_SEARCH_POST_TYPES;
@@ -46,12 +46,13 @@ class CardGrid extends Component
 
         $this->setAjaxConfigArgs();
 		$this->prepareAjaxConfig();
-        $this->prepareTeamMemberModalConfig();
+        $this->prepareCardModalConfig();
     }
 
 
-    public function setQueryArgs(){
+    public function setQueryArgs(){        
 		$this->queryArgs = array_merge([
+            'block_grid_name' => $this->blockData['block_name'],
             'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
 		], $this->getArgsFromBlockData(), $this->getArgsFromUrl());
@@ -64,7 +65,7 @@ class CardGrid extends Component
 			'source' => 'filters',
 			'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
-            'post__in' => $this->setPostIn()
+            'post__in' => $this->setPostIn(),           
 		]);
 
         if($this->blockData){
@@ -81,17 +82,18 @@ class CardGrid extends Component
 
         $args = array_filter([
 			'post_type' => $this->blockData['post_type'],
-            'post__in' => $this->setPostIn()
+            'post__in' => $this->setPostIn(),
+            'programs' => isset($this->blockData['programs']) ? $this->blockData['programs'] : null
 		]);
-
+        
         if(!$taxonomies){
             return $args;
         }
-
-		return array_merge($args, [
-			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
-			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['program']?:[]),
-		]);
+       
+        return array_merge($args, [
+            'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
+            'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
+        ]);
 	}
 
     public function getArgsFromUrl(){
@@ -99,7 +101,7 @@ class CardGrid extends Component
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: null,
 			's' => filter_input(INPUT_GET, 's')?: null,
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
-			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): null,
+            'activity' => filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)): null,
 		]);
 	}
 
@@ -126,8 +128,8 @@ class CardGrid extends Component
             case 'childhood-education':
                 $postIn = $posts['childhood-education'];
                 break;
-            case 'student-success':
-                $postIn = $posts['student-success'];
+            case 'post':
+                $postIn = $posts['post'];
                 break;
             case 'team-member':
                 $postIn = $posts['team-member'];
@@ -165,8 +167,8 @@ class CardGrid extends Component
      *
      * @return void
      */
-	public function prepareTeamMemberModalConfig(){
-		$this->teamMemberModalConfig = \App\Providers\TeamMemberDataProvider::getAjaxConfig();
+	public function prepareCardModalConfig(){
+		$this->cardModalConfig = \App\Providers\CardsDataProvider::getAjaxConfig();
 	}
 
     /**

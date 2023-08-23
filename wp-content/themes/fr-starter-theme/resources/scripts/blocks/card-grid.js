@@ -2,13 +2,13 @@
 	const initializeGrid = ($self) => {
 		let _ = {
 			ajaxConfig: JSON.parse(($self.attr('ajax-config') ? $self.attr('ajax-config') : '{}')),
-			teamMemberModalConfig: JSON.parse(($self.attr('team-member-modal-config') ? $self.attr('team-member-modal-config') : '{}')),
+			cardModalConfig: JSON.parse(($self.attr('card-modal-config') ? $self.attr('card-modal-config') : '{}')),
 			connectedFilters: JSON.parse(($self.attr('connected-filters') ? $self.attr('connected-filters') : '[]')),
             ajaxContainer: $self.find('.ajax-container'),
             resultContainer: $self.find('.filters-result-container'),
-            cardsContainer: $self.find('.atd-cards-container'),
+            cardsContainer: $self.find('.cards-container'),
             loadMoreBtn: $self.find('.load-btn-container a'),
-			teamMemberModal: $self.find('.team-member-modal').length ? $self.find('.team-member-modal').attr('id') :false,
+			cardModal: $self.find('.card-modal').length ? $self.find('.card-modal').attr('id') :false,
             ajaxRunning: false,
             hasMore: true
 		}
@@ -19,7 +19,7 @@
 		});
 
 		connectFrontendFilters($self, _);
-		initializeTeamMemberModal($self, _);
+		initializeCardModal($self, _);
 	}
 
 	const connectFrontendFilters = ($self, _) => {
@@ -55,24 +55,24 @@
 	}
 
 
-	const initializeTeamMemberModal = ($self, _) => {
-		if(!_.teamMemberModal) return;
+	const initializeCardModal = ($self, _) => {
+		if(!_.cardModal) return;
 
-		let $modal = $(`#${_.teamMemberModal}`);
+		let $modal = $(`#${_.cardModal}`);
 
-		$self.find('.card-type-team-member').on('click', (e) => {
+		$self.on('click', '.card-type-team-member, .card-type-after-school-program, .card-type-camp',  (e) => {
 			e.preventDefault();
-			$modal.find('.modal-body .member-info').html('');
+			$modal.find('.modal-body .card-content').html('');
 			$modal.modal('show');
 			$modal.attr('fr-status', 'loading');
-			let memberId = $(e.target).closest('.card-type-team-member').attr('post-id');
+			let postId = $(e.target).closest('.fr-card').attr('post-id');
 			
 			// // Get member info
 			$.ajax({
-				url: _.teamMemberModalConfig.url,
-				data: {action: _.teamMemberModalConfig.action, memberId}
+				url: _.cardModalConfig.url,
+				data: {action: _.cardModalConfig.action, postId}
 			}).done(function(resData) {
-				$modal.find('.modal-body .member-info').html(resData.data.modalBody);
+				$modal.find('.modal-body .card-content').html(resData.data.modalBody);
 				$modal.attr('fr-status', 'success');
 			}).fail(err => {
 				$modal.attr('fr-status', 'fail');

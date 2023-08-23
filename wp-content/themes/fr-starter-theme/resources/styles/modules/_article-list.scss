@@ -9,11 +9,11 @@
     .full-content{
         box-shadow: 0 2px 10px 0 rgba(82,87,103,0.2);
         padding: 40px 28px;
-        margin-bottom: 18px; 
+        margin-bottom: 16px; 
         border-radius: 8px;
         .more-less{
             border: none;
-            background: white;
+            background: transparent;
             color: $blue;
             text-decoration: underline;
             cursor: pointer;
@@ -28,9 +28,10 @@
         }
         .hide-content{
             display: none;
-            p{
+            p, ul, ol{
                 margin-bottom: 0;
             }
+
         } 
         
     }

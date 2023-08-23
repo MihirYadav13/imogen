@@ -29,6 +29,21 @@ if (!class_exists('WysiwygCustomFormats')) :
                     'title' => 'Subheading',
                     'block' => 'h5',
                     'classes' => 'sub'
+                ),
+                array(
+                    'title' => 'Subheading without margin',
+                    'block' => 'h5',
+                    'classes' => 'sub mb-0'
+                ),
+                array(
+                    'title' => 'Theme Colour',
+                    'inline' => 'span',
+                    'classes' => 'theme-color'
+                ),
+                array(
+                    'title' => 'News paper column',
+                    'block' => 'div',
+                    'classes' => 'news-paper-column'
                 )
             );
             // Insert the array, JSON ENCODED, into 'style_formats'

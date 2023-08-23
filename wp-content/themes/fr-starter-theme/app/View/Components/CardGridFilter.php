@@ -20,7 +20,8 @@ class CardGridFilter extends Component
 
     public $taxonomyFilterLabels = [
 		'age' => 'Age',
-		'program' => 'Program'
+		'program' => 'Program',
+		'activity' => 'Activity'
 	];
 
 	public $filtersPostType = [
@@ -92,7 +93,7 @@ class CardGridFilter extends Component
 
 		return array_filter([
 			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
-			'program' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['program']?:[]),
+			'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
 		]);
 	}
 
@@ -101,7 +102,7 @@ class CardGridFilter extends Component
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: null,
 			's' => filter_input(INPUT_GET, 's')?: null,
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
-			'program' => filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'program', FILTER_UNSAFE_RAW)): null,
+			'activity' => filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)): null,
 		]);
 	}
 

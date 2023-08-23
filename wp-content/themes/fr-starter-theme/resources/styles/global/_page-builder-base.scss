@@ -10,7 +10,6 @@
     .fr-content-row{
         position: relative;
         @include fr-page-builder-padding-top-bottom;
-        overflow: hidden;
 
         >.row-bg-image{
             position: absolute;
@@ -60,6 +59,13 @@
 
             &-fade-to-color{
                 background: linear-gradient(180deg, var(--fr-theme-bg-ftc-top-color) 0%, var(--fr-theme-bg-ftc-bottom-color) 100%);
+
+                .load-btn-container{
+                    .cta-button{
+                        background: var(--fr-theme-main-color);
+                        color: $white;
+                    }
+                }
             }
         }
 

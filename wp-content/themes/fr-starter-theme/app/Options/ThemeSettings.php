@@ -8,6 +8,7 @@ use App\Fields\Partials\HeaderThemeSettings;
 use App\Fields\Partials\FooterThemeSettings;
 use App\Fields\Partials\ApiThemeSettings;
 use App\Fields\Partials\ThemeColorFields;
+use App\Fields\Partials\GeneralThemeSettings;
 
 class ThemeSettings extends Field
 {
@@ -36,16 +37,14 @@ class ThemeSettings extends Field
 
         $themeSettings
             ->setLocation('options_page', '==', 'theme-settings')
+            ->addTab('General')
+                ->addFields($this->get(GeneralThemeSettings::class))
             ->addTab('Header')
                 ->addFields($this->get(HeaderThemeSettings::class))
             ->addTab('Footer')
                 ->addFields($this->get(FooterThemeSettings::class))
             ->addTab('Stay Connected')
-                ->addText('stay_connected_title', [
-                    'wrapper' => [
-                        'width' => 50
-                    ]
-                ])
+                ->addText('stay_connected_title')
                 ->addWysiwyg('stay_connected_content')
             ->addTab('API Settings')
                 ->addFields($this->get(ApiThemeSettings::class))

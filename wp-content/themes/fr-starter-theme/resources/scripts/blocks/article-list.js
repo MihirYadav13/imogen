@@ -26,7 +26,9 @@
 				}]);
 			}else{
 				$element.parent().removeClass('not--truncated');
-			}
+				$element.parent().find('.more-less').hide();
+
+			}			
 		}
 
 		const setUpTruncateElements = (elements) => {

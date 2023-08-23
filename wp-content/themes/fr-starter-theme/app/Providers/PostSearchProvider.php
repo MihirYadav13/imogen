@@ -8,7 +8,7 @@ class PostSearchProvider extends ServiceProvider
 {
 	public static $tablePrefix;
 	const ACTION = 'get_posts';
-	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'student-success', 'childhood-education', 'team-member'];
+	const GENERAL_SEARCH_POST_TYPES = ['after-school-program', 'camp', 'post', 'childhood-education', 'team-member'];
 	const POSTS_PER_PAGE = 8;
 	const ORDER_BY = ['latest', 'popular', 'post__in'];
 
@@ -76,7 +76,13 @@ class PostSearchProvider extends ServiceProvider
 						]);
 					}
 					break;
-				case 'card_grid_component':
+				case 'manual_card_grid':
+					$ajax_config = array_merge($ajax_config, [
+						'post_type' => $blockData['post_type'],
+						'programs' => $blockData['programs']
+					]);	
+					break;
+				case 'card_grid_component':					
 					$ajax_config = array_merge($ajax_config, [
 						'post_type' => $blockData['post_type'],
 					]);
@@ -101,7 +107,7 @@ class PostSearchProvider extends ServiceProvider
 			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
 			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
 			'age' => filter_input(INPUT_GET, 'age', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
-			'program' => filter_input(INPUT_GET, 'program', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
+			'programs' => filter_input(INPUT_GET, 'programs', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
 		];
 
 		$result = self::GetPosts($args);
@@ -193,11 +199,13 @@ class PostSearchProvider extends ServiceProvider
 		];
 
 		$taxonomies = array_filter([
-			in_array($post_type, ['after-school-program', 'student-success']) ? 'age' : null,
-			in_array($post_type, ['after-school-program', 'student-success']) ? 'program' : null,
+			in_array($post_type, ['after-school-program', 'camp']) ? 'age' : null,
+			in_array($post_type, ['after-school-program', 'camp']) ? 'activity' : null,
 		]);
 
-		$relationships = [];
+		$relationships = array_filter([
+			in_array($post_type, ['post']) ? 'programs' : null,
+		]);
 
 		foreach($taxonomies as $t){
 			$result['tax_query'] = isset($args[$t]) && $args[$t] ? array_merge($result['tax_query'], [
@@ -220,7 +228,13 @@ class PostSearchProvider extends ServiceProvider
 
 				foreach ($args[$rel] as $relId) {
 					$relationship_meta[] = [
-						'key' => $rel,
+						'key' => 'related_program',
+						'value' => '"'.$relId.'"',
+						'compare' => 'LIKE'
+					];
+
+					$relationship_meta[] = [
+						'key' => 'related_camp',
 						'value' => '"'.$relId.'"',
 						'compare' => 'LIKE'
 					];

@@ -21,24 +21,12 @@
                             flex-direction: row;
 
                             .card-content{
-                                padding-bottom: 48px;
+                                padding: 48px 24px;
                                 justify-content: center;
                                 align-items: center;
 
                                 .wysiwyg-content{
                                     height: auto;
-
-                                    .card-header{
-                                        padding: 48px 24px 0;
-                                    }
-
-                                    .card-body{
-                                        padding: 0 24px;
-                                    }
-
-                                    .card-footer{
-                                        padding: 0 24px;
-                                    }
                                 }
                             }
                         }
@@ -46,6 +34,13 @@
                         .featured-image{
                             min-width: 45%;
                             width: 45%;
+                            
+                            &::after{
+                                background-image: url("../images/card-v-wave.svg");
+                                width: 32px;
+                                right: 0;
+                                height: 100%;
+                            }
 
                             &.default{                                
                                 img{
@@ -85,7 +80,7 @@
                         &.card-type-{
                             &team-member{
                                 .featured-image{
-                                    height: 247px;
+                                    height:280px;
                                 }
                             }
                         }
@@ -93,9 +88,18 @@
                 }
             }
 
-            .fr-card{
-                @include breakpoint(lg down){
-                    width: 100%;
+            &.columns-{
+                &1, &2, &3, &4{
+                    .fr-card{
+                        @include breakpoint(lg down){
+                            width: calc(50% - 38px/2);
+                            max-width: 280px;
+                        }
+
+                        @include breakpoint(sm down){
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }

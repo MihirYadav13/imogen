@@ -28,11 +28,7 @@ body .cta-button, body a.cta-button{
     }
 
     &.secondary{
-        background-color: $light-blue-2;
+        background: var(--fr-theme-secondary-color);
         color: $dark-gray;
-    }
-
-    @include breakpoint(lg down){
-        border-radius: 8px;
     }
 }

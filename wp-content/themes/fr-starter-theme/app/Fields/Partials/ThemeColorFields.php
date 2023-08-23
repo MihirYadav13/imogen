@@ -17,7 +17,16 @@ class ThemeColorFields extends Partial
         $fields = new FieldsBuilder('theme_colors');
 
         $fields
-            ->addColorPicker('main_color')
+            ->addColorPicker('main_color', [
+                'wrapper' => [
+                    'width' => 50
+                ]
+            ])
+            ->addColorPicker('secondary_color', [
+                'wrapper' => [
+                    'width' => 50
+                ]
+            ])
             ->addMessage('Background colors','Select colors to show in block container background.')
             ->addGroup('fade_to_white', [
                 'wrapper' => [
