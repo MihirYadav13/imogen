@@ -100,7 +100,7 @@ class CardGridFilter extends Component
 
 		$result = array_reduce($posts['posts'], function($res, $post) {
 			$res[] = [
-				'key' => $post->post_name,
+				'key' => $post->ID,
 				'value' => $post->post_title
 			];
 			return $res;

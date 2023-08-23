@@ -115,7 +115,7 @@ class CardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = get_field('posts_per_page')?2:8;
+		$postsPerPage = get_field('posts_per_page')?:8;
 		$postType = get_field('post_type');
 
 		$result =  array_merge([
