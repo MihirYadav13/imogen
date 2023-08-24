@@ -23,17 +23,10 @@ class StayConnectedField extends Field
 			->setLocation('post_type', '==', 'page');
 
 		$fields
-		->addRadio('show_sconnected', [
+		->addTrueFalse('show_sconnected', [
 			'label' => '',
-			'layout' => 'horizontal',
-			'wpml_cf_preferences' => 0,
-			'choices' => [
-				'default' => 'Yes',
-				'No_value' => 'No',
-			],
-			'default_value' => 'default'
+			'default' => 0
 		]);
-
 		return $fields->build();
 	}
 }
