@@ -56,7 +56,7 @@
 			@if(!empty($registration_link) || !empty($contact_us_page))
                 <div class="content-footer">
                     @if(!empty($registration_link))
-                    <x-cta-button label="Register" type="external_url" :external-url="$registration_link" style="primary"/>
+                    <x-cta-button label="Register" type="external_url" :external-url="$registration_link" style="primary" :new-tab="true"/>
                     @endif
                     @if($contact_us_page)
 						<x-cta-button label="Contact Us" type="external_url" style="secondary" :external-url="$contact_us_page" :new-tab="false" />

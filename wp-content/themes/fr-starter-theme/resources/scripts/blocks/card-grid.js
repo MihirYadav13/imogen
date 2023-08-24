@@ -60,7 +60,7 @@
 
 		let $modal = $(`#${_.cardModal}`);
 
-		$self.on('click', '.card-type-team-member, .card-type-after-school-program, .card-type-camp',  (e) => {
+		$self.on('click', '.card-type-team-member, .card-type-after-school-program .card-footer .cta-button, .card-type-camp .card-footer .cta-button',  (e) => {
 			e.preventDefault();
 			$modal.find('.modal-body .card-content').html('');
 			$modal.modal('show');

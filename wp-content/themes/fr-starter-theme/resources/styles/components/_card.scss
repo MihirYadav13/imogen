@@ -104,9 +104,9 @@
     }
 
     &.card-type-{
-        &after-school-program, &camp, &team-member{
-            &:hover{
-                cursor: pointer;
+        &after-school-program, &camp{
+            .card-header .card-link{
+                pointer-events: none;
             }
         }
         &after-school-program{
@@ -149,6 +149,10 @@
 
                     text-align: center;
                 }
+            }
+
+            &:hover{
+                cursor: pointer;
             }
         }
     }
