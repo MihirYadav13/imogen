@@ -19,3 +19,15 @@
     +.module{
     }
 }
+
+.wp-block-fr-column{
+    .module{
+        &:first-of-type{
+            padding-top: 0px;
+        }
+
+        &:last-of-type{
+            padding-bottom: 0px;
+        }
+    }
+}
