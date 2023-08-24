@@ -15,7 +15,7 @@
         display: none;
     }
 
-    a:not(.cta-button):not(.button):not(.alt-btn):not(.badge) {
+    a:not(.cta-button):not(.button):not(.alt-btn):not(.badge):not(.cta-regular) {
         color: $deep-blue;
         font-weight: bold;
     }
