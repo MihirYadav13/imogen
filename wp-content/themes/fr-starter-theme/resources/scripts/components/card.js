@@ -12,11 +12,23 @@
 		 */
 		const getTruncationLineConfig = ($self, $el) => {
 			let result = 3;
-
-			if($el.hasClass('card-title')){
-				result = 3;
+			if($el.parents('.cards-container').hasClass('columns-2') && $(window).width() >= 960){
+				if($el.hasClass('card-title')){
+					result = 3;
+				}
+				else{
+					result = 6;
+				}
 			}
-
+			else{
+				if($el.hasClass('card-title')){
+					result = 2;
+				}
+				else{
+					result = 4;
+				}
+			}
+			
 			return result;
 		}
 
@@ -80,7 +92,7 @@
 				
 				truncatableElements.push({
 					$el: $el,
-					lines: parseInt($el.attr('fr-truncate-lines') || getTruncationLineConfig($self, $el)),
+					lines: parseInt(getTruncationLineConfig($self, $el) || $el.attr('fr-truncate-lines')),
 					tooltip: $el.attr('data-title')
 				})
 			});
