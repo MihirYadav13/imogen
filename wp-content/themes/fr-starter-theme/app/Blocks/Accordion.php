@@ -153,6 +153,7 @@ class Accordion extends Block
                 'button_label' => 'Add Accordion Item',
             ])
             ->addText('title', [
+                'required' => 1,
                 'wrapper' => [
                     'width' => 40
                 ]
