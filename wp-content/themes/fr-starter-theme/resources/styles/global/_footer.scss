@@ -185,20 +185,21 @@
                     .wpcf7-form{
                         p{
                             margin-bottom: 0;
+                            .wpcf7-form-control-wrap{
+                                float: left;
+                            }
                         }
                         
                         input[type="email"]{
                             width: 166px;
                             height: 40px;
-                            border-radius: 20px;
+                            border-radius: 20px 0 0 20px;
                             font-size: 14px;
                             line-height: 24px;
                             padding: 8px 12px;
                             background: rgba(255,255,255,0.1);
-                            border: 1px solid $white;
+                            border: 0.5px solid rgba(255,255,255,0.5);
                             color: $white;
-                            border-top-right-radius: 0;
-                            border-bottom-right-radius: 0;
                             border-right: none;
                             overflow: hidden;
 
@@ -214,8 +215,9 @@
                             width: calc(100% - 174px);
                             background-color: $blue;
                             border-top-left-radius: 0;
+                            height: 40px;
                             border-bottom-left-radius: 0;
-                            border: 1px solid $blue;
+                            border: 0.5px solid rgba(73, 129, 194, 0.5);
 
                             @include breakpoint(lg down){
                                 width: 100%;
