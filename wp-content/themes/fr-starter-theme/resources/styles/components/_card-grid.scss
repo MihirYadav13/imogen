@@ -19,6 +19,9 @@
 
                         .card-inner{
                             flex-direction: row;
+                            @include breakpoint(lg down){	
+                                flex-direction: column;	
+                            }
 
                             .card-content{
                                 padding: 48px 24px;
@@ -51,18 +54,36 @@
                         .featured-image{
                             min-width: 45%;
                             width: 45%;
+                            @include breakpoint(lg down){	
+                                width: 100%;	
+                            }
                             
                             &::after{
                                 background-image: url("../images/card-v-wave.svg");
                                 width: 32px;
-                                right: -1px;
-                                bottom: 0;
+                                right:  0;
                                 height: 100%;
+                                @include breakpoint(lg down){	
+                                    background-image: url("../images/card-wave.svg");	
+                                    height: 18px;	
+                                    position: absolute;	
+                                    bottom: -1px;	
+                                    width: 100%;	
+                                    background-repeat: no-repeat;	
+                                    background-size: cover;	
+                                    background-position: center center;	
+                                }
                             }
 
                             &.default{                                
                                 img{
                                     width: 107px;
+                                    @include breakpoint(lg down){	
+                                        img{	
+                                            width: 52px;	
+                                            height: auto;	
+                                        }	
+                                    }
                                 }
                             }
                         }
