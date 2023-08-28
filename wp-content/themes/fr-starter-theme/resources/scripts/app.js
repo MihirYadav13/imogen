@@ -25,6 +25,7 @@ import './components/contact-form';
 // 3. Import block JS
 import './blocks/article-list';
 import './blocks/image-carousel';
+import './blocks/fr-page-builder';
 
 import './global/header';
 
