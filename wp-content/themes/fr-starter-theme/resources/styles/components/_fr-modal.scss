@@ -12,9 +12,14 @@
             margin: 1.75rem auto;
         }
 
+        &.modal-dialog-centered{
+            min-height: 100%;
+        }
+
         .modal-content{
             border-radius: 8px !important;
             overflow: hidden;
+            margin: 20px auto;
 
             .modal-header{
                 border: none;

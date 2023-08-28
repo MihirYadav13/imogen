@@ -23,7 +23,7 @@
                     background-repeat: no-repeat;
                     background-position: center;
                     position: absolute;
-                    top: 50%;
+                    top: 24px;
                     right: 16px;
                     padding: 12px;
                     border-radius: 48px;
@@ -42,8 +42,7 @@
 
             .badge {
                 position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
+                top: 24px;
                 right: 16px;
                 @include plus-svg;
                 width: 14px;

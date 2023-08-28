@@ -24,12 +24,14 @@
 
 			$fields
 				->addImage('profile_photo', [
+					'label' => 'Image',
 					'required' => 1,
 					'wrapper' => [
 						'width' => 50
 					]
 				])
 				->addText('role', [
+					'label' => 'Title',
 					'required' => 1,
 					'maxlength' => 50,
 					'wrapper' => [
@@ -37,6 +39,7 @@
 					]
 				])
 				->addWysiwyg('short_bio', [
+					'label' => 'Bio',
 					'rows' => 5,
 					'new_line' => 'br',
 					'maxlength' => 700
