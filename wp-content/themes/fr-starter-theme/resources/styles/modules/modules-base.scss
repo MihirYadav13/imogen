@@ -18,6 +18,12 @@
 
     +.module{
     }
+
+    &.pb-mob-0{
+        @include breakpoint(lg down) {
+            padding-bottom: 0px !important;
+        }
+    }
 }
 
 .wp-block-fr-column{

@@ -143,18 +143,31 @@
 		&14_34{
 			>.container-fluid{
 				>.row{
+					margin: 0;
+					display: flex;
+					gap: 19px 38px;
+
 					>.fr-col{
-						@include make-col(3);
+						width: calc(25% - (114px/4));
+						padding: 0;
 
 						@include breakpoint(lg down){
 							@include make-col(12);
 						}
 						
 						+.fr-col{
-							@include make-col(9);
+							width: calc(75% - (38px - 114px/4));
 
 							@include breakpoint(lg down){
 								@include make-col(12);
+							}
+						}
+
+						.row{
+							margin: 0;
+
+							.col{
+								padding: 0;
 							}
 						}
 					}
