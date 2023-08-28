@@ -187,7 +187,11 @@
                             margin-bottom: 0;
                             .wpcf7-form-control-wrap{
                                 float: left;
-                            }
+                                
+                                @include breakpoint(lg down){
+                                    float: unset;
+                                }
+                            }                            
                         }
                         
                         input[type="email"]{
@@ -207,7 +211,7 @@
                                 width: 100%;
                                 margin-bottom: 8px;
                                 border-radius: 20px;
-                                border-right: 1px solid $white;
+                                border-right: 0.5px solid rgba(255,255,255,0.5);
                             }
                         }
 
