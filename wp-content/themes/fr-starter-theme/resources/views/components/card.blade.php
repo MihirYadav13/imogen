@@ -24,7 +24,7 @@
                         </p>
                     @endif
                     @if(in_array($post_type, ['camp','post']))
-                        <p class="excerpt sm" fr-truncate-lines="4" title="{!! $card_data['description'] !!}">{!! $card_data['description'] !!}</p>
+                        <p class="excerpt sm" fr-truncate-lines="4" title="{!! $card_data['title'] !!}">{!! $card_data['description'] !!}</p>
                     @endif
                     @if($post_type === 'team-member')
                         <p class="role sm">

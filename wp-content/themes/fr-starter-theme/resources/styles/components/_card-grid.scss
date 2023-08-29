@@ -27,9 +27,17 @@
                                 padding: 48px 24px;
                                 justify-content: center;
                                 align-items: center;
+                                @include breakpoint(lg down){	
+                                    padding: 16px;
+                                    justify-content: left;
+                                    align-items: left;	
+                                }
 
                                 .wysiwyg-content{
                                     height: auto;
+                                    @include breakpoint(lg down){	
+                                        height: 100%;	
+                                    }
                                 }
                             }
                         }
@@ -61,8 +69,9 @@
                             &::after{
                                 background-image: url("../images/card-v-wave.svg");
                                 width: 32px;
-                                right:  0;
+                                right:  -1px;
                                 height: 100%;
+                                bottom: 0;
                                 @include breakpoint(lg down){	
                                     background-image: url("../images/card-wave.svg");	
                                     height: 18px;	
@@ -137,6 +146,7 @@
 
                         @include breakpoint(sm down){
                             width: 100%;
+                            max-width: 100%;
                         }
                     }
                 }

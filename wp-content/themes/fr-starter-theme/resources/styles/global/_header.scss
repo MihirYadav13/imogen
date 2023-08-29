@@ -37,7 +37,7 @@
 	.navbar {
 		padding: 20px 0;
 
-		@include breakpoint(lg down) {
+		@include breakpoint(xl down) {
 			background-color: transparent;
 			padding: 0;
 		}
@@ -45,7 +45,7 @@
 		> .container {
 			width: 100%;
 
-			@include breakpoint(lg down) {
+			@include breakpoint(xl down) {
 				padding: 0;
 				max-width: 100%;
 			}
@@ -55,18 +55,21 @@
 			width: auto;
 			padding: 0;
 
-			@include breakpoint(lg down) {
-				border-bottom: 1px solid $light-blue-3;
+			@include breakpoint(xl down) {
+				--bs-gutter-x: 1.5rem;
 				padding-right: calc(var(--bs-gutter-x) * 0.5);
 				padding-left: calc(var(--bs-gutter-x) * 0.5);
 				padding-bottom: 12px;
 				padding-top: 12px;
 				width: 100%;
-				max-width: 100%;
 				display: flex;
 				flex-wrap: inherit;
 				align-items: center;
 				justify-content: space-between;
+			}
+			@include breakpoint(lg down) {
+				border-bottom: 1px solid $light-blue-3;
+				max-width: 100%;
 			}
 
 			.brand {
@@ -75,7 +78,7 @@
 				img {
 					max-height: 40px;
 
-					@include breakpoint(lg down) {
+					@include breakpoint(xl down) {
 						max-height: 32px;
 					}
 				}
@@ -90,7 +93,7 @@
 			column-gap: 24px;
 			margin: 0;
 
-			@include breakpoint(lg down) {
+			@include breakpoint(xl down) {
 				flex-direction: column;
 				flex-wrap: wrap;
 				align-items: flex-start;
@@ -99,7 +102,7 @@
 			}
 
 			> .nav-item {
-				@include breakpoint(lg down) {
+				@include breakpoint(xl down) {
 					width: 100%;
 					padding: 0px 8px;
 					border-bottom: 1px solid $light-gray-2;
@@ -112,7 +115,7 @@
 					color: $dark-gray;
 					padding: 8px 0;
 
-					@include breakpoint(lg down) {
+					@include breakpoint(xl down) {
 						padding: 16px 0px;
 						text-align: left;
 						display: flex;
@@ -129,7 +132,7 @@
 				&::after {
 					transition: opacity 0.15s ease-in-out;
 
-					@include breakpoint(lg down) {
+					@include breakpoint(xl down) {
 						transform: rotate(270deg);
 					}
 				}
@@ -138,7 +141,7 @@
 					&::after {
 						transform: rotate(180deg);
 
-						@include breakpoint(lg down) {
+						@include breakpoint(xl down) {
 							transform: rotate(0deg);
 						}
 					}
@@ -156,7 +159,7 @@
 				margin: 0;
 				overflow: hidden;
 
-				@include breakpoint(lg down) {
+				@include breakpoint(xl down) {
 					background-color: transparent;
 					width: 100%;
 					padding: 0;
@@ -165,7 +168,7 @@
 				}
 
 				.nav-item {
-					@include breakpoint(lg down) {
+					@include breakpoint(xl down) {
 						max-width: 100%;
 					}
 				}
@@ -179,7 +182,7 @@
 						text-wrap: wrap;
 						padding: 8px 16px;
 
-						@include breakpoint(lg down) {
+						@include breakpoint(xl down) {
 						}
 
 						&:hover,
@@ -196,7 +199,7 @@
 				}
 
 				&.show {
-					@include breakpoint(lg down) {
+					@include breakpoint(xl down) {
 						display: flex;
 						flex-direction: column;
 					}
@@ -212,7 +215,7 @@
 			align-items: center;
 			position: relative;
 
-			@include breakpoint(lg down) {
+			@include breakpoint(xl down) {
 				flex-direction: column;
 				flex-flow: column-reverse;
 				padding-bottom: 40px;
@@ -227,7 +230,7 @@
 					background-color: $light-blue-2;
 				}
 
-				@include breakpoint(lg down) {
+				@include breakpoint(xl down) {
 					width: 100%;
 				}
 			}
@@ -240,7 +243,7 @@
 		flex-wrap: wrap;
 		padding: 0;
 
-		@include breakpoint(lg down) {
+		@include breakpoint(xl down) {
 			margin-bottom: 20px;
 			box-shadow: 0 2px 32px 0 rgba(82, 87, 103, 0.2);
 			max-width: 100%;
@@ -251,7 +254,7 @@
 			border-radius: 0 0 8px 8px;
 			background: linear-gradient(180deg, #dae5f2 0%, #ecf2f9 25.22%, #ffffff 100%);
 
-			&::before{
+			&::before {
 				content: "";
 				position: absolute;
 				width: 100%;
@@ -265,7 +268,7 @@
 
 		> div,
 		> ul {
-			@include breakpoint(lg down) {
+			@include breakpoint(xl down) {
 				transition: opacity 0.25s ease-in-out;
 				opacity: 0;
 			}
@@ -330,7 +333,7 @@
 		.navbar-collapse {
 			> div,
 			> ul {
-				@include breakpoint(lg down) {
+				@include breakpoint(xl down) {
 					opacity: 1;
 				}
 			}
