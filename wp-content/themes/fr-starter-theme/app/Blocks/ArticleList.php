@@ -19,7 +19,7 @@ class ArticleList extends Block
      *
      * @var string
      */
-    public $description = 'A simple Article list.';
+    public $description = 'A simple Article list block.';
 
 	/**
 	 * The block slug.
@@ -120,8 +120,7 @@ class ArticleList extends Block
             ]
         ],
         'attributes' => [
-            'preview_image' => 'Accordion.png',
-            'block_icon' => 'accordion.png'
+            'preview_image' => 'Articlelist.png',
         ],
     ];
     /**

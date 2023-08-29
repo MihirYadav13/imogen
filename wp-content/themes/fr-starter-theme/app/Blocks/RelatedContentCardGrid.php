@@ -156,7 +156,7 @@ class RelatedContentCardGrid extends Block
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
 				'min' => 2,
-				'default_value' => 8,
+				'default_value' => 2,
 				'wrapper' => [
 					'width' => 50
 				]

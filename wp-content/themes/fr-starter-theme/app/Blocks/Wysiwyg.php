@@ -118,7 +118,7 @@ class Wysiwyg extends Block
 	public $example = [
         'content' => '<p>Start editing content <strong>here.</strong></p>',
         'attributes' => [
-            'preview_image' => 'wysiwyg.png'
+            'preview_image' => 'Wysiwyg.png'
         ],
 	];
 

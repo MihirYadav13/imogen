@@ -5,8 +5,8 @@
 				@foreach ($items as $card_data)
 					<div class="fr-card card-type-manual" >
 						<div class="card-inner">
-							<div class="featured-image">
-								<img src="{{ $card_data['featured_image']['url'] }}" loading="lazy" alt="Featured">
+							<div class="featured-image {{ $card_data['featured_image']['url'] == '' ? 'default':'' }}">
+								<img src="{{ $card_data['featured_image']['url'] ? : asset('images/default-card-white.png') }}" loading="lazy" alt="Featured">
 							</div>
 							<div class="card-content">
 								<div class="wysiwyg-content">
