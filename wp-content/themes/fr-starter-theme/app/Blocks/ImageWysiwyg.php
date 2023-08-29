@@ -128,6 +128,8 @@ class ImageWysiwyg extends Block
         'attributes' => [
             'preview_image' => 'ImgaeWysiwyg.png'
         ],
+        'image_size' => '1/3',
+        'flip_orientation' => 'false',
     ];
 
     /**
@@ -172,6 +174,7 @@ class ImageWysiwyg extends Block
             ])
             ->addTrueFalse('flip_orientation', [
                 'label' => 'Flip Orientation',
+                'default_value' => 0,
                 'ui' => 1,
                 'instructions' => 'If you add the image on the Content Right, Please turn on.',
                 'wrapper' => [
@@ -194,7 +197,7 @@ class ImageWysiwyg extends Block
             'image' => $this->preview && !get_field('image') ? $this->example['image'] : get_field('image'),
             'content' => $this->preview && !get_field('content') ? $this->example['content'] : get_field('content'),
             'image_size' => $this->preview && !get_field('image_size') ? $this->example['image_size'] : get_field('image_size'),
-            'flip_orientation' => $this->preview && !get_field('flip_orientation') ? $this->example['flip_orientation'] : get_field('flip_orientation')
+            'flip_orientation' => get_field('flip_orientation') ?? $this->example['flip_orientation'],
         ];
     }
 
