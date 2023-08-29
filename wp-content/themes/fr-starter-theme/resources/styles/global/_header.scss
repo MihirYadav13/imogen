@@ -257,12 +257,13 @@
 			&::before {
 				content: "";
 				position: absolute;
+				left: 0;
 				width: 100%;
 				height: 60%;
 				background-image: url("../images/logo-mark.svg");
 				overflow: hidden;
 				background-repeat: no-repeat;
-				background-position: right -110px;
+				background-position: top -110px right -20px;
 			}
 		}
 
