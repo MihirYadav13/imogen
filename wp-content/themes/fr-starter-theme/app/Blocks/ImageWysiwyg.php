@@ -129,7 +129,7 @@ class ImageWysiwyg extends Block
             'preview_image' => 'ImgaeWysiwyg.png'
         ],
         'image_size' => '1/3',
-        'flip_orientation' => 'true',
+        'flip_orientation' => 'false',
     ];
 
     /**
@@ -174,7 +174,7 @@ class ImageWysiwyg extends Block
             ])
             ->addTrueFalse('flip_orientation', [
                 'label' => 'Flip Orientation',
-                'default_value' => [],
+                'default_value' => 0,
                 'ui' => 1,
                 'instructions' => 'If you add the image on the Content Right, Please turn on.',
                 'wrapper' => [
