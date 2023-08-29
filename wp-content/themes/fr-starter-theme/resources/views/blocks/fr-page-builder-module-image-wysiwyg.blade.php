@@ -22,7 +22,7 @@
 <div class="module image-wysiwyg-module {{ $block->classes }}"
     @if (isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
     <div class="container-fluid">
-        <div class="row {{ $flip_class }}">
+        <div class="row-image-wysiwyg {{ $flip_class }}">
             @if ($image)
                 <div class="col-4 col-12 image {{ $image_size_class }}">
                     <img src="{{ $image['url'] }}" loading="lazy" class="img" />
