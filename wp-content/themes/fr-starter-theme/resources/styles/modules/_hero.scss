@@ -191,4 +191,13 @@ body:not(.home) {
             }
         }
     }
+    .acf-block-preview {
+        .fr-hero.hero {
+            .content-container {
+                height: auto;
+                background-size: cover;
+                background-position: 100%;
+            }
+        }
+    }
 }
