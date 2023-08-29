@@ -107,6 +107,7 @@
                             @include breakpoint(lg down) {
                                 padding: 16px;
                                 text-align: center;
+                                align-self: flex-start;
                             }
 
                             .section{
@@ -167,7 +168,7 @@
                                 align-items: center;
                                 justify-content: flex-start;
 
-                                @include breakpoint(lg down) {
+                                @include breakpoint(sm down) {
                                     flex-direction: column;
                                     row-gap: 16px;
                                 }
@@ -176,6 +177,10 @@
                                     min-width: 138px;
 
                                     @include breakpoint(lg down) {
+                                        width: calc(50% - 8px);
+                                    }
+
+                                    @include breakpoint(sm down) {
                                         width: 100%;
                                     }
                                 }
