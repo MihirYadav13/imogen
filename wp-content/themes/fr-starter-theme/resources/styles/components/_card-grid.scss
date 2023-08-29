@@ -70,7 +70,8 @@
                                 background-image: url("../images/card-v-wave.svg");
                                 width: 32px;
                                 right:  -1px;
-                                height: 100.2%;
+                                height: 100%;
+                                bottom: 0;
                                 @include breakpoint(lg down){	
                                     background-image: url("../images/card-wave.svg");	
                                     height: 18px;	
