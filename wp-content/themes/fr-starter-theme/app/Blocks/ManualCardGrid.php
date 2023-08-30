@@ -19,7 +19,7 @@ class ManualCardGrid extends Block
      *
      * @var string
      */
-    public $description = 'A simple manual card grid.';
+    public $description = 'A simple manual card grid block.';
 
 	/**
 	 * The block slug.
@@ -115,12 +115,12 @@ class ManualCardGrid extends Block
     public $example = [
         'items' => [
              [
-                'featured_image' => ['url' => 'https://picsum.photos/seed/picsum/200/200'],
+                'featured_image' => ['url' => ''],
                 'title' => 'Text Block Title',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
              ],
              [
-                'featured_image' => ['url' => 'https://picsum.photos/seed/picsum/200/200'],
+                'featured_image' => ['url' => ''],
                 'title' => 'Text Block Title',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             ]
