@@ -2,8 +2,12 @@
 
     .modal-dialog{
         @include breakpoint(lg down) {
-            width: 352px;
+            width: auto;
             max-width: calc(100% - 50px);
+        }
+
+        @include breakpoint(sm down) {
+            width: 352px;
         }
 
         .modal-content{
@@ -46,8 +50,16 @@
 
                                 @include breakpoint(lg down) {
                                     background-image: url("../images/card-wave.svg");
-                                    height: 18px;
+                                    height: 63px;
                                     width: 100%;
+                                }
+
+                                @include breakpoint(md down) {
+                                    height: 48px;
+                                }
+
+                                @include breakpoint(sm down) {
+                                    height: 18px;
                                 }
                             }
 
@@ -60,8 +72,16 @@
 
                                 @include breakpoint(lg down) {
                                     width: 100%;
-                                    height: 230px;
+                                    height: 350px;
                                     min-height: unset
+                                }
+
+                                @include breakpoint(md down) {
+                                    height: 300px;
+                                }
+
+                                @include breakpoint(sm down) {
+                                    height: 230px;
                                 }
                             }
 
@@ -87,6 +107,7 @@
                             @include breakpoint(lg down) {
                                 padding: 16px;
                                 text-align: center;
+                                align-self: flex-start;
                             }
 
                             .section{
@@ -147,7 +168,7 @@
                                 align-items: center;
                                 justify-content: flex-start;
 
-                                @include breakpoint(lg down) {
+                                @include breakpoint(sm down) {
                                     flex-direction: column;
                                     row-gap: 16px;
                                 }
@@ -156,6 +177,10 @@
                                     min-width: 138px;
 
                                     @include breakpoint(lg down) {
+                                        width: calc(50% - 8px);
+                                    }
+
+                                    @include breakpoint(sm down) {
                                         width: 100%;
                                     }
                                 }
