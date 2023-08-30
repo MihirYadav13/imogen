@@ -115,7 +115,11 @@ class Hero extends Block
                 'url' => 'https://picsum.photos/seed/picsum/720/480',
                 'alt' => 'Example Image'
             ],
-            'content' => '<p style="text-align:center;">Add content <b>here</b>.</p>'
+            'content' => '<h1>Title goes <span class="theme-color">here</span></h1>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ante felis. Aenean id efficitur augue. Duis lacinia consequat sem, eu vestibulum enim vestibulum id. Integer rutrum, lectus vitae vestibulum aliquam, erat erat efficitur mauris, eu efficitur diam diam at magna.'
+        ],
+        'attributes' => [
+            'preview_image' => 'Hero.png'
         ],
     ];
 
