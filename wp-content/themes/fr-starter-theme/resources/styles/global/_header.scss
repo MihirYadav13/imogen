@@ -8,16 +8,11 @@
 	background: $white;
 	border-bottom: 1px solid $light-blue-3;
 
-	&.scrolled {
-		background: $white;
-		border-bottom: 1px solid $light-blue-3;
-
-		@include breakpoint(lg down) {
-			border-bottom: none;
-		}
+	@include breakpoint(xl down) {
+		border-bottom: none;
 	}
 
-	@include breakpoint(lg down) {
+	@include breakpoint(xl down) {
 		overflow: scroll;
 		max-height: 100vh;
 	}
@@ -63,7 +58,8 @@
 				align-items: center;
 				justify-content: space-between;
 			}
-			@include breakpoint(lg down) {
+
+			@include breakpoint(xl down) {
 				border-bottom: 1px solid $light-blue-3;
 				max-width: 100%;
 			}
@@ -342,12 +338,35 @@
 	}
 }
 
+
 body:not(.wp-admin) {
     padding-top: 80.5px;
 
     @include breakpoint(xl down) {
-        padding-top: 56px;
+        padding-top: 56.5px;
     }
+
+	&.home {
+		padding-top: 0px;
+	
+		.fr-header {
+			background: none;
+			border-bottom: none;
+	
+			@include breakpoint(xl down) {
+				background: $white;
+			}
+	
+			&.scrolled {
+				background: $white;
+				border-bottom: 1px solid $light-blue-3;
+	
+				@include breakpoint(xl down) {
+					border-bottom: none;
+				}
+			}
+		}    
+	}
 
 	&.admin-bar {
 		.fr-header {
@@ -364,7 +383,7 @@ body:not(.wp-admin) {
 			top: -80.8px;
 	
 			@include breakpoint(xl down) {
-				top: -56px;
+				top: -56.8px;
 			}
 		}
 	}

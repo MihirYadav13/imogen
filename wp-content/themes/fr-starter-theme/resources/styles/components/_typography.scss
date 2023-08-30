@@ -90,19 +90,5 @@ label {
         @include sm-style;
     }
 }
-body.home {
-    @include breakpoint(lg up) {
-        padding-top: 0px;
-    }
 
-    .fr-header {
-        @include breakpoint(lg up) {
-            background: none;
-            border-bottom: none;
-        }
-    }
-    .scrolled {
-        background: $white;
-        border-bottom: 1px solid $light-blue-3;
-    }
-}
+
