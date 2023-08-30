@@ -99,7 +99,7 @@ import { Collapse } from 'bootstrap';
                     }
                 }
 
-                updateTopSpacing($self);
+                //updateTopSpacing($self);
             });
 
             $menuContent.find(".menu-item.dropdown").on({
@@ -128,6 +128,7 @@ import { Collapse } from 'bootstrap';
             $(window).on('scroll', () => { 
 
                 let headerHeight = $($self).outerHeight(true);
+                let toolBarHeight = $('#wpadminbar').length ? $('#wpadminbar').outerHeight(true) : 0;
 
                 // Minimum scroll check
                 if(Math.abs(scrolled - window.scrollY) < minScroll) {
@@ -142,15 +143,15 @@ import { Collapse } from 'bootstrap';
                     if(scrolled < window.scrollY) {
                         $self.addClass('scroll-down');
                         $self.trigger('fr:scroll-down');
-                        $self.css('top', `-${headerHeight}px`);
+                        //$self.css('top', `-${headerHeight + toolBarHeight}px`);
                     } else {
                         $self.removeClass('scroll-down');
-                        $self.css('top', `0px`);
+                        //$self.css('top', `${toolBarHeight}px`);
                     }
                 } else { 
                     $self.removeClass('scrolled');
                     $self.removeClass('scroll-down');
-                    $self.css('top', `0px`);
+                    //$self.css('top', `${toolBarHeight}px`);
                 }
 
                 scrolled = window.scrollY;
@@ -158,7 +159,7 @@ import { Collapse } from 'bootstrap';
 
             //on page load
             updateDropdownTrigger($menuContent.find(".nav-link.dropdown-toggle"), $self.currentBreakpoint);
-            updateTopSpacing($self);
+            //updateTopSpacing($self);
 		});
 	}
 

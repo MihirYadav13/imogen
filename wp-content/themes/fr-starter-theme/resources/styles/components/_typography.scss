@@ -83,15 +83,6 @@ body:not(.wp-admin) {
     font-size: 18px;
     line-height: 32px;
     @include font-primary;
-    padding-top: 80px;
-
-    @include breakpoint(lg down) {
-        padding-top: 46px;
-    }
-
-    &.admin-bar {
-        padding-top: 112px;
-    }
 }
 
 label {
