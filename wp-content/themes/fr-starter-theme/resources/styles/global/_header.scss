@@ -9,7 +9,11 @@
 	border-bottom: 1px solid $light-blue-3;
 
 	&.scroll-down {
-		top: -80px;
+		top: -80.8px;
+	
+		@include breakpoint(xl down) {
+			top: -56px;
+		}
 	}
 
 	&.scrolled {
@@ -346,12 +350,36 @@
 	}
 }
 
-body.admin-bar {
-	.fr-header {
-		top: 32px;
+body:not(.wp-admin) {
+    padding-top: 80.5px;
 
-		&.scroll-down {
-			top: -80px;
+    @include breakpoint(xl down) {
+        padding-top: 56px;
+    }
+
+	&.admin-bar {
+		.fr-header {
+			top: 32px;
+	
+			@include breakpoint(782px down) {
+				top: 46px;
+			}
 		}
+	}
+
+	.fr-header{
+		&.scroll-down{
+			top: -80.8px;
+	
+			@include breakpoint(xl down) {
+				top: -56px;
+			}
+		}
+	}
+}
+
+#wpadminbar{
+	@include breakpoint(600px down) {
+		position: fixed !important;
 	}
 }
