@@ -8,14 +8,6 @@
 	background: $white;
 	border-bottom: 1px solid $light-blue-3;
 
-	&.scroll-down {
-		top: -80.8px;
-	
-		@include breakpoint(xl down) {
-			top: -56px;
-		}
-	}
-
 	&.scrolled {
 		background: $white;
 		border-bottom: 1px solid $light-blue-3;
