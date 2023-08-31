@@ -111,6 +111,7 @@ class CardGridFilter extends Component
 
 
 	public function setDefaultFilters(){
+		
 		$this->defaultFilters = array_merge($this->getArgsFromBlockData(), $this->getArgsFromUrl());
 	}
 
@@ -124,9 +125,8 @@ class CardGridFilter extends Component
 		if(!$taxonomies){
             return [];
         }
-
 		return array_filter([
-			'programs' => [],
+			'programs' =>  isset($taxonomies['programs']) ? $taxonomies['programs'] : [],
 			'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
 			'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
 		]);
@@ -136,7 +136,8 @@ class CardGridFilter extends Component
 		return array_filter([
 			'order_by' => filter_input(INPUT_GET, 'order_by')?: null,
 			's' => filter_input(INPUT_GET, 's')?: null,
-			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
+			'programs' => filter_input(INPUT_GET, 'programs', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'programs', FILTER_UNSAFE_RAW)): null,
+            'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
 			'activity' => filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)): null,
 		]);
 	}
