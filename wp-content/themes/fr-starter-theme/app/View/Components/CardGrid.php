@@ -92,7 +92,8 @@ class CardGrid extends Component
             return $args;
         }
        
-        return array_merge($args, [
+        return array_merge($args, [ 
+            'programs' => isset($taxonomies['programs'])? $taxonomies['programs'] : null,          
             'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
             'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
         ]);
@@ -104,6 +105,7 @@ class CardGrid extends Component
 			's' => filter_input(INPUT_GET, 's')?: null,
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
             'activity' => filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)): null,
+            'programs' => filter_input(INPUT_GET, 'programs', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'programs', FILTER_UNSAFE_RAW)): null,
 		]);
 	}
 
