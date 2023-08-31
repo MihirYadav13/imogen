@@ -65,7 +65,8 @@ class PostSearchProvider extends ServiceProvider
 						$ajax_config = array_merge($ajax_config, [
 							'post_type' => $blockData['post_type'],
 							'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['age']??[]),
-							'programs' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['programs']??[]),
+							'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($filterTaxonomies['activity']??[]),
+							'programs' => $filterTaxonomies['programs']??[],
 						]);
 					}
 					else {

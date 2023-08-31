@@ -34,16 +34,17 @@
                 });
                 //$(window).trigger('fr:load-bsmultiselectjs');
 
-                $elems.selectric({
-                    forceRenderBelow: true,
-                    multiple: {
-                        separator: ', ',       // Type: String.             Description: Items separator.
-                        keepMenuOpen: true,    // Type: Boolean.            Description: Close after an item is selected.
-                        maxLabelEntries: false // Type: Boolean or Integer. Description: Max selected items do show.
-                    }
-                }).selectric("refresh");
-
-                console.log('I am here');
+                $.each($elems, (i, el) => {
+                    $(el).selectric({
+                        forceRenderBelow: true,
+                        multiple: {
+                            separator: ', ',       // Type: String.             Description: Items separator.
+                            keepMenuOpen: true,    // Type: Boolean.            Description: Close after an item is selected.
+                            maxLabelEntries: false // Type: Boolean or Integer. Description: Max selected items do show.
+                        }
+                    }).selectric("refresh");
+                });
+                            
             }
         });
 
