@@ -23,6 +23,7 @@ class Footer extends Composer
 	public function with()
 	{
 		return [
+			'show_stay_connected' => get_field('show_sconnected', get_the_ID())?:false,
 			'logo' => get_field('footer_logo', 'option'),
 			'tagline' => get_field('footer_content', 'option'),
 			'footerNavigation' => $this->footerNavigation(),

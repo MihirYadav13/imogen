@@ -1,7 +1,4 @@
-@php
-$show_sc = get_field('show_sconnected', get_the_ID());
-@endphp
-@if($show_sc)
+@if($show_stay_connected)
   <x-stay-connected />
 @endif
 <footer class="content-info">
