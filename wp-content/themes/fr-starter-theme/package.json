@@ -21,6 +21,6 @@
     "@wpackio/entrypoint": "^6.4.0",
     "bootstrap": "^5.2.3",
     "fetch-inject": "^3.2.0",
-    "selectric": "^1.13.0"
+    "selectric": "github:Jjoye/jQuery-Selectric"
   }
 }
