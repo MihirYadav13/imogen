@@ -35,6 +35,10 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        transition: all 0.2s ease-in-out;
+                        &:hover{
+                            background-color: var(--fr-theme-main-color-hover);
+                        }
 
                         img{
                             width: 10px;
