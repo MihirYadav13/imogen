@@ -18,11 +18,19 @@
             }
         }
 
-        &:last-of-type, &.has-padding-bottom{
+        &.has-padding-bottom{
             padding-bottom: calc($spacing-between-modules / 2);
 
             @include breakpoint(lg down){
                 padding-bottom: calc($spacing-between-modules-mobile / 2);
+            }
+        }
+
+        &:last-of-type{
+            padding-bottom: calc($spacing-between-modules/2 + $footer-wave-height/2);
+
+            @include breakpoint(lg down){
+                padding-bottom: calc($spacing-between-modules-mobile/2 + $footer-wave-height/2);
             }
         }
 
