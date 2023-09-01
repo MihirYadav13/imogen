@@ -1,0 +1,13 @@
+.related-content-card-grid-with-filter-module {
+    .container-fluid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+
+        .wysiwyg-heading-content {
+            text-align: center;
+            max-width: 814px;
+        }
+    }
+}
