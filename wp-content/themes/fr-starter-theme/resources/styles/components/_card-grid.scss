@@ -25,7 +25,7 @@
 
                             .card-content{
                                 padding: 48px 24px;
-                                justify-content: center;
+                                justify-content: space-between;
                                 align-items: center;
                                 @include breakpoint(lg down){	
                                     padding: 16px;

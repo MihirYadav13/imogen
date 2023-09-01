@@ -88,19 +88,20 @@
                         margin-bottom: 0;
                     }
                 }
+                
+            }
+            .card-footer{
+                display: flex;
+                justify-content: flex-start;
+                align-self: flex-start;
+                margin-top:auto;
 
-                .card-footer{
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    margin-top:auto;
 
-                    .cta-regular{
-                        @include sm-style;
-                        transition: all 0.2s ease-in-out;
-                        &:hover{
-                            color: var(--fr-theme-main-color-hover);
-                        }
+                .cta-regular{
+                    @include sm-style;
+                    transition: all 0.2s ease-in-out;
+                    &:hover{
+						color: var(--fr-theme-main-color-hover);
                     }
                 }
             }
@@ -115,12 +116,10 @@
         }
         &after-school-program{
             .card-inner{
-                .wysiwyg-content{
-                    .card-footer{
-                        .cta-button{
-                            width: 100%;
-                            font-size: 14px;
-                        }
+                .card-footer{
+                    .cta-button{
+                        width: 100%;
+                        font-size: 14px;
                     }
                 }
             }
@@ -128,15 +127,12 @@
 
         &camp{
             .card-inner{
-                .wysiwyg-content{
-
                     .card-footer{
                         .cta-button{
                             width: 100%;
                             font-size: 14px;
                         }
                     }
-                }
             }
         }
 
@@ -159,7 +155,6 @@
                 cursor: pointer;
             }
         }
-    }
-    
+    }  
     
 }

@@ -115,10 +115,12 @@ class RelatedContentCardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = get_field('posts_per_page')?:8;
+		$postsPerPage = get_field('posts_per_page') ?: 8;
 		$postType = 'post';
 
 		$result =  array_merge([
+			'heading_content' => get_field('heading_content') ? get_field('heading_content') : '<h5 class="sub"><span class="theme-color">Related Content</span></h5>
+<h3>Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum.</h3>',
 			'loadMoreText' => get_field('load_more_button_label'),
 			'filterId' => uniqid('card-grid-filter_'),
 			'frontendFilters' => $this->getFrontendFilters($postType),
@@ -139,8 +141,8 @@ class RelatedContentCardGrid extends Block
 
 	public $example = [
 		'attributes' => [
-            'preview_image' => 'RelatedContentCardGrid.png'
-        ],
+			'preview_image' => 'RelatedContentCardGrid.png'
+		],
 	];
 
 	/**
@@ -153,6 +155,7 @@ class RelatedContentCardGrid extends Block
 		$relatedContentCardGrid = new FieldsBuilder('related_content_card_grid');
 
 		$relatedContentCardGrid
+			->addWysiwyg('heading_content')
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
 				'min' => 2,
@@ -172,11 +175,11 @@ class RelatedContentCardGrid extends Block
 				'label' => 'Select Programs',
 				'return_format' => 'id',
 				'post_type' => [
-					'after-school-program','camp'
+					'after-school-program', 'camp'
 				],
 				'required' => 1,
 				'multiple' => 1
-			]);		
+			]);
 
 		return $relatedContentCardGrid->build();
 	}
@@ -186,7 +189,8 @@ class RelatedContentCardGrid extends Block
 	 *
 	 * @return void
 	 */
-	public function exampleData() {
+	public function exampleData()
+	{
 		$result = [
 			'posts' => [
 				view('components.card', [
@@ -211,7 +215,8 @@ class RelatedContentCardGrid extends Block
 		return $result;
 	}
 
-	public function getFrontendFilters($postType){
+	public function getFrontendFilters($postType)
+	{
 
 		return array_unique(array_filter([
 			in_array($postType, ['post']) ? 'program' : null

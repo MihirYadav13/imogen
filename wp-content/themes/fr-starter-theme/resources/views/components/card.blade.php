@@ -32,6 +32,7 @@
                         </p>
                     @endif
                 </div>
+            </div>
                 @if(!empty($card_data['registration_link']) || (!empty($card_data['action_cta']) && $post_type === 'post'))
                     <div class="card-footer">
                         @if(!empty($card_data['registration_link']))
@@ -41,8 +42,7 @@
                         <x-cta-button :label="$card_data['action_cta']['title']?:'Learn More'" :external-url="$card_data['action_cta']['url']" type="external_url" :style="$card_data['action_cta']['style']?:'primary'"/>
                         @endif
                     </div>
-                @endif
-            </div>
+                @endif            
         </div>
     </div>
 </div>

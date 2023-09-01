@@ -1,17 +1,17 @@
 @keyframes move_wave {
     0% {
-        transform: translateX(0) translateZ(0) scaleY(1)
+        transform: translateX(0) translateZ(0) scaleY(1);
     }
     50% {
-        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+        transform: translateX(-25%) translateZ(0) scaleY(0.55);
     }
     100% {
-        transform: translateX(-50%) translateZ(0) scaleY(1)
+        transform: translateX(-50%) translateZ(0) scaleY(1);
     }
 }
 
 .waveWrapper {
-    display: none;
+    //display: none;
     overflow: hidden;
     position: absolute;
     left: 0;
@@ -19,7 +19,7 @@
     top: -100px;
     margin: auto;
     height: 125px;
-    transform: rotate(180deg);
+    //transform: rotate(180deg);
 
     .waveWrapperInner {
         position: absolute;
@@ -27,11 +27,11 @@
         overflow: hidden;
         height: 100%;
         bottom: -1px;
-        background-color: $deep-blue;
+        //background-color: $deep-blue;
 
         &.bgTop {
             z-index: 15;
-            opacity: 0.5;
+            //opacity: 0.5;
         }
         &.bgMiddle {
             z-index: 10;
@@ -51,33 +51,31 @@
             transform-origin: center bottom;
 
             &.waveTop {
-                background-size: 50% 100px;
+                background-size: 50% 120px;
             }
 
             &.waveTop {
-                animation: move-wave 3s;
-                 -webkit-animation: move-wave 3s;
-                 -webkit-animation-delay: 1s;
-                 animation-delay: 1s;
-                 background-image: url("../../resources/images/wave-top.png");
+                animation: move-wave 3s reverse;
+                -webkit-animation: move-wave 3s reverse;
+                -webkit-animation-delay: 1s;
+                animation-delay: 1s;
+                background-image: url("../../resources/images/wave-top1.png");
             }
 
             &.waveMiddle {
                 background-size: 50% 120px;
             }
             &.waveMiddle {
-                animation: move_wave 10s linear infinite;
-                background-image: url("../../resources/images/wave-mid.png");
+                animation: move_wave 10s linear infinite reverse;
+                background-image: url("../../resources/images/wave-mid1.png");
             }
             &.waveBottom {
                 background-size: 50% 100px;
             }
             &.waveBottom {
-                animation: move_wave 15s linear infinite;
-                background-image: url("../../resources/images/wave-bot.png");
+                animation: move_wave 15s linear infinite reverse;
+                background-image: url("../../resources/images/wave-bot1.png");
             }
         }
     }
-
-
 }
