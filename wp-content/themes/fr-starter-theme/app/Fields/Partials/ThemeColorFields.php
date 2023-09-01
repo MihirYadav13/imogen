@@ -29,6 +29,22 @@ class ThemeColorFields extends Partial
                 ]
             ])
             ->addColorPicker('secondary_color')
+            ->addGroup('CTA_hover_setting', [
+                'wrapper' => [
+                    'width' => 100
+                ]
+            ])
+                ->addColorPicker('main_color_hover', [
+                    'wrapper' => [
+                        'width' => 50
+                    ]
+                ])
+                ->addColorPicker('secondary_color_hover', [
+                    'wrapper' => [
+                        'width' => 50
+                    ]
+                ])
+            ->endGroup()
             ->addMessage('Background colors','Select colors to show in block container background.')
             ->addGroup('fade_to_white', [
                 'wrapper' => [

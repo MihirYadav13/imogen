@@ -25,10 +25,19 @@ body .cta-button, body a.cta-button{
 
     &.primary{
         background: var(--fr-theme-main-color);
+        color: $white;
+        &:hover{
+            background: var(--fr-theme-main-color-hover);
+            color: var(--fr-theme-main-color);
+        }
     }
 
     &.secondary{
         background: var(--fr-theme-secondary-color);
         color: $dark-gray;
+        &:hover{
+            background: var(--fr-theme-secondary-color-hover);
+            color: $dark-gray ;
+        }
     }
 }

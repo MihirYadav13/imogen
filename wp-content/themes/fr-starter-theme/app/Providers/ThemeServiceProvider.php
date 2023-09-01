@@ -236,13 +236,17 @@ class ThemeServiceProvider extends SageServiceProvider
             :root{
                 --fr-theme-main-color: <?=$themeColors['main_color'] ?>;
                 --fr-theme-main-color-filter: <?=$themeColors['main_color_filter'] ?>;
+                --fr-theme-main-color-hover: <?=$themeColors['CTA_hover_setting']['main_color_hover'] ?>;
                 --fr-theme-secondary-color: <?=$themeColors['secondary_color'] ?>;
+                --fr-theme-secondary-color-hover: <?=$themeColors['CTA_hover_setting']['secondary_color_hover'] ?>;
+                --fr-theme-bg-ftc-wt-filter: <?=$themeColors['fade_to_color']['wave_top_filter'] ?>;
                 --fr-theme-bg-ftw-top-color:  <?=$themeColors['fade_to_white']['top_color'] ?>;
                 --fr-theme-bg-ftw-mid-color:  <?=$themeColors['fade_to_white']['mid_color'] ?>;
                 --fr-theme-bg-ftw-wt-filter: <?=$themeColors['fade_to_white']['wave_top_filter'] ?>;
                 --fr-theme-bg-ftc-top-color:  <?=$themeColors['fade_to_color']['top_color'] ?>;
                 --fr-theme-bg-ftc-bottom-color:  <?=$themeColors['fade_to_color']['bottom_color'] ?>;
                 --fr-theme-bg-ftc-wt-filter: <?=$themeColors['fade_to_color']['wave_top_filter'] ?>;
+                
             }
         </style>
         <?php
