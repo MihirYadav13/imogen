@@ -12,12 +12,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 0.2s ease-in-out;
 
         &:hover{
             background-color: $blue-hover;
+
+            img{
+                filter: $blue-filter;
+            }
         }
 
         img{
+            transition: all 0.2s ease-in-out;
             width: 16px;
             height: 16px;
         }
