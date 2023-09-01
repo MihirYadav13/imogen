@@ -16,9 +16,9 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: -100px;
+    top: -$footer-wave-height;
     margin: auto;
-    height: 125px;
+    height: $footer-wave-height;
     //transform: rotate(180deg);
 
     .waveWrapperInner {
@@ -31,6 +31,7 @@
 
         &.bgTop {
             z-index: 15;
+            height: 75px;
             //opacity: 0.5;
         }
         &.bgMiddle {
@@ -51,7 +52,9 @@
             transform-origin: center bottom;
 
             &.waveTop {
-                background-size: 50% 120px;
+                background-size: 100% 100%;
+                background-repeat: repeat no-repeat;
+                background-position: 250px 0px;
             }
 
             &.waveTop {

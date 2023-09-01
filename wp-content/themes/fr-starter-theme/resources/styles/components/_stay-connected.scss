@@ -1,6 +1,7 @@
 .stay-connected-container{
     position: relative;
-    padding: 40px 0;
+    padding-top: 40px;
+    padding-bottom: calc($spacing-between-modules/2 + $footer-wave-height);
     background: linear-gradient(180deg, var(--fr-theme-bg-ftc-top-color) 0%, var(--fr-theme-bg-ftc-bottom-color) 100%);
     
     .contact-us{
