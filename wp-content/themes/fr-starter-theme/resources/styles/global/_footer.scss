@@ -218,7 +218,7 @@
                         input[type="submit"]{
                             width: calc(100% - 174px);
                             background-color: $blue;
-                            transition: all 0.2s ease-in-out;
+                            transition: all 0.2s ease-in-out;
                             border-top-left-radius: 0;
                             height: 40px;
                             border-bottom-left-radius: 0;
@@ -226,7 +226,7 @@
 
                             &:hover{
                                 background-color: $blue-hover;
-						        color: #fff;
+						        color: $blue;
                             }
 
                             @include breakpoint(lg down){

@@ -99,9 +99,8 @@
 
                 .cta-regular{
                     @include sm-style;
-                    transition: all 0.2s ease-in-out;
                     &:hover{
-						color: var(--fr-theme-main-color-hover);
+						color: var(--fr-theme-main-color);
                     }
                 }
             }
