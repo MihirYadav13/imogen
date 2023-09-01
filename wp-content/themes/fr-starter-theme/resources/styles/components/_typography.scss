@@ -12,6 +12,11 @@ html :where(.editor-styles-wrapper) .is-root-container h1 {
     font-size: 56px;
     line-height: 64px;
     @include font-primary-bold;
+
+    @include breakpoint(lg down) {
+        font-size: 40px;
+        line-height: 48px;
+    }
 }
 
 body:not(.wp-admin) h2,
@@ -19,6 +24,11 @@ html :where(.editor-styles-wrapper) .is-root-container h2 {
     font-size: 40px;
     line-height: 48px;
     @include font-primary-bold;
+
+    @include breakpoint(lg down) {
+        font-size: 32px;
+        line-height: 40px;
+    }
 }
 
 body:not(.wp-admin) h3,
@@ -26,6 +36,11 @@ html :where(.editor-styles-wrapper) .is-root-container h3 {
     font-size: 32px;
     line-height: 40px;
     @include font-primary-bold;
+
+    @include breakpoint(lg down) {
+        font-size: 24px;
+        line-height: 32px;
+    }
 }
 
 body:not(.wp-admin) h4,
@@ -33,6 +48,11 @@ html :where(.editor-styles-wrapper) .is-root-container h4 {
     font-size: 24px;
     line-height: 32px;
     @include font-primary-bold;
+
+    @include breakpoint(lg down) {
+        font-size: 22px;
+        line-height: 28px;
+    }
 }
 
 body:not(.wp-admin) h5,
@@ -46,6 +66,11 @@ html :where(.editor-styles-wrapper) .is-root-container h5 {
         font-size: 22px;
         line-height: 36px;
     }
+
+    @include breakpoint(lg down) {
+        font-size: 16px;
+        line-height: 24px;
+    }
 }
 
 body:not(.wp-admin) h6,
@@ -53,6 +78,11 @@ html :where(.editor-styles-wrapper) .is-root-container h6 {
     font-size: 16px;
     line-height: 24px;
     @include font-primary-bold;
+
+    @include breakpoint(lg down) {
+        font-size: 14px;
+        line-height: 24px;
+    }
 }
 
 body:not(.wp-admin) p,
