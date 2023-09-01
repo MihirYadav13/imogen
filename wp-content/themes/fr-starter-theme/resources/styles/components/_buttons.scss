@@ -24,6 +24,7 @@ body .cta-button, body a.cta-button{
     }
 
     &.primary{
+        transition: all 0.2s ease-in-out;
         background: var(--fr-theme-main-color);
         color: $white;
         &:hover{
@@ -33,6 +34,7 @@ body .cta-button, body a.cta-button{
     }
 
     &.secondary{
+        transition: all 0.2s ease-in-out;
         background: var(--fr-theme-secondary-color);
         color: $dark-gray;
         &:hover{

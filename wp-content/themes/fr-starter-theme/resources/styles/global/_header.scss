@@ -216,10 +216,17 @@
 			.cta-button {
 				&.primary {
 					background-color: $blue;
+					&:hover{
+						background-color: $blue-hover;
+						color: #fff;
+					}
 				}
 
 				&.secondary {
-					background-color: $light-blue-2;
+					background-color: $light-blue-4;
+					&:hover{
+						background-color: $blue-hover;
+					}
 				}
 
 				@include breakpoint(xl down) {

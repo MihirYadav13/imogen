@@ -218,10 +218,16 @@
                         input[type="submit"]{
                             width: calc(100% - 174px);
                             background-color: $blue;
+                            transition: all 0.2s ease-in-out;
                             border-top-left-radius: 0;
                             height: 40px;
                             border-bottom-left-radius: 0;
                             border: 0.5px solid rgba(73, 129, 194, 0.5);
+
+                            &:hover{
+                                background-color: $blue-hover;
+						        color: #fff;
+                            }
 
                             @include breakpoint(lg down){
                                 width: 100%;
