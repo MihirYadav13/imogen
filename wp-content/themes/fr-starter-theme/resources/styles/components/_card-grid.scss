@@ -144,8 +144,21 @@
                                 }
                             }
                             &camp, &after-school-program{
-                                .card-footer{
-                                    align-self: center;
+                                .card-content{
+                                    row-gap: 36px;
+
+                                    .card-body{
+                                        margin-bottom: 0;
+                                    }
+
+                                    .card-footer{
+                                        width: 100%;
+                                        align-self: center;
+
+                                        .cta-button{
+                                            width: 100%;
+                                        }
+                                    }
                                 }
                             }
                         }
