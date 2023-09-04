@@ -120,11 +120,6 @@
                                     height: 266px;
                                 }
                             }
-                            &camp, &after-school-program {
-                                .card-footer{
-                                    align-self: center;
-                                }
-                            }
                         }
                     }
                 }
@@ -143,6 +138,14 @@
                                     height:280px;
                                 }
                             }
+                            
+                        }
+                    }
+                }
+
+                &3, &4{
+                    .fr-card{
+                        &.card-type-{
                             &camp, &after-school-program{
                                 .card-content{
                                     row-gap: 36px;
