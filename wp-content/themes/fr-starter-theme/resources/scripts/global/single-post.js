@@ -6,8 +6,7 @@ import { Collapse } from 'bootstrap';
 			const $self = $(el);
             const $backgroundGre = $self.find('.fr-content-row').css('background');
             $self.find('.fr-content-row').css('background','none');
-            $self.css('background', $backgroundGre);  
-            console.log($backgroundGre);          
+            $self.css('background', $backgroundGre);
 		});
 	}
 	$(() => {
