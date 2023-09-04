@@ -57,6 +57,13 @@
                                     }
                                 }
                             }
+                            &camp, &after-school-program{
+                                @include breakpoint(lg down){
+                                    .card-footer{
+                                        align-self: center;
+                                    }
+                                }
+                            }
                         }
 
                         .featured-image{
@@ -113,6 +120,11 @@
                                     height: 266px;
                                 }
                             }
+                            &camp, &after-school-program {
+                                .card-footer{
+                                    align-self: center;
+                                }
+                            }
                         }
                     }
                 }
@@ -129,6 +141,11 @@
                             &team-member{
                                 .featured-image{
                                     height:280px;
+                                }
+                            }
+                            &camp, &after-school-program{
+                                .card-footer{
+                                    align-self: center;
                                 }
                             }
                         }
