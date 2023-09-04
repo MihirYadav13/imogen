@@ -26,7 +26,7 @@
 	}
 
 	.navbar {
-		padding: 20px 0;
+		padding: 20px 0 19.5px;
 
 		@include breakpoint(xl down) {
 			background-color: transparent;
@@ -347,7 +347,7 @@
 
 
 body:not(.wp-admin) {
-    padding-top: 80.5px;
+    padding-top: 80px;
 
     @include breakpoint(xl down) {
         padding-top: 56.5px;
@@ -387,7 +387,7 @@ body:not(.wp-admin) {
 
 	.fr-header{
 		&.scroll-down{
-			top: -80.8px;
+			top: -80.3px;
 	
 			@include breakpoint(xl down) {
 				top: -56.8px;
