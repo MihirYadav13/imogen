@@ -19,11 +19,10 @@
             .wysiwyg-module {
                 display: flex;
                 flex-direction: column;
-                padding: 40px 0;
+                justify-content: center;
 
                 @include breakpoint(lg down) {
                     padding: 0;
-                    text-align: center;
                 }
             }
 
