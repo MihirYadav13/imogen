@@ -8,7 +8,7 @@
                 flex-direction: row-reverse;
 
                 @include breakpoint(lg down) {
-                    flex-direction: column;
+                    flex-direction: column-reverse;
                 }
             }
 
@@ -19,7 +19,7 @@
             .wysiwyg-module {
                 display: flex;
                 flex-direction: column;
-                padding: 40px 0;
+                justify-content: center;
 
                 @include breakpoint(lg down) {
                     padding: 0;
