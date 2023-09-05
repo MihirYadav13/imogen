@@ -114,7 +114,7 @@ class HeaderCleanUpProvider extends ServiceProvider
 	 * Disable REST-API for all users except of admin
 	 */
 	public static function restAuthErrors ($access) {
-		if (!current_user_can('administrator')) {
+		if (!current_user_can('administrator') && !$_POST['_wpcf7']) {
 			return new \WP_Error('rest_cannot_access', 'Only authenticated users can access the REST API.', ['status' => rest_authorization_required_code()]);
 		}
 		return $access;

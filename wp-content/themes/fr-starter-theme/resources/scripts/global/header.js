@@ -3,7 +3,7 @@ import { Collapse } from 'bootstrap';
 (function ($) {
 
     const updateDropdownTrigger = ($navLinks, breakpoint) => {
-        if(['xs', 'sm', 'md'].includes(breakpoint)){
+        if(['xs', 'sm', 'md', 'lg'].includes(breakpoint)){
             $navLinks.removeAttr("data-bs-hover");
             $navLinks.attr("data-bs-toggle", "dropdown");
         }else{
@@ -92,7 +92,7 @@ import { Collapse } from 'bootstrap';
 
                     updateDropdownTrigger($menuContent.find(".nav-link.dropdown-toggle"), $self.currentBreakpoint);
 
-                    if( !['xs', 'sm', 'md'].includes($self.currentBreakpoint) ){
+                    if( !['xs', 'sm', 'md', 'lg'].includes($self.currentBreakpoint) ){
                         $('.dropdown-menu').css('display','');
                         $self.trigger('fr:trigger-close-menu');
                         $self.removeClass('is--opened is--opening is--closing');
@@ -105,13 +105,13 @@ import { Collapse } from 'bootstrap';
             $menuContent.find(".menu-item.dropdown").on({
                 mouseenter: function(){
                     const $el = $(this);
-                    if(!['xs', 'sm', 'md'].includes($self.currentBreakpoint)){
+                    if(!['xs', 'sm', 'md', 'lg'].includes($self.currentBreakpoint)){
                         showDropdown($el, true);
                     }
                 },
                 mouseleave: function(){
                     const $el = $(this);
-                    if(!['xs', 'sm', 'md'].includes($self.currentBreakpoint)){
+                    if(!['xs', 'sm', 'md', 'lg'].includes($self.currentBreakpoint)){
                         setTimeout(() => {
                             hideDropdown($el);
                         }, 300);
