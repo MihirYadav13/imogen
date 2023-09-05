@@ -28,7 +28,6 @@ import './blocks/image-carousel';
 import './blocks/fr-page-builder';
 
 import './global/header';
-import './global/single-post';
 
 // 4. Import blocks
 import './blocks/card-grid';
