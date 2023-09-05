@@ -1,4 +1,5 @@
 body.single-post{
+    background: linear-gradient(180deg, var(--fr-theme-bg-ftw-top-color) 0%, var(--fr-theme-bg-ftw-mid-color) 50%, $white 100%);
     article{
         width:814px;
         margin:80px auto 0;
@@ -63,7 +64,7 @@ body.single-post{
                 }
             }
             .fr-content-row{
-
+                background: none;
                 &:first-of-type{
                     padding-top: 0px;
                 }
