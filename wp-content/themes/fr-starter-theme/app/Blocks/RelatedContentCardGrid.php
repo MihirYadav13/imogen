@@ -119,8 +119,7 @@ class RelatedContentCardGrid extends Block
 		$postType = 'post';
 
 		$result =  array_merge([
-			'heading_content' => get_field('heading_content') ? get_field('heading_content') : '<h5 class="sub"><span class="theme-color">Related Content</span></h5>
-<h3>Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum.</h3>',
+			'heading_content' => get_field('heading_content') ? get_field('heading_content') : '',
 			'loadMoreText' => get_field('load_more_button_label'),
 			'filterId' => uniqid('card-grid-filter_'),
 			'frontendFilters' => $this->getFrontendFilters($postType),
