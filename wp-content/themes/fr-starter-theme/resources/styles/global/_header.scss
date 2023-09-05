@@ -8,13 +8,22 @@
 	background: $white;
 	border-bottom: 1px solid $light-blue-3;
 
+
 	@include breakpoint(xl down) {
 		border-bottom: none;
 	}
 
 	@include breakpoint(xl down) {
+		-ms-overflow-style: none; /* for Internet Explorer, Edge */
+  		scrollbar-width: none; /* for Firefox */
 		overflow: scroll;
 		max-height: 100vh;
+	}
+
+	&::-webkit-scrollbar{
+		@include breakpoint(xl down) {
+			display: none;
+		}
 	}
 
 	.header-top {
