@@ -21,12 +21,12 @@ class ManualCardGrid extends Block
      */
     public $description = 'A simple manual card grid block.';
 
-	/**
-	 * The block slug.
-	 *
-	 * @var string
-	 */
-	public $slug = 'fr-page-builder-module-manual-card-grid';
+    /**
+     * The block slug.
+     *
+     * @var string
+     */
+    public $slug = 'fr-page-builder-module-manual-card-grid';
 
     /**
      * The block category.
@@ -113,15 +113,33 @@ class ManualCardGrid extends Block
      * @var array
      */
     public $example = [
+        'heading_content' => '<h5 class="sub" style="text-align: center;"><span class="theme-color">Nam dapibus nisl.</span></h5>
+<h3 style="text-align: center;">Cras quis nulla commodo, aliquam lectus sed.</h3>
+<p style="text-align: center;">Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. Suspendisse fermentum</p>',
         'items' => [
-             [
-                'featured_image' => ['url' => ''],
+            [
+
                 'title' => 'Text Block Title',
+                'featured_image' => [
+                    'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                    'alt' => 'Placeholder image'
+                ],
+                'cta_link' => [
+                    'title' => 'Learn More',
+                    'url' => '/'
+                ],
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-             ],
-             [
-                'featured_image' => ['url' => ''],
+            ],
+            [
                 'title' => 'Text Block Title',
+                'featured_image' => [
+                    'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                    'alt' => 'Placeholder image'
+                ],
+                'cta_link' => [
+                    'title' => 'Learn More',
+                    'url' => '/'
+                ],
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             ]
         ],
@@ -138,7 +156,8 @@ class ManualCardGrid extends Block
     public function with()
     {
         return [
-            'items' => ($this->preview && empty(get_field('items')) ? $this->example['items'] : get_field('items'))
+            'items' => ($this->preview && empty(get_field('items')) ? $this->example['items'] : get_field('items')),
+            'heading_content' => ($this->preview && empty(get_field('heading_content')) ? $this->example['heading_content'] : get_field('heading_content')),
         ];
     }
 
@@ -151,11 +170,12 @@ class ManualCardGrid extends Block
     {
         $manualCard = new FieldsBuilder('manualCardGrid');
         $manualCard
-        ->addRepeater('items', [
-            'layout' => 'block',
-            'button_label' => 'Add Manual Card',
-            'max' => 8,
-			])
+            ->addWysiwyg('heading_content')
+            ->addRepeater('items', [
+                'layout' => 'block',
+                'button_label' => 'Add Manual Card',
+                'max' => 8,
+            ])
             ->addText('title', [
                 'required' => 1,
                 'wrapper' => [
@@ -167,21 +187,21 @@ class ManualCardGrid extends Block
                 'wrapper' => [
                     'width' => 33
                 ]
-            ]) 
+            ])
             ->addLink('cta_link', [
                 'required' => 1,
                 'wrapper' => [
                     'width' => 33
                 ]
-            ])           
-            ->addTextarea('description',[ 
+            ])
+            ->addTextarea('description', [
                 'required' => 1,
                 'maxlength' => 1000,
                 'rows' => 3,
                 'new_line' => 'br'
             ])
-                       
-        ->endRepeater();
+
+            ->endRepeater();
         return $manualCard->build();
     }
 

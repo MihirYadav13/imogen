@@ -1,0 +1,14 @@
+.manual-card-grid-module {
+    .container-fluid {
+        .heading-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+
+            .wysiwyg-heading-content {
+                text-align: center;
+            }
+        }
+    }
+}
