@@ -113,9 +113,7 @@ class ManualCardGrid extends Block
      * @var array
      */
     public $example = [
-        'heading_content' => '<h5 class="sub" style="text-align: center;"><span class="theme-color">Nam dapibus nisl.</span></h5>
-<h3 style="text-align: center;">Cras quis nulla commodo, aliquam lectus sed.</h3>
-<p style="text-align: center;">Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. Suspendisse fermentum</p>',
+        'heading_content' => '',
         'items' => [
             [
 
