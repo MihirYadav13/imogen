@@ -1,17 +1,4 @@
-@keyframes move_wave {
-    0% {
-        transform: translateX(0) translateZ(0) scaleY(1);
-    }
-    50% {
-        transform: translateX(-25%) translateZ(0) scaleY(0.55);
-    }
-    100% {
-        transform: translateX(-50%) translateZ(0) scaleY(1);
-    }
-}
-
 .waveWrapper {
-    //display: none;
     overflow: hidden;
     position: absolute;
     left: 0;
@@ -19,66 +6,84 @@
     top: -$footer-wave-height;
     margin: auto;
     height: $footer-wave-height;
+    @include breakpoint(lg down){
+        top: -105px;
+    }
     //transform: rotate(180deg);
-
-    .waveWrapperInner {
+    .wave {
         position: absolute;
         width: 100%;
-        overflow: hidden;
-        height: 100%;
-        bottom: -1px;
-        //background-color: $deep-blue;
-
-        &.bgTop {
-            z-index: 15;
-            height: 75px;
-            //opacity: 0.5;
+        /*height from the svg file*/
+        height: 140px;
+        bottom: 0;
+        left: 0;
+        background: url("../images/footer-wave.svg");
+        animation: waves 10s linear infinite;
+        @include breakpoint(lg down){
+            background-size: 100% 100%;
         }
-        &.bgMiddle {
-            z-index: 10;
-            opacity: 0.75;
+        @include breakpoint(sm down){
+            animation: waves 40s linear infinite;
         }
-        &.bgBottom {
-            z-index: 5;
-        }
-
-        .wave {
+            
+        &:before {
+            content:'';
+            width: 100%;
+            height: 140px;
+            background: url("../images/footer-wave.svg");
             position: absolute;
+            top: 0;
             left: 0;
-            width: 200%;
-            height: 100%;
-            background-repeat: repeat no-repeat;
-            background-position: 0 bottom;
-            transform-origin: center bottom;
-
-            &.waveTop {
+            opacity: 0.3;
+            animation: waves-reverse 10s linear infinite;
+            
+            @include breakpoint(lg down){
                 background-size: 100% 100%;
-                background-repeat: repeat no-repeat;
-                background-position: 250px 0px;
             }
-
-            &.waveTop {
-                animation: move-wave 3s reverse;
-                -webkit-animation: move-wave 3s reverse;
-                -webkit-animation-delay: 1s;
-                animation-delay: 1s;
-                background-image: url("../../resources/images/wave-top1.png");
+            @include breakpoint(sm down){
+                animation: waves-reverse 40s linear infinite;
             }
-
-            &.waveMiddle {
-                background-size: 50% 120px;
+            
+        }
+      
+        &:after {
+            content:'';
+            width: 100%;
+            height: 140px;
+            background: url("../images/footer-wave.svg");
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.5;
+            animation-delay: -5s;
+            animation: waves 20s linear infinite;
+            @include breakpoint(lg down){
+                background-size: 100% 100%;
             }
-            &.waveMiddle {
-                animation: move_wave 10s linear infinite reverse;
-                background-image: url("../../resources/images/wave-mid1.png");
-            }
-            &.waveBottom {
-                background-size: 50% 100px;
-            }
-            &.waveBottom {
-                animation: move_wave 15s linear infinite reverse;
-                background-image: url("../../resources/images/wave-bot1.png");
+            @include breakpoint(sm down){
+                animation: waves 80s linear infinite;
             }
         }
     }
 }
+
+  
+  
+  @keyframes waves {
+    0% {
+      background-position: 0;
+    }
+    100% {
+      /* from width of the svg file */
+      background-position: 1600px;
+    }
+  }
+  
+  @keyframes waves-reverse {
+    0% {
+      background-position: 1600px;
+    }
+    100% {
+      background-position: 0;
+    }
+  }
