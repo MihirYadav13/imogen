@@ -1,16 +1,22 @@
 .card-grid-with-filter-module {
     .container-fluid {
-        margin-bottom: 38px;
-    }
-    .wysiwyg-heading-content .wysiwyg-content h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p {
-        &:last-child {
-            margin-bottom: 0;
+        .wysiwyg-heading-content{
+            margin-bottom: 38px;
+            text-align: center;
+
+            &.wysiwyg-content { 
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                p {
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
         }
     }
 }
