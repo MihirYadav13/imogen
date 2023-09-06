@@ -1,7 +1,7 @@
 @php
-$user = get_field('show_author', get_the_ID());
+$show_author = get_field('show_author', get_the_ID())?:false;
 @endphp
-@if($user == 'default')
+@if($show_author)
   <div class="hr"></div>
   <div class="byline author vcard" >    
     <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" rel="author" class="fn">    
