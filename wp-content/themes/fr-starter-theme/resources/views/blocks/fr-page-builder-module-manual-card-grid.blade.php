@@ -3,7 +3,7 @@
 
     <div class="container-fluid card-grid-container ajax-container">
         <div class="heading-content">
-            <div class="col wysiwyg-heading-content">
+            <div class="col wysiwyg-heading-content wysiwyg-content">
                 {!! $heading_content !!}
             </div>
         </div>

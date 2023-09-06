@@ -2,7 +2,7 @@
     @if (isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
     @if (in_array('post', $blockData['post_type']))
         <div class="container-fluid">
-            <div class="col wysiwyg-heading-content">
+            <div class="col wysiwyg-heading-content wysiwyg-content">
                 {!! $heading_content !!}
             </div>
         </div>
