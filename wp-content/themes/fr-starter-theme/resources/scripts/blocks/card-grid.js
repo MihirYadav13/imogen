@@ -74,6 +74,14 @@
 			}).done(function(resData) {
 				$modal.find('.modal-body .card-content').html(resData.data.modalBody);
 				$modal.attr('fr-status', 'success');
+
+				// If content not visible scroll to content
+				if( ['xs', 'sm', 'md'].includes(window.currentBreakpoint()) && $(window).outerHeight() < ($modal.find('.featured-image ').outerHeight() + 300)){
+					$modal.animate({
+						scrollTop: ($modal.find('.featured-image ').outerHeight() - 50)
+					}, 500);
+				}
+
 			}).fail(err => {
 				$modal.attr('fr-status', 'fail');
 				console.log('Failed: ' + JSON.stringify(err));
