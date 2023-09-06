@@ -3,11 +3,23 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 38px;
 
         .wysiwyg-heading-content {
             text-align: center;
             max-width: 814px;
+
+            .wysiwyg-content h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 }

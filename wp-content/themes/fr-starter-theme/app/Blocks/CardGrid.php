@@ -115,10 +115,11 @@ class CardGrid extends Block
 	 */
 	public function with()
 	{
-		$postsPerPage = get_field('posts_per_page')?:8;
+		$postsPerPage = get_field('posts_per_page') ?: 8;
 		$postType = get_field('post_type');
 
 		$result =  array_merge([
+			'heading_content' => get_field('heading_content') ? get_field('heading_content') : '',
 			'loadMoreText' => get_field('load_more_button_label'),
 			'filterId' => uniqid('card-grid-filter_'),
 			'frontendFilters' => $this->getFrontendFilters($postType),
@@ -152,6 +153,7 @@ class CardGrid extends Block
 		$cardGrid = new FieldsBuilder('card_grid');
 
 		$cardGrid
+			->addWysiwyg('heading_content')
 			->addRadio('post_type', [
 				'choices' => [
 					'after-school-program' => 'After School Program',
