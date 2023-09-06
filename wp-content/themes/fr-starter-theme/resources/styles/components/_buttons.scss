@@ -16,7 +16,7 @@ body .cta-button, body a.cta-button{
     transition: all 0.2s ease-in-out;
 
     &:hover{
-        color: lighten($white, 20%);
+        color: lighten($deep-blue, 20%);
     }
 
     &.primary, &.secondary{
@@ -40,5 +40,12 @@ body .cta-button, body a.cta-button{
             background: var(--fr-theme-secondary-color-hover);
             color: $dark-gray ;
         }
+    }
+}
+
+.cta-regular{
+
+    &:hover{
+        color: lighten($deep-blue, 20%);
     }
 }

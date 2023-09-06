@@ -1,130 +1,134 @@
 body.single-post{
-    background: linear-gradient(180deg, var(--fr-theme-bg-ftw-top-color) 0%, var(--fr-theme-bg-ftw-mid-color) 50%, $white 100%);
-    article{
-        width:814px;
-        margin:80px auto 0;
-        max-width: 100%;
+    #main{
+        background: linear-gradient(180deg, var(--fr-theme-bg-ftw-top-color) 0%, var(--fr-theme-bg-ftw-mid-color) 50%, $white 100%);
+        padding-top:80px;
 
-        @include breakpoint(md down){
-            width: 100%;
-            margin-top:40px;
-        }
-
-        .taxo_list{
-            font-size: 22px;
-            line-height: 36px;
-            margin-bottom:24px;
-
-            .program {
-                color: $purple;
-                text-align: center;
-            }
-        }
-
-        .post-meta-data{
-            margin: 24px 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            .publish-time{
-                margin: 0;
-
-                @include breakpoint(md down){
-                    width: 100%;
-                }
-            }
+        article{
+            width:814px;
+            margin:0 auto;
+            max-width: 100%;
 
             @include breakpoint(md down){
-                flex-direction: column;
-                justify-content: flex-start;
-                row-gap: 16px;
-            }
-        }
-
-        .entry-content{
-            .container{
-                padding: 0;
+                width: 100%;
+                margin-top:40px;
             }
 
-            .wp-post-image{
-                width: 100% !important;
-                max-height: 463px;
-                object-fit: cover;
-                border-radius: 8px;
-                margin-top: 48px;
+            .taxo_list{
+                font-size: 22px;
+                line-height: 36px;
+                margin-bottom:24px;
+
+                .program {
+                    color: $purple;
+                    text-align: center;
+                }
+            }
+
+            .post-meta-data{
+                margin: 24px 0 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .publish-time{
+                    margin: 0;
+
+                    @include breakpoint(md down){
+                        width: 100%;
+                    }
+                }
 
                 @include breakpoint(md down){
-                    height: 218px;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    row-gap: 16px;
                 }
             }
-            .wysiwyg-content{
-                img{
-                    max-width: 100%;
-                }
-            }
-            .fr-content-row{
-                background: none;
-                &:first-of-type{
-                    padding-top: 0px;
+
+            .entry-content{
+                .container{
+                    padding: 0;
                 }
 
-                .image-carousel-container{
-                    .splide__slide{
-                        img{
-                            max-height: 463px;
+                .wp-post-image{
+                    width: 100% !important;
+                    max-height: 463px;
+                    object-fit: cover;
+                    border-radius: 8px;
+                    margin-top: 48px;
+
+                    @include breakpoint(md down){
+                        height: 218px;
+                    }
+                }
+                .wysiwyg-content{
+                    img{
+                        max-width: 100%;
+                    }
+                }
+                .fr-content-row{
+                    background: none;
+                    &:first-of-type{
+                        padding-top: 0px;
+                    }
+
+                    .image-carousel-container{
+                        .splide__slide{
+                            img{
+                                max-height: 463px;
+                                @include breakpoint(md down){
+                                    max-height: 268px;
+                                }
+                            }
+                        }
+                    }
+
+                    .thumbnail-carousel
+                    {
+                        .splide__slide{
+                            border-radius: 7.08px;
+                            height:88px;
+                            max-height: 88px;
+
                             @include breakpoint(md down){
-                                max-height: 268px;
+                                height:42px;
+                                max-height: 42px;
                             }
                         }
                     }
                 }
-
-                .thumbnail-carousel
-                {
-                    .splide__slide{
-                        border-radius: 7.08px;
-                        height:88px;
-                        max-height: 88px;
-
-                        @include breakpoint(md down){
-                            height:42px;
-                            max-height: 42px;
-                        }
-                    }
-                }
-            }
-        }
-
-        .hr{
-            border-top: 1px solid $light-gray-2;
-            width: 100%;
-        }
-
-        .author{
-            display: flex;
-            align-items: center;
-            margin: 48px 0 80px;
-
-            img {
-                float: left;
-                margin-right: 16px;
-                border-radius: 8px
             }
 
-            .auth-detail{
+            .hr{
+                border-top: 1px solid $light-gray-2;
+                width: 100%;
+            }
+
+            .author{
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
+                align-items: center;
+                margin: 48px 0 80px;
 
-                h5{
-                    margin:0
+                img {
+                    float: left;
+                    margin-right: 16px;
+                    border-radius: 8px
                 }
 
-                p{
-                    font-size: 14px;
-                    line-height: 24px;
-                    margin:0
+                .auth-detail{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    h5{
+                        margin:0
+                    }
+
+                    p{
+                        font-size: 14px;
+                        line-height: 24px;
+                        margin:0
+                    }
                 }
             }
         }

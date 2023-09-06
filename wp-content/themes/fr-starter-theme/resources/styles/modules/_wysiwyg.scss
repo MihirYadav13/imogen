@@ -16,8 +16,11 @@
     }
 
     a:not(.cta-button):not(.button):not(.alt-btn):not(.badge):not(.cta-regular) {
-        color: $deep-blue;
-        font-weight: bold;
+        color: $blue;
+
+        &:hover{
+            color: lighten($deep-blue, 20%);
+        }
     }
 
     > .container {
