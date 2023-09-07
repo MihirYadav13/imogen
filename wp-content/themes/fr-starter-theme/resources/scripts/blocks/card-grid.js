@@ -159,10 +159,13 @@
 		else {
 			_.resultContainer.removeClass('has-more-pages');
 		}
+
+		$self.removeClass('no-results-found');
 		
 		// Add fr status
 		if(resData.posts.length === 0 && _.ajaxConfig.page === 1){
 			$self.attr('fr-status', 'no-results-found');
+			$self.addClass('no-results-found');
 		}
 		else if(!_.hasMore) {
 			$self.attr('fr-status', 'no-more-results');

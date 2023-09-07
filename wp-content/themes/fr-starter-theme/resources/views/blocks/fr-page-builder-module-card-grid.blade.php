@@ -1,10 +1,6 @@
 <div class="module card-grid-with-filter-module {{ $block->classes }}"
     @if (isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
-    <div class="container-fluid">
-        <div class="col wysiwyg-heading-content wysiwyg-content">
-            {!! $heading_content !!}
-        </div>
-    </div>
+    @include('components.grid-heading-content')
     @if (in_array('post', $blockData['post_type']))
         <x-card-grid-filter :filter-id="$filterId" :filters="$frontendFilters" :includeSearch="true" :block-data="$blockData" />
     @endif

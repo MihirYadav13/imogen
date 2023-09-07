@@ -190,6 +190,7 @@
 
     .spinner-container{
         position: absolute;
+        z-index: 99;
     }
 
     .ajax-running-container,
@@ -245,7 +246,7 @@
             display: none;
         }
 
-        .cards-container {
+        .cards-container, .no-results-found-container {
             opacity: 0.4;
         }
 
@@ -272,5 +273,17 @@
         .card-type-publish-button{
             display: none;
         }
-    }    
+    } 
+    
+    &.no-results-found {
+        .no-results-found-container {
+            display: block;
+        }
+
+        .spinner-container {
+            .spinner{
+                margin-top: 0;
+            }
+        }
+    }
 }
