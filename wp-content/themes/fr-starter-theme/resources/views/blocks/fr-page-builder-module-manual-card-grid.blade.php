@@ -13,7 +13,7 @@
 									<div class="card-header">
 										<a href="{{ $card_data['cta_link']['url'] }}" class="card-link">
 											<h5 class="card-title" fr-truncate-lines="3" title="{{ $card_data['title'] }}">
-												{!! $card_data['title'] !!}
+												{!! $card_data['cta_link']['target'] !!}
 											</h5>
 										</a>
 									</div>
@@ -21,7 +21,7 @@
 										<p class="excerpt sm" fr-truncate-lines="4" title=""> {!! $card_data['description'] !!} </p>
 									</div>                
 									<div class="card-footer"> 
-										<x-cta-button :label="$card_data['cta_link']['title']?:'Learn More'" :external-url="$card_data['cta_link']['url']" type="external_url" :style="'regular-link'" />
+										<x-cta-button :label="$card_data['cta_link']['title']?:'Learn More'" :external-url="$card_data['cta_link']['url']" :newTab="$card_data['cta_link']['target']" type="external_url" :style="'regular-link'" />
 									</div>
 								</div>
 							</div>
@@ -31,5 +31,5 @@
 			</div>			
 		</div>		
 	</div>	
-</div>
+</div> 
  
