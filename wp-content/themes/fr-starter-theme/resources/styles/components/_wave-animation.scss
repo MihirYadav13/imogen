@@ -1,3 +1,6 @@
+$wave-height: 140px;
+$wave-height-sm: 100px;
+
 .waveWrapper {
     overflow: hidden;
     position: absolute;
@@ -6,40 +9,60 @@
     top: -$footer-wave-height;
     margin: auto;
     height: $footer-wave-height;
+
     @include breakpoint(lg down){
-        top: -105px;
+      top: -$footer-wave-height-lg;
+      height: 100px;
     }
+
+    @include breakpoint(sm down){
+      top: -$footer-wave-height-sm;
+      height: 80px;
+    }
+
+
     //transform: rotate(180deg);
     .wave {
         position: absolute;
         width: 100%;
         /*height from the svg file*/
-        height: 140px;
+        height: $wave-height;
         bottom: 0;
         left: 0;
-        background: url("../images/footer-wave.svg");
+        background-image: url("../images/footer-wave.svg");
         animation: waves 10s linear infinite;
+        
         @include breakpoint(lg down){
-            background-size: 100% 100%;
+          background-size: 100% 100%;
         }
+
         @include breakpoint(sm down){
             animation: waves 40s linear infinite;
+            height: $wave-height-sm;
+        }
+
+        &:before, &:after{
+          content:'';
+          width: 100%;
+          height: $wave-height;
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          @include breakpoint(lg down){
+            background-size: 100% 100%;
+          }
+
+          @include breakpoint(sm down){
+            height: $wave-height-sm;
+          }
         }
             
         &:before {
-            content:'';
-            width: 100%;
-            height: 140px;
-            background: url("../images/footer-wave.svg");
-            position: absolute;
-            top: 0;
-            left: 0;
+            background-image: url("../images/footer-wave.svg");
             opacity: 0.3;
             animation: waves-reverse 10s linear infinite;
             
-            @include breakpoint(lg down){
-                background-size: 100% 100%;
-            }
             @include breakpoint(sm down){
                 animation: waves-reverse 40s linear infinite;
             }
@@ -47,19 +70,11 @@
         }
       
         &:after {
-            content:'';
-            width: 100%;
-            height: 140px;
-            background: url("../images/footer-wave.svg");
-            position: absolute;
-            top: 0;
-            left: 0;
+            background-image: url("../images/footer-wave.svg");
             opacity: 0.5;
             animation-delay: -5s;
             animation: waves 20s linear infinite;
-            @include breakpoint(lg down){
-                background-size: 100% 100%;
-            }
+
             @include breakpoint(sm down){
                 animation: waves 80s linear infinite;
             }

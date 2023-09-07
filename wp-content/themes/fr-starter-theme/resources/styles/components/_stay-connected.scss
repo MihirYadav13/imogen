@@ -4,6 +4,15 @@
     padding-bottom: calc($spacing-between-modules/2 + $footer-wave-height);
     background: linear-gradient(180deg, var(--fr-theme-bg-ftc-top-color) 0%, var(--fr-theme-bg-ftc-bottom-color) 100%);
     
+
+    @include breakpoint(lg down){
+        padding-bottom: calc($spacing-between-modules/2 + $footer-wave-height-lg);
+    }
+
+    @include breakpoint(sm down){
+        padding-bottom: calc($spacing-between-modules/2 + $footer-wave-height-sm);
+    }
+
     .contact-us{
         color: var(--fr-theme-main-color);
         text-align: center;

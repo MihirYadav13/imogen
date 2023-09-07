@@ -39,5 +39,9 @@ add_filter( 'body_class', function( $classes ) {
 		$classes[] = 'has-stay-connected';
 	}
 
+	if ( get_field('show_author', get_the_ID()) ) {
+		$classes[] = 'has-author';
+	}
+
 	return $classes;
 }, 10);

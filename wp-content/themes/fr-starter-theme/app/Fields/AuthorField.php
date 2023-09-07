@@ -23,15 +23,9 @@ class AuthorField extends Field
 			->setLocation('post_type', '==', 'post');
 
 		$fields
-		->addRadio('show_author', [
+		->addTrueFalse('show_author', [
 			'label' => '',
-			'layout' => 'horizontal',
-			'wpml_cf_preferences' => 0,
-			'choices' => [
-				'default' => 'Yes',
-				'No_value' => 'No',
-			],
-			'default_value' => 'default'
+			'default_value' => 0
 		]);
 
 		return $fields->build();
