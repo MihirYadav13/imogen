@@ -155,7 +155,7 @@ class ManualCardGrid extends Block
     {
         return [
             'items' => ($this->preview && empty(get_field('items')) ? $this->example['items'] : get_field('items')),
-            'heading_content' => ($this->preview && empty(get_field('heading_content')) ? $this->example['heading_content'] : get_field('heading_content')),
+            'heading_content' => ($this->preview && empty(get_field('heading_content')) ? $this->example['heading_content'] : trim(get_field('heading_content'))),
         ];
     }
 

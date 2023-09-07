@@ -1,12 +1,7 @@
 <div class="module manual-card-grid-module {{ $block->classes }}"
     @if (isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
-
+    @include('components.grid-heading-content')
     <div class="container-fluid card-grid-container ajax-container">
-        <div class="heading-content">
-            <div class="col wysiwyg-heading-content wysiwyg-content">
-                {!! $heading_content !!}
-            </div>
-        </div>
         <div class="result-content ajax-content">
             <div class="cards-container cards-inner {{ count($items) < 4 ? 'columns-' . count($items) : 'columns-4' }}">
                 @foreach ($items as $card_data)
