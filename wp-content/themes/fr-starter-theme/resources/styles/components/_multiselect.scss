@@ -118,15 +118,15 @@
 }
 
 .selectric-wrapper{
+    @include font-primary;
+    @include sm-style;
+
     .selectric{
         height: 42px;
         background-color: $white;
         border: 1px solid $light-gray-3;
         border-radius: 20px;
         padding: 9px 17px;
-        @include font-primary;
-        font-size: 14px;
-        line-height: 24px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -134,7 +134,9 @@
         .label{
             width: 100%;
             margin: 0 19px 0 0;
-            font-size: 14px;
+            @include font-primary;
+            @include sm-style;
+            height: auto;
         }
 
         .button{
@@ -174,6 +176,8 @@
         ul{
             li{
                 padding: 10px 17px;
+                @include font-primary;
+                @include sm-style;
 
                 &.default{
                     display: none;
