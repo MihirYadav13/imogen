@@ -206,6 +206,11 @@ class ThemeServiceProvider extends SageServiceProvider
                         }));
                     });
                 }
+               
+                    jQuery(".wp-admin.post-type-after-school-program #wp-link-submit").attr('type','button');
+                    jQuery(".wp-admin.post-type-after-school-program #wp-link-submit").click(function(e){
+                        jQuery("#wp-link").submit(function(e){ });
+                    });
             });
         </script>
         <?php
