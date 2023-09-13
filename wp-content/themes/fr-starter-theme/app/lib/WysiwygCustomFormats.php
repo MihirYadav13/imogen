@@ -43,6 +43,7 @@ if (!class_exists('WysiwygCustomFormats')) :
                 array(
                     'title' => 'News paper column',
                     'block' => 'div',
+                    'wrapper' => 'true',
                     'classes' => 'news-paper-column'
                 ),
                 array(
