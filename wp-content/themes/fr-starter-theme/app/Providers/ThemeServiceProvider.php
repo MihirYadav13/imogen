@@ -206,17 +206,11 @@ class ThemeServiceProvider extends SageServiceProvider
                         }));
                     });
                 }
-                //
-                const searchParams = new URLSearchParams(window.location.search);
-                if(searchParams.get('post_type') == 'after-school-program')
-                {
-                    jQuery("#wp-link-submit").attr('type','button');
-                    jQuery("#wp-link-submit").click(function(e){
-                    jQuery("#wp-link").submit(function(e){
-                                    alert("submitted");
-                                });
+               
+                    jQuery(".wp-admin.post-type-after-school-program #wp-link-submit").attr('type','button');
+                    jQuery(".wp-admin.post-type-after-school-program #wp-link-submit").click(function(e){
+                        jQuery("#wp-link").submit(function(e){ });
                     });
-                }
             });
         </script>
         <?php
