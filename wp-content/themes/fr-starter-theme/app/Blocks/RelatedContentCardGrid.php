@@ -136,6 +136,12 @@ class RelatedContentCardGrid extends Block
 			]
 		]);
 
+		// Create load more url
+		$result['loadMoreUrl'] = get_field('blog_page', 'option') ? get_permalink(get_field('blog_page', 'option')) : false;
+		if($result['loadMoreUrl']){
+			$result['loadMoreUrl'] = $result['loadMoreUrl'].'?programs='.implode(',', $result['blockData']['programs']);
+		}
+
 		return $result;
 	}
 

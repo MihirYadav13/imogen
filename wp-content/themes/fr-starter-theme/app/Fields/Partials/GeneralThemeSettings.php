@@ -29,7 +29,7 @@ class GeneralThemeSettings extends Partial
                 'return_format' => 'id',
                 'required' => 1
             ])
-            ->addPostObject('load_more_url', [
+            ->addPostObject('blog_page', [
                 'label' => 'Blog Page',
                 'post_type' => [
                     'page'
