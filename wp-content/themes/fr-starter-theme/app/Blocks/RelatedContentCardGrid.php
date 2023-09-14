@@ -121,6 +121,7 @@ class RelatedContentCardGrid extends Block
 		$result =  array_merge([
 			'heading_content' => get_field('heading_content') ? trim(get_field('heading_content')) : '',
 			'loadMoreText' => get_field('load_more_button_label'),
+			'loadMoreUrl' => get_field('load_more_url'),
 			'filterId' => uniqid('card-grid-filter_'),
 			'frontendFilters' => $this->getFrontendFilters($postType),
 			'postsPerPage' => $postsPerPage,
