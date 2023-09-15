@@ -99,8 +99,18 @@
 			$(window).trigger('fr:pseudo-scroll');
 		});
 	};
-
+	//Function Gallery Video
+	$.fn.appendDiv = function(){		
+		return this.each((i, el) => {
+			const $self = $(el);
+			const $isVideo = $self.find('mediaelementwrapper');
+			if($isVideo){				
+				setTimeout(function(){ $self.find('.mejs-overlay-button').append('<div class="arrow-triangle left"></div>'); }, 1);
+			}
+		});
+	};
 	$(() => {
 		$(".video-embed").addThumbnailToEmbeddedVideo();
+		$(".wp-video").appendDiv();		
 	});
 }( jQuery ));
