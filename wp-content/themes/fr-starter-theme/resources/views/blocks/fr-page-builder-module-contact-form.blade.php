@@ -3,4 +3,8 @@
     @include('components.grid-heading-content')
     <div class="form-container">{!! $contact_form !!}</div>
 </div>
+@elseif($block->preview)
+    <div class="fr-empty-slot">
+        <i>Please select form to show view.</i>
+    </div>
 @endif
