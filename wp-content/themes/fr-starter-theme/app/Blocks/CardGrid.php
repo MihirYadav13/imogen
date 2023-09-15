@@ -159,7 +159,8 @@ class CardGrid extends Block
 					'after-school-program' => 'After School Program',
 					'camp' => 'Camp',
 					'post' => 'Blog Post',
-					'team-member' => 'Team Member'
+					'team-member' => 'Team Member',
+					'childhood-education' => 'Early Childhood Education'
 				],
 				'required' => 1,
 				'layout' => 'horizontal',
