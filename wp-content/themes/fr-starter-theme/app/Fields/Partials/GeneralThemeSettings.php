@@ -17,18 +17,30 @@ class GeneralThemeSettings extends Partial
         $fields = new FieldsBuilder('general_theme_settings');
 
         $fields
-        ->addPostObject('contact_us_page', [
-            'label' => 'Contact Us Page',
-            'post_type' => [
-                'page'
-            ],
-            'wrapper' => [
-                'width' =>'50'
-            ],
-            'multiple' => 0,
-            'return_format' => 'id',
-            'required' => 1
-        ]);
+            ->addPostObject('contact_us_page', [
+                'label' => 'Contact Us Page',
+                'post_type' => [
+                    'page'
+                ],
+                'wrapper' => [
+                    'width' => '50'
+                ],
+                'multiple' => 0,
+                'return_format' => 'id',
+                'required' => 1
+            ])
+            ->addPostObject('blog_page', [
+                'label' => 'Blog Page',
+                'post_type' => [
+                    'page'
+                ],
+                'wrapper' => [
+                    'width' => '50'
+                ],
+                'multiple' => 0,
+                'return_format' => 'id',
+                'required' => 1
+            ]);
 
         return $fields;
     }

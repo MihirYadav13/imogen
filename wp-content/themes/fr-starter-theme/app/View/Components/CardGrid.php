@@ -52,7 +52,7 @@ class CardGrid extends Component
     }
 
 
-    public function setQueryArgs(){        
+    public function setQueryArgs(){
 		$this->queryArgs = array_merge([
             'block_grid_name' => $this->blockData['block_name'],
             'post_type' => $this->postType,
@@ -67,7 +67,7 @@ class CardGrid extends Component
 			'source' => 'filters',
 			'post_type' => $this->postType,
 			'posts_per_page' => $this->postsPerPage,
-            'post__in' => $this->setPostIn(),           
+            'post__in' => $this->setPostIn(),
 		]);
 
         if($this->blockData){
@@ -87,13 +87,13 @@ class CardGrid extends Component
             'post__in' => $this->setPostIn(),
             'programs' => isset($this->blockData['programs']) ? $this->blockData['programs'] : null
 		]);
-        
+
         if(!$taxonomies){
             return $args;
         }
-       
-        return array_merge($args, [ 
-            'programs' => isset($taxonomies['programs'])? $taxonomies['programs'] : null,          
+
+        return array_merge($args, [
+            'programs' => isset($taxonomies['programs'])? $taxonomies['programs'] : null,
             'age' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['age']?:[]),
             'activity' => \App\Providers\PostSearchProvider::GetTermsSlugs($taxonomies['activity']?:[]),
         ]);
@@ -117,7 +117,7 @@ class CardGrid extends Component
         }
 
         $posts = $this->blockData['posts'];
-        
+
         if($this->blockData['source'] !== 'posts'){
             return $postIn;
         }
