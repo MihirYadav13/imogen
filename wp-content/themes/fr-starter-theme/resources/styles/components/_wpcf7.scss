@@ -1,5 +1,5 @@
 
-#main {
+#main, .contact-form-module {
     form.wpcf7-form {
         display: flex;
         flex-direction: column;
@@ -101,16 +101,6 @@
                 opacity: 0.6;
                 pointer-events: none;
             }
-        }
-    }
-}
-
-.module {
-    &.contact-us-form{
-        max-width: 1026px;
-
-        h1, h2, h3, h4, h5, h6{
-            margin-bottom: 0;
         }
     }
 }
