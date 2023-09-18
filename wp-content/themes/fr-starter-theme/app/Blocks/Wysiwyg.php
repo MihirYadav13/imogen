@@ -21,12 +21,12 @@ class Wysiwyg extends Block
      */
     public $description = 'A simple Wysiwyg Module block.';
 
-	/**
-	 * The block slug.
-	 *
-	 * @var string
-	 */
-	public $slug = 'fr-page-builder-module-wysiwyg';
+    /**
+     * The block slug.
+     *
+     * @var string
+     */
+    public $slug = 'fr-page-builder-module-wysiwyg';
 
     /**
      * The block category.
@@ -110,27 +110,27 @@ class Wysiwyg extends Block
         'jsx' => true,
     ];
 
-	/**
-	 * The block preview example data.
-	 *
-	 * @var array
-	 */
-	public $example = [
+    /**
+     * The block preview example data.
+     *
+     * @var array
+     */
+    public $example = [
         'content' => '<p>Start editing content <strong>here.</strong></p>',
         'attributes' => [
             'preview_image' => 'Wysiwyg.png'
         ],
-	];
+    ];
 
-	/**
-	 * Data to be passed to the block before rendering.
-	 *
-	 * @return array
-	 */
-	public function with()
-	{
-		return $this->items();
-	}
+    /**
+     * Data to be passed to the block before rendering.
+     *
+     * @return array
+     */
+    public function with()
+    {
+        return $this->items();
+    }
 
     /**
      * The block field group.
@@ -142,22 +142,34 @@ class Wysiwyg extends Block
         $wysiwyg = new FieldsBuilder('fr_page_builder_module_wysiwyg');
 
         $wysiwyg
-            ->addWysiwyg('content');
+            ->addWysiwyg('content')
+            ->addSelect('bottom_spacing', [
+                'choices' => ['default', 'zero', 'heading', 'module'],
+                'default_value' => [],
+                'ui' => 0,
+                'return_format' => 'value',
+                'placeholder' => 'Default',
+                'wrapper' => [
+                    'width' => '30'
+                ],
+                'required' => '1'
+            ]);
 
         return $wysiwyg->build();
     }
 
-	/**
-	 * Return the items field.
-	 *
-	 * @return array
-	 */
-	public function items()
-	{
-		return [
-            'content' => $this->preview && !get_field('content') ? $this->example['content'] : get_field('content')
-		];
-	}
+    /**
+     * Return the items field.
+     *
+     * @return array
+     */
+    public function items()
+    {
+        return [
+            'content' => $this->preview && !get_field('content') ? $this->example['content'] : get_field('content'),
+            'bottom_spacing' => $this->preview && !get_field('bottom_spacing') ? $this->example['bottom_spacing'] : get_field('bottom_spacing'),
+        ];
+    }
 
     /**
      * Assets to be enqueued when rendering the block.
