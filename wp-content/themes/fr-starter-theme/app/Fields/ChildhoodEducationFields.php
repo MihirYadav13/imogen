@@ -30,7 +30,7 @@ class ChildhoodEducationFields extends Field
 					'width' => 50
 				]
 			])
-			->addImage('image', [
+			->addImage('featured_image', [
 				'required' => 1,
 				'wrapper' => [
 					'width' => 30
