@@ -117,7 +117,18 @@ class RelatedContentCardGrid extends Block
 	{
 		$postsPerPage = get_field('posts_per_page') ?: 8;
 		$postType = 'post';
-
+		$getProgram = get_field('after-school-program');
+		switch(get_field('post_type')){
+			 case 'after-school-program': 
+				$getProgram = get_field('after-school-program') ? get_field('after-school-program') : [];
+				break;
+			case 'camp': 
+				$getProgram = get_field('camp') ? get_field('camp') : [];
+				break;
+			case 'childhood-education': 
+				$getProgram = get_field('childhood-education') ? get_field('childhood-education') : [];
+				break;
+		}
 		$result =  array_merge([
 			'heading_content' => get_field('heading_content') ? trim(get_field('heading_content')) : '',
 			'loadMoreText' => get_field('load_more_button_label'),
@@ -129,9 +140,10 @@ class RelatedContentCardGrid extends Block
 				'source' => 'filters',
 				'posts_per_page' => $postsPerPage,
 				'post_type' => ['post'],
+				'post_program' => get_field('post_type'),
 				'posts' => [],
 				'taxonomies' => [],
-				'programs' => get_field('programs') ? get_field('programs') : [],
+				'programs' => $getProgram
 			]
 		]);
 
@@ -155,6 +167,18 @@ class RelatedContentCardGrid extends Block
 
 		$relatedContentCardGrid
 			->addWysiwyg('heading_content')
+			->addRadio('post_type', [
+				'choices' => [
+					'after-school-program' => 'After School Program',
+					'camp' => 'Camp',
+					'childhood-education' => 'Early Childhood Education',
+				],
+				'required' => 1,
+				'layout' => 'horizontal',
+				'wrapper' => [
+					'width' => 100
+				]
+			])
 			->addNumber('posts_per_page', [
 				'label' => 'Cards Per Page',
 				'min' => 2,
@@ -169,16 +193,38 @@ class RelatedContentCardGrid extends Block
 				'wrapper' => [
 					'width' => 50
 				]
-			])
-			->addPostObject('programs', [
-				'label' => 'Select Programs',
+			])			
+			->addPostObject('after-school-program', [
+				'label' => 'Selected Programs',
 				'return_format' => 'id',
 				'post_type' => [
-					'after-school-program', 'camp'
+					'after-school-program'
 				],
-				'required' => 1,
+				'required' => 0,
 				'multiple' => 1
-			]);
+			])
+			->conditional('post_type', '==', 'after-school-program')
+			->addPostObject('camp', [
+				'label' => 'Selected Camps',
+				'return_format' => 'id',
+				'post_type' => [
+					'camp'
+				],
+				'required' => 0,
+				'multiple' => 1
+			])
+			->conditional('post_type', '==', 'camp')
+			->addPostObject('childhood-education', [
+				'label' => 'Selected Programs',
+				'return_format' => 'id',
+				'post_type' => [
+					'childhood-education'
+				],
+				'required' => 0,
+				'multiple' => 1
+			])
+			->conditional('post_type', '==', 'childhood-education');
+			
 
 		return $relatedContentCardGrid->build();
 	}
