@@ -3,12 +3,10 @@
     margin-left:auto;
     margin-right:auto;
     position: relative;
-    padding-top: calc($spacing-between-modules / 2);
-    padding-bottom: calc($spacing-between-modules / 2);
+    padding-bottom: $spacing-between-modules;
 
     @include breakpoint(lg down){
-        padding-top: calc($spacing-between-modules-mobile / 2);
-        padding-bottom: calc($spacing-between-modules-mobile / 2);
+        padding-bottom: $spacing-between-modules-mobile;
     }
 
     >.container-fluid{

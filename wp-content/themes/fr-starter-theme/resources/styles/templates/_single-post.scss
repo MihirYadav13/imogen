@@ -145,14 +145,14 @@ body.single-post{
     .fr-page-builder-container{
         .fr-content-row{
             &:last-of-type{
-                padding-bottom: calc($spacing-between-modules/2 + $footer-wave-height - 16px);
+                padding-bottom: calc($footer-wave-height - 16px);
     
                 @include breakpoint(lg down){
-                    padding-bottom: calc($spacing-between-modules-mobile/2 + $footer-wave-height-lg);
+                    padding-bottom: $footer-wave-height-lg;
                 }
 
                 @include breakpoint(sm down){
-                    padding-bottom: calc($spacing-between-modules-mobile/2 + $footer-wave-height-sm);
+                    padding-bottom: $footer-wave-height-sm;
                 }
             }
         }

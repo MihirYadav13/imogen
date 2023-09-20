@@ -7,7 +7,7 @@
             
             // Check next container
             if($next.length && ($next.hasClass('section-bg-fade-to-color') || $next.hasClass('section-bg-fade-to-white'))){
-                $self.addClass('has-padding-bottom');
+                $self.addClass('has-next-color-container');
             }
 
 		});
