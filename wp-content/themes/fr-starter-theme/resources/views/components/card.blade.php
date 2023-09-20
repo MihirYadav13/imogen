@@ -15,10 +15,10 @@
                     </a>
                 </div>
                 <div class="card-body">
-                    @if ($post_type === 'after-school-program')
+                    @if ($post_type === 'after-school-program' || $post_type === 'childhood-education')
                         <p class="location sm">
                             {{ $card_data['location'] }}
-                            @if ($card_data['school_website'])
+                            @if (!empty($card_data['school_website']))
                                 <a class="website sm" href="{{ $card_data['school_website']['url'] }}" alt="Website"
                                     target="{{ $card_data['school_website']['target'] }}">{{ $card_data['school_website']['title'] }}</a>
                             @endif
@@ -33,6 +33,11 @@
                             {{ $card_data['role'] }}
                         </p>
                     @endif
+                    {{-- @if ($post_type === 'childhood-education')
+                        <p class="location sm">
+                            {{ $card_data['location'] }}
+                        </p>
+                    @endif --}}
                 </div>
             </div>
             @if (!empty($card_data['registration_link']) || (!empty($card_data['action_cta']) && $post_type === 'post'))
@@ -49,6 +54,6 @@
         </div>
     </div>
 </div>
-@php
+{{-- @php
     var_dump($card_data);
-@endphp
+@endphp --}}

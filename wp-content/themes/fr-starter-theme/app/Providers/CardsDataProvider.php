@@ -220,7 +220,7 @@ class CardsDataProvider extends ServiceProvider
             die();
         }
 
-        $modalData = self::get($postId);
+        $modalData = self::get((int)$postId);
         $modalBody = view('components.card-modal.modal-body', $modalData)->render();
         wp_send_json_success(['modalBody' => $modalBody]);
     }
