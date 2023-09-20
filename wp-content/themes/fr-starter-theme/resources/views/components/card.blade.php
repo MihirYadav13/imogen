@@ -49,6 +49,3 @@
         </div>
     </div>
 </div>
-{{-- @php
-    var_dump($card_data);
-@endphp --}}

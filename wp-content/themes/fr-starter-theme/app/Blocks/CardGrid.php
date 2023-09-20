@@ -312,15 +312,15 @@ class CardGrid extends Block
 						'post_type' => 'after-school-program',
 						'permalink' => '',
 						'featured_image' => [
-							'url' => 'https://example.com/image-url', // Replace with an actual URL
+							'url' => '',
 						],
 						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor',
 						'location' => 'Strategy 1 Name Lorem Ipsum Dolor',
-						'program_email' => 'strategy1@example.com', // Replace with an actual email
+						'program_email' => 'strategy1@example.com',
 						'school_website' => [
-							'url' => 'https://example.com/school-url', // Replace with an actual URL
+							'url' => '',
 						],
-						'program_phone_number' => '123-456-7890', // Replace with an actual phone number
+						'program_phone_number' => '123-456-7890',
 						'registration_link' => false,
 					]
 				])->render(),
@@ -331,12 +331,12 @@ class CardGrid extends Block
 						'post_type' => 'childhood-education',
 						'permalink' => '',
 						'featured_image' => [
-							'url' => 'https://example.com/image-url', // Replace with an actual URL
+							'url' => '',
 						],
 						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor',
 						'location' => 'Strategy 1 Name Lorem Ipsum Dolor',
-						'program_email' => 'strategy2@example.com', // Replace with an actual email
-						'program_phone_number' => '987-654-3210', // Replace with an actual phone number
+						'program_email' => 'strategy2@example.com',
+						'program_phone_number' => '987-654-3210',
 						'registration_link' => false,
 					]
 				])->render(),
