@@ -33,11 +33,6 @@
                             {{ $card_data['role'] }}
                         </p>
                     @endif
-                    {{-- @if ($post_type === 'childhood-education')
-                        <p class="location sm">
-                            {{ $card_data['location'] }}
-                        </p>
-                    @endif --}}
                 </div>
             </div>
             @if (!empty($card_data['registration_link']) || (!empty($card_data['action_cta']) && $post_type === 'post'))
