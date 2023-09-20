@@ -1,38 +1,48 @@
-.module{
+.module {
     width: 100%;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     padding-top: calc($spacing-between-modules / 2);
     padding-bottom: calc($spacing-between-modules / 2);
 
-    @include breakpoint(lg down){
+    @include breakpoint(lg down) {
         padding-top: calc($spacing-between-modules-mobile / 2);
         padding-bottom: calc($spacing-between-modules-mobile / 2);
     }
 
-    >.container-fluid{
+    > .container-fluid {
         padding-left: 0;
         padding-right: 0;
     }
 
-    +.module{
+    + .module {
     }
 
-    &.pb-mob-0{
+    &.pb-mob-0 {
         @include breakpoint(lg down) {
             padding-bottom: 0px !important;
         }
     }
+
+    &.zero-space {
+        padding-bottom: 0px;
+    }
+    &.heading-space {
+        padding-bottom: 38px;
+    }
+    &.module-space {
+        padding-bottom: 96px;
+    }
 }
 
-.wp-block-fr-column{
-    .module{
-        &:first-of-type{
+.wp-block-fr-column {
+    .module {
+        &:first-of-type {
             padding-top: 0px;
         }
 
-        &:last-of-type{
+        &:last-of-type {
             padding-bottom: 0px;
         }
     }
