@@ -1,6 +1,5 @@
-.card-modal{
-
-    .modal-dialog{
+.card-modal {
+    .modal-dialog {
         @include breakpoint(lg down) {
             width: auto;
             max-width: calc(100% - 50px);
@@ -10,17 +9,17 @@
             width: 352px;
         }
 
-        .modal-content{
-            .modal-header{
+        .modal-content {
+            .modal-header {
                 position: absolute;
                 right: 0;
             }
 
-            .modal-body{
+            .modal-body {
                 padding: 0;
 
-                .card-content{
-                    .inner-content{
+                .card-content {
+                    .inner-content {
                         transition: all 1s ease-in-out;
                         display: flex;
                         justify-content: center;
@@ -29,19 +28,19 @@
                             flex-direction: column;
                         }
 
-                        .featured-image{
+                        .featured-image {
                             display: flex;
                             flex-direction: column;
                             position: relative;
                             justify-content: center;
                             align-items: center;
 
-                            &::after{
+                            &::after {
                                 background-image: url("../images/modal-wave.svg");
                                 width: 32px;
                                 right: 0;
                                 height: 100%;
-                                content: '';
+                                content: "";
                                 position: absolute;
                                 bottom: 0;
                                 background-repeat: no-repeat;
@@ -63,7 +62,7 @@
                                 }
                             }
 
-                            img{
+                            img {
                                 flex-grow: 1;
                                 width: 412px;
                                 min-height: 500px;
@@ -73,7 +72,7 @@
                                 @include breakpoint(lg down) {
                                     width: 100%;
                                     height: 350px;
-                                    min-height: unset
+                                    min-height: unset;
                                 }
 
                                 @include breakpoint(md down) {
@@ -85,12 +84,12 @@
                                 }
                             }
 
-                            &.default{
+                            &.default {
                                 width: 412px;
                                 min-height: 500px;
                                 background-color: var(--fr-theme-main-color);
 
-                                img{
+                                img {
                                     width: 100px;
                                     height: auto;
                                     min-height: unset;
@@ -99,7 +98,7 @@
                             }
                         }
 
-                        .right-content{
+                        .right-content {
                             align-self: center;
                             padding: 40px 24px;
                             flex-grow: 1;
@@ -111,7 +110,7 @@
                                 width: 100%;
                             }
 
-                            .section{
+                            .section {
                                 margin-bottom: 24px;
 
                                 @include breakpoint(lg down) {
@@ -119,14 +118,14 @@
                                 }
                             }
 
-                            .title{
+                            .title {
                                 margin-bottom: 0;
                             }
-                            
-                            .description{
+
+                            .description {
                             }
 
-                            .info-container{
+                            .info-container {
                                 display: flex;
                                 flex-direction: column;
                                 flex-wrap: wrap;
@@ -136,8 +135,8 @@
                                 @include breakpoint(lg down) {
                                     text-align: left;
                                 }
-                                
-                                .info-row{
+
+                                .info-row {
                                     display: flex;
                                     flex-direction: row;
                                     flex-wrap: wrap;
@@ -145,16 +144,16 @@
                                     border-bottom: 1px solid $light-gray-2;
                                     padding: 8px 0;
 
-                                    &:last-of-type{
+                                    &:last-of-type {
                                         border-bottom: none;
                                     }
 
-                                    label{
+                                    label {
                                         width: 100px;
                                         @include font-primary-bold;
                                     }
-            
-                                    .value{
+
+                                    .value {
                                         max-width: calc(100% - 110px);
                                         flex-grow: 1;
                                         margin-bottom: 0;
@@ -162,7 +161,7 @@
                                 }
                             }
 
-                            .content-footer{
+                            .content-footer {
                                 display: flex;
                                 flex-direction: row;
                                 column-gap: 16px;
@@ -173,8 +172,8 @@
                                     flex-direction: column;
                                     row-gap: 16px;
                                 }
-                                
-                                .cta-button{
+
+                                .cta-button {
                                     min-width: 138px;
 
                                     @include breakpoint(lg down) {
@@ -187,13 +186,14 @@
                                 }
                             }
                         }
-        
-                        &.card-{
-                            &after-school-program{
-                                .right-content{
-                                    .info-container{                                        
-                                        .info-row{
-                                            label{
+
+                        &.card- {
+                            &after-school-program,
+                            &childhood-education {
+                                .right-content {
+                                    .info-container {
+                                        .info-row {
+                                            label {
                                                 width: 110px;
                                             }
                                         }
@@ -201,14 +201,13 @@
                                 }
                             }
 
-                            &team-member{
-                                .right-content{
-
-                                    .section{
+                            &team-member {
+                                .right-content {
+                                    .section {
                                         margin-bottom: 0;
                                     }
 
-                                    .role{
+                                    .role {
                                         @include breakpoint(lg down) {
                                             text-align: center;
                                         }
@@ -216,15 +215,15 @@
                                         margin-bottom: 8px;
                                     }
 
-                                    .short-bio{
+                                    .short-bio {
                                         @include breakpoint(lg down) {
                                             text-align: left;
                                         }
 
-                                        p{
+                                        p {
                                             @include sm-style;
-            
-                                            &:last-of-type{
+
+                                            &:last-of-type {
                                                 margin-bottom: 0;
                                             }
                                         }

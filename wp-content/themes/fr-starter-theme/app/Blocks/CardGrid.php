@@ -308,31 +308,48 @@ class CardGrid extends Block
 				view('components.card', [
 					'post_type' => 'after-school-program',
 					'card_data' => [
-						'title' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'title' => 'Strategy 1 Name Lorem Ipsum Dolor',
 						'post_type' => 'after-school-program',
 						'permalink' => '',
 						'featured_image' => [
-							'url' => ''
+							'url' => '',
 						],
-						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'location' => 'Strategy 1 Name Lorem Ipsum Dolor ',
-						'program_email' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor',
+						'location' => 'Strategy 1 Name Lorem Ipsum Dolor',
+						'program_email' => 'strategy1@example.com',
 						'school_website' => [
-							'url' => ''
+							'url' => '',
 						],
-						'program_phone_number' => 'Strategy 1 Name Lorem Ipsum Dolor ',
+						'program_phone_number' => '123-456-7890',
 						'registration_link' => false,
 					]
-				])->render()
+				])->render(),
+				view('components.card', [
+					'post_type' => 'childhood-education',
+					'card_data' => [
+						'title' => 'Strategy 1 Name Lorem Ipsum Dolor',
+						'post_type' => 'childhood-education',
+						'permalink' => '',
+						'featured_image' => [
+							'url' => '',
+						],
+						'excerpt' => 'Strategy 1 Name Lorem Ipsum Dolor',
+						'location' => 'Strategy 1 Name Lorem Ipsum Dolor',
+						'program_email' => 'strategy2@example.com',
+						'program_phone_number' => '987-654-3210',
+						'registration_link' => false,
+					]
+				])->render(),
 			],
 			'hasMore' => true,
 			'ajax_config' => '',
 			'source' => 'posts',
-			'load_more_text' => 'View More'
+			'load_more_text' => 'View More',
 		];
 
 		return $result;
 	}
+
 
 	public function getFrontendFilters($postType)
 	{
