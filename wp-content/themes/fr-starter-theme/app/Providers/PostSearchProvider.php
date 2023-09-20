@@ -241,10 +241,19 @@ class PostSearchProvider extends ServiceProvider
 							];					
 						}
 					}
-					else if($args['post_program']=='after-school-program') {
+					else if($args['post_program'] == 'after-school-program') {
 						foreach ($args[$rel] as $relId) {
 							$relationship_meta[] = [
 								'key' => 'related_program',
+								'value' => '"'.$relId.'"',
+								'compare' => 'LIKE'
+							];					
+						}					
+					}
+					else if($args['post_program'] == 'childhood-education') {
+						foreach ($args[$rel] as $relId) {
+							$relationship_meta[] = [
+								'key' => 'related_childhood',
 								'value' => '"'.$relId.'"',
 								'compare' => 'LIKE'
 							];					

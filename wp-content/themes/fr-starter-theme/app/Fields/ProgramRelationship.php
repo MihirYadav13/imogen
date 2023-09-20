@@ -26,7 +26,8 @@ class ProgramRelationship extends Field
 		->addRadio('program_type', [
 			'choices' => [
 				'after-school-program' => 'After School',
-				'camp' => 'Camp'
+				'camp' => 'Camp',
+				'childhood-education' => 'Early Childhood Education'
 			],
 			'wpml_cf_preferences' => 0,
 			'return_format' => 'value',
@@ -49,7 +50,16 @@ class ProgramRelationship extends Field
 			'required' => 1,
 			'multiple' => 1
 		])
-			->conditional('program_type', '==', 'camp');
+			->conditional('program_type', '==', 'camp')
+		->addPostObject('related_childhood', [
+			'label' => 'Select Programs',
+			'post_type' => [
+				'childhood-education'
+			],
+			'required' => 1,
+			'multiple' => 1
+		])
+			->conditional('program_type', '==', 'childhood-education');
 
 		return $fields->build();
 	}
