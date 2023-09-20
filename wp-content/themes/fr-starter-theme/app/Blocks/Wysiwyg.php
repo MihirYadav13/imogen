@@ -144,11 +144,16 @@ class Wysiwyg extends Block
         $wysiwyg
             ->addWysiwyg('content')
             ->addSelect('bottom_spacing', [
-                'choices' => ['default', 'zero', 'heading', 'module'],
+                'choices' => [
+                    'default' => 'default',
+                    'zero-space' => 'zero',
+                    'heading-space' => 'heading',
+                    'module-space' => 'module',
+                ],
                 'default_value' => [],
                 'ui' => 0,
-                'return_format' => 'value',
-                'placeholder' => 'Default',
+                'return_format' => 'both',
+                'placeholder' => '',
                 'wrapper' => [
                     'width' => '30'
                 ],
