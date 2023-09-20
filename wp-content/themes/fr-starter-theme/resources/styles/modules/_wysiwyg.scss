@@ -18,7 +18,7 @@
     a:not(.cta-button):not(.button):not(.alt-btn):not(.badge):not(.cta-regular) {
         color: $blue;
 
-        &:hover{
+        &:hover {
             color: lighten($deep-blue, 20%);
         }
     }
@@ -110,12 +110,21 @@
             text-align: unset;
         }
     }
+
+    &.zero-space {
+        padding-bottom: 0px;
+    }
+    &.heading-space {
+        padding-bottom: 38px;
+    }
+    &.module-space {
+        padding-bottom: 96px;
+    }
 }
 
-
-.wysiwyg-content{
-    p{
-        &:last-child{
+.wysiwyg-content {
+    p {
+        &:last-child {
             margin-bottom: 0;
         }
     }
