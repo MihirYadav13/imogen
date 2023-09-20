@@ -115,10 +115,10 @@
         padding-bottom: 0px;
     }
     &.heading-space {
-        padding-bottom: 38px;
+        padding-bottom: $spacing-between-heading-content;
     }
     &.module-space {
-        padding-bottom: 96px;
+        padding-bottom: $spacing-between-modules;
     }
 }
 
