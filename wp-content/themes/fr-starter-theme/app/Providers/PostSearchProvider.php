@@ -80,7 +80,8 @@ class PostSearchProvider extends ServiceProvider
 				case 'manual_card_grid':
 					$ajax_config = array_merge($ajax_config, [
 						'post_type' => $blockData['post_type'],
-						'programs' => $blockData['programs']
+						'programs' => $blockData['programs'],
+						'post_program' => $blockData['post_program']
 					]);	
 					break;
 				case 'card_grid_component':					
@@ -108,7 +109,8 @@ class PostSearchProvider extends ServiceProvider
 			'page_number' => filter_input(INPUT_GET, 'page')?: 1,
 			'post__in' => filter_input(INPUT_GET, 'post__in', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
 			'age' => filter_input(INPUT_GET, 'age', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
-			'programs' => filter_input(INPUT_GET, 'programs', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : []
+			'programs' => filter_input(INPUT_GET, 'programs', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY)? : [],
+			'post_program' => filter_input(INPUT_GET, 'post_program')?: '',
 		];
 
 		$result = self::GetPosts($args);
@@ -191,12 +193,11 @@ class PostSearchProvider extends ServiceProvider
         }, []);
 	}
 
-	public static function GenerateTaxAndMetaQueriesArray($args, $post_type){
+	public static function GenerateTaxAndMetaQueriesArray($args, $post_type){		
 		$result = [
 			'tax_query' => [],
 			'meta_query' => []
 		];
-
 		$taxonomies = array_filter([
 			in_array($post_type, ['after-school-program', 'camp']) ? 'age' : null,
 			in_array($post_type, ['after-school-program', 'camp']) ? 'activity' : null,
@@ -216,6 +217,7 @@ class PostSearchProvider extends ServiceProvider
 				]
 			]) : $result['tax_query'];
 		}
+		
 
 		//for relationships
 		foreach ($relationships as $rel) {
@@ -224,22 +226,69 @@ class PostSearchProvider extends ServiceProvider
 				$relationship_meta = [
 					'relation' => 'OR',
 				];
-
-				foreach ($args[$rel] as $relId) {
+				if(isset($args['post_program']) && $args['post_program']!= '') {
 					$relationship_meta[] = [
-						'key' => 'related_program',
-						'value' => '"'.$relId.'"',
+						'key' => 'program_type',
+						'value' => "'".$args['post_program']."'",
 						'compare' => 'LIKE'
 					];
-
-					$relationship_meta[] = [
-						'key' => 'related_camp',
-						'value' => '"'.$relId.'"',
-						'compare' => 'LIKE'
-					];
+					if($args['post_program']=='camp'){
+						foreach ($args[$rel] as $relId) {
+							$relationship_meta[] = [
+								'key' => 'related_camp',
+								'value' => '"'.$relId.'"',
+								'compare' => 'LIKE'
+							];					
+						}
+					}
+					else if($args['post_program'] == 'after-school-program') {
+						foreach ($args[$rel] as $relId) {
+							$relationship_meta[] = [
+								'key' => 'related_program',
+								'value' => '"'.$relId.'"',
+								'compare' => 'LIKE'
+							];					
+						}					
+					}
+					else if($args['post_program'] == 'childhood-education') {
+						foreach ($args[$rel] as $relId) {
+							$relationship_meta[] = [
+								'key' => 'related_childhood',
+								'value' => '"'.$relId.'"',
+								'compare' => 'LIKE'
+							];					
+						}					
+					}
+				}				
+				else{
+					foreach ($args[$rel] as $relId) {
+						$relationship_meta[] = [
+							'key' => 'related_camp',
+							'value' => '"'.$relId.'"',
+							'compare' => 'LIKE'
+						];
+						$relationship_meta[] = [
+							'key' => 'related_program',
+							'value' => '"'.$relId.'"',
+							'compare' => 'LIKE'
+						];					
+					}
 				}
 			}
-
+			else{
+				if(isset($args['post_program']) && $args['post_program']!= '')
+				{	
+					$relationship_meta = [
+						'relation' => 'OR',
+					];
+					$relationship_meta[] = [
+						'key' => 'program_type',
+						'value' =>  $args['post_program'],
+						'compare' => 'LIKE'
+					];
+					
+				}			
+			}
 			$result['meta_query'] = array_merge($result['meta_query'], [
 				$relationship_meta
 			]);
