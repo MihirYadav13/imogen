@@ -49,6 +49,11 @@ import { Collapse } from 'bootstrap';
         $el.find('.nav-link').removeClass('show');
         $el.find('.dropdown-menu').removeClass('show');
     }
+    $.fn.stopValidationMessageDisplay = function () {
+        return this.on('change','.wpcf7-form-control',function(){
+            $('.wpcf7-not-valid-tip').remove(); 
+        });
+    }
 
 	$.fn.frHeader = function () {
 		return this.each((i, el) => {
@@ -159,11 +164,12 @@ import { Collapse } from 'bootstrap';
 
             //on page load
             updateDropdownTrigger($menuContent.find(".nav-link.dropdown-toggle"), $self.currentBreakpoint);
-            //updateTopSpacing($self);
+            //updateTopSpacing($self);           
 		});
 	}
 
 	$(() => {
 		$('header.fr-header').frHeader();
+        $('.wpcf7-form').stopValidationMessageDisplay();
 	});
 })($);
