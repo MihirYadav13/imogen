@@ -103,6 +103,22 @@
                         color: $white;
                     }
                 }
+
+                + .fr-content-row{
+                    padding-top: $spacing-between-modules;
+
+                    @include breakpoint(lg down){
+                        padding-top: calc($spacing-between-modules-mobile / 2);
+                    }
+                }
+
+                .module{
+                    &:last-child{
+                        @include breakpoint(lg down){
+                            padding-bottom: calc($spacing-between-modules-mobile / 2);
+                        }
+                    }
+                }
             }
         }
 
