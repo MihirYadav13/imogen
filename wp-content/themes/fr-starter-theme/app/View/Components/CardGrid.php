@@ -56,7 +56,7 @@ class CardGrid extends Component
 		$this->queryArgs = array_merge([
             'block_grid_name' => $this->blockData['block_name'],
             'post_type' => $this->postType,
-            'post_program' => $this->blockData['post_program'] ?  $this->blockData['post_program'] : '',
+            'post_program' => isset($this->blockData['post_program']) ?  $this->blockData['post_program'] : '',
 			'posts_per_page' => $this->postsPerPage,
 		], $this->getArgsFromBlockData(), $this->getArgsFromUrl());
 	}
@@ -67,7 +67,7 @@ class CardGrid extends Component
 			'block_name' => 'card_grid_component',
 			'source' => 'filters',
 			'post_type' => $this->postType,
-            'post_program' => $this->blockData['post_program'] ?  $this->blockData['post_program'] : '' ,
+            'post_program' => isset($this->blockData['post_program']) ?  $this->blockData['post_program'] : '' ,
 			'posts_per_page' => $this->postsPerPage,
             'post__in' => $this->setPostIn(),
 		]);

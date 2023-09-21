@@ -137,7 +137,7 @@ class ContactForm extends Block
 	 */
 	public function fields()
 	{
-		$fields = new FieldsBuilder('related_content_card_grid');
+		$fields = new FieldsBuilder('contact_form');
 
 		$fields
 			->addWysiwyg('heading_content')

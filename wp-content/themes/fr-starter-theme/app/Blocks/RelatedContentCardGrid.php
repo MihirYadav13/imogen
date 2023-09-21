@@ -117,7 +117,7 @@ class RelatedContentCardGrid extends Block
 	{
 		$postsPerPage = get_field('posts_per_page') ?: 8;
 		$postType = 'post';
-		$getProgram = get_field('after-school-program');
+		$getProgram = get_field('after-school-program')?:[];
 		switch(get_field('post_type')){
 			 case 'after-school-program': 
 				$getProgram = get_field('after-school-program') ? get_field('after-school-program') : [];
