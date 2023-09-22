@@ -1,43 +1,58 @@
 .logo-grid-module{
     .grid{
-        column-gap:38px;
+        gap:38px;
         display:flex;
         flex-wrap: wrap;
+
         &.center-flex{
             justify-content: center;
         }    
+
         .img-container{
-            margin-top:38px;
             text-align: center;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img{   
+                max-height:100%; /* set full height */
+                max-width:100%; /* set full width */
+                display:block;
+                object-fit: contain; /* constrains the image maintaining aspect ratio */
+                object-position: center;
+            }
+
             &.three-col {
                 width: calc((100% - 76px ) / 3);
+                max-height: 172px;
+
                 @include breakpoint(md down){
                     width: calc((100% - 38px ) / 2);
                 }
+
                 @include breakpoint(sm down) {
                     width: 100%;
                 }
                 
             }
+
             &.four-col {
+                max-height: 129px;
                 width: calc((100% - 114px ) / 4);
+
                 @include breakpoint(md down){
                     width: calc((100% - 38px ) / 2);
                 }
+                
                 @include breakpoint(sm down) {
                     width: 100%;
                 }
             }
+
             img{
                 display:unset;  
             }               
-        }
-        img{   
-            max-height:100%; /* set full height */
-            max-width:100%; /* set full width */
-            display:block;
-            object-fit: contain; /* constrains the image maintaining aspect ratio */
-            object-position: center;
         }
     }
 }
