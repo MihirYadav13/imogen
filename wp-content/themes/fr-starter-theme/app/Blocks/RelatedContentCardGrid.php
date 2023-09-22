@@ -201,7 +201,7 @@ class RelatedContentCardGrid extends Block
 				]
 			])			
 			->addPostObject('after-school-program', [
-				'label' => 'Selected Programs',
+				'label' => 'Selected After School Programs',
 				'return_format' => 'id',
 				'post_type' => [
 					'after-school-program'
@@ -221,7 +221,7 @@ class RelatedContentCardGrid extends Block
 			])
 			->conditional('post_type', '==', 'camp')
 			->addPostObject('childhood-education', [
-				'label' => 'Selected Programs',
+				'label' => 'Selected Early Childhood Educations',
 				'return_format' => 'id',
 				'post_type' => [
 					'childhood-education'
