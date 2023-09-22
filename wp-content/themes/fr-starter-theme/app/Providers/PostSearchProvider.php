@@ -271,6 +271,11 @@ class PostSearchProvider extends ServiceProvider
 							'key' => 'related_program',
 							'value' => '"'.$relId.'"',
 							'compare' => 'LIKE'
+						];
+						$relationship_meta[] = [
+							'key' => 'related_childhood',
+							'value' => '"'.$relId.'"',
+							'compare' => 'LIKE'
 						];					
 					}
 				}
