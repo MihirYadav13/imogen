@@ -274,6 +274,11 @@ class PostSearchProvider extends ServiceProvider
 							'value' => '"' . $relId . '"',
 							'compare' => 'LIKE'
 						];
+						$relationship_meta[] = [
+							'key' => 'related_childhood',
+							'value' => '"'.$relId.'"',
+							'compare' => 'LIKE'
+						];	
 					}
 				}
 			} else {

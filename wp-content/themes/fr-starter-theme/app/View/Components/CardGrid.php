@@ -18,6 +18,7 @@ class CardGrid extends Component
 	public $postsPerPage = \App\Providers\PostSearchProvider::POSTS_PER_PAGE;
 	public $postType = \App\Providers\PostSearchProvider::GENERAL_SEARCH_POST_TYPES;
     public $loadMoreText;
+    public $loadMoreUrl;
     public $includePublishCard;
     public $blockData;
     public $showNoResult;
@@ -27,13 +28,14 @@ class CardGrid extends Component
      *
      * @return void
      */
-    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'View More', $includePublishCard = false, $blockData = false, $showNoResult = false)
+    public function __construct($postsPerPage = false, $postType = false, $ajaxConfig = false, $connectedFilters = [], $loadMoreText = 'View More',$loadMoreUrl = '', $includePublishCard = false, $blockData = false, $showNoResult = false)
     {
         $this->posts = [];
         $this->postsPerPage = $postsPerPage ? : $this->postsPerPage;
 		$this->postType = $postType ? : $this->postType;
         $this->connectedFilters = $connectedFilters;
         $this->loadMoreText = $loadMoreText;
+        $this->loadMoreUrl = $loadMoreUrl;
         $this->includePublishCard = $includePublishCard ? json_decode($includePublishCard) : false;
         $this->blockData = $blockData;
         $this->showNoResult = $showNoResult;
@@ -108,7 +110,8 @@ class CardGrid extends Component
 			'age' => filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'age', FILTER_UNSAFE_RAW)): null,
             'activity' => filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'activity', FILTER_UNSAFE_RAW)): null,
             'programs' => filter_input(INPUT_GET, 'programs', FILTER_UNSAFE_RAW)? explode(',', filter_input(INPUT_GET, 'programs', FILTER_UNSAFE_RAW)): null,
-		]);
+            'post_program' => filter_input(INPUT_GET, 'post_program')?: '',
+        ]);
 	}
 
     public function setPostIn(){

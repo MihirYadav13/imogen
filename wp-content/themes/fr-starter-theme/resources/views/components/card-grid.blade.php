@@ -12,6 +12,11 @@
             <x-cta-button label="{{ empty($loadMoreText) ? 'View More' : $loadMoreText }}" type="external_url"
                 external-url="javascript:void(0)" :arrow="false" style="secondary" />
         </div>
+        @if ($loadMoreUrl && count($posts) > 0)
+            <div class="redirect-button">
+                <x-cta-button :label="$loadMoreText" type="external_url" style="secondary" :external-url="$loadMoreUrl" :new-tab="false" />
+            </div>
+        @endif
         @if ($showNoResult)
             <div class="no-results-found-container wysiwyg-content">
                 <h4>No results found.</h4>
