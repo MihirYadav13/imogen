@@ -277,6 +277,7 @@ class CardGrid extends Block
 			->conditional('post_type', '==', 'after-school-program')
 			->or('post_type', '==', 'camp')
 			->or('post_type', '==', 'post')
+			->or('post_type', '==', 'childhood-education')
 			->addTaxonomy('activity', [
 				'label' => 'Activity',
 				'taxonomy' => 'activity',
@@ -291,6 +292,7 @@ class CardGrid extends Block
 			->conditional('post_type', '==', 'after-school-program')
 			->or('post_type', '==', 'camp')
 			->or('post_type', '==', 'post')
+			->or('post_type', '==', 'childhood-education')
 			->endGroup();
 
 		return $cardGrid->build();

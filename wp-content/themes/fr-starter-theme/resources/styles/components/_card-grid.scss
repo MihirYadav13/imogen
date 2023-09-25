@@ -1,104 +1,107 @@
-.card-grid-container{
-    .result-content{
-        .cards-inner{
+.card-grid-container {
+    .result-content {
+        .cards-inner {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 38px;            
+            gap: 38px;
 
-            @include breakpoint(lg down){
+            @include breakpoint(lg down) {
                 justify-content: center;
             }
 
-            &.columns-{
-                &1, &2{
-                    .fr-card{
-                        width: calc(100%/2 - 38px/2);
+            &.columns- {
+                &1,
+                &2 {
+                    .fr-card {
+                        width: calc(100% / 2 - 38px / 2);
                         min-height: 379px;
 
-                        .card-inner{
+                        .card-inner {
                             flex-direction: row;
-                            @include breakpoint(lg down){	
-                                flex-direction: column;	
+                            @include breakpoint(lg down) {
+                                flex-direction: column;
                             }
 
-                            .card-content{
+                            .card-content {
                                 padding: 48px 24px;
                                 justify-content: space-between;
                                 align-items: center;
-                                @include breakpoint(lg down){	
+                                @include breakpoint(lg down) {
                                     padding: 16px;
                                     justify-content: left;
-                                    align-items: left;	
+                                    align-items: left;
                                 }
 
-                                .wysiwyg-content{
+                                .wysiwyg-content {
                                     height: auto;
-                                    @include breakpoint(lg down){	
-                                        height: 100%;	
+                                    @include breakpoint(lg down) {
+                                        height: 100%;
                                     }
                                 }
                             }
                         }
-                        &.card-type-{
-                            &team-member{
-                                .card-inner{
-                                    .wysiwyg-content{
-                                        .card-header{
+                        &.card-type- {
+                            &team-member {
+                                .card-inner {
+                                    .wysiwyg-content {
+                                        .card-header {
                                             justify-content: left;
                                         }
-                    
-                                        .role{
+
+                                        .role {
                                             margin-bottom: 0;
                                         }
-                    
+
                                         text-align: left;
                                     }
                                 }
                             }
-                            &camp, &after-school-program, &childhood-education{
-                                @include breakpoint(lg down){
-                                    .card-footer{
+                            &camp,
+                            &after-school-program,
+                            &childhood-education {
+                                @include breakpoint(lg down) {
+                                    .card-footer {
                                         align-self: center;
                                     }
                                 }
                             }
                         }
 
-                        .featured-image{
+                        .featured-image {
                             min-width: 45%;
                             width: 45%;
-                            @include breakpoint(lg down){	
-                                width: 100%;	
+                            @include breakpoint(lg down) {
+                                width: 100%;
                             }
-                            
-                            &::after{
+
+                            &::after {
                                 background-image: url("../images/card-v-wave.svg");
                                 width: 32px;
-                                right:  -1px;
+                                right: -1px;
                                 height: 100%;
                                 bottom: 0;
-                                @include breakpoint(lg down){	
-                                    background-image: url("../images/card-wave.svg");	
-                                    height: 18px;	
-                                    position: absolute;	
-                                    bottom: -1px;	
-                                    width: 100%;	
-                                    background-repeat: no-repeat;	
-                                    background-size: cover;	
-                                    background-position: center center;	
+                                @include breakpoint(lg down) {
+                                    background-image: url("../images/card-wave.svg");
+                                    height: 18px;
+                                    position: absolute;
+                                    bottom: -1px;
+                                    width: 100%;
+                                    background-repeat: no-repeat;
+                                    background-size: cover;
+                                    background-position: center center;
                                 }
                             }
 
-                            &.default{                                
-                                img{
+                            &.default {
+                                img {
                                     width: 107px;
-                                    @include breakpoint(lg down){	
-                                        img{	
-                                            width: 52px;	
-                                            height: auto;	
-                                        }	
+                                    @include breakpoint(lg down) {
+                                        img {
+                                            width: 52px;
+                                            height: auto;
+                                        }
                                     }
                                 }
                             }
@@ -106,17 +109,17 @@
                     }
                 }
 
-                &3{
-                    .fr-card{
-                        width: calc(100%/3 - 76px/3);
+                &3 {
+                    .fr-card {
+                        width: calc(100% / 3 - 76px / 3);
 
-                        .featured-image{
+                        .featured-image {
                             height: 191px;
                         }
 
-                        &.card-type-{
-                            &camp{
-                                .featured-image{
+                        &.card-type- {
+                            &camp {
+                                .featured-image {
                                     height: 266px;
                                 }
                             }
@@ -124,41 +127,43 @@
                     }
                 }
 
-                &4{
-                    .fr-card{
-                        width: calc(100%/4 - 114px/4);
+                &4 {
+                    .fr-card {
+                        width: calc(100% / 4 - 114px / 4);
 
-                        .featured-image{
+                        .featured-image {
                             height: 167px;
                         }
 
-                        &.card-type-{
-                            &team-member{
-                                .featured-image{
-                                    height:280px;
+                        &.card-type- {
+                            &team-member {
+                                .featured-image {
+                                    height: 280px;
                                 }
                             }
-                            
                         }
                     }
                 }
 
-                &3, &4{
-                    .fr-card{
-                        &.card-type-{
-                            &camp, &after-school-program{
-                                .card-content{
+                &3,
+                &4 {
+                    .fr-card {
+                        &.card-type- {
+                            &camp,
+                            &after-school-program,
+                            &childhood-education {
+                                .card-content {
                                     row-gap: 36px;
 
-                                    .card-body{
+                                    .card-body {
                                         margin-bottom: 0;
                                     }
 
-                                    .card-footer{
+                                    .card-footer {
                                         width: 100%;
                                         align-self: center;
 
-                                        .cta-button{
+                                        .cta-button {
                                             width: 100%;
                                         }
                                     }
@@ -169,15 +174,18 @@
                 }
             }
 
-            &.columns-{
-                &1, &2, &3, &4{
-                    .fr-card{
-                        @include breakpoint(lg down){
-                            width: calc(50% - 38px/2);
+            &.columns- {
+                &1,
+                &2,
+                &3,
+                &4 {
+                    .fr-card {
+                        @include breakpoint(lg down) {
+                            width: calc(50% - 38px / 2);
                             max-width: 280px;
                         }
 
-                        @include breakpoint(sm down){
+                        @include breakpoint(sm down) {
                             width: 100%;
                             max-width: 100%;
                         }
@@ -185,10 +193,9 @@
                 }
             }
         }
-
     }
 
-    .spinner-container{
+    .spinner-container {
         position: absolute;
         z-index: 99;
     }
@@ -200,7 +207,8 @@
         width: 100%;
     }
 
-    .load-btn-container, .ajax-running-container {
+    .load-btn-container,
+    .ajax-running-container {
         margin-top: 38px;
     }
 
@@ -211,10 +219,10 @@
         justify-content: center;
         align-items: center;
 
-        .cta-button{
+        .cta-button {
             min-width: 178px;
             text-align: center;
-            @include breakpoint(sm down){
+            @include breakpoint(sm down) {
                 width: 100%;
             }
         }
@@ -223,7 +231,7 @@
     .ajax-running-container {
         text-align: center;
 
-        span{
+        span {
             @include font-primary;
             font-size: 20px;
             font-style: italic;
@@ -231,7 +239,7 @@
         }
     }
 
-    &[fr-status='ajax-running']{
+    &[fr-status="ajax-running"] {
         .ajax-running-container {
             display: block;
         }
@@ -241,12 +249,14 @@
         }
     }
 
-    &[fr-status='loading-result'] {
-        .ajax-running-container, .load-btn-container {
+    &[fr-status="loading-result"] {
+        .ajax-running-container,
+        .load-btn-container {
             display: none;
         }
 
-        .cards-container, .no-results-found-container {
+        .cards-container,
+        .no-results-found-container {
             opacity: 0.4;
         }
 
@@ -255,14 +265,15 @@
         }
     }
 
-    &[fr-status='no-more-results'] {
+    &[fr-status="no-more-results"] {
         .load-btn-container {
             display: none;
         }
     }
 
-    &[fr-status='no-results-found'] {
-        .load-btn-container, .cards-container {
+    &[fr-status="no-results-found"] {
+        .load-btn-container,
+        .cards-container {
             display: none;
         }
 
@@ -270,18 +281,18 @@
             display: block;
         }
 
-        .card-type-publish-button{
+        .card-type-publish-button {
             display: none;
         }
-    } 
-    
+    }
+
     &.no-results-found {
         .no-results-found-container {
             display: block;
         }
 
         .spinner-container {
-            .spinner{
+            .spinner {
                 margin-top: 0;
             }
         }
