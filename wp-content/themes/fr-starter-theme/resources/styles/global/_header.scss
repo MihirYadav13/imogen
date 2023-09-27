@@ -93,6 +93,7 @@
 			justify-content: flex-start;
 			column-gap: 24px;
 			margin: 0;
+			position: relative;
 
 			@include breakpoint(xl down) {
 				flex-direction: column;
