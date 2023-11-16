@@ -1,15 +1,20 @@
 .contact-form-module {
-    .wysiwyg-heading-content{
+    .wysiwyg-heading-content {
         max-width: 1026px;
-		margin-bottom: $spacing-between-modules;
+        margin-bottom: $spacing-between-modules;
 
-		@include breakpoint(lg down){
-			margin-bottom: 24px;
-		}
+        @include breakpoint(lg down) {
+            margin-bottom: 24px;
+        }
 
-        h1, h2, h3, h4, h5, h6{
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             max-width: 100%;
-			margin-bottom: 0;
+            margin-bottom: 0;
         }
     }
 }

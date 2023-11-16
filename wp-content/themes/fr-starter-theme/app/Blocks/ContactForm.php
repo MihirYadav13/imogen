@@ -41,9 +41,9 @@ class ContactForm extends Block
 	 * @var string|array
 	 */
 	public $icon = [
-        'foreground' => '#FF4E00',
-        'src' => 'feedback',
-    ];
+		'foreground' => '#FF4E00',
+		'src' => 'feedback',
+	];
 
 	/**
 	 * The block keywords.
@@ -119,8 +119,9 @@ class ContactForm extends Block
 	public function with()
 	{
 		return [
+			'image' => $this->preview && !get_field('image') ? $this->example['image'] : get_field('image'),
 			'heading_content' => get_field('heading_content') ? trim(get_field('heading_content')) : '',
-			'contact_form' => get_field('contact_form') ? do_shortcode('[contact-form-7 id="'.get_field('contact_form').'"]') : false
+			'contact_form' => get_field('contact_form') ? do_shortcode('[contact-form-7 id="' . get_field('contact_form') . '"]') : false
 		];
 	}
 
@@ -140,6 +141,7 @@ class ContactForm extends Block
 		$fields = new FieldsBuilder('contact_form');
 
 		$fields
+			->addImage('image')
 			->addWysiwyg('heading_content')
 			->addPostObject('contact_form', [
 				'label' => 'Select Form',

@@ -1,96 +1,82 @@
 <?php
-
 namespace App\Blocks;
-
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
+class FeaturedCards extends Block
 
-class Accordion extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Accoradion';
-
+    public $name = 'Featured Cards';
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple Accordion block.';
-
+    public $description = 'A Featured Cards block.';
     /**
      * The block slug.
      *
      * @var string
      */
-    public $slug = 'fr-page-builder-module-accordion';
-
+    public $slug = 'fr-page-builder-module-featured-cards';
     /**
      * The block category.
      *
      * @var string
      */
     public $category = 'fr-page-builder-content-blocks';
-
     /**
      * The block icon.
      *
      * @var string|array
      */
-    public $icon = ' fricon fricon--fr-accordion';
-
-    /**
+    public $icon = ' fricon fricon--featured-cards' ;
+   /**
      * The block keywords.
      *
      * @var array
      */
     public $keywords = [];
-
     /**
      * The block post type allow list.
      *
      * @var array
      */
     public $post_types = [];
-
     /**
      * The parent block type allow list.
      *
      * @var array
      */
     public $parent = ['acf/block-container'];
-
     /**
      * The default block mode.
      *
      * @var string
      */
     public $mode = 'preview';
-
     /**
      * The default block alignment.
      *
      * @var string
      */
     public $align = '';
-
     /**
      * The default block text alignment.
      *
      * @var string
      */
     public $align_text = '';
-
     /**
      * The default block content alignment.
      *
      * @var string
      */
     public $align_content = '';
-
     /**
      * The supported block features.
      *
@@ -101,12 +87,11 @@ class Accordion extends Block
         'align_text' => false,
         'align_content' => false,
         'full_height' => false,
-        'anchor' => true,
+        'anchor' => false,
         'mode' => 'edit',
         'multiple' => true,
         'jsx' => true,
     ];
-
     /**
      * The block preview example data.
      *
@@ -115,21 +100,38 @@ class Accordion extends Block
     public $example = [
         'items' => [
             [
-                'title' => 'Accordion Title',
-                'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'image' => [
+                    'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                    'alt' => 'Placeholder image'
+                ],
+                'title' => 'Featured Card Title',
+                'sub_title' => 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.',
+            ],
+            [
+                'image' => [
+                    'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                    'alt' => 'Placeholder image'
+                ],
+                'title' => 'Featured Card Title',
+                'sub_title' => 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.',
+            ],
+            [
+                'image' => [
+                    'url' => 'https://picsum.photos/seed/picsum/1024/463',
+                    'alt' => 'Placeholder image'
+                ],
+                'title' => 'Featured Card Title',
+                'sub_title' => 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.',
             ]
         ],
         'attributes' => [
-            'preview_image' => 'AccordionPreview.png',
-            'block_icon' => 'accordion.png'
+            'preview_image' => 'FeaturedCards.png',
         ],
     ];
     /**
      * Data to be passed to the block before rendering.
      *
      * @return array
-
-     
      */
     public function with()
     {
@@ -137,7 +139,6 @@ class Accordion extends Block
             'items' => ($this->preview && empty(get_field('items')) ? $this->example['items'] : get_field('items'))
         ];
     }
-
     /**
      * The block field group.
      *
@@ -145,34 +146,35 @@ class Accordion extends Block
      */
     public function fields()
     {
-        $accordion = new FieldsBuilder('accordion');
-        $accordion
+        $featuredCards = new FieldsBuilder('featured_cards');
+        $featuredCards
             ->addRepeater('items', [
                 'layout' => 'block',
                 'collapsed' => 'title',
-                'button_label' => 'Add Accordion Item',
+                'button_label' => 'Add Featured Card',
+                'max' => '3',
+            ])
+            ->addImage('image', [
+                'required' => 1
             ])
             ->addText('title', [
-                'required' => 1,
                 'wrapper' => [
                     'width' => 40
-                ]
+                ],
+                'required' => 1
             ])
-            ->addWysiwyg('content')
-            ->addAccordion('Extra Settings', [
+            ->addText('sub_title', [
                 'wrapper' => [
-                    'class' => 'acfhc-accordion'
-                ]
+                    'width' => 60
+                ],
+                'required' => 1
             ])
-            ->addText('item_id', [
-                'label' => 'Item ID',
-                'instructions' => 'Add the Accordion Item ID to anchor to opened page with item opened'
+            ->addLink('link', [
+                'required' => 1
             ])
-            ->addAccordion('accordion_end')->endpoint()
             ->endRepeater();
-        return $accordion->build();
+        return $featuredCards->build();
     }
-
     /**
      * Assets to be enqueued when rendering the block.
      *
@@ -180,6 +182,6 @@ class Accordion extends Block
      */
     public function enqueue()
     {
-        //
+        
     }
 }

@@ -1,96 +1,81 @@
 <?php
-
 namespace App\Blocks;
-
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
-
-class Accordion extends Block
+class AccordionTest extends Block
 {
-    /**
+    /**$
      * The block name.
      *
      * @var string
      */
-    public $name = 'Accoradion';
-
+    public $name = 'Accordion Test';
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple Accordion block.';
-
+    public $description = 'A simple Accordion Test block.';
     /**
      * The block slug.
      *
      * @var string
      */
-    public $slug = 'fr-page-builder-module-accordion';
-
+    public $slug = 'fr-page-builder-module-accordion-test';
     /**
      * The block category.
      *
      * @var string
      */
     public $category = 'fr-page-builder-content-blocks';
-
     /**
      * The block icon.
      *
      * @var string|array
      */
     public $icon = ' fricon fricon--fr-accordion';
-
     /**
      * The block keywords.
      *
      * @var array
      */
     public $keywords = [];
-
     /**
      * The block post type allow list.
      *
      * @var array
      */
     public $post_types = [];
-
     /**
      * The parent block type allow list.
      *
      * @var array
      */
     public $parent = ['acf/block-container'];
-
     /**
      * The default block mode.
      *
      * @var string
      */
     public $mode = 'preview';
-
     /**
      * The default block alignment.
      *
      * @var string
      */
     public $align = '';
-
     /**
      * The default block text alignment.
      *
      * @var string
      */
     public $align_text = '';
-
     /**
      * The default block content alignment.
      *
      * @var string
      */
     public $align_content = '';
-
     /**
      * The supported block features.
      *
@@ -106,7 +91,6 @@ class Accordion extends Block
         'multiple' => true,
         'jsx' => true,
     ];
-
     /**
      * The block preview example data.
      *
@@ -128,8 +112,6 @@ class Accordion extends Block
      * Data to be passed to the block before rendering.
      *
      * @return array
-
-     
      */
     public function with()
     {
@@ -137,7 +119,6 @@ class Accordion extends Block
             'items' => ($this->preview && empty(get_field('items')) ? $this->example['items'] : get_field('items'))
         ];
     }
-
     /**
      * The block field group.
      *
@@ -145,34 +126,34 @@ class Accordion extends Block
      */
     public function fields()
     {
-        $accordion = new FieldsBuilder('accordion');
-        $accordion
+        $accordionTest = new FieldsBuilder('fr_page_builder_module_accordion_test');
+        $accordionTest
             ->addRepeater('items', [
                 'layout' => 'block',
-                'collapsed' => 'title',
-                'button_label' => 'Add Accordion Item',
+                'collapsed' => 'subtitle',
+                'button_label' => 'Add Accordion Test Item',
             ])
-            ->addText('title', [
+            ->addText('subtitle', [
                 'required' => 1,
                 'wrapper' => [
                     'width' => 40
                 ]
+            
             ])
             ->addWysiwyg('content')
             ->addAccordion('Extra Settings', [
                 'wrapper' => [
-                    'class' => 'acfhc-accordion'
+                    'class' => 'acfhc-accordiontest'
                 ]
             ])
             ->addText('item_id', [
                 'label' => 'Item ID',
-                'instructions' => 'Add the Accordion Item ID to anchor to opened page with item opened'
+                'instructions' => 'Add the Accordion Test Item ID to anchor to opened page with item opened'
             ])
-            ->addAccordion('accordion_end')->endpoint()
+            ->addAccordion('accordion_test_end')->endpoint()
             ->endRepeater();
-        return $accordion->build();
+        return $accordionTest->build();
     }
-
     /**
      * Assets to be enqueued when rendering the block.
      *
