@@ -1,0 +1,26 @@
+{
+  "name": "sage",
+  "private": true,
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "build": "wpackio-scripts build",
+    "bootstrap": "wpackio-scripts bootstrap",
+    "start": "wpackio-scripts start",
+    "archive": "wpackio-scripts pack"
+  },
+  "devDependencies": {
+    "@wpackio/scripts": "^6.4.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "postcss": "^8.4.23",
+    "sass": "^1.62.1"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@wpackio/entrypoint": "^6.4.0",
+    "bootstrap": "^5.2.3",
+    "fetch-inject": "^3.2.0",
+    "selectric": "github:Jjoye/jQuery-Selectric"
+  }
+}

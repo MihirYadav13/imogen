@@ -1,0 +1,103 @@
+.accordion-module {
+    .accordion {
+        .accordion-button {
+            display: block;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 24px 64px 25px 16px;
+
+            &:focus {
+                box-shadow: none;
+                border: none;
+            }
+
+            &[aria-expanded="true"] {
+                &:empty {
+                    display: block;
+                }
+
+                .badge {
+                    @include minus-svg;
+                    width: 14px;
+                    height: 4px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    position: absolute;
+                    top: 24px;
+                    right: 16px;
+                    padding: 12px;
+                    border-radius: 48px;
+                    background-color: (var(--fr-theme-main-color));
+                }
+
+                &::before,
+                &::after {
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                &:empty {
+                    display: block;
+                }
+            }
+
+            .badge {
+                position: absolute;
+                top: 24px;
+                right: 16px;
+                @include plus-svg;
+                width: 14px;
+                height: 14px;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 12px;
+                border-radius: 48px;
+                background-color: (var(--fr-theme-main-color));
+
+                &::before,
+                &::after {
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                &:empty {
+                    display: block;
+                }
+            }
+        }
+
+        .title {
+            height: 28px;
+            color: $dark-gray;
+            @include font-primary-bold;
+            font-size: 22px;
+            letter-spacing: 0;
+            line-height: 28px;
+        }
+    }
+
+    .accordion-item {
+        color: $dark-gray;
+        background-color: $white;
+        border-bottom: 1px solid $light-gray-3;
+
+        &:last-child {
+            border-bottom: 1px solid $light-gray-3;
+        }
+
+        .accordion-button:not(.collapsed) {
+            font-size: inherit;
+            font-weight: inherit;
+            box-shadow: none;
+            background-color: $white;
+        }
+
+        .accordion-collapse {
+            .accordion-body {
+                padding: 0px 16px 25px 16px;
+
+                .wysiwyg-content p {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+}

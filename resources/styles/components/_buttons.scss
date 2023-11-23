@@ -1,0 +1,51 @@
+button, .cta-button {
+    border-radius: $button-border-radius;
+}
+
+body .cta-button, body a.cta-button{
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+    text-align: center;
+    color: $white;
+    background: $blue;
+    display: inline-block;
+    @include font-primary-semi-bold;
+    border-radius: 20px;
+    min-height: 40px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover{
+        color: lighten($deep-blue, 20%);
+    }
+
+    &.primary, &.secondary{
+        padding: 8px 20px;
+        border: none;
+    }
+
+    &.primary{
+        background: var(--fr-theme-main-color);
+        color: $white;
+        &:hover{
+            background: var(--fr-theme-main-color-hover);
+            color: var(--fr-theme-main-color);
+        }
+    }
+
+    &.secondary{
+        background: var(--fr-theme-secondary-color);
+        color: $dark-gray;
+        &:hover{
+            background: var(--fr-theme-secondary-color-hover);
+            color: $dark-gray ;
+        }
+    }
+}
+
+.cta-regular{
+
+    &:hover{
+        color: lighten($deep-blue, 20%);
+    }
+}

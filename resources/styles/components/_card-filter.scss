@@ -1,0 +1,115 @@
+.card-filter-component{
+    margin-bottom: 38px;
+
+    .filter-form{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px 40px;
+
+        @include breakpoint(lg down){
+            flex-direction: column;
+        }
+
+        .filter-input-col{
+            display: flex;
+            flex-direction: column;
+            gap: 20px 20px;
+
+            .filter-container{
+
+            }
+
+            &.taxonomy-filters{
+                width: 100%;
+                
+                .filter-container{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 20px 38px;
+                    justify-content: center;
+
+                    .filter-input{
+                        width: calc(100%/4 - (38px * 3)/4);
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+
+                        @include breakpoint(lg down){
+                            width: calc(50% - 38px/2);
+                            max-width: 280px;
+                        }
+
+                        @include breakpoint(sm down){
+                            width: 100%;
+                        }
+
+                        h6{
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    .taxonomy-filter{
+                        .multiselect-native-select{
+                            .multiselect-selected-text{
+                                font-size: 14px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        }
+                    }
+
+                    .search-container{
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+
+
+                        .input-container{
+                            position: relative;
+
+                            label{
+                                width: 100%;
+
+                                input{
+                                    @include font-primary;
+                                    font-size: 14px;
+                                    line-height: 24px;
+                                    border: 1px solid $light-gray-3;
+                                    border-radius: 20px;
+                                    padding: 9px 40px 9px 17px;
+                                    width: 100%;
+
+                                    &:focus-visible{
+                                        outline: none;
+                                    }
+                                }
+                            }
+
+                            .search-btn{
+                                @include search-svg;
+                                width: 9.98px;
+                                height: 9.98px;
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                background-color: transparent;
+                                border: none;
+                                position: absolute;
+                                right: 17px;
+                                top:50%;
+                                transform: translateY(-50%);
+                                width: 10px;
+                                height: 10px;
+                                filter: var(--fr-theme-main-color-filter);
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+

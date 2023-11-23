@@ -1,0 +1,132 @@
+.wysiwyg-module {
+    overflow-wrap: break-word;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin-top: 0;
+    }
+
+    p::empty {
+        display: none;
+    }
+
+    a:not(.cta-button):not(.button):not(.alt-btn):not(.badge):not(.cta-regular) {
+        color: $blue;
+
+        &:hover {
+            color: lighten($deep-blue, 20%);
+        }
+    }
+
+    > .container {
+        > .row {
+            > .col {
+                flex-basis: 25%;
+            }
+            .col-width-1_4 {
+                flex: 0 0 25%;
+            }
+            .col-width-2_4 {
+                flex: 0 0 50%;
+            }
+            .col-width-3_4 {
+                flex: 0 0 75%;
+            }
+            .col-width-4_4 {
+                flex: 0 0 100%;
+            }
+        }
+    }
+
+    //Important for images inside wysiwygs https://codex.wordpress.org/Styling_Images_in_Posts_and_Pages
+    img {
+        border-radius: 8px;
+        margin-bottom: 1rem;
+
+        &.alignright {
+            float: right;
+            margin: 0 0 1em 1em;
+        }
+
+        &.alignleft {
+            float: left;
+            margin: 0 1em 1em 0;
+        }
+
+        &.aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.alignright,
+        &.alignleft,
+        &.aligncenter,
+        &.alignnone {
+        }
+    }
+
+    figure.wp-caption {
+        > img {
+        }
+
+        figcaption {
+            @include caption-style;
+        }
+    }
+
+    .wp-caption {
+        max-width: 100%;
+
+        .wp-caption-text {
+            @include caption-style;
+        }
+    }
+
+    blockquote {
+        padding: 15px;
+        padding-left: 27px;
+
+        p {
+            @include blockquote-style;
+        }
+    }
+    .news-paper-column {
+        column-count: 2;
+        column-gap: 38px;
+
+        @include breakpoint(sm down) {
+            column-count: unset;
+        }
+    }
+    .desktop-right-aligned {
+        text-align: right;
+        @include breakpoint(lg down) {
+            text-align: unset;
+        }
+    }
+
+    &.zero-space {
+        padding-bottom: 0px;
+    }
+    &.heading-space {
+        padding-bottom: $spacing-between-heading-content;
+    }
+    &.module-space {
+        padding-bottom: $spacing-between-modules;
+    }
+}
+
+.wysiwyg-content {
+    
+    p {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.home-hero{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	position: relative;
+	z-index: 1;
+
+	>.container{
+		position: relative;
+	}
+}

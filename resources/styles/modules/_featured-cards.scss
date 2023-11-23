@@ -1,0 +1,84 @@
+/* featured-cards.scss */
+
+.module.featured-cards-module {
+    .card-grid-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* Adjust the height as needed */
+    }
+
+    .result-content {
+        width: 100%;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: center;
+    }
+
+    .fr-card {
+        margin: 0; /* Remove margin to eliminate spacing between cards */
+		border-radius: 0%;
+
+		.card-inner {
+	
+			.featured-image {
+				
+	
+				&::after {
+					content: "";
+					background-image:none;
+				}
+    
+			}
+		}
+    .card-content {
+        background-color: #035b03;
+        opacity: 1;
+
+        .wysiwyg-content {
+            font-weight: bolder;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content horizontally */
+
+            body:not(.wp-admin) p.sm, html :where(.editor-styles-wrapper) .is-root-container p.sm {
+                font-size: 25px;
+                line-height: 24px;
+            }
+
+            .card-header {
+                margin-bottom: 10px;
+                font-size: 25px;
+
+                a {
+                    text-decoration: none;
+                }
+
+                .card-title {
+                    margin: 0;
+                    font-size:18;
+                }
+            }
+
+            .card-body {
+                margin-bottom: 10px;
+            }
+
+            .card-footer {
+                margin-top: 10px;
+				color: white;
+                text-align: left;
+
+                .cta-button {
+                    color: white;
+                    margin-left: 110px;
+                }
+            }
+        }
+    }
+
+}
+}

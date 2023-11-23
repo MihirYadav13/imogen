@@ -1,0 +1,1 @@
+<a target="{{ $target }}" href="{{ $url }}" class="{{ $style }}">{!! $label !!}<b></b></a>

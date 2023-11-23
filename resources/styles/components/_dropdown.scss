@@ -1,0 +1,17 @@
+.dropdown-toggle{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &::after{
+        border: none;
+        @include chevron-svg;
+        width: 9.97px;
+        height: 6.05px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        margin-left: 8px;
+        filter: invert(54%) sepia(22%) saturate(1565%) hue-rotate(174deg) brightness(84%) contrast(77%);
+    }
+}

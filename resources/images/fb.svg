@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8.25px" height="16px" viewBox="0 0 8.25 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BD2081F7-0C09-41A6-975A-25BE58246533</title>
+    <defs>
+        <path d="M2.396875,16 L2.396875,8.84375 L0,8.84375 L0,6 L2.396875,6 L2.396875,3.759375 C2.396875,1.325 3.884375,0 6.05625,0 C7.096875,0 7.990625,0.078125 8.25,0.1125 L8.25,2.65625 L6.74375,2.65625 C5.5625,2.65625 5.334375,3.21875 5.334375,4.040625 L5.334375,6 L8,6 L7.634375,8.84375 L5.334375,8.84375 L5.334375,16" id="path-1"></path>
+    </defs>
+    <g id="SITE-2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home" transform="translate(-1066.839867, -3354.000000)">
+            <g id="Stacked-Group" transform="translate(-0.035133, 0.000000)">
+                <g id="Composite-Footer" transform="translate(0.000000, 2502.000000)">
+                    <g id="Footer" transform="translate(0.000000, 339.000000)">
+                        <g id="Rectangle-2" transform="translate(0.000000, 112.000000)">
+                            <g id="Stacked-Group" transform="translate(100.000000, 40.000000)">
+                                <g id="Stacked-Group-4" transform="translate(8.000000, 213.000000)">
+                                    <g id="Stacked-Group-5" transform="translate(943.000000, 0.000000)">
+                                        <g id="Stacked-Group" transform="translate(0.000000, 100.000000)">
+                                            <g transform="translate(0.000000, 36.000000)" id="Padding-Group-4">
+                                                <g id="Brands/facebook-f" transform="translate(15.875000, 12.000000)">
+                                                    <mask id="mask-2" fill="white">
+                                                        <use xlink:href="#path-1"></use>
+                                                    </mask>
+                                                    <g id="Mask"></g>
+                                                    <g id="🎨-color" mask="url(#mask-2)" fill="#FFFFFF">
+                                                        <g transform="translate(-3.875000, 0.000000)" id="Black">
+                                                            <rect x="0" y="0" width="16" height="16"></rect>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

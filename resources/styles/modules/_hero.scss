@@ -1,0 +1,213 @@
+// Define common styles outside the context of body.home and body:not(.home)
+.fr-hero.hero {
+    position: relative;
+
+    .hero-bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        @include breakpoint(lg down) {
+            position: relative;
+        }
+
+        &.desktop {
+            display: block;
+            @include breakpoint(lg down) {
+                display: none;
+            }
+        }
+
+        &.mobile {
+            display: none;
+            @include breakpoint(lg down) {
+                display: flex;
+                flex-direction: column;
+            }
+            @include breakpoint(sm down) {
+                height: 330px; // Common to both home and not-home
+            }
+        }
+    }
+
+    .content-container {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        z-index: 10;
+        padding: 168px 0;
+        overflow: visible;
+        @include desktop-hero-svg;
+        background-repeat: no-repeat;
+        background-position: left;
+
+        @include breakpoint(lg up) {
+            height: 710px;
+        }
+        @include breakpoint(xxl up) {
+            background-size: 70% auto;
+        }
+
+        @include breakpoint(lg down) {
+            flex-direction: column-reverse;
+            padding: 100px 0;
+            @include mobile-hero-svg;
+            background-position: top;
+            background-size: contain;
+            margin-top: -64px;
+        }
+        @include breakpoint(md down) {
+            margin-top: -50px;
+            padding: 68px 0;
+        }
+        @include breakpoint(sm down) {
+            margin-top: -26px;
+            padding: 54px 0;
+        }
+
+        .container .row {
+            @include breakpoint(lg down) {
+                width: auto;
+                text-align: center;
+            }
+            .wysiwyg-content {
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+                p {
+                    width: 500px;
+                    font-size: 22px;
+                    letter-spacing: 0;
+                    line-height: 36px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+
+                    @include breakpoint(lg down) {
+                        width: auto;
+                        margin-bottom: 1.5rem;
+                        text-align: center;
+                    }
+                }
+                h1 {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}
+
+// Apply different styles for body.home and body:not(.home)
+body.home {
+    .fr-hero.hero {
+        .hero-bg-image {
+            &.mobile {
+                height: 460px;
+                @include breakpoint(sm down) {
+                    height: 330px;
+                }
+            }
+        }
+    }
+}
+
+body:not(.home) {
+    .fr-hero.hero {
+        .hero-bg-image {
+            &.mobile {
+                height: 400px;
+                @include breakpoint(sm down) {
+                    height: 241px;
+                }
+            }
+        }
+        .content-container {
+            height: 396px;
+            padding: 114px 0;
+            @include not-front-hero-svg;
+
+            @include breakpoint(xxl up) {
+                background-size: 66% auto;
+            }
+
+            @include breakpoint(lg down) {
+                @include mobile-hero-svg;
+                background-repeat: no-repeat;
+                background-position: top;
+                background-size: contain;
+                margin-top: -64px;
+                height: auto;
+                padding: 110px 0px 110px;
+            }
+            @include breakpoint(md down) {
+                margin-top: -50px;
+                padding: 68px 0px 0px;
+                max-height: 421px;
+            }
+            @include breakpoint(sm down) {
+                margin-top: -26px;
+                padding: 54px 0px 0px;
+                max-height: 421px;
+            }
+            .container .row {
+                @include breakpoint(lg down) {
+                    width: auto;
+                    text-align: center;
+                }
+                .wysiwyg-content {
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                    p {
+                        width: 500px;
+                        font-size: 22px;
+                        letter-spacing: 0;
+                        line-height: 36px;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+
+                        @include breakpoint(lg down) {
+                            width: auto;
+                            margin-bottom: 1.5rem;
+                            text-align: center;
+                        }
+                    }
+                    h1 {
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+    .acf-block-preview {
+        .fr-hero.hero {
+            .content-container {
+                height: auto;
+                background-size: cover;
+                background-position: 100%;
+            }
+        }
+    }
+}

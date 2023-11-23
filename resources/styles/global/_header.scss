@@ -1,0 +1,413 @@
+.fr-header {
+	transition: background-color 0.25s ease-in-out;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	width: 100%;
+	transition: all 0.2s ease-in-out;
+	background: $white;
+	border-bottom: 1px solid $light-blue-3;
+
+
+	@include breakpoint(xl down) {
+		border-bottom: none;
+	}
+
+	@include breakpoint(xl down) {
+		-ms-overflow-style: none; /* for Internet Explorer, Edge */
+  		scrollbar-width: none; /* for Firefox */
+		overflow: scroll;
+		max-height: 100vh;
+	}
+
+	&::-webkit-scrollbar{
+		@include breakpoint(xl down) {
+			display: none;
+		}
+	}
+
+	.header-top {
+		.container {
+			@include breakpoint(lg down) {
+				padding: 0px;
+			}
+		}
+	}
+
+	.navbar {
+		padding: 20px 0 19.5px;
+
+		@include breakpoint(xl down) {
+			background-color: transparent;
+			padding: 0;
+		}
+
+		> .container {
+			width: 100%;
+
+			@include breakpoint(xl down) {
+				padding: 0;
+				max-width: 100%;
+			}
+		}
+
+		.brand-container {
+			width: auto;
+			padding: 0;
+
+			@include breakpoint(xl down) {
+				--bs-gutter-x: 1.5rem;
+				padding-right: calc(var(--bs-gutter-x) * 0.5);
+				padding-left: calc(var(--bs-gutter-x) * 0.5);
+				padding-bottom: 12px;
+				padding-top: 12px;
+				width: 100%;
+				display: flex;
+				flex-wrap: inherit;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			@include breakpoint(xl down) {
+				border-bottom: 1px solid $light-blue-3;
+				max-width: 100%;
+			}
+
+			.brand {
+				line-height: 0;
+
+				img {
+					max-height: 40px;
+
+					@include breakpoint(xl down) {
+						max-height: 32px;
+					}
+				}
+			}
+		}
+
+		.navbar-nav {
+			margin-left: auto;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			column-gap: 24px;
+			margin: 0;
+			position: relative;
+
+			@include breakpoint(xl down) {
+				flex-direction: column;
+				flex-wrap: wrap;
+				align-items: flex-start;
+				margin-bottom: 20px;
+				padding-top: 24px;
+			}
+
+			> .nav-item {
+				@include breakpoint(xl down) {
+					width: 100%;
+					padding: 0px 8px;
+					border-bottom: 1px solid $light-gray-2;
+				}
+
+				.nav-link {
+					@include font-primary-semi-bold;
+					font-size: 14px;
+					line-height: 24px;
+					color: $dark-gray;
+					padding: 8px 0;
+
+					@include breakpoint(xl down) {
+						padding: 16px 0px;
+						text-align: left;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					}
+
+					&:hover {
+					}
+				}
+			}
+
+			.dropdown-toggle {
+				&::after {
+					transition: opacity 0.15s ease-in-out;
+
+					@include breakpoint(xl down) {
+						transform: rotate(270deg);
+					}
+				}
+
+				&.show {
+					&::after {
+						transform: rotate(180deg);
+
+						@include breakpoint(xl down) {
+							transform: rotate(0deg);
+						}
+					}
+				}
+			}
+
+			.dropdown-menu {
+				box-shadow: 0 2px 20px 0 rgba(82, 87, 103, 0.2);
+				border: none;
+				min-width: 172px;
+				max-width: 200px;
+				background: $white;
+				border-radius: 8px;
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+
+				@include breakpoint(xl down) {
+					background-color: transparent;
+					width: 100%;
+					padding: 0;
+					box-shadow: unset;
+					padding-bottom: 12px;
+				}
+
+				.nav-item {
+					@include breakpoint(xl down) {
+						max-width: 100%;
+					}
+				}
+
+				.menu-item {
+					a {
+						@include font-primary-semi-bold;
+						font-size: 14px;
+						line-height: 24px;
+						color: $dark-gray;
+						text-wrap: wrap;
+						padding: 8px 16px;
+
+						@include breakpoint(xl down) {
+						}
+
+						&:hover,
+						&:focus {
+							background: $light-blue-4;
+						}
+					}
+
+					&.current-menu-item {
+						a {
+							background: $light-blue-4;
+						}
+					}
+				}
+
+				&.show {
+					@include breakpoint(xl down) {
+						display: flex;
+						flex-direction: column;
+					}
+				}
+			}
+		}
+
+		.right-cta-container {
+			display: flex;
+			justify-content: space-between;
+			column-gap: 8px;
+			row-gap: 16px;
+			align-items: center;
+			position: relative;
+
+			@include breakpoint(xl down) {
+				flex-direction: column;
+				flex-flow: column-reverse;
+				padding-bottom: 40px;
+			}
+
+			.cta-button {
+				&.primary {
+					background-color: $blue;
+					&:hover{
+						background-color: $blue-hover;
+						color: $blue;
+					}
+				}
+
+				&.secondary {
+					background-color: $light-blue-4;
+					&:hover{
+						background-color: $blue-hover;
+					}
+				}
+
+				@include breakpoint(xl down) {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.navbar-collapse {
+		justify-content: space-between;
+		margin-left: 32px;
+		flex-wrap: wrap;
+		padding: 0;
+
+		@include breakpoint(xl down) {
+			margin-bottom: 20px;
+			box-shadow: 0 2px 32px 0 rgba(82, 87, 103, 0.2);
+			max-width: 100%;
+			padding-right: calc(var(--bs-gutter-x) * 0.5);
+			padding-left: calc(var(--bs-gutter-x) * 0.5);
+			flex-direction: column;
+			margin-left: 0;
+			border-radius: 0 0 8px 8px;
+			background: linear-gradient(180deg, #dae5f2 0%, #ecf2f9 25.22%, #ffffff 100%);
+
+			&::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 60%;
+				background-image: url("../images/logo-mark.svg");
+				overflow: hidden;
+				background-repeat: no-repeat;
+				background-position: top -110px right -20px;
+			}
+		}
+
+		> div,
+		> ul {
+			@include breakpoint(xl down) {
+				transition: opacity 0.25s ease-in-out;
+				opacity: 0;
+			}
+		}
+	}
+
+	.navbar-toggler {
+		border: none;
+		width: 24px;
+		height: 21px;
+		padding: 0;
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+	.navbar-toggler-icon {
+		background-image: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		position: relative;
+
+		> img {
+			transition: opacity 0.15s ease-in-out;
+			opacity: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			height: 100%;
+			transform: translate(-50%, -50%);
+
+			&.menu-icon {
+				opacity: 1;
+			}
+
+			&.close-icon {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+
+	&.is--opened,
+	&.is--opening {
+		.navbar-toggler {
+			.navbar-toggler-icon {
+				> img {
+					opacity: 0;
+
+					&.close-icon {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		.navbar-collapse {
+			> div,
+			> ul {
+				@include breakpoint(xl down) {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	a[href="#"] {
+		cursor: default;
+	}
+}
+
+
+body:not(.wp-admin) {
+    padding-top: 80px;
+
+    @include breakpoint(xl down) {
+        padding-top: 56.5px;
+    }
+
+	&.home {
+		padding-top: 0px;
+	
+		.fr-header {
+			background: none;
+			border-bottom: none;
+	
+			@include breakpoint(xl down) {
+				background: $white;
+			}
+	
+			&.scrolled {
+				background: $white;
+				border-bottom: 1px solid $light-blue-3;
+	
+				@include breakpoint(xl down) {
+					border-bottom: none;
+				}
+			}
+		}    
+	}
+
+	&.admin-bar {
+		.fr-header {
+			top: 32px;
+	
+			@include breakpoint(782px down) {
+				top: 46px;
+			}
+		}
+	}
+
+	.fr-header{
+		&.scroll-down{
+			top: -80.3px;
+	
+			@include breakpoint(xl down) {
+				top: -56.8px;
+			}
+		}
+	}
+}
+
+#wpadminbar{
+	@include breakpoint(600px down) {
+		position: fixed !important;
+	}
+}

@@ -1,0 +1,31 @@
+<div class="module accordion-test-module {{ $block->classes }}"
+    @if (isset($block->block->anchor)) id="{{ $block->block->anchor }}" @endif>
+    <div class="container-fluid col-lg-10 col-12">
+        @if ($items)
+            <div class="accordion accordion-flush" id="acc-{{ $block->block->id }}">
+                @forelse ($items as $i => $item)
+                    <div class="accordion-item">
+                        <h6 class="accordion-header" id="acc-head-{{ $block->block->id . $i }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#acc-collapse-{{ $block->block->id . $i }}" aria-expanded="false"
+                                aria-controls="acc-collapse-{{ $block->block->id . $i }}">
+                                <span class="subtitle">{!! $item['subtitle'] !!}</span>
+                                <b class="badge"></b>
+                            </button>
+                        </h6>
+                        <div id="acc-collapse-{{ $block->block->id . $i }}" class="accordion-collapse collapse"
+                            aria-labelledby="acc-head-{{ $block->block->id . $i }}"
+                            data-bs-parent="#acc-{{ $block->block->id }}">
+                            <div class="accordion-body">
+                                <div
+                                    class="accordion-inner-content wysiwyg-content p-lineheight--1_6 ul-ol-offset-left">
+                                    {!! $item['content'] !!}</div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                @endforelse
+            </div>
+        @endif
+    </div>
+</div>

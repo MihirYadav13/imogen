@@ -1,0 +1,161 @@
+.fr-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 8px;
+    background-color: $white;
+    box-shadow: 0 2px 10px 0 rgba(82, 87, 103, 0.2);
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 7px 20px 0 rgba(82, 87, 103, 0.2);
+        transform: scale(105%, 105%);
+    }
+
+    .card-inner {
+        
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        .featured-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            &::after {
+                content: "";
+                background-image: url("../images/card-wave.svg");
+                height: 18px;
+                position: absolute;
+                bottom: -1px;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            &.default {
+                background-color: var(--fr-theme-main-color);
+
+                img {
+                    width: 52px;
+                    height: auto;
+                }
+            }
+        }
+
+        .card-content {
+            color: white;
+            padding: 16px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            .wysiwyg-content {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .card-header {
+                    display: flex;
+                    margin-bottom: 8px;
+
+                    .card-link {
+                        text-decoration: none;
+                        font-size: 16px;
+                        line-height: 24px;
+
+                        .card-title {
+                            display: inline-block;
+                            color: $white;
+                        }
+                    }
+                }
+
+                .card-body {
+                    margin-bottom: 8px;
+                    .excerpt {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .card-footer {
+                display: flex;
+                justify-content: flex-start;
+                align-self: flex-start;
+                margin-top: auto;
+
+                .cta-regular {
+                    @include sm-style;
+                    &:hover {
+                        color: var(--fr-theme-main-color);
+                    }
+                }
+            }
+        }
+    }
+
+    &.card-type- {
+        &after-school-program,
+        &camp,
+        &childhood-education {
+            .card-header .card-link {
+                pointer-events: none;
+            }
+        }
+        &after-school-program,
+        &childhood-education {
+            .card-inner {
+                .card-footer {
+                    .cta-button {
+                        width: 100%;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        &camp {
+            .card-inner {
+                .card-footer {
+                    .cta-button {
+                        width: 100%;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        &team-member {
+            .card-inner {
+                .wysiwyg-content {
+                    .card-header {
+                        justify-content: center;
+                    }
+
+                    .role {
+                        margin-bottom: 0;
+                    }
+
+                    text-align: center;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

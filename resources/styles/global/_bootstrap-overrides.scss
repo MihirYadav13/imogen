@@ -1,0 +1,11 @@
+// EXAMPLE: 
+//$body-bg: #000;
+//$body-color: #111;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: calc(1240px + 1.5rem)
+);
