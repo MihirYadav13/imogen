@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="59px" viewBox="0 0 60 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>7392C9E2-994F-43CB-BD14-25B31DD3D820</title>
+    <g id="Logos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Downloadable-Assets" transform="translate(-1302.000000, -813.000000)">
+            <g id="Events-Icon" transform="translate(1302.000000, 813.000000)">
+                <rect id="Background" fill="#F3FAF8" x="0" y="0" width="60" height="59"></rect>
+                <g id="Stacked-Group" transform="translate(14.000000, 4.000000)" fill="#3F9072">
+                    <text id="JAN" font-family="Lato-Regular, Lato" font-size="12" font-weight="normal" line-spacing="15">
+                        <tspan x="4.72" y="12">JAN</tspan>
+                    </text>
+                    <text id="01" font-family="Roboto-Bold, Roboto" font-size="26" font-weight="bold" line-spacing="36">
+                        <tspan x="1.08300781" y="39">01</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

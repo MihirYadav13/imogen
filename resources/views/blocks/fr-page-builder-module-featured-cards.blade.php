@@ -3,13 +3,14 @@
     @include('components.grid-heading-content')
     <div class="container-fluid card-grid-container ajax-container">
         <div class="result-content ajax-content">
-            <div class="cards-container cards-inner {{ count($items) < 4 ? 'columns-' . count($items) : 'columns-4' }}">
+            <!-- <div class="cards-container cards-inner {{ count($items) < 4 ? 'columns-' . count($items) : 'columns-4' }}"> -->
+            <div class="cards-container cards-inner">
                 @foreach ($items as $card_data)
                     <div class="fr-card card-type-manual">
                         <div class="card-inner">
                             <div class="featured-image {{ $card_data['featured_image']['url'] == '' ? 'default' : '' }}">
                                 <img src="{{ $card_data['featured_image']['url'] ?: asset('images/default-card-white.png') }}"
-                                  loading="lazy" alt="Featured">
+                                    loading="lazy" alt="Featured">
                             </div>
                             <div class="card-content">
                                 <div class="wysiwyg-content">
@@ -26,7 +27,7 @@
                                             {!! $card_data['description'] !!} </p>
                                     </div>
                                     <div class="card-footer">
-                                        <x-cta-button :label="$card_data['cta_link']['title']?:'Learn More  ▶'" :external-url="$card_data['cta_link']['url']" :newTab="$card_data['cta_link']['target']" type="external_url" :style="'regular-link; color: white; margin-left: 110px; '"   />
+                                        <x-cta-button :label="$card_data['cta_link']['title']?:'LEARN MORE'" :external-url="$card_data['cta_link']['url']" :newTab="$card_data['cta_link']['target']" type="external_url" :style="'regular-link'" />
                                     </div>
                                 </div>
                             </div>
@@ -37,3 +38,4 @@
         </div>
     </div>
 </div>
+

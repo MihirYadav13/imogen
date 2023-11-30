@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="14.2222496px" viewBox="0 0 16 14.2222496" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BED67B33-6C18-4186-BB01-ACDC5BB55308</title>
+    <defs>
+        <path d="M11.7638889,-7.77156117e-16 C9.43055556,0.00836068108 7.55555556,1.9305829 7.55555556,4.26391624 L7.55555556,6.22224957 L1.33333333,6.22224957 C0.597222222,6.22224957 0,6.81947179 0,7.5555829 L0,12.8889162 C0,13.6250273 0.597222222,14.2222496 1.33333333,14.2222496 L11.1111111,14.2222496 C11.8472222,14.2222496 12.4444444,13.6250273 12.4444444,12.8889162 L12.4444444,7.5555829 C12.4444444,6.81947179 11.8472222,6.22224957 11.1111111,6.22224957 L9.77777778,6.22224957 L9.77777778,4.24724957 C9.77777778,3.14724957 10.6583333,2.23336068 11.7583333,2.22224957 C12.8694444,2.21113846 13.7777778,3.11391624 13.7777778,4.22224957 L13.7777778,6.44447179 C13.7777778,6.81391624 14.075,7.11113846 14.4444444,7.11113846 L15.3333333,7.11113846 C15.7027778,7.11113846 16,6.81391624 16,6.44447179 L16,4.22224957 C16,1.88891624 14.0972222,-0.00830598559 11.7638889,-7.77156117e-16 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Site-1_Desktop/Blog" transform="translate(-524.000000, -1949.902750)">
+            <g id="Site-1_Desktop/Home" transform="translate(2.000000, 1.000000)">
+                <g id="Padding-Group-9" transform="translate(0.000000, 122.000000)">
+                    <g id="Stacked-Group" transform="translate(39.000000, 40.000000)">
+                        <g id="Group" transform="translate(1.000000, 1774.000000)">
+                            <g id="Background-2" transform="translate(466.000000, 0.000000)">
+                                <g id="Padding-Group-2" transform="translate(8.000000, 8.000000)">
+                                    <g id="Stacked-Group" transform="translate(8.000000, 4.000000)">
+                                        <g id="Solid/lock-open" transform="translate(0.000000, 0.902750)">
+                                            <mask id="mask-2" fill="white">
+                                                <use xlink:href="#path-1"></use>
+                                            </mask>
+                                            <g id="Mask"></g>
+                                            <g id="🎨-color" mask="url(#mask-2)" fill="#3F9072">
+                                                <g transform="translate(0.000000, -0.902750)" id="Viridan">
+                                                    <rect x="0" y="0" width="16" height="16"></rect>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

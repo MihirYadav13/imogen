@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="18.719199px" viewBox="0 0 20 18.719199" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C66EEA7A-9AAD-4B2D-ABFA-2D3A636E05F8</title>
+    <defs>
+        <path d="M0.0487619657,1.77635684e-15 L7.77053898,10.3247467 L0,18.719199 L1.74883591,18.719199 L8.55192949,11.3697316 L14.0486421,18.719199 L20,18.719199 L11.8437619,7.81370531 L19.0765203,1.77635684e-15 L17.3276844,1.77635684e-15 L11.0623714,6.7687204 L6.00011991,1.77635684e-15 L0.0487619657,1.77635684e-15 L0.0487619657,1.77635684e-15 Z M2.62055597,1.28819521 L5.35462339,1.28819521 L17.4278063,17.430804 L14.6937389,17.430804 L2.62055597,1.28819521 Z" id="path-1"></path>
+    </defs>
+    <g id="Logos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Downloadable-Assets" transform="translate(-1115.000000, -754.833333)">
+            <g id="Stacked-Group-4" transform="translate(972.000000, 742.000000)">
+                <g id="Stacked-Group" transform="translate(48.000000, 0.000000)">
+                    <g id="Padding-Group-3" transform="translate(70.000000, 0.000000)">
+                        <g id="Brands/twitter" transform="translate(25.000000, 12.833333)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="path1009" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                            <g id="🎨-color" mask="url(#mask-2)" fill="#205E3B">
+                                <g transform="translate(0.000000, -0.833333)" id="Black">
+                                    <rect x="0" y="0" width="20" height="20"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

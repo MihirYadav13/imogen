@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>D1CC5921-96F0-4D32-A7EA-30A398C8D787</title>
+    <defs>
+        <circle id="path-1" cx="40" cy="40" r="40"></circle>
+        <path d="M19.8549708,10.0429448 L3.3871345,0.307272276 C2.04912281,-0.483370999 0,0.283880463 0,2.23943602 L0,21.7061027 C0,23.4604887 1.90409357,24.5177986 3.3871345,23.6382664 L19.8549708,13.9072723 C21.3239766,13.0417752 21.328655,10.9084419 19.8549708,10.0429448 Z" id="path-2"></path>
+    </defs>
+    <g id="Logos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Downloadable-Assets" transform="translate(-1090.000000, -490.000000)">
+            <g id="Play" transform="translate(1090.000000, 490.000000)">
+                <g id="Oval">
+                    <circle stroke="#18472C" stroke-width="0.634920635" stroke-linejoin="square" fill="#F3FAF8" fill-rule="evenodd" cx="40" cy="40" r="39.6825397"></circle>
+                    <circle stroke="#F3FAF8" stroke-width="0.317460317" cx="40" cy="40" r="40.1587302"></circle>
+                </g>
+                <g id="Solid/play" transform="translate(29.520468, 28.001500)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <g id="Mask"></g>
+                    <g id="🎨-color" mask="url(#mask-3)" fill="#205E3B">
+                        <g transform="translate(-1.520468, -0.001500)" id="Black">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

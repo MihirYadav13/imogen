@@ -8,11 +8,13 @@
     "build": "wpackio-scripts build",
     "bootstrap": "wpackio-scripts bootstrap",
     "start": "wpackio-scripts start",
-    "archive": "wpackio-scripts pack"
+    "archive": "wpackio-scripts pack",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
     "@wpackio/scripts": "^6.4.0",
     "copy-webpack-plugin": "^6.4.1",
+    "cross-env": "^7.0.3",
     "postcss": "^8.4.23",
     "sass": "^1.62.1"
   },
