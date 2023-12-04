@@ -136,10 +136,11 @@ class TestimonialSlider extends Block
     public function with()
     {
         return [
-            'image' => ($this->preview && empty(get_field('image')) ? $this->example['image'] : get_field('image')),
-            'testimonial_content'=> ($this->preview && empty(get_field('testimonial_content')) ? $this->example['testimonial_content'] : get_field('testimonial_content')),
-            'organization' => ($this->preview && empty(get_field('organization')) ? $this->example['organization'] : get_field('organization')),
-            'title' => $this->preview && !get_field('title') ? $this->example['title'] : get_field('title'),
+            // 'items' => ($this->preview && empty(get_field('items')) ? $this->example['items'] : get_field('items')),
+            'testimonial_content' => get_field('testimonial_content'),
+            'title' => get_field('title'),
+            'image' => get_field('image'),
+            'organization' => get_field('organization'),
         ];
     }
 	/**
@@ -151,13 +152,20 @@ class TestimonialSlider extends Block
 	{
 		$testimonialSlider = new FieldsBuilder('testimonialSlider');
 		$testimonialSlider
+        // ->addRepeater('items', [
+        //     'layout' => 'block',
+        //     'collapsed' => 'title',
+        //     'button_label' => 'Add testimonial',
+        // ])
 		->addWysiwyg('testimonial_content')
         ->addText('title', [
-            'required' => 1,
-            'wrapper' => [
-                'width' => 33
-            ]
-            ])
+                'required' => 1,
+                'wrapper' => [
+                    'width' => 33
+                ]
+                ])
+
+
         ->addImage('image', [
                 'required' => 1,
                 'wrapper' => [
@@ -169,9 +177,9 @@ class TestimonialSlider extends Block
                 'maxlength' => 1000,
                 'rows' => 3,
                 'new_line' => 'br'
-            ]);
+        ]);
           
-
+            // ->endRepeater();
         return $testimonialSlider->build();
 	}
 

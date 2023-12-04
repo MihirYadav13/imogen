@@ -1,65 +1,76 @@
-// General styling for testimonial slider module
-.module {
-   &.testimonial-content-module {
+.testimonial-content-module {
+  .parent_content {
+    .child_content {
+      flex-direction: row-reverse;
+      display: flex;
+      align-items: stretch;
+      gap: 200px;
+      &.flip {
+        flex-direction: row-reverse;
 
-display: flex;
+        @include breakpoint(lg down) {
+          flex-direction: column-reverse;
+        }
+      }
 
-//     background-color: $background-color;
-//     padding: 20px;
-//     border-radius: 8px;
-//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      @include breakpoint(lg down) {
+        flex-direction: column-reverse;
+      }
 
-//     .testimonial-content {
-//       margin-bottom: 20px;
+      .wysiwyg-module {
+        color: #3f9072;
+        font-family: Lato;
+        font-size: 18px;
+        letter-spacing: 0;
+        line-height: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-//       .splide__track {
-//         ul.splide__list {
-//           list-style: none;
-//           margin: 0;
-//           padding: 0;
-//           display: flex;
-//           overflow: hidden;
+        @include breakpoint(lg down) {
+          padding: 0;
+        }
+      }
 
-//           .splide__slide {
-//             flex: 0 0 auto;
-//             margin-right: 10px;
+      .testimonial_title {
+        color: #3f9072;
+        font-family: Roboto;
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 40px;
+      }
+      .testimonial_content {
+        padding-bottom: 10px;
+        width: 406px;
+        font-size: 18px;
+        font-style: italic;
+        line-height: 32px;
+        color: #535353;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-//             img {
-//               max-width: 100%;
-//               height: auto;
-//               border-radius: 8px;
-//             }
-//           }
-//         }
-//       }
-//     }
+        @include breakpoint(lg down) {
+          padding: 0;
+        }
+      }
+      .image_ts_module {
+        width: 436px;
+        height: 456px;
+        flex: 1;
 
-//     .thumbnail-carousel {
-//       .splide__track {
-//         ul.splide__list {
-//           list-style: none;
-//           margin: 0;
-//           padding: 0;
-//           display: flex;
-//           overflow: hidden;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
 
-//           .splide__slide {
-//             flex: 0 0 auto;
-//             margin-right: 10px;
+    @include breakpoint(md down) {
+      flex: 0 0 100%;
+    }
 
-//             img {
-//               max-width: 100%;
-//               height: auto;
-//               border-radius: 50%; // Adjust as needed
-//             }
-//           }
-//         }
-
-//         &.justify {
-//           justify-content: space-between;
-//         }
-//       }
-//     }
-//   }
-}
+    @include breakpoint(sm down) {
+      padding: 0 12px;
+    }
+  }
 }

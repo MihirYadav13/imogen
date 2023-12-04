@@ -1,7 +1,7 @@
 (function ($) {	
 	$.fn.imageCarouselInit = function () {
 		const initializeCarousel = ($self) => {
-			var main = new Splide($self.find('.image-carousel')[0], {
+			var main = new Splide($self.find('.q')[0], {
 				type: 'fade',
 				focus: 'center',
 				rewind     : true,
