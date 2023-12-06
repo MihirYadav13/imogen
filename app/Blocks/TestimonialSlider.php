@@ -155,7 +155,7 @@ class TestimonialSlider extends Block
         // ->addRepeater('items', [
         //     'layout' => 'block',
         //     'collapsed' => 'title',
-        //     'button_label' => 'Add testimonial',
+        //     'button_label' => 'Add Testimonial Slider Item',
         // ])
 		->addWysiwyg('testimonial_content')
         ->addText('title', [
@@ -179,6 +179,8 @@ class TestimonialSlider extends Block
                 'new_line' => 'br'
         ]);
           
+           
+        // ->addText('testimonail_slider_end')
             // ->endRepeater();
         return $testimonialSlider->build();
 	}

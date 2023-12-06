@@ -1,7 +1,10 @@
 .testimonial-content-module {
   width: fit-content;
+  // .splide__track{
+  // .splide__list{
   .parent_content {
-    padding:20px;
+    padding: 20px;
+    // position: relative;
     .child_content {
       flex-direction: row-reverse;
       display: flex;
@@ -18,67 +21,72 @@
       @include breakpoint(lg down) {
         flex-direction: column-reverse;
       }
-  .left{
-      .testimonial_content {
-        padding-bottom: 10px;
-        width: 406px;
-        font-size: 18px;
-        font-style: italic;
-        line-height: 32px;
-        color: #535353;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+      .left {
+        .testimonial_content {
+          padding-bottom: 10px;
+          width: 406px;
+          font-size: 18px;
+          font-style: italic;
+          line-height: 32px;
+          color: #535353;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
 
-        @include breakpoint(lg down) {
-          padding: 0;
+          @include breakpoint(lg down) {
+            padding: 0;
+          }
+        }
+
+        .testimonial_title {
+          color: #3f9072;
+          font-family: Roboto;
+          font-size: 32px;
+          font-weight: bold;
+          letter-spacing: 0;
+          line-height: 40px;
+        }
+
+        .wysiwyg-module {
+          color: #3f9072;
+          font-family: Lato;
+          font-size: 18px;
+          letter-spacing: 0;
+          line-height: 32px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          @include breakpoint(lg down) {
+            padding: 0;
+          }
         }
       }
 
-      .testimonial_title {
-        color: #3f9072;
-        font-family: Roboto;
-        font-size: 32px;
-        font-weight: bold;
-        letter-spacing: 0;
-        line-height: 40px;
-      }
+      .right {
+        padding-right: 20px;
+        .image_ts_module {
+          width: 436px;
+          height: 456px;
+          flex: 1;
 
-      .wysiwyg-module {
-        color: #3f9072;
-        font-family: Lato;
-        font-size: 18px;
-        letter-spacing: 0;
-        line-height: 32px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        @include breakpoint(lg down) {
-          padding: 0;
+          max-width: 100%;
+          object-fit: cover;
         }
       }
-    }
 
-    .right{
-      padding-right: 20px;
-      .image_ts_module {
-        width: 436px;
-        height: 456px;
-        flex: 1;
-
-        max-width: 100%;
-        object-fit: cover;
+      @include breakpoint(md down) {
+        flex: 0 0 100%;
       }
-    }
 
-    @include breakpoint(md down) {
-      flex: 0 0 100%;
-    }
-
-    @include breakpoint(sm down) {
-      padding: 0 12px;
+      @include breakpoint(sm down) {
+        padding: 0 12px;
+      }
     }
   }
 }
+.splide__slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }

@@ -26,6 +26,7 @@ import './components/contact-form';
 import './blocks/article-list';
 import './blocks/image-carousel';
 import './blocks/fr-page-builder';
+import'./blocks/testimonial-slider';
 
 import './global/header';
 
